@@ -16,15 +16,18 @@ export class AuthService {
     private auth = getAuth();
     private uid = '';
     private user = '';
+    private token = '';
     private isLoggedIn = false;
 
     async singIn(email: string, password: string): Promise<any> {
         try {
           const credentials = await signInWithEmailAndPassword(this.auth, email, password);
+          console.log(credentials);
           this.uid = credentials.user.uid;
           this.user = credentials.user.email + '';
+          this.token = await credentials.user.getIdToken();
           this.setLogin();
-          console.log(credentials);
+          
           
           this.router.navigateByUrl('/registro');
           return credentials.user;
@@ -35,6 +38,8 @@ export class AuthService {
       setLogin() {
         sessionStorage.setItem('uid', this.uid);
         sessionStorage.setItem('user', this.user);
+        sessionStorage.setItem('token', this.token);
+
         this.isLoggedIn = true;
       }
       logOut() {
@@ -54,6 +59,13 @@ export class AuthService {
         const sessionTrue = sessionStorage.getItem('uid');
         this.isLoggedIn = sessionTrue !== null ? true : false;
         return this.isLoggedIn;
+      }
+      getToken(): string | null {
+        return sessionStorage.getItem('token'); // Devuelve el JWT (ID Token) almacenado
+      }
+
+      getUser(): string | null {
+        return sessionStorage.getItem('user'); // Devuelve el correo del usuario logueado
       }
 }
 

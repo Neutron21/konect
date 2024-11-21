@@ -1,5 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-import { Router } from '@angular/router';
 import { AuthService } from '../services/auth.service';
 
 @Component({
@@ -8,44 +7,27 @@ import { AuthService } from '../services/auth.service';
   styleUrls: ['./header.component.scss']
 })
 export class HeaderComponent implements OnInit {
-  isCollapsed = true;
   user = {
-    nombre : '',
-    owner : false,
-    rol : '',
+    nombre: '',
   };
-  
-  constructor(
-    private router: Router,
-    private authServie: AuthService){}
+
+  constructor(private authServie: AuthService) {}
 
   ngOnInit(): void {
     this.validarSesion();
   }
-  toggleNavbar() {
-    this.isCollapsed = !this.isCollapsed;
-  }
-  collapseNavbar() {
-    this.isCollapsed = true;
-  }
-  cerrarSesion(){
+
+  cerrarSesion() {
     this.authServie.logOut();
-   }
-   consulta(){
-   }
-  cargarData(){
   }
-  validarSesion(){
+
+  validarSesion() {
     if (typeof window !== 'undefined' && typeof window.sessionStorage !== 'undefined') {
-      const uid = sessionStorage.getItem('uid');
-      const usuario = JSON.parse(sessionStorage.getItem('currentUser') + '');
-      this.user.nombre = usuario ? usuario.nombre : "";
-      this.user.owner = usuario ? usuario.owner : "";
-      this.user.rol = usuario ? usuario.paquete : "";
-      return !!uid;
+      const usuario = JSON.parse(sessionStorage.getItem('currentUser') || '{}');
+      this.user.nombre = usuario.nombre || '';
+      return !!sessionStorage.getItem('uid');
     } else {
       return false;
     }
   }
-
 }

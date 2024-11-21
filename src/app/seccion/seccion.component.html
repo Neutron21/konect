@@ -1,0 +1,35 @@
+<div class="container mt-5">
+    <h1 class="text-center mb-4 bienvenido">Bienvenido</h1>
+    <div class="row justify-content-center">
+        <div class="col-md-4">
+            <div 
+                class="card text-center clickable" 
+                (click)="navigateTo('/perfilador')"
+            >
+                <div class="card-body">
+                    <h5 class="card-title">Perfilador</h5>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-4">
+            <div 
+                class="card text-center clickable" 
+                (click)="navigateTo('/financieras')"
+            >
+                <div class="card-body">
+                    <h5 class="card-title">Financieras</h5>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-4">
+            <div 
+                class="card text-center clickable" 
+                (click)="navigateTo('/seguimiento')"
+            >
+                <div class="card-body">
+                    <h5 class="card-title">Seguimiento</h5>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

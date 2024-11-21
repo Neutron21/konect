@@ -1,0 +1,33 @@
+import { Injectable } from '@angular/core';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { environment } from 'src/environments/environment';
+import { Observable } from 'rxjs';
+import { AuthService } from './auth.service';
+
+@Injectable({
+  providedIn: 'root'
+})
+export class ApiService {
+
+  private headersJson = new HttpHeaders({
+    'Content-Type': 'application/json',
+    'X-Auth-Token': this.authService.getToken() + ""
+  });
+
+  constructor(
+    private http: HttpClient,
+    private authService: AuthService) {}
+
+  // Función para guardar el token y el email
+  saveTokenAndEmail(): Observable<any> {
+    const payload = {
+      email: this.authService.getUser()
+    };
+
+    console.log('saveTokenAndEmail', payload);
+
+     
+    return this.http.post(environment.api + environment.updateToken, JSON.stringify(payload), {headers: this.headersJson});
+        
+  }
+}

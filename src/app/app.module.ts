@@ -1,23 +1,24 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { LoginComponent } from './login/login.component';
 import { HeaderComponent } from './header/header.component';
-import { RegistroComponent } from './registro/registro.component';
-import { BusquedaComponent } from './busqueda/busqueda.component';
-import { CajaComponent } from './caja/caja.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { SeccionComponent } from './seccion/seccion.component';
+import { PerfiladorComponent } from './perfilador/perfilador.component';
+import { FinancierasComponent } from './financieras/financieras.component';
+import { SeguimientoComponent } from './seguimiento/seguimiento.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     LoginComponent,
     HeaderComponent,
-    RegistroComponent,
-    BusquedaComponent,
-    CajaComponent
+    SeccionComponent,
+    PerfiladorComponent,
+    FinancierasComponent,
+    SeguimientoComponent,
   ],
   imports: [
     BrowserModule,

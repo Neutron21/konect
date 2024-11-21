@@ -1,63 +1,66 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
-import { Router } from '@angular/router';
+import { initializeApp } from "firebase/app";
+import { getAnalytics } from "firebase/analytics";
 import { AuthService } from '../services/auth.service';
+import { environment } from 'src/environments/environment';
+import { Router } from '@angular/router'; // Importar el router
 
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
   styleUrls: ['./login.component.scss']
 })
-
 export class LoginComponent implements OnInit {
 
-  loginForm!: FormGroup;
+  loginForm: FormGroup;
   analytics: any;
   mostrarPassword: boolean = false;
   badCredentials: boolean = false;
-  showSpiner: boolean = false;
+  showSpinner: boolean = false;
   campoVacio: boolean = false;
-  nombre : string = ''
 
   constructor(
-   private router: Router,
-   private authService: AuthService
-  ) { 
+    private authservices: AuthService,
+    private router: Router 
+  ) {
     this.loginForm = new FormGroup({
       email: new FormControl('', Validators.required),
       password: new FormControl('', Validators.required)
     });
   }
 
-  ngOnInit(): void {}
+  ngOnInit(): void {
+    const app = initializeApp(environment.firebaseConfig);
+    this.analytics = getAnalytics(app);
+  }
+
   showPass() {
     this.mostrarPassword = !this.mostrarPassword;
   }
+
   async sendCredentials() {
     const { email, password } = this.loginForm.value;
-    console.log(email,password)
-    if(!!email && !!password) {
-      this.showSpiner = true;
+
+    if (!!email && !!password) {
+      this.showSpinner = true;
       try {
-        this.showSpiner = false;
-        this.authService.singIn(email,password);
-        this.router.navigate(['/registro']);
-        // this.getUserById();
+        const user = await this.authservices.singIn(email, password);
+        console.log(user);
+
+        // sessionStorage.setItem('uid', user.uid);
+        // sessionStorage.setItem('token', user.accessToken); 
+
+        this.router.navigate(['/seccion']);
       } catch (error) {
-        console.log(error);
+        console.error(error);
+
         this.badCredentials = true;
-        this.showSpiner = false;
+      } finally {
+        this.showSpinner = false;
       }
     } else {
-      this.campoVacio = true;
-
-    } 
+      this.campoVacio = true; 
+    }
   }
-  getUserById() {
-   
-  }
- 
-  
-  }
-
-
+}
