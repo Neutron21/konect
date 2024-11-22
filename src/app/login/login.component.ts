@@ -5,6 +5,7 @@ import { getAnalytics } from "firebase/analytics";
 import { AuthService } from '../services/auth.service';
 import { environment } from 'src/environments/environment';
 import { Router } from '@angular/router'; // Importar el router
+import { ApiService } from '../services/api.service';
 
 @Component({
   selector: 'app-login',
@@ -22,7 +23,8 @@ export class LoginComponent implements OnInit {
 
   constructor(
     private authservices: AuthService,
-    private router: Router 
+    private router: Router ,
+    private apiservice: ApiService
   ) {
     this.loginForm = new FormGroup({
       email: new FormControl('', Validators.required),
@@ -48,8 +50,14 @@ export class LoginComponent implements OnInit {
         const user = await this.authservices.singIn(email, password);
         console.log(user);
 
-        // sessionStorage.setItem('uid', user.uid);
-        // sessionStorage.setItem('token', user.accessToken); 
+        this.apiservice.saveTokenAndEmail().subscribe({
+          next: (response) => {
+            console.log('Guardado con éxito:', response);
+          },
+          error: (err) => {
+            console.error('Error al guardar token y email:', err);
+          }
+        });
 
         this.router.navigate(['/seccion']);
       } catch (error) {
@@ -63,4 +71,5 @@ export class LoginComponent implements OnInit {
       this.campoVacio = true; 
     }
   }
+  
 }

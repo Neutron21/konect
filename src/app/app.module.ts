@@ -9,6 +9,7 @@ import { SeccionComponent } from './seccion/seccion.component';
 import { PerfiladorComponent } from './perfilador/perfilador.component';
 import { FinancierasComponent } from './financieras/financieras.component';
 import { SeguimientoComponent } from './seguimiento/seguimiento.component';
+import { HttpClientModule } from '@angular/common/http';
 
 @NgModule({
   declarations: [
@@ -24,7 +25,8 @@ import { SeguimientoComponent } from './seguimiento/seguimiento.component';
     BrowserModule,
     AppRoutingModule,
     FormsModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    HttpClientModule,
   ],
   providers: [],
   bootstrap: [AppComponent]

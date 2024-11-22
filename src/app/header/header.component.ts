@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { AuthService } from '../services/auth.service';
+import { ApiService } from '../services/api.service';
 
 @Component({
   selector: 'app-header',
@@ -11,13 +12,25 @@ export class HeaderComponent implements OnInit {
     nombre: '',
   };
 
-  constructor(private authServie: AuthService) {}
+  constructor(
+    private authServie: AuthService,
+    private apiservice: ApiService
+
+  ) {}
 
   ngOnInit(): void {
     this.validarSesion();
   }
 
   cerrarSesion() {
+    this.apiservice.deleteToken().subscribe ({
+      next:(response) => {
+        console.log('Borrado con éxito:', response);
+      },
+      error: (err) => {
+        console.error('Error al borrar el token:', err);
+      }
+    });
     this.authServie.logOut();
   }
 

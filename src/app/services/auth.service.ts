@@ -3,6 +3,7 @@ import { Router } from "@angular/router";
 import { initializeApp } from 'firebase/app';
 import { environment } from "src/environments/environment";
 import { getAuth, signOut, signInWithEmailAndPassword } from "firebase/auth";
+import { ApiService } from "./api.service";
 
 @Injectable({
     providedIn:'root'
@@ -10,7 +11,9 @@ import { getAuth, signOut, signInWithEmailAndPassword } from "firebase/auth";
 
 export class AuthService {
     
-    constructor(private router: Router){}
+    constructor(
+      private router: Router
+    ){}
 
     private app = initializeApp(environment.firebaseConfig);
     private auth = getAuth();
@@ -53,6 +56,8 @@ export class AuthService {
       setLogOut(){
         sessionStorage.removeItem('uid');
         sessionStorage.removeItem('user');
+        sessionStorage.removeItem('token');
+
         this.isLoggedIn = false;
       }
       getIsLoged (){

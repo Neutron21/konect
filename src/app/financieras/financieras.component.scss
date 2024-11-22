@@ -13,4 +13,93 @@
       transition: color 0.3s ease;
     }
   }
+  /* From Uiverse.io by suleymanlaarabidev */ 
+  .cards-container {
+    display: flex;
+    gap: 50px; /* Espacio entre tarjetas */
+    justify-content: center; /* Centra las tarjetas horizontalmente */
+    align-items: flex-start; /* Alinea las tarjetas al inicio en el eje vertical */
+    flex-wrap: wrap; /* Permite que las tarjetas se ajusten en filas si la pantalla es pequeña */
+    margin: 20px;
+  }
+.card {
+  width: 254px;
+  height: 190px;
+  background: white;
+  transition: all 0.4s;
+  border-radius: 10px;
+  box-shadow: 0px 0px 10px 5px  rgba(0, 0, 0, 0.705);
+  font-size: 30px;
+  font-weight: 900;
+  margin-top: 2rem;
+}
+
+.card:hover {
+  border-radius: 15px;
+  cursor: pointer;
+  transform: scale(1.2);
+  box-shadow: 0px 0px 10px 5px  rgba(0, 0, 0, 0.705);
+  background: rgb(103, 151, 255);
+}
+
+.first-content {
+  height: 100%;
+  width: 100%;
+  transition: all 0.4s;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  opacity: 1;
+  border-radius: 15px;
+}
+
+.card:hover .first-content {
+  height: 0px;
+  opacity: 0;
+}
+
+.card-text {
+  text-align: center; /* Centra el texto horizontalmente */
+  margin: 0; /* Elimina márgenes predeterminados */
+  padding: 10px; /* Espaciado interno para que no toque los bordes */
+  font-size: 1rem; /* Ajusta el tamaño del texto */
+  color: #ffffff; /* Color del texto */
+  line-height: 1.5; /* Espaciado entre líneas */
+  word-wrap: break-word; /* Ajusta las palabras largas al espacio */
+}
+
+.second-content {
+  height: 0%;
+  width: 100%;
+  opacity: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 15px;
+  transition: all 0.4s;
+  font-size: 0px;
+  transform: rotate(90deg) scale(-1);
+  padding: 10px; /* Espaciado para acomodar el texto */
+  box-sizing: border-box; /* Incluye padding en las dimensiones */
+}
+
+.card:hover .second-content {
+  opacity: 1;
+  height: 100%;
+  font-size: 1.8rem;
+  transform: rotate(0deg);
+}
+
+.card-image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover; /* Asegura que la imagen ocupe todo el espacio sin deformarse */
+  border-radius: 10px; /* Respeta el borde redondeado de la tarjeta */
+  transition: all 0.4s; /* Animación suave al interactuar con la tarjeta */
+}
+
+.card:hover .card-image {
+  border-radius: 15px; /* Ajusta el borde redondeado al hover */
+}
+
   

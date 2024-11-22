@@ -65,6 +65,27 @@
 .movil{
   display: none;
 }
+.header-login {
+  background-color: #004aad; 
+  padding: 20px 0; 
+  text-align: center; 
+  color: white; 
+  font-size: 24px; 
+  font-weight: bold; 
+  position: relative;
+}
+
+.header-login::after {
+  content: '';
+  display: block;
+  height: 5px; 
+  background-color: #cccccc; 
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+}
+
 
 
 @media (max-width: 767px) {

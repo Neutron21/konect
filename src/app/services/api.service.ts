@@ -9,25 +9,40 @@ import { AuthService } from './auth.service';
 })
 export class ApiService {
 
-  private headersJson = new HttpHeaders({
-    'Content-Type': 'application/json',
-    'X-Auth-Token': this.authService.getToken() + ""
-  });
+  // private headersJson = new HttpHeaders({
+  //   'Content-Type': 'application/json',
+  //   'X-Auth-Token': this.authService.getToken() + ""
+  // });
 
   constructor(
     private http: HttpClient,
     private authService: AuthService) {}
 
-  // Función para guardar el token y el email
   saveTokenAndEmail(): Observable<any> {
+    const headersJson = new HttpHeaders({
+      'Content-Type': 'application/json',
+      'X-Auth-Token': this.authService.getToken() + ""
+    });
     const payload = {
-      email: this.authService.getUser()
+      email: this.authService.getUser(),
+      token: this.authService.getToken()
     };
-
     console.log('saveTokenAndEmail', payload);
-
-     
-    return this.http.post(environment.api + environment.updateToken, JSON.stringify(payload), {headers: this.headersJson});
+ 
+    return this.http.post(environment.api + environment.updateToken, JSON.stringify(payload), {headers: headersJson});
         
   }
+  deleteToken(): Observable<any> {
+    const headersJson = new HttpHeaders({
+      'Content-Type': 'application/json',
+      'X-Auth-Token': this.authService.getToken() + ""
+    });
+    const payload = {
+      email: this.authService.getUser(),
+    };
+    console.log('deleteToken payload:', payload);
+  
+    return this.http.post(environment.api + environment.deleteToken, JSON.stringify(payload), { headers: headersJson });
+  }
+  
 }
