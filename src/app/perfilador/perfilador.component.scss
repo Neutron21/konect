@@ -12,4 +12,84 @@
       transition: color 0.3s ease;
     }
   }
+  /* Contenedor del formulario */
+  .form-container {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 20px;
+  }
+  
+  form {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 20px;
+  }
+  
+  .form-group {
+    display: flex;
+    flex-direction: column;
+  }
+  
+  label {
+    font-weight: bold;
+    margin-bottom: 5px;
+  }
+  
+  input {
+    width: 100%;
+    padding: 8px;
+    font-size: 1rem;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+  }
+  
+  button {
+    grid-column: span 2;
+    padding: 10px 20px;
+    background-color: #007bff;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: background-color 0.3s;
+    margin-top: 2em;
+  }
+  
+  button:hover {
+    background-color: #0056b3;
+  }
+  
+  .input-wrapper {
+    position: relative;
+    display: flex;
+  }
+  
+  input[type="number"] {
+    padding-left: 30px; /* Para hacer espacio para el símbolo de pesos */
+  }
+  
+  .currency-symbol {
+    position: absolute;
+    left: 10px;
+    top: 50%;
+    transform: translateY(-50%);
+    font-size: 1.2rem;
+    color: #666;
+  }
+  .persona-check {
+    grid-column: span 2;
+  }
+  
+  .persona-check label {
+    font-size: 1rem;
+    margin-right: 20px;
+  }
+  
+  .persona-check input {
+    margin-right: 5px;
+  }
+  
+  
+
   

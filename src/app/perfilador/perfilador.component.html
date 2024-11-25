@@ -6,4 +6,68 @@
         </a>
       </div>
   </div>
+  <div class="form-container">
+    <h2>Formulario de Financiamiento</h2>
+    <form action="#" method="POST">
+      <div class="form-group persona-check">
+        <div class="radio-group">
+          <label for="persona-fisica">
+            <input type="radio" id="persona-fisica" name="tipo-persona" value="fisica" required>
+            Persona Física
+          </label>
+          <label for="persona-moral">
+            <input type="radio" id="persona-moral" name="tipo-persona" value="moral" required>
+            Persona Moral
+          </label>
+        </div>
+      </div>
+      
+      <div class="form-group">
+        <label for="plazo">Plazo (en meses):</label>
+        <input type="number" id="plazo" name="plazo" required>
+      </div>
+      
+      <div class="form-group">
+        <label for="monto-minimo">Monto Mínimo:</label>
+        <div class="input-wrapper">
+          <input type="number" id="monto-minimo" name="monto-minimo" required>
+          <span class="currency-symbol">$</span>
+        </div>
+      </div>
+      
+      <div class="form-group">
+        <label for="monto-maximo">Monto Máximo:</label>
+        <div class="input-wrapper">
+          <input type="number" id="monto-maximo" name="monto-maximo" required>
+          <span class="currency-symbol">$</span>
+        </div>
+      </div>
+      
+      <div class="form-group">
+        <label for="edad-maxima">Edad Máxima:</label>
+        <input type="number" id="edad-maxima" name="edad-maxima" required>
+      </div>
+      
+      <div class="form-group">
+        <label for="edad-minima">Edad Mínima:</label>
+        <input type="number" id="edad-minima" name="edad-minima" required>
+      </div>
+      
+      <div class="form-group">
+        <label for="antiguedad-empresa">Antigüedad de la Empresa (en años):</label>
+        <input type="number" id="antiguedad-empresa" name="antiguedad-empresa" required>
+      </div>
+      
+      <div class="form-group">
+        <label for="ingresos">Ingresos Mensuales:</label>
+        <input type="number" id="ingresos" name="ingresos" required>
+      </div>
+    </form>  
+
+    <div class="form-group">
+      <button type="submit">Enviar</button>
+    </div>
+</div>
+  
+  
   
