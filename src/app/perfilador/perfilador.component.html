@@ -1,73 +1,91 @@
 <div class="container mt-5">
-    <div class="row">
-      <div class="col-md-1 d-flex justify-content-start align-items-center">
-        <a (click)="navigateBack()" class="flecha-regresar">
-          <i class="fas fa-arrow-left"></i>
-        </a>
-      </div>
+  <div class="row">
+    <div class="col-md-1 d-flex justify-content-start align-items-center">
+      <a (click)="navigateBack()" class="flecha-regresar">
+        <i class="fas fa-arrow-left"></i>
+      </a>
+    </div>
   </div>
   <div class="form-container">
     <h2>Formulario de Financiamiento</h2>
-    <form action="#" method="POST">
+    <form (ngSubmit)="enviarFormulario(formularioForm)" #formularioForm="ngForm">
       <div class="form-group persona-check">
         <div class="radio-group">
           <label for="persona-fisica">
-            <input type="radio" id="persona-fisica" name="tipo-persona" value="fisica" required>
+            <input type="radio" id="persona-fisica" name="tipo-persona" [(ngModel)]="formulario.tipo_persona" value="fisica" (change)="seleccionarTipoPersona('fisica')" required>
             Persona Física
           </label>
           <label for="persona-moral">
-            <input type="radio" id="persona-moral" name="tipo-persona" value="moral" required>
+            <input type="radio" id="persona-moral" name="tipo-persona" [(ngModel)]="formulario.tipo_persona" value="moral" (change)="seleccionarTipoPersona('moral')" required>
             Persona Moral
           </label>
         </div>
       </div>
-      
+  
+      <div class="form-group">
+        <label for="nombre">Nombre:</label>
+        <input type="text" id="nombre" name="nombre" [(ngModel)]="formulario.nombre" #nombre="ngModel" required>
+        <div *ngIf="nombre.invalid && nombre.touched" class="error-message">
+          Nombre es obligatorio.
+        </div>
+      </div>
+  
+      <div class="form-group">
+        <label for="edad">Edad:</label>
+        <input type="number" id="edad" name="edad" [(ngModel)]="formulario.edad" #edad="ngModel" required>
+        <div *ngIf="edad.invalid && edad.touched" class="error-message">
+          Edad es obligatoria.
+        </div>
+      </div>
+  
+      <div class="form-group">
+        <label for="monto">Monto:</label>
+        <input type="number" id="monto" name="monto" [(ngModel)]="formulario.monto" #monto="ngModel" required>
+        <div *ngIf="monto.invalid && monto.touched" class="error-message">
+          Monto es obligatorio.
+        </div>
+      </div>
+  
       <div class="form-group">
         <label for="plazo">Plazo (en meses):</label>
-        <input type="number" id="plazo" name="plazo" required>
+        <input type="number" id="plazo" name="plazo" [(ngModel)]="formulario.plazo" required>
       </div>
-      
-      <div class="form-group">
-        <label for="monto-minimo">Monto Mínimo:</label>
-        <div class="input-wrapper">
-          <input type="number" id="monto-minimo" name="monto-minimo" required>
-          <span class="currency-symbol">$</span>
-        </div>
-      </div>
-      
-      <div class="form-group">
-        <label for="monto-maximo">Monto Máximo:</label>
-        <div class="input-wrapper">
-          <input type="number" id="monto-maximo" name="monto-maximo" required>
-          <span class="currency-symbol">$</span>
-        </div>
-      </div>
-      
-      <div class="form-group">
-        <label for="edad-maxima">Edad Máxima:</label>
-        <input type="number" id="edad-maxima" name="edad-maxima" required>
-      </div>
-      
-      <div class="form-group">
-        <label for="edad-minima">Edad Mínima:</label>
-        <input type="number" id="edad-minima" name="edad-minima" required>
-      </div>
-      
+  
       <div class="form-group">
         <label for="antiguedad-empresa">Antigüedad de la Empresa (en años):</label>
-        <input type="number" id="antiguedad-empresa" name="antiguedad-empresa" required>
+        <input type="number" id="antiguedad-empresa" name="antiguedad-empresa" [(ngModel)]="formulario.antiguedadEmpresa" required>
       </div>
       
       <div class="form-group">
         <label for="ingresos">Ingresos Mensuales:</label>
-        <input type="number" id="ingresos" name="ingresos" required>
+        <input type="number" id="ingresos" name="ingresos" [(ngModel)]="formulario.ingresos" required>
       </div>
-    </form>  
 
-    <div class="form-group">
-      <button type="submit">Enviar</button>
+      <!-- Mensaje de error general si el formulario está incompleto -->
+      <div *ngIf="formularioError" class="error">
+        Todos los campos son obligatorios para enviar el formulario.
+      </div>
+
+      <div class="form-group">
+        <button type="submit" [disabled]="formularioForm.invalid">Enviar</button>
+      </div>
+    </form>
+  </div>
+
+  <!-- Modal de éxito -->
+  <div class="modal" tabindex="-1" role="dialog" [ngClass]="{'show': formularioEnviado}" [attr.aria-hidden]="formularioEnviado ? 'true' : null" #successModal>
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title text-center">¡Gracias!</h5>
+        </div>
+        <div class="modal-body">
+          <p>El formulario ha sido enviado con éxito.</p>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" (click)="cerrarModal(formularioForm)">Cerrar</button>
+        </div>
+      </div>
     </div>
+  </div>
 </div>
-  
-  
-  

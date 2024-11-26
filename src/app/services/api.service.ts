@@ -44,5 +44,15 @@ export class ApiService {
   
     return this.http.post(environment.api + environment.deleteToken, JSON.stringify(payload), { headers: headersJson });
   }
+  sendCotizacion(request: any): Observable<any> {
+    const headersJson = new HttpHeaders({
+      'Content-Type': 'application/json',
+      'X-Auth-Token': this.authService.getToken() + ""
+    });
+   
+    console.log('Cotizacion enviada:', request);
+  
+    return this.http.post(environment.api + environment.cotizacion, JSON.stringify(request), { headers: headersJson });
+  }
   
 }

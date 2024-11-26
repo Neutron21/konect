@@ -3,7 +3,6 @@ import { Router } from "@angular/router";
 import { initializeApp } from 'firebase/app';
 import { environment } from "src/environments/environment";
 import { getAuth, signOut, signInWithEmailAndPassword } from "firebase/auth";
-import { ApiService } from "./api.service";
 
 @Injectable({
     providedIn:'root'
