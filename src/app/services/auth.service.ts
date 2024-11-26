@@ -3,7 +3,7 @@ import { Router } from "@angular/router";
 import { initializeApp } from 'firebase/app';
 import { environment } from "src/environments/environment";
 import { getAuth, signOut, signInWithEmailAndPassword } from "firebase/auth";
-import { ApiService } from "./api.service";
+
 
 @Injectable({
     providedIn:'root'
@@ -66,7 +66,7 @@ export class AuthService {
         return this.isLoggedIn;
       }
       getToken(): string | null {
-        return sessionStorage.getItem('token'); // Devuelve el JWT (ID Token) almacenado
+        return sessionStorage.getItem('token'); // Devuelve el JWT
       }
 
       getUser(): string | null {
