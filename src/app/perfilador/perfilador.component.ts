@@ -20,18 +20,16 @@ export class PerfiladorComponent implements AfterViewInit {
     ingresos: null,
   };
 
-  formularioError: boolean = false;
   formularioEnviado: boolean = false;
+  mostrarError: boolean = false; // Nueva propiedad para manejar errores
   modal: any;
 
-  constructor
-  (private router: Router,
-   private apiservice: ApiService
-
+  constructor(
+    private router: Router,
+    private apiservice: ApiService
   ) {}
 
   ngAfterViewInit(): void {
-    // Asegurarse de que el modal se inicialice después de que el DOM esté disponible
     if (this.successModalRef) {
       this.modal = new bootstrap.Modal(this.successModalRef.nativeElement);
     }
@@ -42,45 +40,35 @@ export class PerfiladorComponent implements AfterViewInit {
   }
 
   enviarFormulario(formularioForm: any): void {
-    if (!this.formulario.tipo_persona || !this.formulario.nombre || !this.formulario.edad || !this.formulario.monto || !this.formulario.plazo || !this.formulario.antiguedadEmpresa || !this.formulario.ingresos) {
-      this.formularioError = true;
+    if (!this.validarFormulario()) {
+      this.mostrarError = true; // Mostrar mensaje de error
       return;
     }
-  this.apiservice.sendCotizacion(this.formulario).subscribe ({
-    next:(response) => {
-      console.log('enviado con exico:', response);
-    },
-    error: (err) => {
-      console.error('Error al enviar:', err);
+
+    this.mostrarError = false; // Ocultar mensaje de error si el formulario es válido
+    const userEmail = localStorage.getItem('userEmail');
+    if (userEmail) {
+      this.formulario.id_usuario = userEmail;
+    } else {
+      console.error('No se encontró el email del usuario autenticado.');
+      return;
     }
-  });
+    this.apiservice.sendCotizacion(this.formulario).subscribe({
+      next: (response) => {
+        console.log('Formulario enviado con éxito:', response);
+      },
+      error: (err) => {
+        console.error('Error al enviar:', err);
+      }
+    });
   
-
-    this.formularioError = false;
-
-    // Lógica de procesamiento sin hacer peticiones HTTP
-    console.log('Formulario enviado con éxito:', this.formulario);
-
-    // Marcar que el formulario se ha enviado
-    this.formularioEnviado = true; // Mostrar el modal
-
-    // Abrir el modal de Bootstrap
+    this.formularioEnviado = true;
     this.modal.show();
-
-    // Limpiar los campos del formulario
-    this.formulario = {
-      tipo_persona: '',
-      nombre: '',
-      edad: null,
-      monto: null,
-      plazo: null,
-      antiguedadEmpresa: null,
-      ingresos: null,
-    };
-
-    // Limpiar los estados de validación del formulario
+  
     formularioForm.resetForm();
   }
+  
+  
 
   seleccionarTipoPersona(valor: string): void {
     this.formulario.tipo_persona = valor === 'fisica' ? 'f' : 'm';
@@ -88,20 +76,19 @@ export class PerfiladorComponent implements AfterViewInit {
 
   cerrarModal(formularioForm: any): void {
     this.formularioEnviado = false;
-    // Cerrar el modal
     this.modal.hide();
-
-    // Limpiar los datos del formulario y restablecer validación
-    this.formulario = {
-      tipo_persona: '',
-      nombre: '',
-      edad: null,
-      monto: null,
-      plazo: null,
-      antiguedadEmpresa: null,
-      ingresos: null,
-    };
-    // Restablecer el formulario a su estado inicial (sin errores ni valores)
-    formularioForm.resetForm();
+  
+    formularioForm.resetForm(); 
+  }
+  
+  validarFormulario(): boolean {
+    const { tipo_persona, nombre, edad, monto, plazo, antiguedadEmpresa, ingresos } = this.formulario;
+      return tipo_persona && nombre && edad && monto && plazo && antiguedadEmpresa && ingresos;
+  }
+  formatDate(fechaEnvio: string): string {
+    const [fechaParte, horaParte] = fechaEnvio.split(' ');
+    const [anio, mes, dia] = fechaParte.split('-');
+    const fechaFormateada = `${dia}-${mes}-${anio} ${horaParte}`;
+    return fechaFormateada;
   }
 }

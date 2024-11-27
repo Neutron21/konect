@@ -49,6 +49,8 @@ export class LoginComponent implements OnInit {
       try {
         const user = await this.authservices.singIn(email, password);
         console.log(user);
+        localStorage.setItem('userEmail', email);
+
 
         this.apiservice.saveTokenAndEmail().subscribe({
           next: (response) => {
