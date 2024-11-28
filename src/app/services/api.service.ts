@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http';
 import { environment } from 'src/environments/environment';
 import { Observable } from 'rxjs';
 import { AuthService } from './auth.service';
@@ -54,5 +54,19 @@ export class ApiService {
   
     return this.http.post(environment.api + environment.cotizacion, JSON.stringify(request), { headers: headersJson });
   }
-  
+
+queryCustom(tabla: string, campo: string, valor: string): Observable<any[]> {
+  const headersJson = new HttpHeaders({
+    'Content-Type': 'application/json',
+    'X-Auth-Token': this.authService.getToken() + ""
+  });
+
+  // Crear los parámetros de la solicitud
+  let params = new HttpParams()
+    .set('tabla', tabla)
+    .set('campo', campo)
+    .set('valor', valor);
+
+  return this.http.get<any[]>(environment.api + 'queryCustom.php', { headers: headersJson, params });
+}  
 }

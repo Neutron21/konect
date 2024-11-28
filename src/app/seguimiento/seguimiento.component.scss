@@ -12,4 +12,26 @@
       transition: color 0.3s ease;
     }
   }
+  .table-container {
+    margin: 20px;
+  }
+  
+  .search-bar {
+    position: relative;
+    width: 100%;
+    max-width: 400px;
+  }
+  
+  .search-bar input {
+    padding-right: 40px;
+  }
+  
+  .search-icon {
+    position: absolute;
+    top: 50%;
+    right: 10px;
+    transform: translateY(-50%);
+    font-size: 1.2rem;
+    color: #6c757d;
+  }
   

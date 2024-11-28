@@ -36,11 +36,13 @@ export class HeaderComponent implements OnInit {
 
   validarSesion() {
     if (typeof window !== 'undefined' && typeof window.sessionStorage !== 'undefined') {
-      const usuario = JSON.parse(sessionStorage.getItem('currentUser') || '{}');
-      this.user.nombre = usuario.nombre || '';
-      return !!sessionStorage.getItem('uid');
+      const user = JSON.parse(sessionStorage.getItem('currentUser') || '{}');
+      this.user.nombre = user.nombre || '';
+      return !!sessionStorage.getItem('user');
     } else {
       return false;
     }
   }
+
+  
 }

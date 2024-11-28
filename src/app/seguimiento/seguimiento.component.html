@@ -1,9 +1,47 @@
 <div class="container mt-5">
-    <div class="row">
-      <div class="col-md-1 d-flex justify-content-start align-items-center">
-        <a (click)="navigateBack()" class="flecha-regresar">
-          <i class="fas fa-arrow-left"></i>
-        </a>
-      </div>
+  <div class="row">
+    <div class="col-md-1 d-flex justify-content-start align-items-center">
+      <a (click)="navigateBack()" class="flecha-regresar">
+        <i class="fas fa-arrow-left"></i>
+      </a>
+    </div>
   </div>
+  <div class="table-container">
+    <div class="search-bar mb-3">
+      <input
+        type="text"
+        class="form-control"
+        placeholder="Buscar..."
+        (input)="onSearch($event)"
+      />
+      <span class="search-icon">
+        <i class="fas fa-search"></i>
+      </span>
+    </div>
   
+    <!-- Tabla -->
+    <table class="table table-striped table-hover">
+      <thead class="table-primary">
+        <tr>
+          <th>Estatus</th>
+          <th>Cotización</th>
+          <th>Usuario</th>
+          <th *ngIf="hasArchivoColumn">Archivo</th> <!-- Mostrar columna solo si hay archivo -->
+          <th>Fecha</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let item of filteredData">
+          <td>{{ item.estatus }}</td>
+          <td>{{ item.id_cotizacion }}</td>
+          <td>{{ item.id_usuario }}</td>
+          <td *ngIf="item.archivo">
+            <a [href]="item.archivo" target="_blank">Ver Archivo</a>
+          </td>
+          <td>{{ item.timestamp }}</td>
+        </tr>
+      </tbody>
+      
+    </table>
+  </div>
+</div>
