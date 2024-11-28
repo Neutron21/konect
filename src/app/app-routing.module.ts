@@ -6,12 +6,14 @@ import { FinancierasComponent } from './financieras/financieras.component';
 import { SeccionComponent } from './seccion/seccion.component';
 import { AuthGuard } from './services/guard.service';
 import { SeguimientoComponent } from './seguimiento/seguimiento.component';
+import { FormDocsComponent } from './form-docs/form-docs.component';
 
 const routes: Routes = [
   { path: 'login', component: LoginComponent },
   { path: 'perfilador', component: PerfiladorComponent, canActivate: [AuthGuard] },
   { path: 'financieras', component: FinancierasComponent, canActivate: [AuthGuard] },
   { path: 'seguimiento', component: SeguimientoComponent, canActivate: [AuthGuard] },
+  { path: 'carga-docs', component: FormDocsComponent, canActivate: [AuthGuard] },
   { path: 'seccion', component: SeccionComponent, canActivate: [AuthGuard] }, // Asegúrate que esté incluida
   { path: '**', redirectTo: '/login' }
 ];

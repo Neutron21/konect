@@ -1,0 +1,8 @@
+<h3 class="title-docs">Carga de documentos</h3>
+
+<div class="col" *ngFor="let cf of currentFiles">
+    <div class="mb-3">
+      <label for="filePx" class="form-label custom-margin">{{cf}}</label>
+      <input type="file" id="fichero-tarifas" class="form-control" (change)="onFileSelect($event)">
+    </div>
+</div>

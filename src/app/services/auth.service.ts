@@ -65,7 +65,7 @@ export class AuthService {
         return this.isLoggedIn;
       }
       getToken(): string | null {
-        return sessionStorage.getItem('token'); // Devuelve el JWT (ID Token) almacenado
+        return sessionStorage.getItem('token'); // Devuelve el JWT
       }
 
       getUser(): string | null {

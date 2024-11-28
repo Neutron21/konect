@@ -10,6 +10,7 @@ import { PerfiladorComponent } from './perfilador/perfilador.component';
 import { FinancierasComponent } from './financieras/financieras.component';
 import { SeguimientoComponent } from './seguimiento/seguimiento.component';
 import { HttpClientModule } from '@angular/common/http';
+import { FormDocsComponent } from './form-docs/form-docs.component';
 
 @NgModule({
   declarations: [
@@ -20,6 +21,7 @@ import { HttpClientModule } from '@angular/common/http';
     PerfiladorComponent,
     FinancierasComponent,
     SeguimientoComponent,
+    FormDocsComponent,
   ],
   imports: [
     BrowserModule,

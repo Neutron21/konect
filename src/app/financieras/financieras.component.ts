@@ -14,4 +14,7 @@ export class FinancierasComponent {
   navigateBack(): void {
     this.router.navigate(['/seccion']);
   }
+  goToDocuments(){
+    this.router.navigate(['/carga-docs']);
+  }
 }
