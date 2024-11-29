@@ -36,10 +36,9 @@
         <label for="monto">Monto:</label>
         <span style="position: absolute; top: 70%; left: 10px; transform: translateY(-50%);">$</span>
         <input type="number" id="monto" name="monto" [(ngModel)]="formulario.monto" #monto="ngModel" 
-          required style="padding-left: 25px;">
+          required>
       </div>
       
-  
       <div class="form-group">
         <label for="plazo">Plazo (en meses):</label>
         <input type="number" id="plazo" name="plazo" [(ngModel)]="formulario.plazo" required>

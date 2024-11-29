@@ -65,9 +65,7 @@
     display: flex;
   }
   
-  input[type="number"] {
-    padding-left: 30px; /* Para hacer espacio para el símbolo de pesos */
-  }
+ 
   
   .currency-symbol {
     position: absolute;
@@ -97,6 +95,19 @@
   .input-group input {
     padding-left: 1.5rem;
   }
+  /* Reset padding for all inputs */
+input {
+  padding: 8px; /* Mantén un padding genérico para todos los inputs */
+  font-size: 1rem;
+  border-radius: 5px;
+  border: 1px solid #ccc;
+}
+
+/* Specific rule for the 'monto' input */
+input#monto {
+  padding-left: 25px; /* Espacio adicional para el símbolo de pesos */
+}
+
   .error {
     color: red;
     font-size: 14px;
