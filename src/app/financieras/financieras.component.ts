@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { Router } from '@angular/router';
+import { financieras } from '../utils/financieras'
 
 @Component({
   selector: 'app-financieras',
@@ -8,13 +9,15 @@ import { Router } from '@angular/router';
 })
 export class FinancierasComponent {
 
+  financierasArray =  financieras;
   constructor(
     private router: Router) {}
 
   navigateBack(): void {
     this.router.navigate(['/seccion']);
   }
-  goToDocuments(){
+  goToDocuments(id: string){
     this.router.navigate(['/carga-docs']);
+    sessionStorage.setItem('financiera', id);
   }
 }

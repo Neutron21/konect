@@ -8,16 +8,18 @@
   </div>
 
   <div class="cards-container col">
-    <div class="card" (click)="goToDocuments()">
+    <div *ngFor="let fin of financierasArray" class="card" (click)="goToDocuments(fin.id)" >
       <div class="first-content">
         <img src="assets/konfio.jpeg" alt="Konfio Logo" class="card-image" />
       </div>
       <div class="second-content">
         <p class="card-text">
+          {{fin.descripcion}}
           Compra de mercancía, cubrir deuda del negocio, pagos a proveedores.
         </p>
       </div>
     </div>
+    <!-- DE AQUI PARA ABAJO SE VA A BORRAR -->
     <div class="card">
       <div class="first-content">
         <img src="assets/pdn.png" alt="PDN Logo" class="card-image" style="max-width: 90%; max-height: 90%;" />

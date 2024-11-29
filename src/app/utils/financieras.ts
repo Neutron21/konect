@@ -1,0 +1,15 @@
+export const financieras = [
+        {id:"1",nombre:"Konfio", productos: [], descripcion: ""},
+        {id:"2",nombre:"PDN", productos: [], descripcion: ""},
+        {id:"3",nombre:"Covalto", productos: [], descripcion: ""},
+        {id:"4",nombre:"Anticipa", productos: [], descripcion: ""},
+        {id:"5",nombre:"BX+", productos: [], descripcion: ""},
+        {id:"6",nombre:"ION", productos: [], descripcion: ""},
+        {id:"7",nombre:"HeyBanco", productos: [], descripcion: ""},
+        {id:"8",nombre:"ActiveLeasing", productos: [], descripcion: ""},
+        {id:"9",nombre:"HayCash", productos: [], descripcion: ""},
+        {id:"10",nombre:"Finsus", productos: [], descripcion: ""},
+        {id:"11",nombre:"FinBeABC", productos: [], descripcion: ""},
+        {id:"12",nombre:"Xepelin", productos: [], descripcion: ""},
+        {id:"13",nombre:"Arrenda+", productos: [], descripcion: ""},
+    ]
