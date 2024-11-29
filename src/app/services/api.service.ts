@@ -67,6 +67,6 @@ queryCustom(tabla: string, campo: string, valor: string): Observable<any[]> {
     .set('campo', campo)
     .set('valor', valor);
 
-  return this.http.get<any[]>(environment.api + 'queryCustom.php', { headers: headersJson, params });
+  return this.http.get<any[]>(environment.api + environment.queryCustom, { headers: headersJson, params });
 }  
 }

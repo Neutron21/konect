@@ -11,6 +11,7 @@ import { FinancierasComponent } from './financieras/financieras.component';
 import { SeguimientoComponent } from './seguimiento/seguimiento.component';
 import { HttpClientModule } from '@angular/common/http';
 import { FormDocsComponent } from './form-docs/form-docs.component';
+import { BackArrowComponent } from './back-arrow/back-arrow.component';
 
 @NgModule({
   declarations: [
@@ -22,6 +23,7 @@ import { FormDocsComponent } from './form-docs/form-docs.component';
     FinancierasComponent,
     SeguimientoComponent,
     FormDocsComponent,
+    BackArrowComponent,
   ],
   imports: [
     BrowserModule,

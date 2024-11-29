@@ -10,6 +10,8 @@ declare var bootstrap: any;
 })
 export class PerfiladorComponent implements AfterViewInit {
   @ViewChild('successModal') successModalRef: ElementRef | undefined;
+
+  showDocs = true;
   formulario: any = {
     tipo_persona: '', 
     nombre: '',
@@ -56,6 +58,7 @@ export class PerfiladorComponent implements AfterViewInit {
     this.apiservice.sendCotizacion(this.formulario).subscribe({
       next: (response) => {
         console.log('Formulario enviado con éxito:', response);
+        this.showDocs = true;
       },
       error: (err) => {
         console.error('Error al enviar:', err);
@@ -90,5 +93,8 @@ export class PerfiladorComponent implements AfterViewInit {
     const [anio, mes, dia] = fechaParte.split('-');
     const fechaFormateada = `${dia}-${mes}-${anio} ${horaParte}`;
     return fechaFormateada;
+  }
+  goToDocs() {
+    this.router.navigate(['/carga-docs']);
   }
 }

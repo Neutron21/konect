@@ -10,15 +10,13 @@ import { financieras } from '../utils/financieras'
 export class FinancierasComponent {
 
   financierasArray =  financieras;
-financieras: any;
+  financieras: any;
+  
   constructor(
     private router: Router) {}
 
-  navigateBack(): void {
-    this.router.navigate(['/seccion']);
-  }
   goToDocuments(id: string){
-    this.router.navigate(['/carga-docs']);
+    this.router.navigate(['/perfilador']);
     sessionStorage.setItem('financiera', id);
   }
 }
