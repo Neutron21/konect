@@ -1,5 +1,5 @@
 export const financieras = [
-        {id:"1",nombre:"Konfio", productos: [], descripcion: ""},
+        {id:"1",nombre:"Konfio", productos: [], descripcion: "", img: ""},
         {id:"2",nombre:"PDN", productos: [], descripcion: ""},
         {id:"3",nombre:"Covalto", productos: [], descripcion: ""},
         {id:"4",nombre:"Anticipa", productos: [], descripcion: ""},
