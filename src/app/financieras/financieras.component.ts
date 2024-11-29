@@ -10,6 +10,7 @@ import { financieras } from '../utils/financieras'
 export class FinancierasComponent {
 
   financierasArray =  financieras;
+financieras: any;
   constructor(
     private router: Router) {}
 
