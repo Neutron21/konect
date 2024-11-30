@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import { ApiService } from '../services/api.service';  // Asegúrate de que la ruta sea correcta
+import { ApiService } from '../services/api.service';
 
 @Component({
   selector: 'app-seguimiento',
@@ -8,15 +8,13 @@ import { ApiService } from '../services/api.service';  // Asegúrate de que la r
   styleUrls: ['./seguimiento.component.scss']
 })
 export class SeguimientoComponent implements OnInit {
-  data: any =[];
-
-  filteredData = [...this.data]; // Inicializamos los datos filtrados con todos los registros
-  isSearchActive = false;
-  hasArchivoColumn = false;
+  data: any[] = []; // Datos originales
+  filteredData: any[] = []; // Datos filtrados
+  isSearchActive = false; // Estado de búsqueda
 
   constructor(
     private router: Router,
-    private apiService: ApiService  // Aquí estamos inyectando ApiService
+    private apiService: ApiService
   ) {}
 
   ngOnInit(): void {
@@ -25,8 +23,8 @@ export class SeguimientoComponent implements OnInit {
     if (user) {
       this.apiService.queryCustom('cotizacion', 'id_usuario', user).subscribe(
         (data: any[]) => {
-          this.filteredData = data;
-          this.checkArchivoColumn();
+          this.data = data; // Asignar datos originales
+          this.filteredData = [...this.data]; // Copiar a datos filtrados
         },
         (error: any) => {
           console.error('Error al obtener cotizaciones:', error);
@@ -35,24 +33,39 @@ export class SeguimientoComponent implements OnInit {
     } else {
       console.error('Usuario no encontrado en sessionStorage');
     }
-    
-    this.checkArchivoColumn(); // Si tienes que ejecutar esta función adicionalmente
   }
-  
 
-  checkArchivoColumn(): void {
-    this.hasArchivoColumn = this.filteredData.some(item => item.archivo && item.archivo.trim() !== '');
-  }
+
 
   onSearch(event: Event): void {
     const inputElement = event.target as HTMLInputElement;
-    const searchTerm = inputElement.value.trim();
+    const searchTerm = inputElement.value.trim().toLowerCase();
 
-    // Verifica si el término de búsqueda está vacío
-
+    if (searchTerm) {
+      this.isSearchActive = true;
+      // Filtrar los datos basándose en el término de búsqueda
+      this.filteredData = this.data.filter(item =>
+        Object.values(item).some(value =>
+          String(value).toLowerCase().includes(searchTerm)
+        )
+      );
+    } else {
+      this.isSearchActive = false;
+      this.filteredData = [...this.data]; // Restablecer los datos si no hay búsqueda
+    }
+  }
+  verArchivo(archivoUrl: string): void {
+    // Redirigir al componente de visualización
+    this.router.navigate(['/ver-archivo'], { queryParams: { archivo: archivoUrl } });
   }
 
   navigateBack(): void {
     this.router.navigate(['/seccion']);
   }
+  navigateToVista(item: any): void {
+    this.router.navigate(['/vista'], { queryParams: { id: item.id_cotizacion } });
+  }
+  
+  
+
 }

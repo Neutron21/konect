@@ -13,7 +13,7 @@ import { ApiService } from '../services/api.service';
   styleUrls: ['./login.component.scss']
 })
 export class LoginComponent implements OnInit {
-
+  isLoginRoute: boolean = false;
   loginForm: FormGroup;
   analytics: any;
   mostrarPassword: boolean = false;
@@ -35,6 +35,7 @@ export class LoginComponent implements OnInit {
   ngOnInit(): void {
     const app = initializeApp(environment.firebaseConfig);
     this.analytics = getAnalytics(app);
+    
   }
 
   showPass() {

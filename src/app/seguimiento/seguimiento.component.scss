@@ -34,4 +34,12 @@
     font-size: 1.2rem;
     color: #6c757d;
   }
+  a {
+    color: #007bff;
+    text-decoration: underline;
+  
+    &:hover {
+      color: #0056b3;
+    }
+  }
   
