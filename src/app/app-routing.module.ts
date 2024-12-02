@@ -9,6 +9,7 @@ import { SeguimientoComponent } from './seguimiento/seguimiento.component';
 import { FormDocsComponent } from './form-docs/form-docs.component';
 import { VistaComponent } from './vista/vista.component';
 
+
 const routes: Routes = [
   { path: 'login', component: LoginComponent },
   { path: 'perfilador', component: PerfiladorComponent, canActivate: [AuthGuard] },

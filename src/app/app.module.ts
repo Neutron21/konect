@@ -11,11 +11,7 @@ import { FinancierasComponent } from './financieras/financieras.component';
 import { SeguimientoComponent } from './seguimiento/seguimiento.component';
 import { HttpClientModule } from '@angular/common/http';
 import { FormDocsComponent } from './form-docs/form-docs.component';
-<<<<<<< HEAD
-import { VistaComponent } from './vista/vista.component';
-=======
 import { BackArrowComponent } from './back-arrow/back-arrow.component';
->>>>>>> 0025844ef0b24b154e0488db14c137d67b608701
 
 @NgModule({
   declarations: [
@@ -27,11 +23,7 @@ import { BackArrowComponent } from './back-arrow/back-arrow.component';
     FinancierasComponent,
     SeguimientoComponent,
     FormDocsComponent,
-<<<<<<< HEAD
-    VistaComponent,
-=======
     BackArrowComponent,
->>>>>>> 0025844ef0b24b154e0488db14c137d67b608701
   ],
   imports: [
     BrowserModule,
