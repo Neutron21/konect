@@ -1,11 +1,5 @@
 <div class="container mt-5">
-  <div class="row">
-    <div class="col-md-1 d-flex justify-content-start align-items-center">
-      <a (click)="navigateBack()" class="flecha-regresar">
-        <i class="fas fa-arrow-left"></i>
-      </a>
-    </div>
-  </div>
+  <app-back-arrow rutaBack="financieras"></app-back-arrow>
   <div class="form-container">
     <h2>Formulario de Financiamiento</h2>
     <form (ngSubmit)="enviarFormulario(formularioForm)" #formularioForm="ngForm">
@@ -55,10 +49,11 @@
       </div>
 
       <div class="form-group">
-      <div *ngIf="mostrarError && formularioForm.invalid" class="error">
-        Todos los campos son obligatorios para continuar.
-      </div>
+        <div *ngIf="mostrarError && formularioForm.invalid" class="error">
+          Todos los campos son obligatorios para continuar.
+        </div>
           <button type="submit">Enviar</button>
+          <button *ngIf="showDocs" type="button" class="btn btn-secondary" (click)="goToDocs()">Documentación</button>
       </div>
     </form>
   </div>
