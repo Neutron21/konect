@@ -20,8 +20,8 @@
           <th>Estatus</th>
           <th>Cotización</th>
           <th>Usuario</th>
-          <th *ngIf="hasArchivoColumn">Archivo</th> <!-- Mostrar columna solo si hay archivo -->
           <th>Fecha</th>
+          <th>Archivo</th> 
         </tr>
       </thead>
       <tbody>
@@ -29,13 +29,16 @@
           <td>{{ item.estatus }}</td>
           <td>{{ item.id_cotizacion }}</td>
           <td>{{ item.id_usuario }}</td>
-          <td *ngIf="item.archivo">
-            <a [href]="item.archivo" target="_blank">Ver Archivo</a>
-          </td>
           <td>{{ item.timestamp }}</td>
+          <td>
+            <i 
+              class="fas fa-eye" 
+              (click)="navigateToVista(item)" 
+              style="cursor: pointer;">
+            </i>
+          </td>        
         </tr>
       </tbody>
-      
     </table>
   </div>
 </div>

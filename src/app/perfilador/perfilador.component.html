@@ -29,8 +29,7 @@
       <div class="form-group" style="position: relative;">
         <label for="monto">Monto:</label>
         <span style="position: absolute; top: 70%; left: 10px; transform: translateY(-50%);">$</span>
-        <input type="number" id="monto" name="monto" [(ngModel)]="formulario.monto" #monto="ngModel" 
-          required>
+        <input type="number" id="monto" name="monto" [(ngModel)]="formulario.monto" #monto="ngModel" required>
       </div>
       
       <div class="form-group">
@@ -52,8 +51,8 @@
         <div *ngIf="mostrarError && formularioForm.invalid" class="error">
           Todos los campos son obligatorios para continuar.
         </div>
-          <button type="submit">Enviar</button>
-          <button *ngIf="showDocs" type="button" class="btn btn-secondary" (click)="goToDocs()">Documentación</button>
+        <button type="submit">Enviar</button>
+        <button *ngIf="showDocs" type="button" class="btn btn-secondary" (click)="goToDocs()">Documentación</button>
       </div>
     </form>
   </div>
@@ -62,7 +61,7 @@
     <div class="modal-dialog" role="document">
       <div class="modal-content">
         <div class="modal-header">
-          <h5 class="modal-title ">¡Gracias!</h5>
+          <h5 class="modal-title">¡Gracias!</h5>
         </div>
         <div class="modal-body text-center">
           <p>El formulario ha sido enviado con éxito.</p>

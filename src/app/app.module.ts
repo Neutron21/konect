@@ -12,6 +12,7 @@ import { SeguimientoComponent } from './seguimiento/seguimiento.component';
 import { HttpClientModule } from '@angular/common/http';
 import { FormDocsComponent } from './form-docs/form-docs.component';
 import { BackArrowComponent } from './back-arrow/back-arrow.component';
+import { InstitucionesComponent } from './instituciones/instituciones.component';
 
 @NgModule({
   declarations: [
@@ -24,6 +25,7 @@ import { BackArrowComponent } from './back-arrow/back-arrow.component';
     SeguimientoComponent,
     FormDocsComponent,
     BackArrowComponent,
+    InstitucionesComponent,
   ],
   imports: [
     BrowserModule,
