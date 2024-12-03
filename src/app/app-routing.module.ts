@@ -8,6 +8,7 @@ import { AuthGuard } from './services/guard.service';
 import { SeguimientoComponent } from './seguimiento/seguimiento.component';
 import { FormDocsComponent } from './form-docs/form-docs.component';
 import { VistaComponent } from './vista/vista.component';
+import { InstitucionesComponent } from './instituciones/instituciones.component';
 
 
 const routes: Routes = [
@@ -18,6 +19,7 @@ const routes: Routes = [
   { path: 'carga-docs', component: FormDocsComponent, canActivate: [AuthGuard] },
   { path: 'seccion', component: SeccionComponent, canActivate: [AuthGuard] },
   { path: 'vista', component: VistaComponent, canActivate: [AuthGuard] },
+  { path: 'instituciones/:id', component: InstitucionesComponent, canActivate: [AuthGuard] },
   { path: '**', redirectTo: '/login' }, // El comodín siempre al final
 ];
 
