@@ -22,11 +22,6 @@ export class InstitucionesComponent implements OnInit {
     }
   }
 
-  goBack() {
-    sessionStorage.removeItem('financiera'); 
-    this.router.navigate(['/financieras']);
-  }
-
   goToPerfilador(id: string) {
     this.router.navigate([`/perfilador`]);  
   }
