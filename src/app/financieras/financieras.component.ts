@@ -16,8 +16,8 @@ export class FinancierasComponent {
     private router: Router) {}
 
     goToProducts(fin: any) {
-      sessionStorage.setItem('financiera', JSON.stringify(fin)); // Guardamos todo el objeto 'fin'
-      this.router.navigate(['/instituciones', fin.id]); // Navegamos a la ruta con el id de la financiera
+      sessionStorage.setItem('financiera', JSON.stringify(fin)); 
+      this.router.navigate(['/instituciones', fin.id]); 
     }
     
     

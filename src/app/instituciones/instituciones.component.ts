@@ -28,7 +28,6 @@ export class InstitucionesComponent implements OnInit {
   }
 
   goToPerfilador(id: string) {
-    sessionStorage.setItem('financieraId', id); // Guardamos el id en sessionStorage
-    this.router.navigate([`/perfilador/${id}`]);  // Redirige al componente de perfilador con el ID
+    this.router.navigate([`/perfilador`]);  
   }
 }
