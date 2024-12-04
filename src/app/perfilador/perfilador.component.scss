@@ -88,17 +88,20 @@
     padding-left: 1.5rem;
   }
   /* Reset padding for all inputs */
-input {
-  padding: 8px; /* Mantén un padding genérico para todos los inputs */
-  font-size: 1rem;
-  border-radius: 5px;
-  border: 1px solid #ccc;
+/* Eliminar el padding extra para todos los inputs dentro de un input-group */
+.input-group input {
+  padding-left: 8px; /* Ajusta el padding aquí */
 }
 
-/* Specific rule for the 'monto' input */
+/* Mantén el padding específico solo para el input de 'monto' */
 input#monto {
-  padding-left: 25px; /* Espacio adicional para el símbolo de pesos */
+  padding-left: 20px; /* Espacio para el símbolo de pesos, ajusta este valor si es necesario */
 }
+
+input {
+  padding: 8px;
+}
+
 
   .error {
     color: red;
