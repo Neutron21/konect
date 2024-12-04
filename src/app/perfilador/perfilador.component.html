@@ -23,14 +23,14 @@
   
       <div class="form-group">
         <label for="edad">Edad:</label>
-        <input  id="edad" name="edad" [(ngModel)]="formulario.edad" #edad="ngModel" (keypress)="onlyNumbers($event)" required>
+        <input  id="edad" name="edad" [(ngModel)]="formulario.edad"  (keypress)="onlyNumbers($event)" required>
       </div>
   
       <div class="mb-3">
         <label for="monto" class="form-label">Monto:</label>
         <div class="input-group">
           <span class="input-group-text">$</span>
-          <input id="monto" name="monto" [(ngModel)]="formulario.monto" #monto="ngModel" (keypress)="onlyNumbers($event)" class="form-control" required>
+          <input id="monto" name="monto" [(ngModel)]="formulario.monto" (keypress)="onlyNumbers($event)" class="form-control" required>
           <span class="input-group-text">.00</span>
         </div>
       </div>
