@@ -49,6 +49,8 @@ export class FormDocsComponent implements OnInit {
         this.fileList.push({...this.fileUpload});
       }
       console.log(this.fileList);
-      
+  }
+  sendDocs() {
+    console.log(this.fileList);
   }
 }
