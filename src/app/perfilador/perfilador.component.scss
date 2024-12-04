@@ -87,15 +87,9 @@
   .input-group input {
     padding-left: 1.5rem;
   }
-  /* Reset padding for all inputs */
 /* Eliminar el padding extra para todos los inputs dentro de un input-group */
 .input-group input {
   padding-left: 8px; /* Ajusta el padding aquí */
-}
-
-/* Mantén el padding específico solo para el input de 'monto' */
-input#monto {
-  padding-left: 20px; /* Espacio para el símbolo de pesos, ajusta este valor si es necesario */
 }
 
 input {

@@ -26,18 +26,20 @@
         <input  id="edad" name="edad" [(ngModel)]="formulario.edad"  (keypress)="onlyNumbers($event)" required>
       </div>
   
+    
       <div class="mb-3">
-        <label for="monto" class="form-label">Monto:</label>
+        <label for="monto" class="form-label">Monto</label>
         <div class="input-group">
           <span class="input-group-text">$</span>
-          <input id="monto" name="monto" [(ngModel)]="formulario.monto" (keypress)="onlyNumbers($event)" class="form-control" required>
+          <input id="ingresos" name="ingresos" [(ngModel)]="formulario.monto" (keypress)="onlyNumbers($event)" 
+          class="form-control" required>
         </div>
       </div>
       
       
       <div class="form-group">
         <label for="plazo">Plazo (en meses):</label>
-        <input  id="plazo" name="plazo" [(ngModel)]="formulario.plazo" (keypress)="onlyNumbers($event)" required>
+        <input id="plazo" name="plazo" [(ngModel)]="formulario.plazo" (keypress)="onlyNumbers($event)" required>
       </div>
   
       <div class="form-group">
@@ -49,7 +51,8 @@
         <label for="ingresos" class="form-label">Ingresos Mensuales:</label>
         <div class="input-group">
           <span class="input-group-text">$</span>
-          <input id="ingresos" name="ingresos" [(ngModel)]="formulario.ingresos" (keypress)="onlyNumbers($event)" class="form-control" required>
+          <input id="ingresos" name="ingresos" [(ngModel)]="formulario.ingresos" (keypress)="onlyNumbers($event)" 
+          class="form-control" required>
         </div>
       </div>
       

@@ -2,11 +2,13 @@
   /* From Uiverse.io by suleymanlaarabidev */ 
   .cards-container {
     display: flex;
-    gap: 50px; /* Espacio entre tarjetas */
-    align-items: flex-start; /* Alinea las tarjetas al inicio en el eje vertical */
-    flex-wrap: wrap; /* Permite que las tarjetas se ajusten en filas si la pantalla es pequeña */
-    margin: 20px;
+    gap: 50px;
+    align-items: flex-start;
+    flex-wrap: wrap;
+    justify-content: center; /* Centra las tarjetas */
+    margin: 20px ; /* Centra el contenedor */
   }
+  
   
   .card {
     width: 254px;
