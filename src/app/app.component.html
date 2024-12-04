@@ -1,4 +1,5 @@
 <app-header></app-header>
-<div class="container">
-    <router-outlet></router-outlet>
+<div class="container" *ngIf="!isLoginRoute">
+  <router-outlet></router-outlet>
 </div>
+<router-outlet *ngIf="isLoginRoute"></router-outlet>

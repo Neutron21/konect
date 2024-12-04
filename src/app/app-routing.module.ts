@@ -10,9 +10,8 @@ import { FormDocsComponent } from './form-docs/form-docs.component';
 import { VistaComponent } from './vista/vista.component';
 import { InstitucionesComponent } from './instituciones/instituciones.component';
 
-
 const routes: Routes = [
-  { path: 'login', component: LoginComponent },
+  { path: 'login', component: LoginComponent, data: { class: 'login-page' } },  // Ruta para login
   { path: 'perfilador', component: PerfiladorComponent, canActivate: [AuthGuard] },
   { path: 'financieras', component: FinancierasComponent, canActivate: [AuthGuard] },
   { path: 'seguimiento', component: SeguimientoComponent, canActivate: [AuthGuard] },
@@ -20,9 +19,8 @@ const routes: Routes = [
   { path: 'seccion', component: SeccionComponent, canActivate: [AuthGuard] },
   { path: 'vista', component: VistaComponent, canActivate: [AuthGuard] },
   { path: 'instituciones/:id', component: InstitucionesComponent, canActivate: [AuthGuard] },
-  { path: '**', redirectTo: '/login' }, // El comodín siempre al final
+  { path: '**', redirectTo: '/login' }, // Redirección por defecto si no coincide la ruta
 ];
-
 
 @NgModule({
   imports: [RouterModule.forRoot(routes)],
