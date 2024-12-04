@@ -1,6 +1,8 @@
 import { Component, AfterViewInit, ViewChild, ElementRef } from '@angular/core';
-import { Router, ActivatedRoute } from '@angular/router';  // Agregar ActivatedRoute
+import { Router } from '@angular/router';
 import { ApiService } from '../services/api.service';
+import { documentacion } from '../utils/documentos';
+
 declare var bootstrap: any;
 
 @Component({
@@ -12,6 +14,7 @@ export class PerfiladorComponent implements AfterViewInit {
   @ViewChild('successModal') successModalRef: ElementRef | undefined;
 
   showDocs = true;
+  showFormDocs = false;  // Bandera para mostrar los documentos
   formulario: any = {
     tipo_persona: '', 
     nombre: '',
@@ -23,22 +26,17 @@ export class PerfiladorComponent implements AfterViewInit {
   };
 
   formularioEnviado: boolean = false;
-  mostrarError: boolean = false; // Propiedad para manejar errores
+  mostrarError: boolean = false; 
   modal: any;
-  
-  // Propiedad para almacenar el id recibido de la URL
-  financieraId: string | null = null;
+  documentos: any;  // Variable para almacenar los documentos
 
   constructor(
     private router: Router,
-    private apiservice: ApiService,
-    private route: ActivatedRoute  // Inyectar ActivatedRoute
+    private apiservice: ApiService
   ) {}
 
   ngOnInit(): void {
-    // Obtener el 'id' de la URL
-    this.financieraId = this.route.snapshot.paramMap.get('id');
-    console.log('ID de la financiera:', this.financieraId);  // Verificar que el id se obtiene correctamente
+    this.documentos = documentacion;  // Cargar los documentos desde documentos.ts
   }
 
   ngAfterViewInit(): void {
@@ -47,14 +45,13 @@ export class PerfiladorComponent implements AfterViewInit {
     }
   }
 
-  // Método para enviar el formulario
   enviarFormulario(formularioForm: any): void {
     if (!this.validarFormulario()) {
-      this.mostrarError = true; // Mostrar mensaje de error si el formulario es inválido
+      this.mostrarError = true; 
       return;
     }
 
-    this.mostrarError = false; // Ocultar mensaje de error si el formulario es válido
+    this.mostrarError = false; 
     const userEmail = localStorage.getItem('userEmail');
     if (userEmail) {
       this.formulario.id_usuario = userEmail;
@@ -63,11 +60,10 @@ export class PerfiladorComponent implements AfterViewInit {
       return;
     }
 
-    // Llamada al servicio para enviar la cotización
     this.apiservice.sendCotizacion(this.formulario).subscribe({
       next: (response) => {
         console.log('Formulario enviado con éxito:', response);
-        this.showDocs = true;  // Si se envió correctamente, se muestra el botón de Documentación
+        this.showDocs = true;
       },
       error: (err) => {
         console.error('Error al enviar:', err);
@@ -75,29 +71,25 @@ export class PerfiladorComponent implements AfterViewInit {
     });
 
     this.formularioEnviado = true;
-    this.modal.show(); // Mostrar modal de éxito
-    formularioForm.resetForm(); // Reiniciar el formulario
+    this.modal.show();
+    formularioForm.resetForm();
   }
 
-  // Función para seleccionar el tipo de persona
   seleccionarTipoPersona(valor: string): void {
     this.formulario.tipo_persona = valor === 'fisica' ? 'f' : 'm';
   }
 
-  // Función para cerrar el modal de éxito
   cerrarModal(formularioForm: any): void {
     this.formularioEnviado = false;
-    this.modal.hide();  // Cerrar el modal
-    formularioForm.resetForm(); // Reiniciar el formulario
+    this.modal.hide();
+    formularioForm.resetForm();
   }
 
-  // Validar que todos los campos sean completados
   validarFormulario(): boolean {
     const { tipo_persona, nombre, edad, monto, plazo, antiguedadEmpresa, ingresos } = this.formulario;
     return tipo_persona && nombre && edad && monto && plazo && antiguedadEmpresa && ingresos;
   }
 
-  // Formatear la fecha de envío (si es necesario en el futuro)
   formatDate(fechaEnvio: string): string {
     const [fechaParte, horaParte] = fechaEnvio.split(' ');
     const [anio, mes, dia] = fechaParte.split('-');
@@ -105,8 +97,7 @@ export class PerfiladorComponent implements AfterViewInit {
     return fechaFormateada;
   }
 
-  // Navegar a la página de carga de documentos
   goToDocs() {
-    this.router.navigate(['/carga-docs']);
+    this.showFormDocs = !this.showFormDocs;  // Toggle la visibilidad del componente de carga de documentos
   }
 }

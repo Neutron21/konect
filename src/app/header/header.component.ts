@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { AuthService } from '../services/auth.service';
 import { ApiService } from '../services/api.service';
 
@@ -14,8 +15,8 @@ export class HeaderComponent implements OnInit {
 
   constructor(
     private authServie: AuthService,
-    private apiservice: ApiService
-
+    private apiservice: ApiService,
+    private router: Router // Importa el servicio Router para navegación
   ) {}
 
   ngOnInit(): void {
@@ -23,13 +24,13 @@ export class HeaderComponent implements OnInit {
   }
 
   cerrarSesion() {
-    this.apiservice.deleteToken().subscribe ({
-      next:(response) => {
+    this.apiservice.deleteToken().subscribe({
+      next: (response) => {
         console.log('Borrado con éxito:', response);
       },
       error: (err) => {
         console.error('Error al borrar el token:', err);
-      }
+      },
     });
     this.authServie.logOut();
   }
@@ -44,5 +45,11 @@ export class HeaderComponent implements OnInit {
     }
   }
 
-  
+  irASeccion() {
+    this.router.navigate(['/seccion']); 
+  }
+
+  isSeccionActive(): boolean {
+    return this.router.url === '/seccion';
+  }
 }

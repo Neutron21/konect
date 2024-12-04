@@ -20,3 +20,29 @@
 .Bienvenido {
     margin-right: 1em;
 }
+.tooltip {
+    position: absolute;
+    background-color: rgba(0, 0, 0, 0.75);
+    color: white;
+    padding: 5px 10px;
+    border-radius: 5px;
+    font-size: 0.9rem;
+    z-index: 10;
+    opacity: 0.8;
+    pointer-events: none;  // Para evitar que interfiera con el mouse
+  }
+  
+
+  
+  
+  .d-flex.justify-content-between.align-items-center.hover-enabled {
+    cursor: pointer;
+    transition: background-color 0.3s, filter 0.3s;
+  }
+  
+  .d-flex.justify-content-between.align-items-center.hover-enabled:hover {
+    filter: brightness(0.95);
+  }
+  
+  
+  

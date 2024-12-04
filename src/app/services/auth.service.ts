@@ -56,6 +56,8 @@ export class AuthService {
         sessionStorage.removeItem('uid');
         sessionStorage.removeItem('user');
         sessionStorage.removeItem('token');
+        sessionStorage.removeItem('financiera'); 
+
 
         this.isLoggedIn = false;
       }
