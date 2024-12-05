@@ -12,17 +12,13 @@
       transition: color 0.3s ease;
     }
   }
-  /* Contenedor del formulario */
+  .container{
+    margin-top: 3em;
+  }
   .form-container {
     max-width: 800px;
     margin: 0 auto;
     padding: 20px;
-  }
-  
-  form {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 20px;
   }
   
   .form-group {
@@ -30,43 +26,11 @@
     flex-direction: column;
   }
   
-  label {
-    font-weight: bold;
-    margin-bottom: 5px;
-  }
-  
-  
-  input {
-    width: 100%;
-    padding: 8px;
-    font-size: 1rem;
-    border-radius: 5px;
-    border: 1px solid #ccc;
-  }
-  
-  button {
-    grid-column: span 2;
-    padding: 10px 20px;
-    background-color: #007bff;
-    color: white;
-    border: none;
-    border-radius: 5px;
-    font-size: 1rem;
-    cursor: pointer;
-    transition: background-color 0.3s;
-    margin-top: 2em;
-  }
-  
-  button:hover {
-    background-color: #0056b3;
-  }
-  
   .input-wrapper {
     position: relative;
     display: flex;
   }
   
- 
   .persona-check {
     grid-column: span 2;
   }

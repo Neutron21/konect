@@ -1,90 +1,129 @@
-<div class="container mt-5">
-  <app-back-arrow rutaBack="financieras"></app-back-arrow>
-  <div class="form-container">
-    <h2>Formulario de Financiamiento</h2>
-    <form (ngSubmit)="enviarFormulario(formularioForm)" #formularioForm="ngForm">
-      <div class="form-group persona-check">
-        <div class="radio-group">
-          <label for="persona-fisica">
-            <input type="radio" id="persona-fisica" name="tipo-persona" [(ngModel)]="formulario.tipo_persona" value="fisica" (change)="seleccionarTipoPersona('fisica')" required>
-            Persona Física
-          </label>
-          <label for="persona-moral">
-            <input type="radio" id="persona-moral" name="tipo-persona" [(ngModel)]="formulario.tipo_persona" value="moral" (change)="seleccionarTipoPersona('moral')" required>
-            Persona Moral
-          </label>
-        </div>
-      </div>
-  
-      <div class="form-group">
-        <label for="nombre">Nombre:</label>
-        <input  class="form-group" id="nombre" name="nombre" [(ngModel)]="formulario.nombre" (keypress)="onlyText($event)" required>
-      </div>
-  
-      <div class="form-group">
-        <label for="edad">Edad:</label>
-        <input  id="edad" name="edad" [(ngModel)]="formulario.edad"  (keypress)="onlyNumbers($event)" required>
-      </div>
-  
-    
-      <div class="mb-3">
-        <label for="monto" class="form-label">Monto</label>
-        <div class="input-group">
-          <span class="input-group-text">$</span>
-          <input id="ingresos" name="ingresos" [(ngModel)]="formulario.monto" (keypress)="onlyNumbers($event)" 
-          class="form-control" required>
-        </div>
-      </div>
-      
-      
-      <div class="form-group">
-        <label for="plazo">Plazo (en meses):</label>
-        <input id="plazo" name="plazo" [(ngModel)]="formulario.plazo" (keypress)="onlyNumbers($event)" required>
-      </div>
-  
-      <div class="form-group">
-        <label for="antiguedad-empresa">Antigüedad de la Empresa (en años):</label>
-        <input id="plazo" name="plazo" [(ngModel)]="formulario.antiguedadEmpresa" (keypress)="onlyNumbers($event)" required>
-      </div>
 
-      <div class="mb-3">
-        <label for="ingresos" class="form-label">Ingresos Mensuales:</label>
-        <div class="input-group">
-          <span class="input-group-text">$</span>
-          <input id="ingresos" name="ingresos" [(ngModel)]="formulario.ingresos" (keypress)="onlyNumbers($event)" 
-          class="form-control" required>
+<div class="container">
+  <app-back-arrow rutaBack="financieras"></app-back-arrow>  
+  <div class="accordion" id="accordionExample">
+    <div class="accordion-item">
+      <h2 class="accordion-header">
+        <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+          Documentos que se necesitan
+        </button>
+      </h2>
+      <div id="collapseOne" class="accordion-collapse collapse" data-bs-parent="#accordionExample">
+        <div class="accordion-body">
+          <div class="accordion-body text-center">
+            <img src="assets/konfio.png" alt="konfio" class="img-fluid mb-3">
+            <br>
+            <button (click)="descargarImagen('assets/konfio.png', 'konfio.png')" class="btn btn-primary mt-3">Descargar Imagen</button>
         </div>
       </div>
-      
- 
-
-      <div class="form-group">
-        <div *ngIf="mostrarError && formularioForm.invalid" class="error">
-          Todos los campos son obligatorios para continuar.
-        </div>
-        <button type="submit">Enviar</button>
-        <button *ngIf="showDocs" type="button" class="btn btn-secondary" (click)="goToDocs()">Documentación</button>
-      </div>
-    </form>
-  </div>
-
-  <div *ngIf="showFormDocs">
-    <app-form-docs></app-form-docs>
-  </div>
-
-  <div class="modal" tabindex="-1" role="dialog" [ngClass]="{'show': formularioEnviado}" [attr.aria-hidden]="formularioEnviado ? 'true' : null" #successModal>
-    <div class="modal-dialog" role="document">
-      <div class="modal-content">
-        <div class="modal-header">
-          <h5 class="modal-title">¡Gracias!</h5>
-        </div>
-        <div class="modal-body text-center">
-          <p>El formulario ha sido enviado con éxito.</p>
-        </div>
-        <div class="modal-footer">
-          <button type="button" class="btn btn-secondary" (click)="cerrarModal(formularioForm)">Cerrar</button>
-        </div>
+    </div>
+    <div class="accordion-item">
+      <h2 class="accordion-header">
+        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+          Documentos que se necesitan 2
+        </button>
+      </h2>
+      <div id="collapseTwo" class="accordion-collapse collapse" data-bs-parent="#accordionExample">
+        <div class="accordion-body text-center">
+          <iframe src="assets/heybanco.pdf" width="100%" height="500px" class="mb-3"></iframe>
+          <br>
+          <button (click)="descargarPDF('assets/heybanco.pdf', 'heybanco.pdf')" class="btn btn-primary mt-3">Descargar PDF</button>
       </div>
     </div>
   </div>
 </div>
+
+<div class="form-container mt-4">
+    <h2 class="text-center">Formulario de Financiamiento</h2>
+    <form (ngSubmit)="enviarFormulario(formularioForm)" #formularioForm="ngForm">
+    <div class="row text-center mb-4">
+      <div class="col-6">
+                <div class="form-group">
+                  <label for="persona-fisica">
+                    <input type="radio" id="persona-fisica" name="tipo-persona" [(ngModel)]="formulario.tipo_persona" value="fisica" (change)="seleccionarTipoPersona('fisica')" required>
+                    Persona Física
+                  </label>
+                </div>
+              </div>
+              <div class="col-6">
+                <div class="form-group">
+                  <label for="persona-moral">
+                    <input type="radio" id="persona-moral" name="tipo-persona" [(ngModel)]="formulario.tipo_persona" value="moral" (change)="seleccionarTipoPersona('moral')" required>
+                    Persona Moral
+                  </label>
+                </div>
+              </div>
+            </div>
+        
+            <div class="row mb-4">
+              <div class="col-md-6">
+                <div class="form-group">
+                  <label for="nombre">Nombre:</label>
+                  <input class="form-control" id="nombre" name="nombre" [(ngModel)]="formulario.nombre" (keypress)="onlyText($event)" required>
+                </div>
+        
+                <div class="form-group">
+                  <label for="monto">Monto:</label>
+                  <div class="input-group">
+                    <span class="input-group-text">$</span>
+                    <input class="form-control" id="monto" name="monto" [(ngModel)]="formulario.monto" (keypress)="onlyNumbers($event)" required>
+                  </div>
+                </div>
+
+                <div class="form-group">
+                  <label for="antiguedad-empresa">Antigüedad de la Empresa (en años):</label>
+                  <input class="form-control" id="antiguedad-empresa" name="antiguedadEmpresa" [(ngModel)]="formulario.antiguedadEmpresa" (keypress)="onlyNumbers($event)" required>
+                </div>
+              </div>
+        
+              <div class="col-md-6">
+                <div class="form-group">
+                  <label for="edad">Edad:</label>
+                  <input class="form-control" id="edad" name="edad" [(ngModel)]="formulario.edad" (keypress)="onlyNumbers($event)" required>
+                </div>
+                <div class="form-group">
+                  <label for="plazo">Plazo (en meses):</label>
+                  <input class="form-control" id="plazo" name="plazo" [(ngModel)]="formulario.plazo" (keypress)="onlyNumbers($event)" required>
+                </div>
+        
+                <div class="form-group">
+                  <label for="ingresos">Ingresos Mensuales:</label>
+                  <div class="input-group">
+                    <span class="input-group-text">$</span>
+                    <input class="form-control" id="ingresos" name="ingresos" [(ngModel)]="formulario.ingresos" (keypress)="onlyNumbers($event)" required>
+                  </div>
+                </div>
+              </div>
+            </div>
+        
+            <div *ngIf="mostrarError && formularioForm.invalid" class="error">
+              Todos los campos son obligatorios para continuar.
+            </div>
+        
+            <div class="form-group text-center mt-4">
+              <button type="submit" class="btn btn-primary btn-block">Enviar</button>
+              <button *ngIf="showDocs" type="button" class="btn btn-primary btn-block mt-3" (click)="goToDocs()">Documentación</button>
+            </div>
+          </form>
+        
+          <div *ngIf="showFormDocs">
+            <app-form-docs></app-form-docs>
+          </div>
+   <div class="modal" tabindex="-1" role="dialog" [ngClass]="{'show': formularioEnviado}" [attr.aria-hidden]="formularioEnviado ? 'true' : null" #successModal>
+            <div class="modal-dialog" role="document">
+             <div class="modal-content">
+             <div class="modal-header">
+             <h5 class="modal-title">¡Gracias!</h5>
+             </div>
+             <div class="modal-body text-center">
+             <p>El formulario ha sido enviado con éxito.</p>
+             </div>
+            <div class="modal-footer">
+           <button type="button" class="btn btn-secondary" (click)="cerrarModal(formularioForm)">Cerrar</button>
+         </div>
+      </div>
+    </div>
+  </div>
+</div>
+        
+

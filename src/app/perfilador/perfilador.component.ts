@@ -121,7 +121,21 @@ export class PerfiladorComponent implements AfterViewInit {
         return true;
     }
 }
-  
+descargarImagen(url: string, nombreArchivo: string) {
+  const link = document.createElement('a');
+  link.href = url;
+  link.download = nombreArchivo;
+  link.click();
+}
+
+descargarPDF(url: string, nombreArchivo: string) {
+  const link = document.createElement('a');
+  link.href = url;
+  link.download = nombreArchivo;
+  link.click();
+}
+
+
   
   
 }
