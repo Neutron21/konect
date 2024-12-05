@@ -22,21 +22,23 @@ export class AuthService {
     private isLoggedIn = false;
 
     async singIn(email: string, password: string): Promise<any> {
-        try {
+      try {
           const credentials = await signInWithEmailAndPassword(this.auth, email, password);
           console.log(credentials);
           this.uid = credentials.user.uid;
-          this.user = credentials.user.email + '';
+          this.user = credentials.user.email || '';
           this.token = await credentials.user.getIdToken();
           this.setLogin();
           
-          
           this.router.navigateByUrl('/registro');
           return credentials.user;
-        } catch (error: any) {
-          console.log(error);
-        }
+      } catch (error: any) {
+          console.error('Error en inicio de sesión:', error);
+  
+          throw new Error(error.message || 'Credenciales incorrectas');
       }
+  }
+  
       setLogin() {
         sessionStorage.setItem('uid', this.uid);
         sessionStorage.setItem('user', this.user);

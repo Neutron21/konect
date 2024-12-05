@@ -4,7 +4,7 @@ import { initializeApp } from "firebase/app";
 import { getAnalytics } from "firebase/analytics";
 import { AuthService } from '../services/auth.service';
 import { environment } from 'src/environments/environment';
-import { Router } from '@angular/router'; // Importar el router
+import { Router } from '@angular/router';
 import { ApiService } from '../services/api.service';
 
 @Component({
@@ -13,19 +13,14 @@ import { ApiService } from '../services/api.service';
   styleUrls: ['./login.component.scss']
 })
 export class LoginComponent implements OnInit {
-  isLoginRoute: boolean = false;
   loginForm: FormGroup;
   analytics: any;
-  mostrarPassword: boolean = false;
-  badCredentials: boolean = false;
-  showSpinner: boolean = false;
-  campoVacio: boolean = false;
+  mostrarPassword = false;
+  badCredentials = false;
+  showSpinner = false;
+  campoVacio = false;
 
-  constructor(
-    private authservices: AuthService,
-    private router: Router ,
-    private apiservice: ApiService
-  ) {
+  constructor(private authservices: AuthService, private router: Router, private apiservice: ApiService) {
     this.loginForm = new FormGroup({
       email: new FormControl('', Validators.required),
       password: new FormControl('', Validators.required)
@@ -35,44 +30,34 @@ export class LoginComponent implements OnInit {
   ngOnInit(): void {
     const app = initializeApp(environment.firebaseConfig);
     this.analytics = getAnalytics(app);
-    
   }
 
   showPass() {
     this.mostrarPassword = !this.mostrarPassword;
   }
 
+  resetMessages() {
+    this.badCredentials = false;
+    this.campoVacio = false;
+  }
+
   async sendCredentials() {
     const { email, password } = this.loginForm.value;
 
-    if (!!email && !!password) {
+    if (email && password) {
       this.showSpinner = true;
       try {
         const user = await this.authservices.singIn(email, password);
-        console.log(user);
         localStorage.setItem('userEmail', email);
-
-
-        this.apiservice.saveTokenAndEmail().subscribe({
-          next: (response) => {
-            console.log('Guardado con éxito:', response);
-          },
-          error: (err) => {
-            console.error('Error al guardar token y email:', err);
-          }
-        });
-
+        this.apiservice.saveTokenAndEmail().subscribe();
         this.router.navigate(['/seccion']);
-      } catch (error) {
-        console.error(error);
-
+      } catch {
         this.badCredentials = true;
       } finally {
         this.showSpinner = false;
       }
     } else {
-      this.campoVacio = true; 
+      this.campoVacio = true;
     }
   }
-  
 }
