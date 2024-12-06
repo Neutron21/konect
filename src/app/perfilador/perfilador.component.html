@@ -33,7 +33,7 @@
   </div>
 </div>
 
-<div class="form-container mt-4">
+<div class=" mt-4">
     <h2 class="text-center">Formulario de Financiamiento</h2>
     <form (ngSubmit)="enviarFormulario(formularioForm)" #formularioForm="ngForm">
     <div class="row text-center mb-4">
@@ -83,8 +83,11 @@
                 </div>
                 <div class="form-group">
                   <label for="plazo">Plazo (en meses):</label>
-                  <input class="form-control" id="plazo" name="plazo" [(ngModel)]="formulario.plazo" (keypress)="onlyNumbers($event)" required>
+                  <select class="form-control" id="plazo" name="plazo" [(ngModel)]="formulario.plazo" required>
+                    <option *ngFor="let plazo of plazos" [value]="plazo">{{ plazo }}</option>
+                  </select>
                 </div>
+                
         
                 <div class="form-group">
                   <label for="ingresos">Ingresos Mensuales:</label>
@@ -99,17 +102,17 @@
             <div *ngIf="mostrarError && formularioForm.invalid" class="error">
               Todos los campos son obligatorios para continuar.
             </div>
-        
-            <div class="form-group text-center mt-4">
-              <button type="submit" class="btn btn-primary btn-block">Enviar</button>
-              <button *ngIf="showDocs" type="button" class="btn btn-primary btn-block mt-3" (click)="goToDocs()">Documentación</button>
-            </div>
           </form>
         
-          <div *ngIf="showFormDocs">
-            <app-form-docs></app-form-docs>
-          </div>
-   <div class="modal" tabindex="-1" role="dialog" [ngClass]="{'show': formularioEnviado}" [attr.aria-hidden]="formularioEnviado ? 'true' : null" #successModal>
+            <div class="form-group text-center mt-4">
+              <button type="submit" class="btn btn-primary btn-sm btn-block">Enviar</button>
+              <button *ngIf="showDocs" type="button" class="btn btn-primary btn-sm btn-block mt-3" (click)="goToDocs()">Documentación</button>
+            </div>
+            
+            <div *ngIf="showFormDocs">
+              <app-form-docs></app-form-docs>
+            </div>
+            <div class="modal" tabindex="-1" role="dialog" [ngClass]="{'show': formularioEnviado}" [attr.aria-hidden]="formularioEnviado ? 'true' : null" #successModal>
             <div class="modal-dialog" role="document">
              <div class="modal-content">
              <div class="modal-header">
