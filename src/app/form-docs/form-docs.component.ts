@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { documentacion } from '../utils/documentos';
+import { ApiService } from '../services/api.service';
 
 @Component({
   selector: 'app-form-docs',
@@ -12,7 +13,9 @@ export class FormDocsComponent implements OnInit {
   currentFiles = documentacion.afirme.viabilidad;
   fileList: any[] = [];
 
-  constructor() { }
+  constructor(
+    private apiServices: ApiService,
+  ) { }
 
   ngOnInit(): void {
   }
@@ -51,6 +54,23 @@ export class FormDocsComponent implements OnInit {
       console.log(this.fileList);
   }
   sendDocs() {
+    const cotizacion = "4";
     console.log(this.fileList);
+    const formData = new FormData();
+    const user = sessionStorage.getItem('user')+"";
+    formData.append('user', user);
+    formData.append('idCotizacion', cotizacion);
+    this.fileList.forEach((document, index) => {
+      formData.append(`file${index}`, document.file, document.customName);
+    });
+    console.log('Contenido de FormData:');
+    formData.forEach((value, key) => {
+      console.log(`${key}:`, value);
+    });
+  
+    this.apiServices.upLoadFiles(formData);
+  }
+  uploadFiles(data: FormData) {
+
   }
 }

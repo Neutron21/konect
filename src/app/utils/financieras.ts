@@ -22,6 +22,11 @@ export const financieras = [
     nombre: "Covalto",
     proceso:"mail",
     fase:"1",
+    viabilidad: [
+            'BURÓ DE CRÉDITO TANTO DEL ACREDITADO COMO DEL AVAL',
+            'ESTADOS FINANCIEROS DE LOS ÚLTIMOS DOS CIERRES DE AÑOS Y PARCIALES',
+            'CUADRO DE PASIVOS ACTUALIZADO',
+            'CURRICULUM VITAE (CV)'],
     productos: [
       "CREDIACTIVO EXPRESS SIMPLE",
       "CREDIACTIVO EXPRESS REVOLVENTE",
@@ -75,6 +80,11 @@ export const financieras = [
     nombre: "ActiveLeasing",
     proceso:"mail",
     fase:"1",
+    viabilidad: [
+            'ESTADOS FINANCIEROS AL CIERRE 2021, 2022 Y PARCIAL 2023 NO MAYOR A 2 MESES (CON ANALÍTICAS Y FIRMADOS POR EL REPRESENTANTE LEGAL Y CP)',
+            'CONSULTA ESPECIAL DE BURÓ DE CRÉDITO RECIENTE',
+            'FIRMA EKATENA (CLAVE CIEC)',
+            'FICHA TÉCNICA DEL ACTIVO',],
     productos: ["ARRENDAMIENTO S&LB"],
     descripcion: "Compra de activos productivos (bodegas industriales, oficinas, edificios, locales comerciales).",
     img: "assets/activeleasing.jpeg"
@@ -84,6 +94,8 @@ export const financieras = [
     nombre: "HayCash",
     proceso:"link",
     fase:"1",
+    viabilidad: [
+    ],
     productos: ["Crédito Sin Garantía", "Financiamiento con Terminal Punto de Venta (TPV)"],
     descripcion: "Capital de trabajo, Apertura de nuevas sucursales, Compra de activo fijo, Remodelación, Publicidad & marketing, y muchos más.",
     img: "assets/haycash.png"

@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { Router } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 
 @Component({
   selector: 'app-instituciones',
@@ -10,9 +10,17 @@ export class InstitucionesComponent implements OnInit {
 
   financiera: any;
 
-  constructor(private router: Router) {}
+  constructor(
+    private router: Router,
+    private activatedRoute: ActivatedRoute
+  ) {}
 
   ngOnInit(): void {
+
+    this.activatedRoute.paramMap.subscribe(params => {
+      const financieraId = params.get('id'); 
+      console.log('ID de financiera:', financieraId);
+    });
     const storedFinanciera = sessionStorage.getItem('financiera');
     console.log('Stored Financiera:', storedFinanciera); // Depuración
     if (storedFinanciera) {

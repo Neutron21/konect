@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { financieras } from '../utils/financieras'
 
@@ -7,7 +7,7 @@ import { financieras } from '../utils/financieras'
   templateUrl: './financieras.component.html',
   styleUrls: ['./financieras.component.scss']
 })
-export class FinancierasComponent {
+export class FinancierasComponent implements OnInit{
 
   financierasArray =  financieras;
   financieras: any [] = [];
@@ -15,10 +15,13 @@ export class FinancierasComponent {
   constructor(
     private router: Router) {}
 
-    goToProducts(fin: any) {
-      sessionStorage.setItem('financiera', JSON.stringify(fin)); 
-      this.router.navigate(['/instituciones', fin.id]); 
-    }
-    
-    
+  ngOnInit(): void {
+    this.financierasArray = financieras.filter(fin => fin.fase == "1");
+    console.log(this.financierasArray);
+  }
+
+  goToProducts(fin: any) {
+    sessionStorage.setItem('financiera', JSON.stringify(fin)); 
+    this.router.navigate(['/instituciones', fin.id]); 
+  }
 }

@@ -14,7 +14,7 @@ export class PerfiladorComponent implements AfterViewInit {
   @ViewChild('successModal') successModalRef: ElementRef | undefined;
 
   showDocs = true;
-  showFormDocs = false;  // Bandera para mostrar los documentos
+  showFormDocs = false;  
   formulario: any = {
     tipo_persona: '', 
     nombre: '',
@@ -120,20 +120,20 @@ export class PerfiladorComponent implements AfterViewInit {
     } else {
         return true;
     }
-}
-descargarImagen(url: string, nombreArchivo: string) {
-  const link = document.createElement('a');
-  link.href = url;
-  link.download = nombreArchivo;
-  link.click();
-}
+  }
+  descargarImagen(url: string, nombreArchivo: string) {
+    const link = document.createElement('a');
+    link.href = url;
+    link.download = nombreArchivo;
+    link.click();
+  }
 
-descargarPDF(url: string, nombreArchivo: string) {
-  const link = document.createElement('a');
-  link.href = url;
-  link.download = nombreArchivo;
-  link.click();
-}
+  descargarPDF(url: string, nombreArchivo: string) {
+    const link = document.createElement('a');
+    link.href = url;
+    link.download = nombreArchivo;
+    link.click();
+  }
 
 
   
