@@ -24,6 +24,8 @@ export class PerfiladorComponent implements AfterViewInit {
     antiguedadEmpresa: null,
     ingresos: null,
   };
+  plazos: number[] = [];
+
 
   formularioEnviado: boolean = false;
   mostrarError: boolean = false; 
@@ -33,7 +35,10 @@ export class PerfiladorComponent implements AfterViewInit {
   constructor(
     private router: Router,
     private apiservice: ApiService
-  ) {}
+  ) {
+    this.generarPlazos();
+
+  }
 
   ngOnInit(): void {
     this.documentos = documentacion;  // Cargar los documentos desde documentos.ts
@@ -42,6 +47,11 @@ export class PerfiladorComponent implements AfterViewInit {
   ngAfterViewInit(): void {
     if (this.successModalRef) {
       this.modal = new bootstrap.Modal(this.successModalRef.nativeElement);
+    }
+  }
+  generarPlazos(): void {
+    for (let i = 12; i <= 120; i += 12) {
+      this.plazos.push(i);
     }
   }
 
@@ -134,6 +144,7 @@ export class PerfiladorComponent implements AfterViewInit {
     link.download = nombreArchivo;
     link.click();
   }
+
 
 
   
