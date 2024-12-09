@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { ApiService } from '../services/api.service';
+import { AuthService } from '../services/auth.service';
 
 @Component({
   selector: 'app-seguimiento',
@@ -21,7 +22,8 @@ export class SeguimientoComponent implements OnInit {
 
   constructor(
     private router: Router,
-    private apiService: ApiService
+    private apiService: ApiService,
+    private authService: AuthService
   ) {}
 
   ngOnInit(): void {
@@ -34,6 +36,12 @@ export class SeguimientoComponent implements OnInit {
         },
         (error: any) => {
           console.error('Error al obtener cotizaciones:', error);
+          console.log(error);
+          
+          if (error.status == 401 || error.error.error.includes('Expired')) {
+            console.log("Sesion expirada!");
+            this.authService.logOut();
+          }
         }
       );
     } else {
