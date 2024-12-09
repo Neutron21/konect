@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute, Router } from '@angular/router';
+import { Router } from '@angular/router';
+import { financieras } from '../utils/financieras'; // Asegúrate de importar las financieras
 
 @Component({
   selector: 'app-instituciones',
@@ -11,20 +12,22 @@ export class InstitucionesComponent implements OnInit {
   financiera: any;
 
   constructor(
-    private router: Router,
-    private activatedRoute: ActivatedRoute
+    private router: Router
   ) {}
 
   ngOnInit(): void {
+    const finId = sessionStorage.getItem('financiera');
+    if (finId) {
+      const finIdParsed = JSON.parse(finId); 
 
-    this.activatedRoute.paramMap.subscribe(params => {
-      const financieraId = params.get('id'); 
-      console.log('ID de financiera:', financieraId);
-    });
-    const storedFinanciera = sessionStorage.getItem('financiera');
-    console.log('Stored Financiera:', storedFinanciera); // Depuración
-    if (storedFinanciera) {
-      this.financiera = JSON.parse(storedFinanciera);
+      this.financiera = financieras.find(fin => fin.id === finIdParsed);
+
+      if (this.financiera) {
+        console.log('Financiera ID:', this.financiera.id);
+        console.log('Productos:', this.financiera.productos);
+      } else {
+        console.error('No se encontró la financiera con ese ID');
+      }
     } else {
       console.error('No financiera found in sessionStorage');
     }

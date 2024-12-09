@@ -20,8 +20,8 @@ export class FinancierasComponent implements OnInit{
     console.log(this.financierasArray);
   }
 
-  goToProducts(fin: any) {
-    sessionStorage.setItem('financiera', JSON.stringify(fin)); 
-    this.router.navigate(['/instituciones', fin.id]); 
+  goToProducts(finid: any) {
+    sessionStorage.setItem('financiera', JSON.stringify(finid)); 
+    this.router.navigate(['/instituciones', finid]); 
   }
 }
