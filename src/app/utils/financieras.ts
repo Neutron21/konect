@@ -4,7 +4,9 @@ export const financieras = [
     nombre: "Konfio",
     proceso:"link",
     fase:"1",
-    productos: ["Crédito Revolvente", "Crédito Simple (sin garantía)"],
+    productos: [
+      "Crédito Revolvente PF", "Crédito Simple (sin garantía) PF", "Crédito Revolvente PM", "Crédito Simple (sin garantía) PM"
+    ],
     descripcion: "Compra de mercancía, cubrir deuda del negocio, pagos a proveedores.",
     img: "assets/konfio.jpeg"
   },
