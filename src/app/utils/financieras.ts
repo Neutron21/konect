@@ -146,5 +146,16 @@ export const financieras = [
     productos: ["Arrendamiento Puro", "Arrendamiento S&LB"],
     descripcion: "Si es persona moral siempre se necesitará un aval persona física. En el caso de PFAE o PF solo se necesitará aval si el prospecto no cuenta con exposición de buró de crédito.",
     img: "assets/arrenda+.webp"
-  }
+  },
+  {
+      id: "14",
+      nombre: "Afirme",
+      proceso: "mail",
+      fase: "1",
+      productos: [ "CRÉDITO FACIL TPV (SIMPLE Y REVOLVENTE)","CRÉDITO FACIL FLUJOS (SIMPLE)","PROGRAMA IMPULSO + ESTADOS (SIMPLE)","CRÉDITO TOTAL (SIMPLE Y REVOLVENTE)","CRÉDITO INMUEBLES (SIMPLE)"],
+      descripcion: "Capital de trabajo, adquisición de activo fijo y pagos pasivos.",
+      img: "assets/afirme.png"
+    }
+    
+  
 ];
