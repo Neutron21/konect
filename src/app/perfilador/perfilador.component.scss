@@ -13,15 +13,16 @@
       transition: color 0.3s ease;
     }
   }
+  #accordionExample {
+    margin-top: .5rem;
+  }
   .custom-header {
     margin-top: -1%; /* Ajusta para mover ambos elementos hacia arriba */
   }
   
   .custom-header .titulo {
-    margin-left: 9px; 
-    font-size: 1.5rem; 
+    margin-left: 1rem; 
     margin-top: 4rem;
-
   }
   .container{
     margin-top: 3em;
