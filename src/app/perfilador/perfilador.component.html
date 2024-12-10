@@ -1,5 +1,6 @@
 <div class="container">
-  <app-back-arrow rutaBack="financieras"></app-back-arrow>  
+  <app-back-arrow rutaBack="instituciones"></app-back-arrow>  
+  <h3 class="title">{{nameFin.toUpperCase()}} - <span class="product-title">{{nameProd}}</span></h3>
   <div class="accordion" id="accordionExample">
     <div class="accordion-item">
       <h2 class="accordion-header" id="headingOne">
@@ -31,7 +32,7 @@
     </div>
   </div>
 
-<div class=" mt-4">
+<div class="mt-4">
     <h2 class="text-center">Formulario de Financiamiento</h2>
     <form (ngSubmit)="enviarFormulario(formularioForm)" #formularioForm="ngForm">
     <div class="row text-center mb-4">
@@ -101,30 +102,38 @@
               Todos los campos son obligatorios para continuar.
             </div>
           </form>
+        <div *ngIf="docProcess" class="accordion" id="accordionExample">
+          <div class="accordion-item">
+            <h2 class="accordion-header" id="headingOne">
+              <button class="accordion-button custom-collapse collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseDocs" aria-expanded="false" aria-controls="collapseOne">
+                Carga de documentos
+              </button>
+            </h2>
+            <div id="collapseDocs" class="accordion-collapse collapse" aria-labelledby="headingOne" data-bs-parent="#accordionExample">
+              <div class="accordion-body">
+                <app-form-docs></app-form-docs>
+              </div>
+            </div>
+          </div> 
+        </div>
+        <div class="form-group text-center mb-4">
+          <button *ngIf="docProcess" type="submit" class="btn btn-primary btn-sm btn-block">Enviar</button>
+          <a *ngIf="!docProcess" type="button" class="btn btn-primary btn-sm btn-block mt-3" target="_blank" [href]="urlFin">Enviar y Continuar con link</a>
+        </div>
+</div>
         
-            <div class="form-group text-center mt-4">
-              <button type="submit" class="btn btn-primary btn-sm btn-block">Enviar</button>
-              <button *ngIf="showDocs" type="button" class="btn btn-primary btn-sm btn-block mt-3" (click)="goToDocs()">Documentación</button>
-            </div>
-            
-            <div *ngIf="showFormDocs">
-              <app-form-docs></app-form-docs>
-            </div>
-            <div class="modal" tabindex="-1" role="dialog" [ngClass]="{'show': formularioEnviado}" [attr.aria-hidden]="formularioEnviado ? 'true' : null" #successModal>
-            <div class="modal-dialog" role="document">
-             <div class="modal-content">
-             <div class="modal-header">
-             <h5 class="modal-title">¡Gracias!</h5>
-             </div>
-             <div class="modal-body text-center">
-             <p>El formulario ha sido enviado con éxito.</p>
-             </div>
-            <div class="modal-footer">
-           <button type="button" class="btn btn-secondary" (click)="cerrarModal(formularioForm)">Cerrar</button>
-         </div>
+<div class="modal" tabindex="-1" role="dialog" [ngClass]="{'show': formularioEnviado}" [attr.aria-hidden]="formularioEnviado ? 'true' : null" #successModal>
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+         <h5 class="modal-title">¡Gracias!</h5>
       </div>
+      <div class="modal-body text-center">
+         <p>El formulario ha sido enviado con éxito.</p>
+      </div>
+      <div class="modal-footer">
+         <button type="button" class="btn btn-secondary" (click)="cerrarModal(formularioForm)">Cerrar</button>
+       </div>
     </div>
   </div>
 </div>
-        
-

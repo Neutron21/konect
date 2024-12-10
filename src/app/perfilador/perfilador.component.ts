@@ -2,6 +2,7 @@ import { Component, AfterViewInit, ViewChild, ElementRef } from '@angular/core';
 import { Router } from '@angular/router';
 import { ApiService } from '../services/api.service';
 import { documentacion } from '../utils/documentos';
+import { financieras } from '../utils/financieras';
 
 declare var bootstrap: any;
 
@@ -11,10 +12,11 @@ declare var bootstrap: any;
   styleUrls: ['./perfilador.component.scss']
 })
 export class PerfiladorComponent implements AfterViewInit {
+
   @ViewChild('successModal') successModalRef: ElementRef | undefined;
 
-  showDocs = true;
-  showFormDocs = false;  
+  nameFin = '';
+  nameProd = '';
   formulario: any = {
     tipo_persona: '', 
     nombre: '',
@@ -25,7 +27,9 @@ export class PerfiladorComponent implements AfterViewInit {
     ingresos: null,
   };
   plazos: number[] = [];
-
+  docProcess: boolean = false;
+  viabilidad: boolean = false;
+  urlFin: string | undefined = '';
 
   formularioEnviado: boolean = false;
   mostrarError: boolean = false; 
@@ -41,7 +45,9 @@ export class PerfiladorComponent implements AfterViewInit {
   }
 
   ngOnInit(): void {
+    this.getFinanciera();
     this.documentos = documentacion;  // Cargar los documentos desde documentos.ts
+
   }
 
   ngAfterViewInit(): void {
@@ -54,7 +60,21 @@ export class PerfiladorComponent implements AfterViewInit {
       this.plazos.push(i);
     }
   }
-
+  getFinanciera() {
+    const idFin = JSON.parse(sessionStorage.getItem("financiera") + "");
+    const currentProduct = JSON.parse(sessionStorage.getItem("producto") + "");
+    console.log(idFin);
+    const institucion = financieras.find(el => el.id == idFin);
+    this.docProcess = institucion?.proceso == "mail";
+    this.viabilidad = !!institucion?.viabilidad;
+    this.urlFin = !this.docProcess ? institucion?.url : '';
+    this.nameFin = institucion?.nombre + "";
+    this.nameProd = institucion?.productos[currentProduct] + "";
+    console.log(institucion);
+    console.log("docProcess", this.docProcess);
+    console.log("viabilidad", this.viabilidad);
+    
+  }
   enviarFormulario(formularioForm: any): void {
     if (!this.validarFormulario()) {
       this.mostrarError = true; 
@@ -73,7 +93,6 @@ export class PerfiladorComponent implements AfterViewInit {
     this.apiservice.sendCotizacion(this.formulario).subscribe({
       next: (response) => {
         console.log('Formulario enviado con éxito:', response);
-        this.showDocs = true;
       },
       error: (err) => {
         console.error('Error al enviar:', err);
@@ -107,9 +126,6 @@ export class PerfiladorComponent implements AfterViewInit {
     return fechaFormateada;
   }
 
-  goToDocs() {
-    this.showFormDocs = !this.showFormDocs;  // Toggle la visibilidad del componente de carga de documentos
-  }
   onlyText(event: KeyboardEvent) {
     const charCode = event.which ? event.which : event.keyCode;
     // Permitir letras mayúsculas (65-90), letras minúsculas (97-122), espacios (32), y acentos (á: 225, é: 233, í: 237, ó: 243, ú: 250, ü: 252, ñ: 241)

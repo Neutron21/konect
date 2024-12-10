@@ -16,12 +16,14 @@ export class FinancierasComponent implements OnInit{
     private router: Router) {}
 
   ngOnInit(): void {
+    sessionStorage.removeItem('financiera');
+    sessionStorage.removeItem('producto');
     this.financierasArray = financieras.filter(fin => fin.fase == "1");
     console.log(this.financierasArray);
   }
 
   goToProducts(finid: any) {
     sessionStorage.setItem('financiera', JSON.stringify(finid)); 
-    this.router.navigate(['/instituciones', finid]); 
+    this.router.navigate(['/instituciones']); 
   }
 }

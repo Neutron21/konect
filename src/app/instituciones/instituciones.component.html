@@ -4,8 +4,8 @@
   <p>{{ financiera.descripcion }}</p>
 
   <ul>
-    <li *ngFor="let producto of financiera.productos">
-      <button (click)="goToPerfilador(financiera.id)" class="btn btn-outline-secondary custom-btn">
+    <li *ngFor="let producto of financiera.productos; let i = index">
+      <button (click)="goToPerfilador(i)" class="btn btn-outline-secondary custom-btn">
         {{ producto }}
       </button>
     </li>

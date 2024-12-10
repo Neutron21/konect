@@ -65,8 +65,25 @@ input {
     font-size: 14px;
     margin-top: 10px;
 }
-
-  
-  
-
-  
+.product-title {
+    font-size: calc(1.3rem + .3vw);
+    color: blue;
+}  
+.accordion-header {
+  margin-bottom: .5rem;
+}
+.accordion {
+  border: none !important;
+}
+.accordion-item {
+  border-radius: 15px !important;
+}
+.custom-collapse, .accordion-button {
+  color: whitesmoke;
+  background-color: cornflowerblue;
+  padding: .5rem 1rem;
+  border-radius: 15px !important;
+  cursor: pointer;
+  height: 3.5rem;
+  font-size: calc(1.1rem + .3vw);
+}

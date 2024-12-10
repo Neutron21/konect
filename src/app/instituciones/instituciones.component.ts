@@ -33,7 +33,9 @@ export class InstitucionesComponent implements OnInit {
     }
   }
 
-  goToPerfilador(id: string) {
+  goToPerfilador(id: number) {
+    console.log(id);
+    sessionStorage.setItem('producto', id.toString());
     this.router.navigate([`/perfilador`]);  
   }
 }

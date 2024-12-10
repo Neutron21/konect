@@ -1,7 +1,9 @@
 export const documentacion = {
-    konfio: {
-        pm: {
-            creditoS: [
+    1: {
+        nombre: "konfio",
+        p1: {
+            name: "creditoS pm",
+            documentos: [
                 'IDENTIFICACIÓN DE UN ACCIONISTA CON UN MÍNIMO DE 25% DE ACCIONES',
                 'RFC CON EL QUE FACTURAS Y CONTRASEÑA DEL SAT',
                 'ACTA CONSTITUTIVA CON FOLIO DEL RPP',
@@ -12,8 +14,11 @@ export const documentacion = {
                 'REP LEGAL COMPROBANTE DE DOMICILIO',
                 'OBL SOL INE, PASAPORTE O RESIDENCIA PERMANENTE EN CASO DE EXTRAJERO (VIGENTES Y ESCANEADOS EN PDF)',
                 'OBL SOL COMPROBANTE DE DOMICILIO',
-            ],
-            tdcEmpresario: [
+            ]
+        },
+        p2: {
+            name: "tdcEmpresario pm",
+            documentos: [
                 'IDENTIFICACIÓN DE UN ACCIONISTA CON UN MÍNIMO DE 25% DE ACCIONES',
                 'RFC CON EL QUE FACTURAS Y CONTRASEÑA DEL SAT',
                 'ACTA CONSTITUTIVA CON FOLIO DEL RPP',
@@ -24,30 +29,36 @@ export const documentacion = {
                 'REP LEGAL COMPROBANTE DE DOMICILIO',
                 'OBL SOL INE, PASAPORTE O RESIDENCIA PERMANENTE EN CASO DE EXTRAJERO (VIGENTES Y ESCANEADOS EN PDF)',
                 'OBL SOL COMPROBANTE DE DOMICILIO',
-            ],
-            },
-        pfae: {
-            creditoS: [
+            ]
+        },
+        p3: {
+            name: "tdcEmpresario pfae",
+            documentos: [
                 'INE, PASAPORTE O RESIDENCIA PERMANENTE EN CASO DE EXTRAJERO (VIGENTES Y ESCANEADOS EN PDF)',
                 'RFC CON EL QUE FACTURAS Y CONTRASEÑA DEL SAT',
                 'COMPROBANTE DE DOMICILIO DEL NEGOCIO O CONSTACIA DE SITUACIÓN FISCAL'
-            ],
-            tdcEmpresario: [
+            ]
+        },
+        p4: {
+            name: "tdcEmpresario pfae",
+            documentos: [
                 'INE, PASAPORTE O RESIDENCIA PERMANENTE EN CASO DE EXTRAJERO (VIGENTES Y ESCANEADOS EN PDF)',
                 'RFC CON EL QUE FACTURAS Y CONTRASEÑA DEL SAT',
                 'COMPROBANTE DE DOMICILIO DEL NEGOCIO O CONSTACIA DE SITUACIÓN FISCAL'
-            ],
+            ]
         }
     },
-    covalto: {
+    3: {
+        name: "covalto",
         viabilidad: [
             'BURÓ DE CRÉDITO TANTO DEL ACREDITADO COMO DEL AVAL',
             'ESTADOS FINANCIEROS DE LOS ÚLTIMOS DOS CIERRES DE AÑOS Y PARCIALES',
             'CUADRO DE PASIVOS ACTUALIZADO',
             'CURRICULUM VITAE (CV)'
         ],
-        pm: {
-            CreditoSimpleRevolventeConGarantia: [
+        p1:{
+            name: "CreditoSimpleRevolventeConGarantia Pm",
+            documentos: [
                 'SOLICITUD DE CRÉDITO COMPLETA Y FIRMADA',
                 'ACTA CONSTITUTIVA CON RPP',
                 'ASAMBLEAS Y/O PODERES COMPLETAS',
@@ -78,7 +89,10 @@ export const documentacion = {
                 'APERTURA DE CUENTA COVALTO',
                 'PLAN DE NEGOCIOS',
             ],
-            CreditoParametrico: [
+        },
+        p2:{
+            name: "CreditoParametrico Pm",
+            documentos: [
                 'Solicitud en: https://micredito.covalto.com/login/',
                 'ACTA CONSTITUTIVA CON SELLO DE REGISTRO PÚBLICO DE LA PROPIEDAD, PRIMER TESTIMONIO.',
                 'IDENTIFICACIÓN OFICIAL VIGENTE (INE DE ACCIONISTA MAYORITARIO)',
@@ -96,8 +110,11 @@ export const documentacion = {
                 'REPORTE DE VISITA OCULAR',
                 'APERTURA DE CUENTA COVALTO',
                 'ACTIVACIÓN DE BANCA ELECTRÓNICA',
-            ],
-            ArrendamientoPuroSyLB : [
+            ]
+        },
+        p3: {
+            name: "ArrendamientoPuroSyLB pm",
+            documentos:  [
                 'SOLICITUD DE CRÉDITO COMPLETA Y FIRMADA',
                 'ACTA CONSTITUTIVA CON RPP',
                 'ASAMBLEAS Y/O PODERES COMPLETAS',
@@ -119,8 +136,9 @@ export const documentacion = {
 
             ]
         },
-        pfae: {
-            CreditoSimpleRevolventeConGarantia: [
+        p4: {
+            name: "CreditoSimpleRevolventeConGarantia Pfae",
+            documentos: [
                 'SOLICITUD DE CRÉDITO COMPLETA Y FIRMADA',
                 'INE / PASAPORTE / EXTRANJERO FM2 (ACREDITADO,ACCIONISTA, REP LEGAL O GARANTE)',
                 '2DA. IDENTIFICACIÓN',
@@ -146,9 +164,11 @@ export const documentacion = {
                 'CARTA SALDO DE LOS PASIVOS (SI TIENE AUTORIZADO PAGO DE PASIVOS)',
                 'APERTURA DE CUENTA COVALTO',
                 'PLAN DE NEGOCIOS',
-
             ],
-            ArrendamientoPuroSyLB : [
+        },
+        p5: {
+            name: "ArrendamientoPuroSyLB Pfae",
+            documentos : [
                 'SOLICITUD DE CRÉDITO COMPLETA Y FIRMADA',
                 'INE / PASAPORTE / EXTRANJERO FM2 (ACREDITADO,ACCIONISTA, REP LEGAL O GARANTE)',
                 '2DA. IDENTIFICACIÓN',
@@ -167,16 +187,20 @@ export const documentacion = {
                 'PEDIMENTO EN CASO DE APLICAR',
                 'PROPUESTA INDICATIVA',
             ]
+
         }
     },
-    activeLeasing: {
-        viabilidad: [
-            'ESTADOS FINANCIEROS AL CIERRE 2021, 2022 Y PARCIAL 2023 NO MAYOR A 2 MESES (CON ANALÍTICAS Y FIRMADOS POR EL REPRESENTANTE LEGAL Y CP)',
-            'CONSULTA ESPECIAL DE BURÓ DE CRÉDITO RECIENTE',
-            'FIRMA EKATENA (CLAVE CIEC)',
-            'FICHA TÉCNICA DEL ACTIVO',
-        ],
-        arrendamientoPuro: [
+   8: {
+    name: "activeLeasing",
+    viabilidad: [
+        'ESTADOS FINANCIEROS AL CIERRE 2021, 2022 Y PARCIAL 2023 NO MAYOR A 2 MESES (CON ANALÍTICAS Y FIRMADOS POR EL REPRESENTANTE LEGAL Y CP)',
+        'CONSULTA ESPECIAL DE BURÓ DE CRÉDITO RECIENTE',
+        'FIRMA EKATENA (CLAVE CIEC)',
+        'FICHA TÉCNICA DEL ACTIVO',
+    ],
+    p1: {
+        name: "arrendamientoPuro",
+        documentos: [
             'ACTA CONSTITUTIVA, PODERES, PROTOCOLIZACIONES ETC (CON SELLO RPP)',
             'CONSTANCIA DE SITUACIÓN FISCAL',
             'COMPROBANTE DE DOMICILIO',
@@ -197,8 +221,11 @@ export const documentacion = {
             'RELACIÓN DE PASIVOS – AVAL',
             'RELACIÓN PATRIMONIAL – AVAL',
         ]
-    },
-    afirme: {
+    }
+   },
+ 
+    afirme: { // SIN ID
+        name: "afirme",
         viabilidad: [
             'CUESTIONARIO DE VIABILIDAD 3 HOJAS',
             'SOLICITUD DE CRÉDITO',
@@ -211,22 +238,27 @@ export const documentacion = {
             'DECLARACIÓN FISCAL ANUAL DE LOS ÚLTIMOS 2 EJERCICIOS COMPLETOS',
 
         ],
-        PymeInmuebles15MDP: [
-            'SOLICITUD DE CRÉDITO',
-            'FORMATO AUTORIZACIÓN DE CONSULTA A BURÓ FIRMADO DEL SOLICITANTE Y AVAL',
-            'ACTA DE MATRIMONIO, DIVORCIO O MODIFICACIÓN DEL RÉGIMEN CONYUGAL DEL SOLICITANTE Y AVAL',
-            'IDENTIFICACIÓN OFICIAL VIGENTE CON FOTOGRAFÍA Y FIRMA LEGIBLE DEL SOLICITANTE Y AVAL',
-            'COMPROBANTE DE DOMICILIO DEL SOLICITANTE Y AVAL CON ANTIGÜEDAD NO MAYOR A 3 MESES COMPLETO CON TODAS SUS HOJAS',
-            'ALTA EN SHCP Y CÉDULA DE SITUACIÓN FISCAL (CSF) ACTUALIZADA DEL SOLICITANTE Y AVAL',
-            'ÚLTIMOS 6 ESTADOS DE CUENTA MENSUALES COMPLETOS CON TODAS SUS HOJAS DEL SOLICITANTE',
-            'ACTA CONSTITUTIVA, PODERES VIGENTES Y ACTAS DE ASAMBLEAS CON DATOS DE REGISTRO DEL SOLICITANTE Y AVAL (EN CASO DE SER PM)',
-            'BALANCE GENERAL Y ESTADO DE RESULTADOS ANUAL DEL EJERCICIO INMEDIATO ANTERIOR EN ORIGINAL',
-            'BALANCE GENERAL Y ESTADO DE RESULTADOS PARCIAL CON ANTIGÜEDAD NO MAYOR A 3 MESES EN ORIGINAL',
-            'RELACIONES ANALÍTICAS DE LAS PRINCIPALES CUENTAS COLECTIVAS DEL EJERCICIO COMPLETO (ANUAL) Y PARCIAL',
-            'DECLARACIÓN FISCAL ANUAL DEL ÚLTIMO EJERCICIO COMPLETO (ANUAL)',
-            'CONTRATO DE COMPRA VENTA Y/O CARTA DEL CLIENTE CON LA DESCRIPCIÓN DEL INMUEBLE A ADQUIRIR',
-        ],
-        PymeSimpleRevolvente40MDP: [
+        p1: {
+            name: "PymeInmuebles15MDP",
+            documentos: [
+                'SOLICITUD DE CRÉDITO',
+                'FORMATO AUTORIZACIÓN DE CONSULTA A BURÓ FIRMADO DEL SOLICITANTE Y AVAL',
+                'ACTA DE MATRIMONIO, DIVORCIO O MODIFICACIÓN DEL RÉGIMEN CONYUGAL DEL SOLICITANTE Y AVAL',
+                'IDENTIFICACIÓN OFICIAL VIGENTE CON FOTOGRAFÍA Y FIRMA LEGIBLE DEL SOLICITANTE Y AVAL',
+                'COMPROBANTE DE DOMICILIO DEL SOLICITANTE Y AVAL CON ANTIGÜEDAD NO MAYOR A 3 MESES COMPLETO CON TODAS SUS HOJAS',
+                'ALTA EN SHCP Y CÉDULA DE SITUACIÓN FISCAL (CSF) ACTUALIZADA DEL SOLICITANTE Y AVAL',
+                'ÚLTIMOS 6 ESTADOS DE CUENTA MENSUALES COMPLETOS CON TODAS SUS HOJAS DEL SOLICITANTE',
+                'ACTA CONSTITUTIVA, PODERES VIGENTES Y ACTAS DE ASAMBLEAS CON DATOS DE REGISTRO DEL SOLICITANTE Y AVAL (EN CASO DE SER PM)',
+                'BALANCE GENERAL Y ESTADO DE RESULTADOS ANUAL DEL EJERCICIO INMEDIATO ANTERIOR EN ORIGINAL',
+                'BALANCE GENERAL Y ESTADO DE RESULTADOS PARCIAL CON ANTIGÜEDAD NO MAYOR A 3 MESES EN ORIGINAL',
+                'RELACIONES ANALÍTICAS DE LAS PRINCIPALES CUENTAS COLECTIVAS DEL EJERCICIO COMPLETO (ANUAL) Y PARCIAL',
+                'DECLARACIÓN FISCAL ANUAL DEL ÚLTIMO EJERCICIO COMPLETO (ANUAL)',
+                'CONTRATO DE COMPRA VENTA Y/O CARTA DEL CLIENTE CON LA DESCRIPCIÓN DEL INMUEBLE A ADQUIRIR',
+            ],
+        },
+      p2: {
+        name: "PymeSimpleRevolvente40MDP",
+        documentos: [
             'SOLICITUD DE CRÉDITO',
             'FORMATO AUTORIZACIÓN DE CONSULTA A BURÓ FIRMADO DEL SOLICITANTE Y AVAL',
             'ACTA DE MATRIMONIO, DIVORCIO O MODIFICACIÓN DEL RÉGIMEN CONYUGAL DEL SOLICITANTE Y AVAL',
@@ -240,6 +272,6 @@ export const documentacion = {
             'RELACIONES ANALÍTICAS DE LAS PRINCIPALES CUENTAS COLECTIVAS DEL EJERCICIO COMPLETO (ANUAL) Y PARCIAL',
             'DECLARACIÓN FISCAL ANUAL DEL ÚLTIMO EJERCICIO COMPLETO (ANUAL)',
         ]
-        
+      }
     }
 }

@@ -18,8 +18,8 @@ const routes: Routes = [
   { path: 'carga-docs', component: FormDocsComponent, canActivate: [AuthGuard] },
   { path: 'seccion', component: SeccionComponent, canActivate: [AuthGuard] },
   { path: 'vista', component: VistaComponent, canActivate: [AuthGuard] },
-  { path: 'instituciones/:id', component: InstitucionesComponent, canActivate: [AuthGuard] },
-  // { path: 'instituciones', component: InstitucionesComponent, canActivate: [AuthGuard] },
+  // { path: 'instituciones/:id', component: InstitucionesComponent, canActivate: [AuthGuard] },
+  { path: 'instituciones', component: InstitucionesComponent, canActivate: [AuthGuard] },
   { path: '**', redirectTo: '/login' }, // Redirección por defecto si no coincide la ruta
 ];
 

@@ -3,6 +3,7 @@ export const financieras = [
     id: "1",
     nombre: "Konfio",
     proceso:"link",
+    url: "https://konfio.mx",
     fase:"1",
     productos: [
       "Crédito Revolvente PF", "Crédito Simple (sin garantía) PF", "Crédito Revolvente PM", "Crédito Simple (sin garantía) PM"
@@ -14,6 +15,7 @@ export const financieras = [
     id: "2",
     nombre: "PDN",
     proceso:"link",
+    url: "https://www.portafoliodenegocios.com.mx/",
     fase:"2",
     productos: ["PDN EXPRESS (CRÉDITO SIMPLE)"],
     descripcion: "Para adquisición de inmueble productivo con uso de suelo comercial, oficinas o industrial.",
@@ -28,7 +30,8 @@ export const financieras = [
             'BURÓ DE CRÉDITO TANTO DEL ACREDITADO COMO DEL AVAL',
             'ESTADOS FINANCIEROS DE LOS ÚLTIMOS DOS CIERRES DE AÑOS Y PARCIALES',
             'CUADRO DE PASIVOS ACTUALIZADO',
-            'CURRICULUM VITAE (CV)'],
+            'CURRICULUM VITAE (CV)'
+      ],
     productos: [
       "CREDIACTIVO EXPRESS SIMPLE",
       "CREDIACTIVO EXPRESS REVOLVENTE",
@@ -95,6 +98,7 @@ export const financieras = [
     id: "9",
     nombre: "HayCash",
     proceso:"link",
+    url: "https://haycash.com.mx/home",
     fase:"1",
     viabilidad: [
     ],
@@ -128,6 +132,7 @@ export const financieras = [
     id: "12",
     nombre: "Xepelin",
     proceso:"link",
+    url: "https://xepelin.com/mx",
     fase:"1",
     productos: ["ANTICIPO DE VENTAS FUTURAS CON TARJETAS BANCARIAS"],
     descripcion: "Seguridad privada, despachos jurídicos y contables, outsourcing, aseguradoras, gobierno, minería, gasolinerías, sofom, casas de apuestas.",
