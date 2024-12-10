@@ -1,6 +1,7 @@
 .flecha-regresar {
     margin-top: 2em;
     font-size: 30px; 
+    margin-right: 10px;
     color: #dc3545; 
     text-decoration: none;  
     cursor: pointer; 
@@ -11,6 +12,16 @@
     i {
       transition: color 0.3s ease;
     }
+  }
+  .custom-header {
+    margin-top: -1%; /* Ajusta para mover ambos elementos hacia arriba */
+  }
+  
+  .custom-header .titulo {
+    margin-left: 9px; 
+    font-size: 1.5rem; 
+    margin-top: 4rem;
+
   }
   .container{
     margin-top: 3em;
@@ -56,9 +67,9 @@
   padding-left: 8px; /* Ajusta el padding aquí */
 }
 
-input {
-  padding: 8px;
-}
+// input {
+//   padding: 8px;
+// }
 
 .error {
     color: red;

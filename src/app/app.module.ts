@@ -13,6 +13,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { FormDocsComponent } from './form-docs/form-docs.component';
 import { BackArrowComponent } from './back-arrow/back-arrow.component';
 import { InstitucionesComponent } from './instituciones/instituciones.component';
+import { ModalComponent } from './modal/modal.component';
 
 @NgModule({
   declarations: [
@@ -26,6 +27,7 @@ import { InstitucionesComponent } from './instituciones/instituciones.component'
     FormDocsComponent,
     BackArrowComponent,
     InstitucionesComponent,
+    ModalComponent,
   ],
   imports: [
     BrowserModule,

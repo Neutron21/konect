@@ -11,7 +11,9 @@ import { ApiService } from '../services/api.service';
 export class HeaderComponent implements OnInit {
   user = {
     nombre: '',
+    correo: '' // Agrega esta propiedad para manejar el correo
   };
+  
 
   constructor(
     private authServie: AuthService,
@@ -35,15 +37,16 @@ export class HeaderComponent implements OnInit {
     this.authServie.logOut();
   }
 
-  validarSesion() {
+  validarSesion(): boolean {
     if (typeof window !== 'undefined' && typeof window.sessionStorage !== 'undefined') {
-      const user = JSON.parse(sessionStorage.getItem('currentUser') || '{}');
-      this.user.nombre = user.nombre || '';
-      return !!sessionStorage.getItem('user');
+      const correo = sessionStorage.getItem('user') || '';
+      this.user.correo = correo;
+      return !!sessionStorage.getItem('uid'); // Devuelve `true` si hay un usuario logueado
     } else {
       return false;
     }
   }
+  
 
   irASeccion() {
     this.router.navigate(['/seccion']); 

@@ -39,13 +39,13 @@ export class AuthService {
       }
   }
   
-      setLogin() {
-        sessionStorage.setItem('uid', this.uid);
-        sessionStorage.setItem('user', this.user);
-        sessionStorage.setItem('token', this.token);
-
-        this.isLoggedIn = true;
-      }
+  setLogin() {
+    sessionStorage.setItem('uid', this.uid);
+    sessionStorage.setItem('user', this.user); 
+    sessionStorage.setItem('token', this.token);
+    this.isLoggedIn = true;
+  }
+  
       logOut() {
         signOut(this.auth).then(() => {
         this.setLogOut();

@@ -9,6 +9,7 @@ import { SeguimientoComponent } from './seguimiento/seguimiento.component';
 import { FormDocsComponent } from './form-docs/form-docs.component';
 import { VistaComponent } from './vista/vista.component';
 import { InstitucionesComponent } from './instituciones/instituciones.component';
+import { ModalComponent } from './modal/modal.component';
 
 const routes: Routes = [
   { path: 'login', component: LoginComponent, data: { class: 'login-page' } },  // Ruta para login
@@ -21,6 +22,7 @@ const routes: Routes = [
   // { path: 'instituciones/:id', component: InstitucionesComponent, canActivate: [AuthGuard] },
   { path: 'instituciones', component: InstitucionesComponent, canActivate: [AuthGuard] },
   { path: '**', redirectTo: '/login' }, // Redirección por defecto si no coincide la ruta
+  {path:'modal', component:ModalComponent, canActivate: [AuthGuard]}
 ];
 
 @NgModule({
