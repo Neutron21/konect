@@ -187,9 +187,28 @@ export const documentacion = {
                 'PEDIMENTO EN CASO DE APLICAR',
                 'PROPUESTA INDICATIVA',
             ]
-
         }
     },
+   7: {
+    name: "heyBanco",
+    p1: {
+        name:"creditoSimple",
+        documentos: [
+            "Doc test 1",
+            "Doc test 2",
+            "Doc test 3",
+        ],
+    },
+    p2: {
+        name:"creditoRevolvente",
+        documentos: [
+            "Doc test 1",
+            "Doc test 2",
+            "Doc test 3",
+            "Doc test 4",
+        ],
+    },
+   },
    8: {
     name: "activeLeasing",
     viabilidad: [
@@ -223,7 +242,94 @@ export const documentacion = {
         ]
     }
    },
- 
+   9: {
+    name: "hayCash",
+    viabilidad: [
+        "Constancia de Situación Fiscal (actualizada menor a tres meses y descargada del portal del SAT)",
+        "CIEC",
+        "Autorización de Buró",
+        "Estados de cuenta (3 últimos)"
+    ],
+    p1: {
+        name: "producto1",
+        documentos: [
+            "Checklist Persona Moral Acta Constitutiva y todas las Asambleas con su respectivo RPPC  ",
+            "Constancia de Situación Fiscal (actualizada menor a tres meses y descargada del portal del SAT) ",
+            "Contratos de arrendamiento Vigente y/o Escritura de Propiedad (mandar de cada Sucursal) ",
+            "Comprobante de domicilio (mandar de cada Sucursal y Fiscal) menor a tres meses.",
+            "Estados de cuenta (últimos 12 meses) ",
+            "Registro SatWS ",
+            "Autorización Buró de Crédito (LIGA)",
+            // "Representante Legal",
+            "ID, Representante Legal",
+            "Constancia de Situación Fiscal, Representante Legal (actualizada) menor a tres meses",
+            "Comprobante de Domicilio, Representante Legal",
+            "Buró de Crédito Persona Física, Representante Legal",
+            // " Firmante Adicional (Aval)",
+            "ID, Aval",
+            "Constancia de Situación Fiscal, Aval (actualizada) menor a tres meses",
+            "Comprobante de Domicilio, Aval",
+            "Buró de Crédito Persona Física, Aval",
+            "Fotos del comercio (5 del interior y 5 del exterior del negocio)",
+            "Cuestionario",
+        ]
+    },
+    p2: {
+        name: "producto2",
+        documentos: [
+            "Constancia de Situación Fiscal (actualizada menor a tres meses y descargada del portal del SAT)",
+            "Identificación Oficial Vigente (Credencial de Elector INE y/o Pasaporte)",
+            "Contratos de arrendamiento Vigente y/o Escritura de Propiedad (mandar de cada Sucursal)",
+            "Comprobante de domicilio (mandar de cada Sucursal y Fiscal) menor a tres meses",
+            "Estados de cuenta (últimos 12 meses)",
+            "Registro SatWS",
+            "Autorización Buró de Crédito · Buró de Crédito Persona Física (LIGA)",
+            // "Firmante Adicional (Aval)",
+            "ID, Aval",
+            "Constancia de Situación Fiscal, Aval (actualizada) menor a tres meses",
+            "Comprobante de Domicilio, Aval",
+            "Buró de Crédito Persona Física, Aval",
+            "Fotos del comercio (5 del Interior y 5 del exterior del negocio)",
+            "Cuestionario",
+        ]
+    }
+   },
+   12: {
+    name: "xepelin",
+    viabilidad: [],
+    p1: {
+        name:"factoraje Pm",
+        documentos: [
+            // Representante legal
+            "Identificación oficial, Representante legal ",
+            "Constancia de situación fiscal actualizada, Representante legal ",
+            "Comprobante de domicilio, Representante legal ",
+            // Empresa
+            "Acta Constitutiva, Empresa (primera) ",
+            "Acta de asamblea con Poder del Rep Legal, Empresa ",
+            "Constancia de situación Fiscal activa, Empresa ",
+            "Comprobante de Domicilio a nombre de la empresa ",
+            "Estado de Cuenta Bancario, Empresa",
+        ],
+    },
+    p2: {
+        name:"factoraje Pm Corp",
+        documentos: [
+            "Doc test 1",
+            "Doc test 2",
+            "Doc test 3",
+        ],
+    },
+    p3: {
+        name:"factoraje Pfae",
+        documentos: [
+            "Doc test 1",
+            "Doc test 2",
+            "Doc test 3",
+            "Doc test 4",
+        ],
+    },
+   },
     afirme: { // SIN ID
         name: "afirme",
         viabilidad: [
