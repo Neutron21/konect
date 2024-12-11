@@ -11,7 +11,7 @@ export class ModalComponent {
 
   constructor(
     private router: Router, 
-    private authService: AuthService // Inyectar AuthService
+    private authService: AuthService 
   ) { }
 
   redirectToLogin() {
