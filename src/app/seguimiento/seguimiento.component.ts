@@ -50,7 +50,6 @@ export class SeguimientoComponent implements OnInit {
   }
 
   applyFilters(): void {
-    // Filtrando los datos según los valores de los filtros
     this.filteredData = this.data.filter(item => {
       const matchesEstatus = this.filters.estatus
         ? item.estatus?.toLowerCase().includes(this.filters.estatus.toLowerCase())
@@ -70,7 +69,6 @@ export class SeguimientoComponent implements OnInit {
       return matchesEstatus && matchesCotizacionNombreProspecto && matchesFechaDesde && matchesFechaHasta;
     });
 
-    // Limpiar los campos de filtro después de aplicar los filtros
     this.filters.estatus = '';
     this.filters.cotizacionNombreProspecto = '';
     this.filters.fechaDesde = '';

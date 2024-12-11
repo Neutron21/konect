@@ -46,23 +46,27 @@ export class AuthService {
     this.isLoggedIn = true;
   }
   
-      logOut() {
-        signOut(this.auth).then(() => {
-        this.setLogOut();
+  logOut() {
+    signOut(this.auth)
+      .then(() => {
+        this.clearSessionData();
         this.router.navigateByUrl('/');
-          }).catch((error) => {
-            console.log('Error de Logout', error);
-          });
-        }
-      setLogOut(){
-        sessionStorage.removeItem('uid');
-        sessionStorage.removeItem('user');
-        sessionStorage.removeItem('token');
-        sessionStorage.removeItem('financiera'); 
-
-
-        this.isLoggedIn = false;
-      }
+      })
+      .catch((error) => {
+        console.error('Error al cerrar sesión:', error);
+      });
+  }
+  
+  private clearSessionData() {
+    sessionStorage.removeItem('uid');
+    sessionStorage.removeItem('user');
+    sessionStorage.removeItem('token');
+    sessionStorage.removeItem('financiera'); 
+  
+    sessionStorage.clear(); 
+    this.isLoggedIn = false;
+  }
+  
       getIsLoged (){
         const sessionTrue = sessionStorage.getItem('uid');
         this.isLoggedIn = sessionTrue !== null ? true : false;
