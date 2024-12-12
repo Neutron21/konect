@@ -4,7 +4,8 @@ export const documentacion: any = {
         p1: {
             name: "creditoS pm",
             documentos: [
-                'IDENTIFICACIÓN DE UN ACCIONISTA CON UN MÍNIMO DE 25% DE ACCIONES',
+                {nombre: 'IDENTIFICACIÓN DE UN ACCIONISTA', desc: 'CON UN MÍNIMO DE 25% DE ACCIONES'}
+                ,
                 'RFC CON EL QUE FACTURAS Y CONTRASEÑA DEL SAT',
                 'ACTA CONSTITUTIVA CON FOLIO DEL RPP',
                 'ASAMBLEAS CON FOLIO DEL RPP  (EN CASO DE APLICAR)',
