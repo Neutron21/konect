@@ -160,9 +160,4 @@ export class PerfiladorComponent implements AfterViewInit {
     link.download = nombreArchivo;
     link.click();
   }
-
-
-
-  
-  
 }

@@ -14,8 +14,9 @@
       <div id="collapseOne" class="accordion-collapse collapse show" aria-labelledby="headingOne" data-bs-parent="#accordionExample">
         <div class="accordion-body">
           <img src="assets/konfio.png" alt="konfio" class="img-fluid mb-3">
-            <br>
+          <div class="text-center">
             <button (click)="descargarImagen('assets/konfio.png', 'konfio.png')" class="btn btn-primary mt-3">Descargar Imagen</button>
+          </div>
         </div>
       </div>
     </div>
@@ -28,13 +29,14 @@
       <div id="collapseTwo" class="accordion-collapse collapse" aria-labelledby="headingTwo" data-bs-parent="#accordionExample">
         <div class="accordion-body">
           <iframe src="assets/heybanco.pdf" width="100%" height="500px" class="mb-3"></iframe>
-          <br>
-          <button (click)="descargarPDF('assets/heybanco.pdf', 'heybanco.pdf')" class="btn btn-primary mt-3">Descargar PDF</button>
+          <div class="text-center">
+            <button (click)="descargarPDF('assets/heybanco.pdf', 'heybanco.pdf')" class="btn btn-primary mt-3">Descargar PDF</button>
+          </div>
         </div>
       </div>
     </div>
   </div>
-
+  
 <div class="mt-4">
     <h2 class="text-center">Formulario de Financiamiento</h2>
     <form (ngSubmit)="enviarFormulario(formularioForm)" #formularioForm="ngForm">

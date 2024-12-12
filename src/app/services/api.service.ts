@@ -83,4 +83,13 @@ export class ApiService {
       }
     });
   }
+  checkSessionExpired(request:any): Observable<any> {
+  const headersJson = new HttpHeaders({
+    'Content-Type': 'application/json',
+    'X-Auth-Token': this.authService.getToken() + ""
+  });
+
+  return this.http.post(environment.api + environment.sessionExpired,  JSON.stringify(request), { headers: headersJson });
+}
+
 }
