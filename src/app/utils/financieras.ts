@@ -1,6 +1,6 @@
 export const financieras = [
   {
-    id: "1",
+    id: 1,
     nombre: "Konfio",
     proceso:"link",
     url: "https://konfio.mx",
@@ -12,7 +12,7 @@ export const financieras = [
     img: "assets/konfio.jpeg"
   },
   {
-    id: "2",
+    id: 2,
     nombre: "PDN",
     proceso:"link",
     url: "https://www.portafoliodenegocios.com.mx/",
@@ -22,7 +22,7 @@ export const financieras = [
     img: "assets/pdn.png"
   },
   {
-    id: "3",
+    id: 3,
     nombre: "Covalto",
     proceso:"mail",
     fase:"1",
@@ -45,7 +45,7 @@ export const financieras = [
     img: "assets/covalto.png"
   },
   {
-    id: "4",
+    id: 4,
     nombre: "Anticipa",
     proceso:"link",
     fase:"2",
@@ -54,7 +54,7 @@ export const financieras = [
     img: "assets/anticipa.png"
   },
   {
-    id: "5",
+    id: 5,
     nombre: "BX+",
     proceso:"mail",
     fase:"2",
@@ -63,7 +63,7 @@ export const financieras = [
     img: "assets/bx+.png"
   },
   {
-    id: "6",
+    id: 6,
     nombre: "ION",
     proceso:"mail",
     fase:"2",
@@ -72,7 +72,7 @@ export const financieras = [
     img: "assets/Ion.png"
   },
   {
-    id: "7",
+    id: 7,
     nombre: "HeyBanco",
     proceso:"mail",
     fase:"1",
@@ -81,7 +81,7 @@ export const financieras = [
     img: "assets/heybanco.jpg"
   },
   {
-    id: "8",
+    id: 8,
     nombre: "ActiveLeasing",
     proceso:"mail",
     fase:"1",
@@ -95,7 +95,7 @@ export const financieras = [
     img: "assets/activeleasing.jpeg"
   },
   {
-    id: "9",
+    id: 9,
     nombre: "HayCash",
     proceso:"link",
     url: "https://haycash.com.mx/home",
@@ -107,7 +107,7 @@ export const financieras = [
     img: "assets/haycash.png"
   },
   {
-    id: "10",
+    id: 10,
     nombre: "Finsus",
     proceso:"link",
     fase:"2",
@@ -116,7 +116,7 @@ export const financieras = [
     img: "assets/finsus.png"
   },
   {
-    id: "11",
+    id: 11,
     nombre: "FinBeABC",
     proceso:"mail",
     fase:"2",
@@ -129,26 +129,26 @@ export const financieras = [
     img: "assets/finbeabc.png"
   },
   {
-    id: "12",
+    id: 12,
     nombre: "Xepelin",
     proceso:"link",
     url: "https://xepelin.com/mx",
     fase:"1",
-    productos: ["ANTICIPO DE VENTAS FUTURAS CON TARJETAS BANCARIAS"],
+    productos: ["Factoraje Pm","Factoraje Pm Corp","Factoraje Pfae"],
     descripcion: "Seguridad privada, despachos jurídicos y contables, outsourcing, aseguradoras, gobierno, minería, gasolinerías, sofom, casas de apuestas.",
     img: "assets/xepelin.jpeg"
   },
   {
-    id: "13",
+    id: 13,
     nombre: "Arrenda+",
     proceso:"mail",
     fase:"1",
-    productos: ["Arrendamiento Puro", "Arrendamiento S&LB"],
+    productos: ["Arrendamiento Pf", "Arrendamiento Pfae","Arrendamiento Pm","Credito Simple Pf","Credito Simple Pfae","Credito Simple Pm"],
     descripcion: "Si es persona moral siempre se necesitará un aval persona física. En el caso de PFAE o PF solo se necesitará aval si el prospecto no cuenta con exposición de buró de crédito.",
     img: "assets/arrenda+.webp"
   },
   {
-      id: "14",
+      id: 14,
       nombre: "Afirme",
       proceso: "mail",
       fase: "1",
@@ -156,6 +156,4 @@ export const financieras = [
       descripcion: "Capital de trabajo, adquisición de activo fijo y pagos pasivos.",
       img: "assets/afirme.png"
     }
-    
-  
 ];

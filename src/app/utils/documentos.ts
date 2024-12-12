@@ -1,6 +1,6 @@
-export const documentacion = {
-    1: {
-        nombre: "konfio",
+export const documentacion: any = {
+    F1: {
+        name: "konfio",
         p1: {
             name: "creditoS pm",
             documentos: [
@@ -48,7 +48,19 @@ export const documentacion = {
             ]
         }
     },
-    3: {
+    F2: {
+        name:"",
+        viabilidad: [],
+        p1: {
+            name: "",
+            documentos: [],
+        },
+        p2: {
+            name: "",
+            documentos: [],
+        },
+    },
+    F3: {
         name: "covalto",
         viabilidad: [
             'BURÓ DE CRÉDITO TANTO DEL ACREDITADO COMO DEL AVAL',
@@ -189,7 +201,43 @@ export const documentacion = {
             ]
         }
     },
-   7: {
+    F4: {
+        name:"",
+        viabilidad: [],
+        p1: {
+            name: "",
+            documentos: [],
+        },
+        p2: {
+            name: "",
+            documentos: [],
+        },
+    },
+    F5: {
+        name:"",
+        viabilidad: [],
+        p1: {
+            name: "",
+            documentos: [],
+        },
+        p2: {
+            name: "",
+            documentos: [],
+        },
+    },
+    F6: {
+        name:"",
+        viabilidad: [],
+        p1: {
+            name: "",
+            documentos: [],
+        },
+        p2: {
+            name: "",
+            documentos: [],
+        },
+    },
+   F7: {
     name: "heyBanco",
     p1: {
         name:"creditoSimple",
@@ -209,7 +257,7 @@ export const documentacion = {
         ],
     },
    },
-   8: {
+   F8: {
     name: "activeLeasing",
     viabilidad: [
         'ESTADOS FINANCIEROS AL CIERRE 2021, 2022 Y PARCIAL 2023 NO MAYOR A 2 MESES (CON ANALÍTICAS Y FIRMADOS POR EL REPRESENTANTE LEGAL Y CP)',
@@ -218,6 +266,7 @@ export const documentacion = {
         'FICHA TÉCNICA DEL ACTIVO',
     ],
     p1: {
+        id:"p1",
         name: "arrendamientoPuro",
         documentos: [
             'ACTA CONSTITUTIVA, PODERES, PROTOCOLIZACIONES ETC (CON SELLO RPP)',
@@ -242,7 +291,7 @@ export const documentacion = {
         ]
     }
    },
-   9: {
+   F9: {
     name: "hayCash",
     viabilidad: [
         "Constancia de Situación Fiscal (actualizada menor a tres meses y descargada del portal del SAT)",
@@ -251,7 +300,7 @@ export const documentacion = {
         "Estados de cuenta (3 últimos)"
     ],
     p1: {
-        name: "producto1",
+        name: "Financiamiento con Terminal Punto de Venta (TPV) Pm",
         documentos: [
             "Checklist Persona Moral Acta Constitutiva y todas las Asambleas con su respectivo RPPC  ",
             "Constancia de Situación Fiscal (actualizada menor a tres meses y descargada del portal del SAT) ",
@@ -275,7 +324,7 @@ export const documentacion = {
         ]
     },
     p2: {
-        name: "producto2",
+        name: "Financiamiento con Terminal Punto de Venta (TPV) Pf",
         documentos: [
             "Constancia de Situación Fiscal (actualizada menor a tres meses y descargada del portal del SAT)",
             "Identificación Oficial Vigente (Credencial de Elector INE y/o Pasaporte)",
@@ -294,7 +343,31 @@ export const documentacion = {
         ]
     }
    },
-   12: {
+   F10: {
+        name:"",
+        viabilidad: [],
+        p1: {
+            name: "",
+            documentos: [],
+        },
+        p2: {
+            name: "",
+            documentos: [],
+        },
+    },
+    F11: {
+        name:"",
+        viabilidad: [],
+        p1: {
+            name: "",
+            documentos: [],
+        },
+        p2: {
+            name: "",
+            documentos: [],
+        },
+    },
+   F12: {
     name: "xepelin",
     viabilidad: [],
     p1: {
@@ -315,22 +388,109 @@ export const documentacion = {
     p2: {
         name:"factoraje Pm Corp",
         documentos: [
-            "Doc test 1",
-            "Doc test 2",
-            "Doc test 3",
+            // Representante legal: 
+            "Identificación oficial",
+            "Constancia de situación fiscal actualizada",
+            "Comprobante de domicilio",
+            // Empresa
+            "Acta Constitutiva, Empresa (primera)",
+            "Acta de asamblea con Poder del Rep Legal, Empresa",
+            "Constancia de situación Fiscal activa, Empresa",
+            "Comprobante de Domicilio, a nombre de la empresa ",
+            "Estado de Cuenta Bancario, Empresa",
         ],
     },
     p3: {
         name:"factoraje Pfae",
         documentos: [
-            "Doc test 1",
-            "Doc test 2",
-            "Doc test 3",
-            "Doc test 4",
+            "Identificación oficial",
+            "Constancia de situación fiscal actualizada (con QR)",
+            "Comprobante de domicilio (No mayor a 3 meses)",
+            "Edo de cuenta bancario (no mayor a 3 meses)",
         ],
     },
    },
-    afirme: { // SIN ID
+   F13: {
+        name:"arrenda+",
+        viabilidad: [],
+        p1: {
+            name: "Arrendamiento Pf",
+            documentos: [
+                "Copia identificación oficial de titular persona física.",
+                "Últimos 3 estados de cuenta cheques/ ahorro con CLABE de titular.",
+                "Copia comprobante de domicilio del solicitante con antigüedad no mayor a 3 meses.",
+                "Documentación de garantías propuestas.",
+                "Copia RFC del proveedor de la garantía.",
+            ],
+        },
+        p2: {
+            name: "Arrendamiento Pfae",
+            documentos: [
+                "Clave de Identificación electrónica Confidencial, proporcionada por el SAT.",
+                "Copia identificación oficial de titular persona física.",
+                "Estados Financieros firmados por titular",
+                "Últimos 3 estados de cuenta cheques/ ahorro con CLABE de titular.",
+                "Copia comprobante de domicilio del solicitante con antigüedad no mayor a 3 meses.",
+                "Documentación de garantías propuestas.",
+                "Copia RFC del proveedor de la garantía.",
+            ],
+        },
+        p3: {
+            name: "Arrendamiento Pm",
+            documentos: [
+                "Copia de identificación oficial del titular y/o aval persona física, cuando no cuente con firma *CIEC.",
+                "Clave de Identificación electrónica Confidencial, proporcionada por el SAT.",
+                "Copia identificación oficial de titular de representante legal.",
+                "Estados financieros firmados por representante legal.",
+                "Últimos 3 estados de cuenta cheques/ ahorro con CLABE de titular y aval.",
+                "Copia simple de la escritura del acta constitutiva, sus modificaciones y poderes (incluyendo registro público).",
+                "Copia comprobante de domicilio fiscal del solicitante con antigüedad no mayor a 3 meses.",
+                "Evidencia de consulta de vigencia de fiel (captura).",
+                "Documentación de garantías propuestas.",
+                "Copia RFC del proveedor de la garantía.",
+                "Copia del registro de prestadores de servicios financieros a cargo de CONDUSEF (en caso de ser entidad financiera)",
+            ],
+        },
+        p4: {
+            name: "CreditoSimple Pf",
+            documentos: [
+                "Copia identificación oficial de titular persona física.",
+                "Últimos 3 estados de cuenta cheques/ ahorro con CLABE de titular.",
+                "Copia comprobante de domicilio del solicitante con antigüedad no mayor a 3 meses.",
+                "Documentación de garantías propuestas.",
+                "Copia RFC del proveedor de la garantía.",  
+            ],
+        },
+        p5: {
+            name: "CreditoSimple Pfae",
+            documentos: [
+                "Clave de Identificación electrónica Confidencial, proporcionada por el SAT.",
+                "Copia identificación oficial de titular persona física.",
+                "Estados Financieros firmados por titular",
+                "Últimos 3 estados de cuenta cheques/ ahorro con CLABE de titular.",
+                "Copia comprobante de domicilio del solicitante con antigüedad no mayor a 3 meses.",
+                "Documentación de garantías propuestas.",
+                "Copia RFC del proveedor de la garantía.",
+            ],
+        },
+        p6: {
+            name: "CreditoSimple Pm",
+            documentos: [
+                "Copia de identificación oficial del titular y/o aval persona física, cuando no cuente con firma *CIEC.",
+                "Clave de Identificación electrónica Confidencial, proporcionada por el SAT.",
+                "Copia identificación oficial de titular de representante legal.",
+                "Estados financieros firmados por representante legal.",
+                "Últimos 3 estados de cuenta cheques/ ahorro con CLABE de titular y aval.",
+                "Copia simple de la escritura del acta constitutiva, sus modificaciones y poderes (incluyendo registro público).",
+                "Copia comprobante de domicilio fiscal del solicitante con antigüedad no mayor a 3 meses.",
+                "Evidencia de consulta de vigencia de fiel (captura).",
+                "Documentación de garantías propuestas.",
+                "Copia RFC del proveedor de la garantía.",
+                "Copia del registro de prestadores de servicios financieros a cargo de CONDUSEF (en caso de ser entidad financiera)",
+            ],
+        },
+    },
+    F14: {
         name: "afirme",
         viabilidad: [
             'CUESTIONARIO DE VIABILIDAD 3 HOJAS',
@@ -380,4 +540,4 @@ export const documentacion = {
         ]
       }
     }
-}
+};

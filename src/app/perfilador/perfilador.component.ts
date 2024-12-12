@@ -1,7 +1,6 @@
 import { Component, AfterViewInit, ViewChild, ElementRef } from '@angular/core';
 import { Router } from '@angular/router';
 import { ApiService } from '../services/api.service';
-import { documentacion } from '../utils/documentos';
 import { financieras } from '../utils/financieras';
 
 declare var bootstrap: any;
@@ -34,7 +33,8 @@ export class PerfiladorComponent implements AfterViewInit {
   formularioEnviado: boolean = false;
   mostrarError: boolean = false; 
   modal: any;
-  documentos: any;  // Variable para almacenar los documentos
+  finacieraId: number = 0;
+  productIndex: number = 0;
 
   constructor(
     private router: Router,
@@ -46,8 +46,6 @@ export class PerfiladorComponent implements AfterViewInit {
 
   ngOnInit(): void {
     this.getFinanciera();
-    this.documentos = documentacion;  // Cargar los documentos desde documentos.ts
-
   }
 
   ngAfterViewInit(): void {
@@ -62,7 +60,9 @@ export class PerfiladorComponent implements AfterViewInit {
   }
   getFinanciera() {
     const idFin = JSON.parse(sessionStorage.getItem("financiera") + "");
+    this.finacieraId = Number(idFin);
     const currentProduct = JSON.parse(sessionStorage.getItem("producto") + "");
+    this.productIndex = Number(currentProduct);
     console.log(idFin);
     const institucion = financieras.find(el => el.id == idFin);
     this.docProcess = institucion?.proceso == "mail";

@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import { documentacion } from '../utils/documentos';
 import { ApiService } from '../services/api.service';
 
@@ -10,18 +10,30 @@ import { ApiService } from '../services/api.service';
 export class FormDocsComponent implements OnInit {
 
   fileUpload: any;
-  currentFiles = documentacion.afirme.viabilidad;
+  currentFiles: any[] = [];
+  viabilidad: any[] = [];
   fileList: any[] = [];
+  
+  idFin!: string;
+  product!: number;
 
   constructor(
     private apiServices: ApiService,
   ) { }
 
   ngOnInit(): void {
+    this.getFinAndProduct();
+  }
+  getFinAndProduct() {
+    this.idFin = "F"+sessionStorage.getItem("financiera");
+    this.product = Number(sessionStorage.getItem("producto")) + 1;
+    const productoFormat = "p"+this.product;
+    this.currentFiles = documentacion[this.idFin][productoFormat].documentos;
+    this.viabilidad = documentacion[this.idFin].viabilidad;
   }
   onFileSelect(event: any, nameFile: string) {
     const file = event.target.files[0];
-    const allowedExtensions = ['pdf'];
+    const allowedExtensions = ['pdf','PDF','jpg','JPG','zip','ZIP','rar','RAR'];
   
     if (file) {
       const fileExtension = file.name.split('.').pop().toLowerCase();
