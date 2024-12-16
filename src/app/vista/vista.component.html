@@ -1,36 +1,51 @@
 <div class="container">
-    <h1>Cotización</h1>
-  
-    <!-- Botón de cerrar -->
-    <div class="d-flex justify-content-end mb-3">
-      <i 
-        class="fas fa-times text-danger" 
-        style="cursor: pointer; font-size: 1.5rem;" 
-        (click)="navigateBack()">
-      </i>
-    </div>
-  
-    <!-- Formulario -->
-    <div *ngIf="cotizacion">
-      <div class="form-group">
-        <label>Nombre:</label>
-        <p>{{ cotizacion.nombre }}</p>
-      </div>
-  
-      <div class="form-group">
-        <label>Edad:</label>
-        <p>{{ cotizacion.edad }}</p>
-      </div>
-  
-      <div class="form-group">
-        <label>Monto:</label>
-        <p>{{ cotizacion.monto }}</p>
-      </div>
-  
-      <div class="form-group">
-        <label>Tipo de Persona:</label>
-        <p>{{ cotizacion.tipo_persona }}</p>
-      </div>
+  <h1>Cotización</h1>
+
+  <div class="d-flex justify-content-end mb-3">
+    <i class="fas fa-times text-danger" style="cursor: pointer; font-size: 1.5rem;" (click)="navigateBack()"></i>
+  </div>
+
+  <div *ngIf="loading" class="d-flex justify-content-center">
+    <div class="spinner-border text-primary" role="status">
+      <span class="visually-hidden">Cargando...</span>
     </div>
   </div>
-  
+
+  <div *ngIf="cotizacion && cotizacion.id_cotizacion">
+    <div class="form-group">
+      <label for="idCotizacion">Cotizacion:</label>
+      <input id="idCotizacion" type="text" class="form-control" [value]="cotizacion.id_cotizacion" readonly>
+    </div>
+
+    <div class="form-group">
+      <label for="estatus">Estatus:</label>
+      <input id="estatus" type="text" class="form-control" [(ngModel)]="cotizacion.estatus">
+    </div>
+
+    <div class="form-group">
+      <label for="nombre">Nombre:</label>
+      <input id="nombre" type="text" class="form-control" [(ngModel)]="cotizacion.nombre">
+    </div>
+
+    <div class="form-group">
+      <label for="edad">Edad:</label>
+      <input id="edad" type="number" class="form-control" [(ngModel)]="cotizacion.edad">
+    </div>
+
+    <div class="form-group">
+      <label for="monto">Monto:</label>
+      <input id="monto" type="text" class="form-control" [(ngModel)]="cotizacion.monto">
+    </div>
+
+    <div class="form-group">
+      <label for="tipoPersona">Tipo de Persona:</label>
+      
+      <input 
+        id="tipoPersona" 
+        type="text" 
+        class="form-control" 
+        [value]="cotizacion.tipo_persona === 'f' ? 'Física' : cotizacion.tipo_persona === 'm' ? 'Moral' : ''"
+        readonly
+      >
+  </div>
+</div>

@@ -86,6 +86,8 @@ export class SeguimientoComponent implements OnInit {
   }
 
   navigateToVista(item: any): void {
-    this.router.navigate(['/vista'], { queryParams: { id: item.id_cotizacion } });
+    console.log('Navigating to Vista with item:', item);  // Verifica si el item tiene la propiedad id_cotizacion
+    this.router.navigate(['/vista'], { queryParams: { id_cotizacion: item.id_cotizacion } });
   }
+  
 }

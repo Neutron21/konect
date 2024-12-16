@@ -1,3 +1,75 @@
-.container{
+.container {
     margin-top: 5em;
-}
+  }
+  
+  /* Contenedor principal */
+  .cotizacion-container {
+    margin-top: 20px;
+  }
+  
+  /* Título de cotización */
+  .cotizacion-title {
+    font-size: 2rem;
+    color: #333;
+    text-align: center;
+  }
+  
+  /* Botón de cerrar */
+  .close-button {
+    display: flex;
+    justify-content: flex-end;
+    margin-bottom: 1rem;
+  }
+  
+  .close-button i {
+    cursor: pointer;
+    font-size: 1.5rem;
+  }
+  
+  /* Indicador de carga */
+  .loading-spinner {
+    display: flex;
+    justify-content: center;
+    margin-top: 20px;
+  }
+  
+  .spinner-border {
+    width: 3rem;
+    height: 3rem;
+  }
+  
+  /* Detalles de cotización */
+  .cotizacion-details {
+    margin-top: 20px;
+  }
+  
+  /* Estilo de cada grupo de formulario */
+  .cotizacion-form-group {
+    margin-bottom: 1.5rem;
+  }
+  
+  /* Estilo de las etiquetas */
+  .cotizacion-form-group label {
+    font-weight: bold;
+    font-size: 1rem;
+    color: #555;
+  }
+  
+  /* Estilo de los inputs */
+  .cotizacion-input {
+    width: 80%; /* Reducido el ancho al 80% */
+    padding: 0.5rem; /* Reducido el padding */
+    font-size: 0.9rem; /* Reducido el tamaño de la fuente */
+    border-radius: 5px;
+    border: 1px solid #ccc;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    margin-bottom: 0.5rem; /* Añadido margen inferior para separar los inputs */
+
+  }
+  
+  /* Estilo cuando un input tiene el foco */
+  .cotizacion-input:focus {
+    border-color: #007bff;
+    box-shadow: 0 0 5px rgba(0, 123, 255, 0.5);
+  }
+  

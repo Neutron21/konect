@@ -14,6 +14,8 @@ import { FormDocsComponent } from './form-docs/form-docs.component';
 import { BackArrowComponent } from './back-arrow/back-arrow.component';
 import { InstitucionesComponent } from './instituciones/instituciones.component';
 import { ModalComponent } from './modal/modal.component';
+import { CommonModule } from '@angular/common';  
+import { VistaComponent } from './vista/vista.component';  
 
 @NgModule({
   declarations: [
@@ -28,6 +30,7 @@ import { ModalComponent } from './modal/modal.component';
     BackArrowComponent,
     InstitucionesComponent,
     ModalComponent,
+    VistaComponent
   ],
   imports: [
     BrowserModule,
@@ -35,7 +38,9 @@ import { ModalComponent } from './modal/modal.component';
     FormsModule,
     ReactiveFormsModule,
     HttpClientModule,
+    CommonModule 
   ],
+  
   providers: [],
   bootstrap: [AppComponent]
 })
