@@ -1,8 +1,8 @@
 export const documentacion: any = {
     F1: {
-        name: "konfio",
+        name: 'konfio',
         p1: {
-            name: "creditoS pm",
+            name: 'creditoS pm',
             documentos: [
                 {nombre: 'IDENTIFICACIÓN DE UN ACCIONISTA', desc: 'CON UN MÍNIMO DE 25% DE ACCIONES'},
                 {nombre: 'RFC CON EL QUE FACTURAS Y CONTRASEÑA DEL SAT', desc: ''},
@@ -53,19 +53,19 @@ export const documentacion: any = {
         }
     },
     F2: {
-        name:"",
+        name:'',
         viabilidad: [],
         p1: {
-            name: "",
+            name: '',
             documentos: [],
         },
         p2: {
-            name: "",
+            name: '',
             documentos: [],
         },
     },
     F3: {
-        name: "covalto",
+        name: 'covalto',
         viabilidad: [
             {nombre: 'BURÓ DE CRÉDITO TANTO DEL ACREDITADO COMO DEL AVAL', desc: ''},
             {nombre: 'ESTADOS FINANCIEROS DE LOS ÚLTIMOS DOS CIERRES DE AÑOS Y PARCIALES', desc: ''},
@@ -155,7 +155,7 @@ export const documentacion: any = {
             
         },
         p4: {
-            name: "CreditoSimpleRevolventeConGarantia Pfae",
+            name: 'CreditoSimpleRevolventeConGarantia Pfae',
             documentos: [
                 {nombre: 'SOLICITUD DE CRÉDITO COMPLETA Y FIRMADA', desc: ''},
                 {nombre: 'INE / PASAPORTE / EXTRANJERO FM2', desc: 'ACREDITADO, ACCIONISTA, REP LEGAL O GARANTE'},
@@ -210,38 +210,38 @@ export const documentacion: any = {
         }
     },
     F4: {
-        name:"",
+        name:'',
         viabilidad: [],
         p1: {
-            name: "",
+            name: '',
             documentos: [],
         },
         p2: {
-            name: "",
+            name: '',
             documentos: [],
         },
     },
     F5: {
-        name:"",
+        name:'',
         viabilidad: [],
         p1: {
-            name: "",
+            name: '',
             documentos: [],
         },
         p2: {
-            name: "",
+            name: '',
             documentos: [],
         },
     },
     F6: {
-        name:"",
+        name:'',
         viabilidad: [],
         p1: {
-            name: "",
+            name: '',
             documentos: [],
         },
         p2: {
-            name: "",
+            name: '',
             documentos: [],
         },
     },
@@ -256,7 +256,7 @@ export const documentacion: any = {
         ],
     },
     p2: {
-        name:"creditoRevolvente",
+        name:'creditoRevolvente',
         documentos: [
             'Doc test 1',
             'Doc test 2',
@@ -274,8 +274,8 @@ export const documentacion: any = {
         {nombre: 'FICHA TÉCNICA DEL ACTIVO', desc: ''}
     ],
     p1: {
-        id:"p1",
-        name: "arrendamientoPuro",
+        id:'p1',
+        name: 'arrendamientoPuro',
         documentos: [
             {nombre: 'ACTA CONSTITUTIVA, PODERES, PROTOCOLIZACIONES ETC', desc: 'Con sello RPP'},
             {nombre: 'CONSTANCIA DE SITUACIÓN FISCAL', desc: ''},
@@ -354,26 +354,26 @@ export const documentacion: any = {
     }
    },
    F10: {
-        name:"",
+        name:'',
         viabilidad: [],
         p1: {
-            name: "",
+            name: '',
             documentos: [],
         },
         p2: {
-            name: "",
+            name: '',
             documentos: [],
         },
     },
     F11: {
-        name:"",
+        name:'',
         viabilidad: [],
         p1: {
-            name: "",
+            name: '',
             documentos: [],
         },
         p2: {
-            name: "",
+            name: '',
             documentos: [],
         },
     },
