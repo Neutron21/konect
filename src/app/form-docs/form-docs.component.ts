@@ -66,23 +66,27 @@ export class FormDocsComponent implements OnInit {
       console.log(this.fileList);
   }
   sendDocs() {
-    const cotizacion = "4";
+    const cotizacion = btoa(4+"");
     console.log(this.fileList);
     const formData = new FormData();
     const user = sessionStorage.getItem('user')+"";
     formData.append('user', user);
     formData.append('idCotizacion', cotizacion);
     this.fileList.forEach((document, index) => {
-      formData.append(`file${index}`, document.file, document.customName);
+      formData.append(document.customName, document.file);
     });
     console.log('Contenido de FormData:');
     formData.forEach((value, key) => {
       console.log(`${key}:`, value);
     });
   
-    this.apiServices.upLoadFiles(formData);
-  }
-  uploadFiles(data: FormData) {
-
+    this.apiServices.upLoadFiles(formData).subscribe({
+      next: (response) => {
+        console.log('Datos enviados con éxito:', response);
+      },
+      error: (error) => {
+        console.error('Error al enviar los datos:', error);
+      }
+    });
   }
 }

@@ -1,4 +1,4 @@
-<div *ngIf="viabilidad.length > 0" class="viabilidad">
+<div *ngIf="!!viabilidad && viabilidad.length > 0" class="viabilidad">
   <h3 class="viabilidad-text">Viabilidad</h3>
   <div class="col" *ngFor="let v of viabilidad">
     <div class="mb-3">

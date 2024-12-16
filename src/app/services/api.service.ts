@@ -69,19 +69,12 @@ export class ApiService {
 
     return this.http.get<any[]>(environment.api + environment.queryCustom, { headers: headersJson, params });
   }  
-  upLoadFiles(request : FormData) {
+  upLoadFiles(request : FormData): Observable<any> {
     const headersJson = new HttpHeaders({
-      'Content-Type': 'application/json',
+      // Cuando es formData multipart, no se manda esta cabecera 'Content-Type': 'application/json',
       'X-Auth-Token': this.authService.getToken() + ""
     });
-  return this.http.post(environment.api + environment.sendFiles, JSON.stringify(request), { headers: headersJson }).subscribe({
-      next: (response) => {
-        console.log('Datos enviados con éxito:', response);
-      },
-      error: (error) => {
-        console.error('Error al enviar los datos:', error);
-      }
-    });
+  return this.http.post(environment.api + environment.sendFiles, request, { headers: headersJson })
   }
   checkSessionExpired(request:any): Observable<any> {
   const headersJson = new HttpHeaders({
