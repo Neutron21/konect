@@ -47,7 +47,7 @@ export const documentacion: any = {
             documentos: [
                 {nombre: 'IDENTIFICACION', desc: 'INE, PASAPORTE O RESIDENCIA PERMANENTE EN CASO DE EXTRAJERO (VIGENTES Y ESCANEADOS EN PDF)'},
                 {nombre: 'RFC', desc: 'CON EL QUE FACTURAS Y CONTRASEÑA DEL SAT'},
-                {nombre: 'COMPROBANTE DE DOMICILIO DEL NEGOCIO O CONSTANCIA DE SITUACIÓN FISCAL', desc: ''}
+                {nombre: 'COMPROBANTE DE DOMICILIO ', desc:'DEL NEGOCIO O CONSTANCIA DE SITUACIÓN FISCAL'}
             ]
             
         }
@@ -69,7 +69,7 @@ export const documentacion: any = {
         viabilidad: [
             {nombre: 'BURÓ DE CRÉDITO', desc: 'TANTO DEL ACREDITADO COMO DEL AVAL'},
             {nombre: 'ESTADOS FINANCIEROS' , desc: 'DE LOS ÚLTIMOS DOS CIERRES DE AÑOS Y PARCIALES'},
-            {nombre: 'CUADRO DE PASIVOS ACTUALIZADO', desc: ''},
+            {nombre: 'CUADRO DE PASIVOS', desc:'ACTUALIZADO'},
             {nombre: 'CURRICULUM VITAE', desc: ' (CV)'}
         ],
         

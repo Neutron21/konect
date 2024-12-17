@@ -8,6 +8,7 @@ import { ApiService } from '../services/api.service';
   styleUrls: ['./form-docs.component.scss']
 })
 export class FormDocsComponent implements OnInit {
+  [x: string]: any;
 
   fileUpload: any;
   currentFiles: any[] = [];
@@ -17,23 +18,29 @@ export class FormDocsComponent implements OnInit {
   idFin!: string;
   product!: number;
 
-  constructor(
-    private apiServices: ApiService,
-  ) { }
+  constructor(private apiServices: ApiService) { }
 
   ngOnInit(): void {
     this.getFinAndProduct();
   }
+
   getFinAndProduct() {
-    this.idFin = "F"+sessionStorage.getItem("financiera");
+    this.idFin = "F" + sessionStorage.getItem("financiera");
     this.product = Number(sessionStorage.getItem("producto")) + 1;
-    const productoFormat = "p"+this.product;
+    const productoFormat = "p" + this.product;
     this.currentFiles = documentacion[this.idFin][productoFormat].documentos;
     this.viabilidad = documentacion[this.idFin].viabilidad;
+
+    if (!!this.viabilidad) { 
+      this.viabilidad.forEach(v => {
+        v.showDesc = false; // Inicializamos `showDesc` como `false`
+      });
+    }
   }
+
   onFileSelect(event: any, nameFile: string) {
     const file = event.target.files[0];
-    const allowedExtensions = ['pdf','PDF','jpg','JPG','zip','ZIP','rar','RAR'];
+    const allowedExtensions = ['pdf', 'PDF', 'jpg', 'JPG', 'zip', 'ZIP', 'rar', 'RAR'];
   
     if (file) {
       const fileExtension = file.name.split('.').pop().toLowerCase();
@@ -55,21 +62,23 @@ export class FormDocsComponent implements OnInit {
       }
     }
   }
+
   validarExistencias(name: string) { 
-      const indice = this.fileList.findIndex(el => el.customName.includes(name));
-      console.log(indice);
-      if (indice >= 0) {
-        this.fileList[indice] = this.fileUpload;
-      } else {
-        this.fileList.push({...this.fileUpload});
-      }
-      console.log(this.fileList);
+    const indice = this.fileList.findIndex(el => el.customName.includes(name));
+    console.log(indice);
+    if (indice >= 0) {
+      this.fileList[indice] = this.fileUpload;
+    } else {
+      this.fileList.push({ ...this.fileUpload });
+    }
+    console.log(this.fileList);
   }
+
   sendDocs() {
     const cotizacion = "4";
     console.log(this.fileList);
     const formData = new FormData();
-    const user = sessionStorage.getItem('user')+"";
+    const user = sessionStorage.getItem('user') + "";
     formData.append('user', user);
     formData.append('idCotizacion', cotizacion);
     this.fileList.forEach((document, index) => {
@@ -82,7 +91,8 @@ export class FormDocsComponent implements OnInit {
   
     this.apiServices.upLoadFiles(formData);
   }
-  uploadFiles(data: FormData) {
 
+  toggleDesc(v: any): void {
+    v.showDesc = !v.showDesc; // Alternamos el estado de la descripción para el objeto `v`
   }
 }
