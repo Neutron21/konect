@@ -22,25 +22,25 @@
       <div class="col-md-6">
         <div class="form-group">
           <label for="estatus">Estatus:</label>
-          <input id="estatus" type="text" class="form-control" [(ngModel)]="cotizacion.estatus">
+          <input id="estatus" type="text" class="form-control" [(ngModel)]="cotizacion.estatus" readonly>
         </div>
       </div>
       <div class="col-md-6">
         <div class="form-group">
           <label for="nombre">Nombre:</label>
-          <input id="nombre" type="text" class="form-control" [(ngModel)]="cotizacion.nombre">
+          <input id="nombre" type="text" class="form-control" [(ngModel)]="cotizacion.nombre" readonly>
         </div>
       </div>
       <div class="col-md-6">
         <div class="form-group">
           <label for="edad">Edad:</label>
-          <input id="edad" type="number" class="form-control" [(ngModel)]="cotizacion.edad">
+          <input id="edad" type="number" class="form-control" [(ngModel)]="cotizacion.edad" readonly>
         </div>
       </div>
       <div class="col-md-6">
         <div class="form-group">
           <label for="monto">Monto:</label>
-          <input id="monto" type="text" class="form-control" [(ngModel)]="cotizacion.monto">
+          <input id="monto" type="text" class="form-control" [(ngModel)]="cotizacion.monto" readonly>
         </div>
       </div>
       <div class="col-md-6">
@@ -57,4 +57,14 @@
       </div>
     </div>
   </div>
+
+  <div class="form-group mt-4">
+    <label for="comentarios">Comentarios:</label>
+    <textarea id="comentarios" class="form-control" rows="4"></textarea>
+  </div>
 </div>
+  <!-- <app-form-docs></app-form-docs> -->
+
+
+  
+ 

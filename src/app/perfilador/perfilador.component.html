@@ -122,8 +122,10 @@
           </div> 
         </div>
         <div class="form-group text-center mb-4">
-          <button *ngIf="docProcess" type="submit" class="btn btn-primary btn-sm btn-block">Enviar</button>
-          <a *ngIf="!docProcess" type="button" class="btn btn-primary btn-sm btn-block mt-3" target="_blank" [href]="urlFin">Enviar y Continuar con link</a>
+          <button type="submit" class="btn btn-primary btn-lg btn-sm d-block d-sm-inline-block" (click)="enviarFormulario(formularioForm)">
+            Enviar
+          </button>
+         <a *ngIf="!docProcess" type="button" class="btn btn-primary btn-sm btn-block mt-3" target="_blank" [href]="urlFin">Enviar y Continuar con link</a>
         </div>
 </div>
         

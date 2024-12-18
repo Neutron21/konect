@@ -15,7 +15,7 @@ export class SeguimientoComponent implements OnInit {
 
   filters = {
     estatus: '',
-    cotizacionNombreProspecto: '', // Nuevo campo combinado
+    cotizacionNombreProspecto: '', 
     fechaDesde: '',
     fechaHasta: ''
   };
