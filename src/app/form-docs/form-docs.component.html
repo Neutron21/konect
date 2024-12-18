@@ -2,16 +2,30 @@
   <h3 class="viabilidad-text">Viabilidad</h3>
   <div class="col" *ngFor="let v of viabilidad">
     <div class="mb-3">
-      <label for="filePx" class="form-label custom-margin">{{v}}</label>
-      <input type="file" id="fichero-tarifas" class="form-control" (change)="onFileSelect($event, v)">
+      <label for="filePx" class="form-label custom-margin">
+        {{ v.nombre }}
+        <span *ngIf="v.desc && v.desc.trim() !== ''" class="desc-wrapper" [class.active]="v.showDesc">
+          <span class="desc-summary" (click)="toggleDesc(v)">más</span>
+          <span class="desc-text">{{ v.desc }}</span>
+        </span>
+      </label>
+      <input type="file" id="fichero-tarifas" class="form-control" (change)="onFileSelect($event, v.nombre)">
     </div>
   </div>
 </div>
-<div class="docs">
+
+<div *ngIf="currentFiles.length > 0" class="docs">
+  <h3 class="docs-text">Documentos</h3>
   <div class="col" *ngFor="let cf of currentFiles">
     <div class="mb-3">
-      <label for="filePx" class="form-label custom-margin">{{cf}}</label>
-      <input type="file" id="fichero-tarifas" class="form-control" (change)="onFileSelect($event, cf)">
+      <label for="filePx" class="form-label custom-margin">
+        {{ cf.nombre }}
+        <span *ngIf="cf.desc && cf.desc.trim() !== ''" class="desc-wrapper" [class.active]="cf.showDesc">
+          <span class="desc-summary" (click)="toggleDesc(cf)">más</span>
+          <span class="desc-text">{{ cf.desc }}</span>
+        </span>
+      </label>
+      <input type="file" id="fichero-tarifas" class="form-control" (change)="onFileSelect($event, cf.nombre)">
     </div>
   </div>
 </div>
