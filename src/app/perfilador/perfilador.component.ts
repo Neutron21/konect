@@ -89,6 +89,7 @@ export class PerfiladorComponent implements AfterViewInit {
       console.error('No se encontró el email del usuario autenticado.');
       return;
     }
+    this.formulario.id_financiera = this.finacieraId;
 
     this.apiservice.sendCotizacion(this.formulario).subscribe({
       next: (response) => {
