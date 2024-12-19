@@ -28,7 +28,7 @@ export class HeaderComponent implements OnInit {
   cerrarSesion() {
     this.apiservice.deleteToken().subscribe({
       next: (response) => {
-        console.log('Borrado con éxito:', response);
+        // console.log('Borrado con éxito:', response);
       },
       error: (err) => {
         console.error('Error al borrar el token:', err);

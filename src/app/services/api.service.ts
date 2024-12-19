@@ -40,7 +40,6 @@ export class ApiService {
     const payload = {
       email: this.authService.getUser(),
     };
-    console.log('deleteToken payload:', payload);
   
     return this.http.post(environment.api + environment.deleteToken, JSON.stringify(payload), { headers: headersJson });
   }

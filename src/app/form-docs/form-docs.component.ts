@@ -82,7 +82,8 @@ export class FormDocsComponent implements OnInit {
     formData.append('user', user);
     formData.append('idCotizacion', cotizacion);
     this.fileList.forEach((document, index) => {
-      formData.append(document.customName, document.file);
+      formData.append(`file${index}`, document.file);
+      formData.append(`customName${index}`,document.customName);
     });
     console.log('Contenido de FormData:');
     formData.forEach((value, key) => {
@@ -101,6 +102,6 @@ export class FormDocsComponent implements OnInit {
   }
 
   toggleDesc(v: any): void {
-    v.showDesc = !v.showDesc; // Alternamos el estado de la descripción para el objeto `v`
+    v.showDesc = !v.showDesc;
   }
 }

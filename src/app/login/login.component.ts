@@ -20,7 +20,7 @@ export class LoginComponent implements OnInit {
   showSpinner = false;
   campoVacio = false;
 
-  constructor(private authservices: AuthService, private router: Router, private apiservice: ApiService) {
+  constructor(private authService: AuthService, private router: Router, private apiservice: ApiService) {
     this.loginForm = new FormGroup({
       email: new FormControl('', Validators.required),
       password: new FormControl('', Validators.required)
@@ -47,9 +47,9 @@ export class LoginComponent implements OnInit {
     if (email && password) {
       this.showSpinner = true;
       try {
-        const user = await this.authservices.singIn(email, password);
+        const user = await this.authService.singIn(email, password);
         localStorage.setItem('userEmail', email);
-        this.apiservice.saveTokenAndEmail().subscribe();
+        this.getUserInfo(email);
         this.router.navigate(['/seccion']);
       } catch {
         this.badCredentials = true;
@@ -59,5 +59,22 @@ export class LoginComponent implements OnInit {
     } else {
       this.campoVacio = true;
     }
+  }
+  getUserInfo(email: string) {
+    this.apiservice.queryCustom('usuarios', 'email', email).subscribe(
+      (data: any[]) => {
+       console.log(data);
+       sessionStorage.setItem('rol', data[0].rol);
+      },
+      (error: any) => {
+        console.error('Error al consultar usuario:', error);
+        console.log(error);
+        
+        if (error.status == 401 || error.error.error.includes('Expired')) {
+          console.log("Sesion expirada!");
+          this.authService.logOut();
+        }
+      }
+    );
   }
 }

@@ -28,27 +28,52 @@ export class SeguimientoComponent implements OnInit {
 
   ngOnInit(): void {
     const user = sessionStorage.getItem('user'); 
+    const rol = sessionStorage.getItem('rol'); 
+
     if (user) {
-      this.apiService.queryCustom('cotizacion', 'id_usuario', user).subscribe(
-        (data: any[]) => {
-          this.data = data; 
-          this.filteredData = [...this.data]; 
-        },
-        (error: any) => {
-          console.error('Error al obtener cotizaciones:', error);
-          console.log(error);
-          
-          if (error.status == 401 || error.error.error.includes('Expired')) {
-            console.log("Sesion expirada!");
-            this.authService.logOut();
-          }
-        }
-      );
+      if (rol == 'a') {
+        this.getAllQuotes();
+      } else {
+        this.getQuotes(user);
+      }
     } else {
       console.error('Usuario no encontrado en sessionStorage');
     }
   }
-
+  getAllQuotes() {
+    this.apiService.queryCustom('cotizacion', 'id_usuario', '').subscribe(
+      (data: any[]) => {
+        this.data = data; 
+        this.filteredData = [...this.data]; 
+      },
+      (error: any) => {
+        console.error('Error al obtener cotizaciones:', error);
+        console.log(error);
+        
+        if (error.status == 401 || error.error.error.includes('Expired')) {
+          console.log("Sesion expirada!");
+          this.authService.logOut();
+        }
+      }
+    );
+  }
+  getQuotes(user: string) {
+    this.apiService.queryCustom('cotizacion', 'id_usuario', user).subscribe(
+      (data: any[]) => {
+        this.data = data; 
+        this.filteredData = [...this.data]; 
+      },
+      (error: any) => {
+        console.error('Error al obtener cotizaciones:', error);
+        console.log(error);
+        
+        if (error.status == 401 || error.error.error.includes('Expired')) {
+          console.log("Sesion expirada!");
+          this.authService.logOut();
+        }
+      }
+    );
+  }
   applyFilters(): void {
     this.filteredData = this.data.filter(item => {
       const matchesEstatus = this.filters.estatus
