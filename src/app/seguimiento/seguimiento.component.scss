@@ -46,23 +46,6 @@
   .row.gap-2 {
     gap: 10px; /* Espacio entre inputs */
   }
-  .custom-select {
-    appearance: none; /* Quita el estilo por defecto */
-    background-color: #ffffff;
-    border: 1px solid #ced4da;
-    border-radius: 4px;
-    padding-right: 30px; /* Espacio para la flecha */
-    background-image: url('data:image/svg+xml;charset=US-ASCII,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 4 5"><path fill="%236c757d" d="M2 5L0 0h4z"/></svg>');
-    background-repeat: no-repeat;
-    background-position: right 10px center;
-    background-size: 10px 10px;
-  }
-  
-  
-  .custom-select:focus {
-    border-color: #80bdff;
-    outline: none;
-    box-shadow: 0 0 0 0.2rem rgba(0, 123, 255, 0.25);
-  }
+
   
   

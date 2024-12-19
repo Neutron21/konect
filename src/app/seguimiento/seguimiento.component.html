@@ -5,8 +5,9 @@
     <div class="col-lg-2 col-md-4 col-sm-6 d-flex flex-wrap gap-2">
       <div class="form-group w-100">
         <label for="estatus" class="form-label">Estatus</label>
-        <select id="estatus" class="form-control form-control-sm custom-select" [(ngModel)]="filters.estatus" 
+        <select id="estatus" class="form-select form-select-sm" aria-label=".form-select-sm example" [(ngModel)]="filters.estatus" 
         (change)="applyFilters()">
+          <option value="" selected>Todos</option>
           <option value="Pendiente">Pendiente</option>
           <option value="Aprobado">Aprobado</option>
           <option value="Denegado">Denegado</option>
