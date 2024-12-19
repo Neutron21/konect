@@ -2,26 +2,19 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { ApiService } from '../services/api.service';
 
-interface Cotizacion {
-  id_cotizacion: string | null;  
-  estatus: string | null;        
-  nombre: string | null;         
-  edad: string | null;           
-  monto: string | null;          
-  tipo_persona: string | null;   
-  currentFiles?: { nombre: string; desc?: string }[]; // Agregado si los documentos vienen de esta forma
-}
-
 @Component({
   selector: 'app-vista',
   templateUrl: './vista.component.html',
   styleUrls: ['./vista.component.scss']
 })
 export class VistaComponent implements OnInit {
-  cotizacion: Cotizacion | null = null; 
-  loading: boolean = false;  
-  errorMessage: string = '';  
-  documentos: string[] = []; // Lista para almacenar los nombres de los documentos
+  cotizacion: any = null;
+  loading: boolean = false;
+  errorMessage: string = '';
+  documentos: any[] = [];
+  idFinanciera: string | null = null;
+  comentario: string = '';  
+  userId: string | null = null; 
 
   constructor(
     private route: ActivatedRoute,
@@ -30,16 +23,36 @@ export class VistaComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
+    this.idFinanciera = sessionStorage.getItem('financiera');
     const idCotizacion = this.route.snapshot.queryParams['id_cotizacion'];
-
+  
     if (idCotizacion) {
       this.loading = true;
       this.apiService.queryCustom('cotizacion', 'id_cotizacion', idCotizacion).subscribe(
         (data) => {
-          this.loading = false; 
+          this.loading = false;
+          console.log('Respuesta de la API:', data);
+  
           if (data && data.length > 0) {
             this.cotizacion = data[0];
-            this.documentos = this.extractDocumentos(data[0]?.currentFiles || []); // Extrae los nombres de los documentos
+  
+            const idFinanciera = data[0]?.idFinanciera || data[0]?.id_financiera || null;
+            const producto = data[0]?.producto || null;
+  
+            if (idFinanciera) {
+              sessionStorage.setItem('financiera', idFinanciera);
+              console.log('ID Financiera guardado en sessionStorage:', idFinanciera);
+              this.idFinanciera = idFinanciera;
+            } else {
+              console.warn('No se encontró el campo ID Financiera en los datos.');
+            }
+  
+            if (producto !== null) {
+              sessionStorage.setItem('producto', producto.toString());
+              console.log('Producto guardado en sessionStorage:', producto);
+            }
+  
+            this.documentos = this.extractDocumentos(data[0]?.currentFiles || []);
           } else {
             this.cotizacion = null;
             this.errorMessage = 'No se encontraron datos para la cotización.';
@@ -55,12 +68,38 @@ export class VistaComponent implements OnInit {
       this.errorMessage = 'No se proporcionó un ID de cotización válido.';
     }
   }
-
+  
   extractDocumentos(currentFiles: any[]): string[] {
-    return currentFiles.map((file) => file.nombre); // Mapea solo el nombre de cada documento
+    return currentFiles.map((file) => file.nombre);
   }
-
+  
   navigateBack(): void {
     this.router.navigate(['/seguimiento']);
   }
+   agregarComentario(): void {
+    if (this.comentario.trim() !== '') {
+      const comentarios = JSON.parse(sessionStorage.getItem('comentarios') || '[]');
+
+      // Crear objeto de comentario con correo del usuario
+      const nuevoComentario = {
+        userId: this.userId,  // Ahora usamos el correo del usuario logueado
+        comentario: this.comentario,
+        fecha: new Date().toISOString()
+      };
+
+      // Agregar comentario al arreglo
+      comentarios.push(nuevoComentario);
+
+      // Guardar los comentarios actualizados en sessionStorage
+      sessionStorage.setItem('comentarios', JSON.stringify(comentarios));
+
+      // Limpiar el campo de comentario
+      this.comentario = '';
+      console.log('Comentario guardado en sessionStorage:', nuevoComentario);
+    }
+  }
+
+
+
+
 }
