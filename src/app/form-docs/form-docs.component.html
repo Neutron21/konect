@@ -25,7 +25,7 @@
           <span class="desc-text">{{ cf.desc }}</span>
         </span>
       </label>
-      <input type="file" id="fichero-tarifas" class="form-control" (change)="onFileSelect($event, cf.nombre)">
+      <input type="file" id="fichero-tarifas" class="form-control" [multiple]="false" (change)="onFileSelect($event, cf.nombre)">
     </div>
   </div>
 </div>

@@ -40,6 +40,8 @@ export class FormDocsComponent implements OnInit {
 
   onFileSelect(event: any, nameFile: string) {
     const file = event.target.files[0];
+    console.log(event.target.files);
+    
     const allowedExtensions = ['pdf', 'PDF', 'jpg', 'JPG', 'zip', 'ZIP', 'rar', 'RAR'];
   
     if (file) {
