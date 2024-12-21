@@ -90,6 +90,7 @@ export class PerfiladorComponent implements AfterViewInit {
       return;
     }
     this.formulario.id_financiera = this.finacieraId;
+    this.formulario.producto = this.productIndex;
 
     this.apiservice.sendCotizacion(this.formulario).subscribe({
       next: (response) => {
