@@ -60,10 +60,26 @@
 
   <div class="form-group mt-4">
     <label for="comentarios">Comentarios:</label>
-    <textarea id="comentarios" class="form-control" rows="4"></textarea>
+    <textarea 
+      id="comentarios" 
+      class="form-control" 
+      rows="4" 
+      [(ngModel)]="comentario" 
+      name="comentario"
+    ></textarea>
   </div>
-</div>
-  <!-- <app-form-docs></app-form-docs> -->
+  
+  <div class="text-end mt-3">
+    <button class="btn btn-primary" (click)="agregarComentario()">Agregar Comentario
+    </button>
+  </div>
+  
+  
+
+  <div class="container mt-4">
+    <app-form-docs></app-form-docs>
+  </div>
+  
 
 
   
