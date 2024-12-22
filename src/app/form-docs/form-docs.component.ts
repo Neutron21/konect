@@ -1,4 +1,4 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { documentacion } from '../utils/documentos';
 import { ApiService } from '../services/api.service';
 
@@ -8,7 +8,11 @@ import { ApiService } from '../services/api.service';
   styleUrls: ['./form-docs.component.scss']
 })
 export class FormDocsComponent implements OnInit {
-  [x: string]: any;
+
+  @Input() request!: any;
+  @Input() isNew!: boolean;
+
+  @Output() messageEmitter = new EventEmitter<boolean>();
 
   fileUpload: any;
   currentFiles: any[] = [];
@@ -76,7 +80,9 @@ export class FormDocsComponent implements OnInit {
     console.log(this.fileList);
   }
 
-  sendDocs() {
+
+  sendDocs() { // Primero se debe de enviar la cotizacion
+
     const cotizacion = btoa(4+"");
     console.log(this.fileList);
     const formData = new FormData();
@@ -102,8 +108,22 @@ export class FormDocsComponent implements OnInit {
     });
     this.apiServices.upLoadFiles(formData);
   }
-
-  toggleDesc(v: any): void {
+  preparandoCotizacion() {
+    if (!this.validarFormulario()) {
+      this.sendMessage();
+      return;
+    }
+    
+  }
+  validarFormulario(): boolean {
+    const { tipo_persona, nombre, edad, monto, plazo, antiguedadEmpresa, ingresos } = this.request;
+    return tipo_persona && nombre && edad && monto && plazo && antiguedadEmpresa && ingresos;
+  }
+  sendMessage() {
+    const message = true;
+    this.messageEmitter.emit(message);
+  }
+  toggleDescription(v: any): void {
     v.showDesc = !v.showDesc;
   }
 }

@@ -8,29 +8,41 @@
     <div class="accordion-item">
       <h2 class="accordion-header" id="headingOne">
         <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
-          Documentación requerida
+          Pefil del Cliente
         </button>
       </h2>
       <div id="collapseOne" class="accordion-collapse collapse show" aria-labelledby="headingOne" data-bs-parent="#accordionExample">
         <div class="accordion-body">
-          <img src="assets/konfio.png" alt="konfio" class="img-fluid mb-3">
-          <div class="text-center">
-            <button (click)="descargarImagen('assets/konfio.png', 'konfio.png')" class="btn btn-primary mt-3">Descargar Imagen</button>
-          </div>
+          Lorem ipsum dolor sit amet consectetur adipisicing elit. Suscipit sunt, illo eius consectetur quaerat velit iste quasi ratione nemo exercitationem praesentium fuga eum beatae non molestiae, cum inventore eaque quibusdam.
         </div>
       </div>
     </div>
     <div class="accordion-item">
       <h2 class="accordion-header" id="headingTwo">
         <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
-          Formatos Descargables
+          Documentación requerida
         </button>
       </h2>
       <div id="collapseTwo" class="accordion-collapse collapse" aria-labelledby="headingTwo" data-bs-parent="#accordionExample">
         <div class="accordion-body">
+          <img src="assets/konfio.png" alt="konfio" class="img-fluid mb-3">
+          <div class="text-center">
+            <button (click)="descargarPDF('assets/heybanco.pdf', 'heybanco.pdf')" class="btn btn-primary mt-3">Descargar</button>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="accordion-item">
+      <h2 class="accordion-header" id="headingThree">
+        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
+          Formatos Descargables
+        </button>
+      </h2>
+      <div id="collapseThree" class="accordion-collapse collapse" aria-labelledby="headingThree" data-bs-parent="#accordionExample">
+        <div class="accordion-body">
           <iframe src="assets/heybanco.pdf" width="100%" height="500px" class="mb-3"></iframe>
           <div class="text-center">
-            <button (click)="descargarPDF('assets/heybanco.pdf', 'heybanco.pdf')" class="btn btn-primary mt-3">Descargar PDF</button>
+            <button (click)="descargarPDF('assets/heybanco.pdf', 'heybanco.pdf')" class="btn btn-primary mt-3">Descargar</button>
           </div>
         </div>
       </div>
@@ -40,68 +52,65 @@
 <div class="mt-4">
     <h2 class="text-center">Formulario de Financiamiento</h2>
     <form (ngSubmit)="enviarFormulario(formularioForm)" #formularioForm="ngForm">
-    <div class="row text-center mb-4">
-      <div class="col-6">
-                <div class="form-group">
-                  <label for="persona-fisica">
-                    <input type="radio" id="persona-fisica" name="tipo-persona" [(ngModel)]="formulario.tipo_persona" value="fisica" (change)="seleccionarTipoPersona('fisica')" required>
-                    Persona Física
-                  </label>
-                </div>
-              </div>
-              <div class="col-6">
-                <div class="form-group">
-                  <label for="persona-moral">
-                    <input type="radio" id="persona-moral" name="tipo-persona" [(ngModel)]="formulario.tipo_persona" value="moral" (change)="seleccionarTipoPersona('moral')" required>
-                    Persona Moral
-                  </label>
-                </div>
-              </div>
-            </div>
-        
-            <div class="row mb-4">
-              <div class="col-md-6">
-                <div class="form-group">
-                  <label for="nombre">Nombre:</label>
-                  <input class="form-control" id="nombre" name="nombre" [(ngModel)]="formulario.nombre" (keypress)="onlyText($event)" required>
-                </div>
-        
-                <div class="form-group">
-                  <label for="monto">Monto:</label>
-                  <div class="input-group">
-                    <span class="input-group-text">$</span>
-                    <input class="form-control" id="monto" name="monto" [(ngModel)]="formulario.monto" (keypress)="onlyNumbers($event)" required>
-                  </div>
-                </div>
+    <div class="tipo-persona d-flex justify-content-evenly mb-4">
 
-                <div class="form-group">
-                  <label for="antiguedad-empresa">Antigüedad de la Empresa (en años):</label>
-                  <input class="form-control" id="antiguedad-empresa" name="antiguedadEmpresa" [(ngModel)]="formulario.antiguedadEmpresa" (keypress)="onlyNumbers($event)" required>
-                </div>
-              </div>
+        <div class="form-check">
+          <input class="form-check-input" [(ngModel)]="cotizacion.tipo_persona" value="f" type="radio" name="tipoPersona" id="personaFisica" checked>
+          <label class="form-check-label" for="personaFisica">
+            Persona Física
+          </label>
+        </div>
+        <div class="form-check">
+          <input class="form-check-input" [(ngModel)]="cotizacion.tipo_persona" value="m" type="radio" name="tipoPersona" id="personaMoral">
+          <label class="form-check-label" for="personaMoral">
+            Persona Moral
+          </label>
+        </div>
+    </div>
         
-              <div class="col-md-6">
-                <div class="form-group">
-                  <label for="edad">Edad:</label>
-                  <input class="form-control" id="edad" name="edad" [(ngModel)]="formulario.edad" (keypress)="onlyNumbers($event)" required>
-                </div>
-                <div class="form-group">
-                  <label for="plazo">Plazo (en meses):</label>
-                  <select class="form-control" id="plazo" name="plazo" [(ngModel)]="formulario.plazo" required>
-                    <option *ngFor="let plazo of plazos" [value]="plazo">{{ plazo }}</option>
-                  </select>
-                </div>
-                
+    <div class="row mb-4">
+      <div class="col-md-6">
+        <div class="form-group">
+          <label for="nombre">Nombre:</label>
+          <input class="form-control" id="nombre" name="nombre" [(ngModel)]="cotizacion.nombre" (keypress)="onlyText($event)" required>
+        </div>
+
+        <div class="form-group">
+          <label for="monto">Monto:</label>
+          <div class="input-group">
+            <span class="input-group-text">$</span>
+            <input class="form-control" id="monto" name="monto" [(ngModel)]="cotizacion.monto" (keypress)="onlyNumbers($event)" required>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label for="antiguedad-empresa">Antigüedad de la Empresa (en años):</label>
+          <input class="form-control" id="antiguedad-empresa" name="antiguedadEmpresa" [(ngModel)]="cotizacion.antiguedadEmpresa" (keypress)="onlyNumbers($event)" required>
+        </div>
+      </div>
+
+      <div class="col-md-6">
+        <div class="form-group">
+          <label for="edad">Edad:</label>
+          <input class="form-control" id="edad" name="edad" [(ngModel)]="cotizacion.edad" (keypress)="onlyNumbers($event)" required>
+        </div>
+        <div class="form-group">
+          <label for="plazo">Plazo (en meses):</label>
+          <select class="form-control" id="plazo" name="plazo" [(ngModel)]="cotizacion.plazo" required>
+            <option *ngFor="let plazo of plazos" [value]="plazo">{{ plazo }}</option>
+          </select>
+        </div>
         
-                <div class="form-group">
-                  <label for="ingresos">Ingresos Mensuales:</label>
-                  <div class="input-group">
-                    <span class="input-group-text">$</span>
-                    <input class="form-control" id="ingresos" name="ingresos" [(ngModel)]="formulario.ingresos" (keypress)="onlyNumbers($event)" required>
-                  </div>
-                </div>
-              </div>
-            </div>
+
+        <div class="form-group">
+          <label for="ingresos">Ingresos Mensuales:</label>
+          <div class="input-group">
+            <span class="input-group-text">$</span>
+            <input class="form-control" id="ingresos" name="ingresos" [(ngModel)]="cotizacion.ingresos" (keypress)="onlyNumbers($event)" required>
+          </div>
+        </div>
+      </div>
+    </div>
         
             <div *ngIf="mostrarError && formularioForm.invalid" class="error">
               Todos los campos son obligatorios para continuar.
@@ -116,19 +125,20 @@
             </h2>
             <div id="collapseDocs" class="accordion-collapse collapse" aria-labelledby="headingOne" data-bs-parent="#accordionExample">
               <div class="accordion-body-custom">
-                <app-form-docs></app-form-docs>
+                <app-form-docs [request]="cotizacion" [isNew]=true (messageEmitter)="mostrarErrorFunc($event)"></app-form-docs>
               </div>
             </div>
           </div> 
         </div>
         <div class="form-group text-center mb-4">
-          <button type="submit" class="btn btn-primary btn-lg btn-sm d-block d-sm-inline-block" (click)="enviarFormulario(formularioForm)">
+          <a *ngIf="!docProcess" type="button" class="btn btn-primary btn-sm btn-block mt-3" target="_blank" [href]="urlFin">Enviar y Continuar con link</a>
+          <!-- <button type="submit" class="btn btn-primary btn-lg btn-sm d-block d-sm-inline-block" (click)="enviarFormulario(formularioForm)">
             Enviar
-          </button>
-         <a *ngIf="!docProcess" type="button" class="btn btn-primary btn-sm btn-block mt-3" target="_blank" [href]="urlFin">Enviar y Continuar con link</a>
+          </button> -->
         </div>
 </div>
-        
+   
+<!-- Modal -->
 <div class="modal" tabindex="-1" role="dialog" [ngClass]="{'show': formularioEnviado}" [attr.aria-hidden]="formularioEnviado ? 'true' : null" #successModal>
   <div class="modal-dialog" role="document">
     <div class="modal-content">
@@ -136,7 +146,7 @@
          <h5 class="modal-title">¡Gracias!</h5>
       </div>
       <div class="modal-body text-center">
-         <p>El formulario ha sido enviado con éxito.</p>
+         <p>Cotización enviada con éxito.</p>
       </div>
       <div class="modal-footer">
          <button type="button" class="btn btn-secondary" (click)="cerrarModal(formularioForm)">Cerrar</button>
