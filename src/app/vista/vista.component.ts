@@ -14,7 +14,7 @@ export class VistaComponent implements OnInit {
   documentos: any[] = [];
   idFinanciera: string | null = null;
   comentario: string = '';  
-  userId: string | null = null; 
+  user: string | null = sessionStorage.getItem('user');
 
   constructor(
     private route: ActivatedRoute,
@@ -76,28 +76,21 @@ export class VistaComponent implements OnInit {
   navigateBack(): void {
     this.router.navigate(['/seguimiento']);
   }
-   agregarComentario(): void {
+  agregarComentario(): void {
     if (this.comentario.trim() !== '') {
-      const comentarios = JSON.parse(sessionStorage.getItem('comentarios') || '[]');
-
-      // Crear objeto de comentario con correo del usuario
-      const nuevoComentario = {
-        userId: this.userId,  // Ahora usamos el correo del usuario logueado
-        comentario: this.comentario,
-        fecha: new Date().toISOString()
-      };
-
-      // Agregar comentario al arreglo
-      comentarios.push(nuevoComentario);
-
-      // Guardar los comentarios actualizados en sessionStorage
-      sessionStorage.setItem('comentarios', JSON.stringify(comentarios));
-
-      // Limpiar el campo de comentario
-      this.comentario = '';
-      console.log('Comentario guardado en sessionStorage:', nuevoComentario);
+        const comentarios = JSON.parse(sessionStorage.getItem('comentarios') || '[]');
+        const nuevoComentario = [
+            this.user,                
+            this.comentario,          
+            new Date().toISOString() 
+        ];
+        comentarios.push(nuevoComentario);
+        sessionStorage.setItem('comentarios', JSON.stringify(comentarios));
+        this.comentario = '';
+        console.log('Comentario guardado en sessionStorage:', nuevoComentario);
     }
-  }
+}
+
 
 
 

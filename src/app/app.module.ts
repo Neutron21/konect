@@ -17,6 +17,7 @@ import { ModalComponent } from './modal/modal.component';
 import { CommonModule } from '@angular/common';  
 import { VistaComponent } from './vista/vista.component';  
 
+
 @NgModule({
   declarations: [
     AppComponent,

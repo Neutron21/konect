@@ -9,27 +9,26 @@ export const documentacion: any = {
                 {nombre: 'ACTA CONSTITUTIVA', desc: 'CON FOLIO DEL RPP'},
                 {nombre: 'ASAMBLEAS' , desc: 'CON FOLIO DEL RPP (EN CASO DE APLICAR)'},
                 {nombre: 'COMPROBANTE DE DOMICILIO', desc: 'DEL NEGOCIO'},
-                {nombre: 'CONSTANCIA DE SITUACIÓN FISCAL DE LA EMPRESA', desc: ''},
+                {nombre: 'CONSTANCIA DE SITUACIÓN FISCAL', desc: ' DE LA EMPRESA'},
                 {nombre: 'IDENTIFICACION REP LEGAL', desc: 'INE, PASAPORTE O RESIDENCIA PERMANENTE EN CASO DE EXTRAJERO (VIGENTES Y ESCANEADOS EN PDF)'},
                 {nombre: 'COMPROBANTE DE DOMICILIO', desc: 'REP LEGAL'},
-                {nombre: 'OBL SOL INE, PASAPORTE O RESIDENCIA PERMANENTE EN CASO DE EXTRAJERO', desc: '(VIGENTES Y ESCANEADOS EN PDF)'},
-                {nombre: 'OBL SOL COMPROBANTE DE DOMICILIO', desc:'(VIGENTES Y ESCANEADOS EN PDF)'}
+                // {nombre: 'OBL SOL INE, PASAPORTE O RESIDENCIA PERMANENTE EN CASO DE EXTRAJERO', desc: '(VIGENTES Y ESCANEADOS EN PDF)'},
+                // {nombre: 'OBL SOL COMPROBANTE DE DOMICILIO', desc:'(VIGENTES Y ESCANEADOS EN PDF)'}
             ]
-            
         },
         p2: {
             name: 'tdcEmpresario pm',
             documentos: [
-                {nombre: 'Identificación de un accionista', desc: 'Con un mínimo de 25% de acciones'},
+                {nombre: 'Identificación', desc: 'de un accionista Con un mínimo de 25% de acciones'},
                 {nombre: 'RFC', desc: 'Con el que facturas y contraseña del SAT'},
                 {nombre: 'Acta constitutiva', desc: 'Con folio del RPP'},
-                {nombre: 'Asambleas con folio del RPP (en caso de aplicar)', desc: ''},
-                {nombre: 'Comprobante de domicilio del negocio', desc: ''},
+                {nombre: 'Asambleas con folio del RPP', desc: 'en caso de aplicar'},
+                {nombre: 'Comprobante de domicilio', desc: 'del negocio'},
                 {nombre: 'Constancia de situación fiscal', desc: 'De la empresa'},
-                {nombre: 'Identificación Rep legal' , desc: 'INE, pasaporte o residencia permanente en caso de extranjero (vigentes y escaneados en PDF)'},
+                {nombre: 'Identificación' , desc: 'Rep legal , INE, pasaporte o residencia permanente en caso de extranjero (vigentes y escaneados en PDF)'},
                 {nombre: 'comprobante de domicilio', desc: 'Rep legal '},
-                {nombre: 'Obl sol INE, pasaporte o residencia permanente en caso de extranjero', desc: '(vigentes y escaneados en PDF)'},
-                {nombre: 'Obl sol comprobante de domicilio', desc: '(vigentes y escaneados en PDF)'}
+                // {nombre: 'Obl sol INE, pasaporte o residencia permanente en caso de extranjero', desc: '(vigentes y escaneados en PDF)'},
+                // {nombre: 'Obl sol comprobante de domicilio', desc: '(vigentes y escaneados en PDF)'}
             ]
             
         },
@@ -38,7 +37,7 @@ export const documentacion: any = {
             documentos: [
                 {nombre: 'IDENTIFICACION', desc: 'INE, PASAPORTE O RESIDENCIA PERMANENTE EN CASO DE EXTRAJERO (VIGENTES Y ESCANEADOS EN PDF)'},
                 {nombre: 'RFC', desc: 'CON EL QUE FACTURAS Y CONTRASEÑA DEL SAT'},
-                {nombre: 'COMPROBANTE DE DOMICILIO DEL NEGOCIO O CONSTANCIA DE SITUACIÓN FISCAL', desc: ''}
+                {nombre: 'COMPROBANTE DE DOMICILIO', desc: 'DEL NEGOCIO O CONSTANCIA DE SITUACIÓN FISCAL'}
             ]
             
         },
@@ -89,7 +88,7 @@ export const documentacion: any = {
                 {nombre: 'IDENTIFICACIÓN DEL CÓNYUGE', desc: 'CUANDO APLIQUE'},
                 {nombre: 'CURP', desc: 'ACCIONISTA, REP LEGAL O GARANTE'},
                 {nombre: 'COMPROBANTE DE DOMICILIO', desc: 'NO MAYOR A 3 MESES (DEBE DE COINCIDIR CONTRA SOLICITUD y KYC)'},
-                {nombre: 'ÚLTIMOS 3 ESTADOS DE CUENTA', desc: 'EN CASO DE SER CLIENTES SE PODRÁN UTILIZAR HASTA ANTERIORES 2 AÑOS'},
+                {nombre: 'ESTADOS DE CUENTA', desc: 'ÚLTIMOS 3  , EN CASO DE SER CLIENTES SE PODRÁN UTILIZAR HASTA ANTERIORES 2 AÑOS'},
                 {nombre: 'ESTADO FINANCIERO' , desc: 'COMPLETO DE LOS ÚLTIMOS DOS AÑOS Y PARCIAL DEL AÑO EN CURSO, FIRMADOS POR RL CON ANALÍTICAS , ACREDITADO Y COACREDITADO SI APLICA (REVISAR TABLA DE PERIODOS EXIGIBLES)'},
                 {nombre: 'VALIDACIÓN SAT', desc: 'https://clientes.credijusto.com/'},
                 {nombre: 'AVISO DE PRIVACIDAD FIRMADO', desc: 'ACREDITADO, PF, PM, RL, OS, ACCIONISTAS, GARANTES'},
@@ -112,13 +111,13 @@ export const documentacion: any = {
             documentos: [
                 {nombre: 'Solicitud en', desc: 'https://micredito.covalto.com/login/'},
                 {nombre: 'ACTA CONSTITUTIVA CON SELLO DE REGISTRO PÚBLICO DE LA PROPIEDAD', desc: 'PRIMER TESTIMONIO'},
-                {nombre: 'IDENTIFICACIÓN OFICIAL VIGENTE', desc: 'INE de accionista mayoritario'},
-                {nombre: 'ESTADOS FINANCIEROS CON ANALÍTICAS DE LOS ÚLTIMOS 2 AÑOS + ÚLTIMO PARCIAL', desc: 'FIRMADOS POR EL REPRESENTANTE LEGAL'},
+                {nombre: 'IDENTIFICACIÓN', desc: 'OFICIAL VIGENTE  DE ACCIONISTA MAYORITARIO'},
+                {nombre: 'ESTADOS FINANCIEROS', desc: 'CON ANALÍTICAS DE LOS ÚLTIMOS 2 AÑOS + ÚLTIMO PARCIAL , FIRMADOS POR EL REPRESENTANTE LEGAL'},
                 {nombre: 'ACTAS DE MODIFICACIONES ACCIONARIAS', desc: ''},
-                {nombre: 'ACTA DE PODERES CON SELLO DE REGISTRO PÚBLICO DE LA PROPIEDAD', desc: ''},
-                {nombre: 'CONSTANCIA DE LA SITUACIÓN FISCAL ACTUALIZADA', desc: 'PM, ACCIONISTA MAYORITARIO, ACCIONISTAS CON MÁS DEL 25%'},
+                {nombre: 'ACTA DE PODERES', desc: 'CON SELLO DE REGISTRO PÚBLICO DE LA PROPIEDAD'},
+                {nombre: 'CONSTANCIA DE LA SITUACIÓN FISCAL', desc: 'ACTUALIZADA , PM, ACCIONISTA MAYORITARIO, ACCIONISTAS CON MÁS DEL 25%'},
                 {nombre: 'COMPROBANTE DE DOMICILIO', desc: 'NO MAYOR A 3 MESES PM, ACCIONISTA MAYORITARIO, ACCIONISTAS CON MÁS DEL 25%'},
-                {nombre: 'CONSTANCIA DE LA FIEL O DOCUMENTO EXPEDIDO POR EL SAT QUE PRESENTE EL NÚMERO DE FIEL ACTIVO PARA SU VALIDACIÓN', desc: 'PM, Accionista mayoritario, Accionistas con más del 25% (https://portalsat.plataforma.sat.gob.mx/recuperaciondecertificados/)'},
+                {nombre: 'CONSTANCIA DE LA FIEL', desc: 'O DOCUMENTO EXPEDIDO POR EL SAT QUE PRESENTE EL NÚMERO DE FIEL ACTIVO PARA SU VALIDACIÓN PM, ACCIONISTA MAYORITARIO, ACCIONISTAS CON MAS DEL 25% (https://portalsat.plataforma.sat.gob.mx/recuperaciondecertificados/)'},
                 {nombre: 'KYC', desc: ''},
                 {nombre: 'CURP', desc: ''},
                 {nombre: 'CIEC', desc: 'PM,ACCIONISTA MAYORITARIO, ACCIONISTAS CON MÁS DEL 25%'},
@@ -139,11 +138,11 @@ export const documentacion: any = {
                 {nombre: 'AUTORIZACIÓN DE CONSULTA DE BURÓ', desc: ''},
                 {nombre: 'KYC', desc:'ACREDITADO, PF, PM, RL, OS, ACCIONISTAS, GARANTES'},
                 {nombre: 'CONSTANCIA DE SITUACIÓN FISCAL', desc: 'NO MAYOR A 3 MESES (ACREDITADO, ACCIONISTA, REP LEGAL O GARANTE)'},
-                {nombre: 'INE / PASAPORTE / EXTRANJERO FM2', desc: 'ACREDITADO, ACCIONISTA, REP LEGAL O GARANTE'},
+                {nombre: 'IDENTIFICACION', desc: 'INE / PASAPORTE / EXTRANJERO FM2 ACREDITADO, ACCIONISTA, REP LEGAL O GARANTE'},
                 {nombre: 'CURP', desc: 'ACCIONISTA, REP LEGAL O GARANTE'},
                 {nombre: 'COMPROBANTE DE DOMICILIO', desc: 'NO MAYOR A 3 MESES (DEBE DE COINCIDIR CONTRA SOLICITUD Y KYC)'},
                 {nombre: 'AUTORIZACIÓN DE CONSULTA DE BURÓ', desc: 'ACREDITADO, PF, PM, RL, OS, ACCIONISTAS, GARANTES'},
-                {nombre: 'ÚLTIMOS 3 ESTADOS DE CUENTA', desc: 'En caso de ser clientes de hasta 2 años'},
+                {nombre: 'ESTADOS DE CUENTA', desc: ' ÚLTIMOS 3 , En caso de ser clientes de hasta 2 años'},
                 {nombre: 'ESTADO FINANCIERO', desc: 'COMPLETO DE LOS ÚLTIMOS DOS AÑOS Y PARCIAL DEL AÑO EN CURSO , FIRMADOS POR RL CON ANALITICAS (ACREDITADO Y COACREDITADO SI APLICA) (REVISAR TABLA DE PERIODOS EXIGIBLES)'},
                 'VALIDACIÓN SAT', 'https://clientes.credijusto.com/',
                 {nombre: 'AVISO DE PRIVACIDAD', desc: 'FIRMADO POR ACREDITADO, PF, PM, RL, OS, ACCIONISTAS, GARANTES'},
@@ -158,7 +157,7 @@ export const documentacion: any = {
             name: 'CreditoSimpleRevolventeConGarantia Pfae',
             documentos: [
                 {nombre: 'SOLICITUD DE CRÉDITO', desc: 'COMPLETA Y FIRMADA'},
-                {nombre: 'INE / PASAPORTE / EXTRANJERO FM2', desc: 'ACREDITADO, ACCIONISTA, REP LEGAL O GARANTE'},
+                {nombre: 'IDENTIFICACION', desc: 'INE / PASAPORTE / EXTRANJERO FM2 ACREDITADO, ACCIONISTA, REP LEGAL O GARANTE'},
                 {nombre: '2DA. IDENTIFICACIÓN', desc: ''},
                 {nombre: 'CURP', desc: 'ACREDITADO, ACCIONISTA, REP LEGAL O GARANTE'},
                 {nombre: 'ACTA DE MATRIMONIO / CONFIRMAR SOLTERÍA', desc: ''},
@@ -189,7 +188,7 @@ export const documentacion: any = {
             name: 'ArrendamientoPuroSyLB Pfae',
             documentos: [
                 {nombre: 'SOLICITUD DE CRÉDITO', desc: ' COMPLETA Y FIRMADA'},
-                {nombre: 'INE / PASAPORTE / EXTRANJERO FM2', desc: 'ACREDITADO, ACCIONISTA, REP LEGAL O GARANTE'},
+                {nombre: 'IDENTIFICACION', desc: 'INE / PASAPORTE / EXTRANJERO FM2 ACREDITADO, ACCIONISTA, REP LEGAL O GARANTE'},
                 {nombre: '2DA. IDENTIFICACIÓN', desc: ''},
                 {nombre: 'CURP', desc: 'ACREDITADO, ACCIONISTA, REP LEGAL O GARANTE'},
                 {nombre: 'ACTA DE MATRIMONIO / CONFIRMAR SOLTERÍA', desc: ''},
@@ -260,7 +259,7 @@ export const documentacion: any = {
           {nombre:'AVISO DE PRIVACIDAD',desc:'PM/PFAE Y AVALES , DOCUMENTO DISPONIBLE'},
           {nombre:'COMPROBANTE DE DOMICILIO',desc:'NO MAYOR A 3 MESES , FISCAL, OPERATIVO Y PARTICULAR DEL AVAL/ SI NO HAY AL SU NOMBRE PONER CONTRATO DE ARRENDAMIENTO'},
           {nombre:'ESTADOS DE CUENTA',desc:'ULTIMOS 12 MESES , MÁXIMO 3 BANCOS DE TODOS LOS PARTICIPANTES'},
-          {nombre:'VENTAS +100 MDP, PASIVOS DE + 25 MDP Y OPERACIONES + 10 MDP',desc:'ESTADOS FINANCIEROS PARCIALES DEL AÑO EN CURSO Y 2 AÑOS ANTERIORES , EDO DE RESULTADOS, BALANCE GENERAL Y ANALÍTICAS'},
+          {nombre:'VENTAS ',desc:'+100 MDP, PASIVOS DE + 25 MDP Y OPERACIONES + 10 MDP ESTADOS FINANCIEROS PARCIALES DEL AÑO EN CURSO Y 2 AÑOS ANTERIORES , EDO DE RESULTADOS, BALANCE GENERAL Y ANALÍTICAS'},
         ],
     },
     p2: {
@@ -276,7 +275,7 @@ export const documentacion: any = {
             {nombre:'AVISO DE PRIVACIDAD',desc:'PM/PFAE Y AVALES , DOCUMENTO DISPONIBLE'},
             {nombre:'COMPROBANTE DE DOMICILIO',desc:'NO MAYOR A 3 MESES , FISCAL, OPERATIVO Y PARTICULAR DEL AVAL/ SI NO HAY AL SU NOMBRE PONER CONTRATO DE ARRENDAMIENTO'},
             {nombre:'ESTADOS DE CUENTA',desc:'ULTIMOS 12 MESES , MÁXIMO 3 BANCOS DE TODOS LOS PARTICIPANTES'},
-            {nombre:'VENTAS +100 MDP, PASIVOS DE + 25 MDP Y OPERACIONES + 10 MDP',desc:'ESTADOS FINANCIEROS PARCIALES DEL AÑO EN CURSO Y 2 AÑOS ANTERIORES , EDO DE RESULTADOS, BALANCE GENERAL Y ANALÍTICAS'},
+            {nombre:'VENTAS',desc:'+100 MDP, PASIVOS DE + 25 MDP Y OPERACIONES + 10 MDP ESTADOS FINANCIEROS PARCIALES DEL AÑO EN CURSO Y 2 AÑOS ANTERIORES , EDO DE RESULTADOS, BALANCE GENERAL Y ANALÍTICAS'},
             
         ],
     },
@@ -284,7 +283,7 @@ export const documentacion: any = {
    F8: {
     name: 'activeLeasing',
     viabilidad: [
-        {nombre: 'ESTADOS FINANCIEROS AL CIERRE', desc: '2021, 2022 Y PARCIAL 2023 NO MAYOR A 2 MESES CON ANALÍTICAS Y FIRMADOS POR EL REPRESENTANTE LEGAL Y CP'},
+        {nombre: 'ESTADOS FINANCIEROS', desc: 'AL CIERRE , 2021, 2022 Y PARCIAL 2023 NO MAYOR A 2 MESES CON ANALÍTICAS Y FIRMADOS POR EL REPRESENTANTE LEGAL Y CP'},
         {nombre: 'CONSULTA ESPECIAL DE BURÓ DE CRÉDITO RECIENTE', desc: ''},
         {nombre: 'FIRMA EKATENA', desc: 'CLAVE CIEC'},
         {nombre: 'FICHA TÉCNICA DEL ACTIVO', desc: ''}
@@ -296,12 +295,12 @@ export const documentacion: any = {
             {nombre: 'ACTA CONSTITUTIVA', desc: 'PODERES, PROTOCOLIZACIONES ETC ,CON SELLO RPP'},
             {nombre: 'CONSTANCIA DE SITUACIÓN FISCAL', desc: ''},
             {nombre: 'COMPROBANTE DE DOMICILIO', desc: ''},
-            {nombre: 'ÚLTIMOS 5 ESTADOS DE CUENTA', desc: 'DE LAS PRINCIPALES CUENTAS'},
+            {nombre: 'ESTADOS DE CUENTA', desc: 'DE LAS PRINCIPALES CUENTAS , ÚLTIMOS 5'},
             {nombre: 'CÉDULA PROFESIONAL DEL CONTADOR', desc: ''},
             {nombre: 'IDENTIFICACIÓN', desc: 'DEL REPRESENTANTE LEGAL'},
             {nombre: 'CONSTANCIA DE SITUACIÓN FISCAL', desc: 'AVAL'},
             {nombre: 'IDENTIFICACIÓN OFICIAL VIGENTE', desc: 'AVAL'},
-            {nombre: 'COMPROBANTE DE DOMICILIO RECIENTE', desc: 'AVAL'},
+            {nombre: 'COMPROBANTE DE DOMICILIO', desc: 'RECIENTE , AVAL'},
             {nombre: 'ESTADO DE CUENTA COMPLETO', desc: 'AVAL'},
             {nombre: 'ACTA DE MATRIMONIO Y ESCRITURA DE LA PROPIEDAD', desc: 'AVAL'},
             {nombre: 'SOLICITUD DE FINANCIAMIENTO', desc: ''},
@@ -338,12 +337,12 @@ export const documentacion: any = {
             {nombre: 'Identificacion' , desc: 'Representante Legal'},
             {nombre: 'Constancia de Situación Fiscal', desc: ' Representante Legal , Actualizada, menor a tres meses'},
             {nombre: 'Comprobante de Domicilio', desc: 'Representante Legal'},
-            {nombre: 'Buró de Crédito Persona Física, Representante Legal', desc: ''},
+            {nombre: 'Buró de Crédito', desc: 'Persona Física, Representante Legal'},
             // 'Firmante Adicional (Aval)'
-            {nombre: 'Identificacion Aval', desc: ''},
+            {nombre: 'Identificacion', desc: 'Aval'},
             {nombre: 'Constancia de Situación Fiscal', desc: ' Aval , Actualizada, menor a tres meses'},
             {nombre: 'Comprobante de Domicilio', desc: ' Aval'},
-            {nombre: 'Buró de Crédito Persona Física', desc: 'Aval'},
+            {nombre: 'Buró de Crédito', desc: 'Persona Física , Aval'},
             {nombre: 'Fotos del comercio', desc: '5 del interior y 5 del exterior del negocio'},
             {nombre: 'Cuestionario', desc: ''}
         ]
@@ -353,7 +352,7 @@ export const documentacion: any = {
         name: 'Financiamiento con Terminal Punto de Venta (TPV) Pf',
         documentos: [
             {nombre: 'Constancia de Situación Fiscal', desc: 'Actualizada menor a tres meses y descargada del portal del SAT'},
-            {nombre: 'Identificación Oficial', desc: 'Credencial de Elector INE y/o Pasaporte vigenmte'},
+            {nombre: 'Identificación', desc: 'Credencial de Elector INE y/o Pasaporte vigenmte'},
             {nombre: 'Contratos de arrendamiento ', desc: 'Mandar de cada Sucursal , Vigente y/o Escritura de Propiedad'},
             {nombre: 'Comprobante de domicilio', desc: 'Mandar de cada Sucursal y Fiscal, menor a tres meses'},
             {nombre: 'Estados de cuenta', desc: 'Últimos 12 meses'},
@@ -363,7 +362,7 @@ export const documentacion: any = {
             {nombre: 'Identificacion,', desc: ' Aval'},
             {nombre: 'Constancia de Situación Fiscal,', desc: 'Aval ,Actualizada, menor a tres meses'},
             {nombre: 'Comprobante de Domicilio', desc: 'Aval'},
-            {nombre: 'Buró de Crédito Persona Física', desc: 'Aval'},
+            {nombre: 'Buró de Crédito', desc: 'Persona Física , Aval'},
             {nombre: 'Fotos del comercio', desc: '5 del Interior y 5 del exterior del negocio'},
             {nombre: 'Cuestionario', desc: ''}
         ]  
@@ -400,9 +399,9 @@ export const documentacion: any = {
         name:'factoraje Pm',
         documentos: [
             // Representante legal
-            {nombre: 'Identificación oficial, Representante legal', desc: ''},
-            {nombre: 'Constancia de situación fiscal actualizada, Representante legal', desc: ''},
-            {nombre: 'Comprobante de domicilio, Representante legal', desc: ''},
+            {nombre: 'Identificación', desc: 'oficial, Representante legal'},
+            {nombre: 'Constancia de situación fiscal', desc: 'actualizada, Representante legal'},
+            {nombre: 'Comprobante de domicilio', desc: 'Representante legal'},
             // Empresa
             {nombre: 'Acta Constitutiva', desc: 'Empresa (primera)'},
             {nombre: 'Acta de Asamblea', desc: 'Empresa ,Con Poder del Rep Legal'},
@@ -416,23 +415,23 @@ export const documentacion: any = {
         documentos: [
             // Representante legal: 
             {nombre: 'Identificación oficial', desc: ''},
-            {nombre: 'Constancia de situación fiscal actualizada', desc: ''},
+            {nombre: 'Constancia de situación fiscal', desc: 'actualizada'},
             {nombre: 'Comprobante de domicilio', desc: ''},
             // Empresa
             {nombre: 'Acta Constitutiva', desc: ', Empresa , (primera)'},
             {nombre: 'Acta de Asamblea', desc: 'Con Poder del Rep Legal, Empresa'},
-            {nombre: 'Constancia de situación Fiscal activa, Empresa', desc: ''},
-            {nombre: 'Comprobante de Domicilio, a nombre de la empresa', desc: ''},
-            {nombre: 'Estado de Cuenta Bancario, Empresa', desc: ''}
+            {nombre: 'Constancia de situación Fiscal', desc: 'activa, Empresa'},
+            {nombre: 'Comprobante de Domicilio', desc: 'a nombre de la empresa'},
+            {nombre: 'Estado de Cuenta', desc: 'Bancario, Empresa'}
         ]
     },
     p3: {
         name:'factoraje Pfae',
         documentos: [
-            {nombre: 'Identificación oficial', desc: ''},
+            {nombre: 'Identificación', desc: 'oficial'},
             {nombre: 'Constancia de situación fiscal', desc:'Actualizada Con QR'},
             {nombre: 'Comprobante de domicilio', desc: 'No mayor a 3 meses'},
-            {nombre: 'Edo de cuenta bancario', desc: 'No mayor a 3 meses'}
+            {nombre: 'Edo de cuenta', desc: ' bancario , No mayor a 3 meses'}
         ]
         
     },
@@ -444,59 +443,59 @@ export const documentacion: any = {
             name: 'Arrendamiento Pf',
             documentos: [
                 {nombre: 'Identificación oficial', desc: 'Copia de titular persona física'},
-                {nombre: 'Últimos 3 estados de cuenta ', desc: 'cheques/ ahorro con CLABE de titular'},
+                {nombre: 'Estados de cuenta ', desc: 'Últimos 3 , cheques/ ahorro con CLABE de titular'},
                 {nombre: 'Comprobante de domicilio', desc: 'Copia del solicitante con antigüedad no mayor a 3 meses'},
                 {nombre: 'Documentación de garantías propuestas', desc: ''},
-                {nombre: 'Copia RFC del proveedor de la garantía', desc: ''}
+                {nombre: 'RFC ', desc: 'Copia del proveedor de la garantía'}
             ]            
         },
         p2: {
             name: 'Arrendamiento Pfae',
             documentos: [
-                {nombre: 'Identificación electrónica Confidencial', desc: 'Clave proporcionada por el SAT'},
-                {nombre: 'Identificación oficial', desc: 'Copia , de titular persona física'},
+                {nombre: 'Identificación electrónica', desc: 'Confidencial Clave proporcionada por el SAT'},
+                {nombre: 'Identificación', desc: 'Copia ,oficial de titular persona física'},
                 {nombre: 'Estados Financieros', desc: 'Firmados por titular'},
-                {nombre: 'Últimos 3 estados de cuenta', desc: 'cheques/ ahorro con CLABE de titular'},
+                {nombre: 'Estados de cuenta', desc: 'Últimos 3, cheques/ ahorro con CLABE de titular'},
                 {nombre: 'Comprobante de domicilio', desc: 'Copia del solicitante con antigüedad no mayor a 3 meses'},
                 {nombre: 'Documentación de garantías propuestas', desc: ''},
-                {nombre: 'Copia RFC del proveedor de la garantía', desc: ''}
+                {nombre: 'RFC', desc: 'Copia, del proveedor de la garantía'}
             ]
             
         },
         p3: {
             name: 'Arrendamiento Pm',
             documentos: [
-                {nombre: 'Identificación oficial del titular y/o aval', desc: 'Copia , persona física, cuando no cuente con firma CIEC'},
-                {nombre: 'Clave de Identificación electrónica Confidencial', desc: 'Proporcionada por el SAT'},
-                {nombre: 'Identificación oficial de titular de representante legal', desc: 'Copia'},
-                {nombre: 'Estados financieros firmados por representante legal', desc: ''},
-                {nombre: 'Últimos 3 estados de cuenta', desc: 'cheques/ ahorro con CLABE de titular y aval'},
+                {nombre: 'Identificación ', desc: 'Copia , oficial del titular y/o aval persona física, cuando no cuente con firma CIEC'},
+                {nombre: 'Clave', desc: 'de Identificación electrónica Confidencial Proporcionada por el SAT'},
+                {nombre: 'Identificación', desc: 'Copia , oficial de titular de representante legal'},
+                {nombre: 'Estados financieros', desc: 'firmados por representante legal'},
+                {nombre: 'Estados de cuenta', desc: 'Últimos 3cheques/ ahorro con CLABE de titular y aval'},
                 {nombre: 'Acta constitutiva', desc: 'Copia simple de la escritura sus modificaciones y poderes (incluyendo registro público) '},
-                {nombre: 'Comprobante de domicilio fiscal', desc: 'Copia , del solicitante con antigüedad no mayor a 3 meses '},
-                {nombre: 'Evidencia de consulta de vigencia de fiel (captura)', desc: ''},
+                {nombre: 'Comprobante de domicilio', desc: 'Copia , fiscal del solicitante con antigüedad no mayor a 3 meses '},
+                {nombre: 'Evidencia', desc: 'de consulta de vigencia de fiel (captura)'},
                 {nombre: 'Documentación de garantías propuestas', desc: ''},
                 {nombre: 'RFC ', desc: 'Copia , del proveedor de la garantía'},
-                {nombre: 'Registro de prestadores de servicios financieros a cargo de CONDUSEF', desc: 'Copia , (en caso de ser entidad financiera)'}
+                {nombre: 'Registro de prestadores', desc: 'de servicios financieros a cargo de CONDUSEF,  Copia , (en caso de ser entidad financiera)'}
             ]            
         },
         p4: {
             name: 'CreditoSimple Pf',
             documentos: [
-                {nombre: 'Identificación oficial', desc:'Copia , de titular persona física'},
-                {nombre: 'Últimos 3 estados de cuenta', desc:'cheques/ ahorro con CLABE de titular'},
+                {nombre: 'Identificación', desc:'Copia , oficial de titular persona física'},
+                {nombre: 'Estados de cuenta', desc: 'Últimos 3 ,  cheques/ ahorro con CLABE de titular'},
                 {nombre: 'Comprobante de domicilio', desc: 'Copia , del solicitante con antigüedad no mayor a 3 meses'},
                 {nombre: 'Documentación de garantías propuestas', desc: ''},
-                {nombre: 'Copia RFC del proveedor de la garantía', desc: ''}
+                {nombre: 'Copia RFC', desc: 'del proveedor de la garantía'}
             ]
             
         },
         p5: {
             name: 'CreditoSimple Pfae',
             documentos: [
-                {nombre: 'Clave de Identificación electrónica Confidencial', desc: 'Proporcionada por el SAT'},
+                {nombre: 'Clave', desc: 'de Identificación electrónica Confidencial Proporcionada por el SAT'},
                 {nombre: 'Identificación oficial', desc: 'Copia de titular persona física'},
                 {nombre: 'Estados Financieros', desc:'firmados por titular'},
-                {nombre: 'Últimos 3 estados de cuenta', desc: 'cheques/ ahorro con CLABE de titular'},
+                {nombre: 'Estados de cuenta', desc: 'Últimos 3 , cheques/ ahorro con CLABE de titular'},
                 {nombre: 'Comprobante de domicilio', desc: 'Copia , del solicitante con antigüedad no mayor a 3 meses'},
                 {nombre: 'Documentación de garantías propuestas', desc: ''},
                 {nombre: 'RFC', desc: 'Copia , del proveedor de la garantía'}
@@ -505,17 +504,17 @@ export const documentacion: any = {
         p6: {
             name: 'CreditoSimple Pm',
             documentos: [
-                {nombre: 'Copia de identificación oficial del titular y/o aval persona física', desc: 'Cuando no cuente con firma *CIEC.'},
-                {nombre: 'Clave de Identificación electrónica Confidencial', desc: 'Proporcionada por el SAT'},
-                {nombre: 'Copia identificación oficial de titular de representante legal', desc: ''},
-                {nombre: 'Estados financieros firmados por representante legal', desc: ''},
-                {nombre: 'Últimos 3 estados de cuenta cheques/ ahorro con CLABE de titular y aval', desc: ''},
-                {nombre: 'Copia simple de la escritura del acta constitutiva', desc: 'Sus modificaciones y poderes (incluyendo registro público)'},
-                {nombre: 'Copia comprobante de domicilio fiscal del solicitante', desc: 'Con antigüedad no mayor a 3 meses'},
-                {nombre: 'Evidencia de consulta de vigencia de fiel', desc: '(captura)'},
-                {nombre: 'Documentación de garantías propuestas', desc: ''},
+                {nombre: 'Identificación', desc: ' Copia ,  Oficial del titular y/o aval persona física, Cuando no cuente con firma *CIEC.'},
+                {nombre: 'Clave', desc: 'de Identificación electrónica Confidencial Proporcionada por el SAT'},
+                {nombre: 'Identificación', desc: 'Copia ,oficial de titular de representante legal'},
+                {nombre: 'Estados financieros', desc: 'firmados por representante legal'},
+                {nombre: 'Estados de cuenta', desc: 'Últimos 3 , cheques/ ahorro con CLABE de titular y aval'},
+                {nombre: 'Copia simple', desc: 'de la escritura del acta constitutiva Sus modificaciones y poderes (incluyendo registro público)'},
+                {nombre: 'Comprobante de domicilio', desc: 'Copia,  fiscal del solicitante  Con antigüedad no mayor a 3 meses'},
+                {nombre: 'Evidencia', desc: 'de consulta de vigencia de fiel (captura)'},
+                {nombre: 'Documentación', desc: 'de garantías propuestas'},
                 {nombre: 'RFC', desc: 'Copia , del proveedor de la garantía'},
-                {nombre: 'Registro de prestadores de servicios financieros a cargo de CONDUSEF', desc: 'Copia  , En caso de ser entidad financiera'}
+                {nombre: 'Registro', desc: 'de prestadores de servicios financieros a cargo de CONDUSEF Copia  , En caso de ser entidad financiera'}
             ]            
         },
     },
@@ -527,10 +526,10 @@ export const documentacion: any = {
             {nombre: 'INFORMACIÓN BÁSICA', desc: ''},
             {nombre: 'RELACIÓN DE PASIVOS', desc: ''},
             {nombre: 'CONSTANCIA DE SITUACIÓN FISCAL', desc: 'ACTUALIZADA'},
-            {nombre: 'BALANCE GENERAL Y ESTADO DE RESULTADOS ANUAL', desc: 'DE LOS 2 EJERCICIOS INMEDIATOS ANTERIORES EN ORIGINAL'},
-            {nombre: 'BALANCE GENERAL Y ESTADO DE RESULTADOS PARCIAL', desc: 'CON ANTIGÜEDAD NO MAYOR A 3 MESES EN ORIGINAL'},
-            {nombre: 'RELACIONES ANALÍTICAS DE LAS PRINCIPALES CUENTAS COLECTIVAS ', desc:'DEL EJERCICIO COMPLETO (ANUAL) Y PARCIAL'},
-            {nombre: 'DECLARACIÓN FISCAL ANUAL DE LOS ÚLTIMOS 2 EJERCICIOS COMPLETOS', desc: 'DE LOS ÚLTIMOS 2 EJERCICIOS COMPLETOS'}
+            {nombre: 'BALANCE GENERAL ANUAL', desc: 'Y ESTADO DE RESULTADOS DE LOS 2 EJERCICIOS INMEDIATOS ANTERIORES EN ORIGINAL'},
+            {nombre: 'BALANCE GENERAL PARCIAL', desc: 'Y ESTADO DE RESULTADOS CON ANTIGÜEDAD NO MAYOR A 3 MESES EN ORIGINAL'},
+            {nombre: 'RELACIONES ANALÍTICAS', desc:'DE LAS PRINCIPALES CUENTAS COLECTIVAS DEL EJERCICIO COMPLETO (ANUAL) Y PARCIAL'},
+            {nombre: 'DECLARACIÓN FISCAL', desc: 'ANUAL DE LOS ÚLTIMOS 2 EJERCICIOS COMPLETOS DE LOS ÚLTIMOS 2 EJERCICIOS COMPLETOS'}
         ],        
         p1: {
             name: 'PymeInmuebles15MDP',
@@ -538,16 +537,16 @@ export const documentacion: any = {
                 {nombre: 'SOLICITUD DE CRÉDITO', desc: ''},
                 {nombre: 'FORMATO AUTORIZACIÓN DE CONSULTA A BURÓ', desc: 'FIRMADO DEL SOLICITANTE Y AVAL'},
                 {nombre: 'ACTA DE MATRIMONIO, DIVORCIO O MODIFICACIÓN', desc: ' DEL RÉGIMEN CONYUGAL DEL SOLICITANTE Y AVAL'},
-                {nombre: 'IDENTIFICACIÓN OFICIAL', desc: 'VIGENTE CON FOTOGRAFÍA Y FIRMA LEGIBLE DEL SOLICITANTE Y AVAL'},
+                {nombre: 'IDENTIFICACIÓN', desc: 'OFICIAL,  VIGENTE CON FOTOGRAFÍA Y FIRMA LEGIBLE DEL SOLICITANTE Y AVAL'},
                 {nombre: 'COMPROBANTE DE DOMICILIO ', desc: 'DEL SOLICITANTE Y AVAL CON ANTIGÜEDAD NO MAYOR A 3 MESES COMPLETO CON TODAS SUS HOJAS'},
-                {nombre: 'ALTA EN SHCP Y CÉDULA DE SITUACIÓN FISCAL (CSF)', desc: ' ACTUALIZADA DEL SOLICITANTE Y AVAL'},
-                {nombre: 'ÚLTIMOS 6 ESTADOS DE CUENTA', desc: 'MENSUALES COMPLETOS CON TODAS SUS HOJAS DEL SOLICITANTE'},
-                {nombre: 'ACTA CONSTITUTIVA, PODERES VIGENTES Y ACTAS DE ASAMBLEAS', desc: 'CON DATOS DE REGISTRO DEL SOLICITANTE Y AVAL (EN CASO DE SER PM)'},
-                {nombre: 'BALANCE GENERAL Y ESTADO DE RESULTADOS ANUAL', desc: 'DEL EJERCICIO INMEDIATO ANTERIOR EN ORIGINAL'},
-                {nombre: 'BALANCE GENERAL Y ESTADO DE RESULTADOS PARCIAL', desc: 'CON ANTIGÜEDAD NO MAYOR A 3 MESES EN ORIGINAL'},
-                {nombre: 'RELACIONES ANALÍTICAS DE LAS PRINCIPALES CUENTAS COLECTIVAS', desc: 'DEL EJERCICIO COMPLETO (ANUAL) Y PARCIAL'},
-                {nombre: 'DECLARACIÓN FISCAL ANUAL', desc: 'DEL ÚLTIMO EJERCICIO COMPLETO (ANUAL)'},
-                {nombre: 'CONTRATO DE COMPRA VENTA Y/O CARTA DEL CLIENTE', desc: 'CON LA DESCRIPCIÓN DEL INMUEBLE A ADQUIRIR'}
+                {nombre: 'ALTA', desc: 'EN SHCP Y CÉDULA DE SITUACIÓN FISCAL (CSF) ACTUALIZADA DEL SOLICITANTE Y AVAL'},
+                {nombre: 'ESTADOS DE CUENTA', desc: 'ÚLTIMOS 6 , MENSUALES COMPLETOS CON TODAS SUS HOJAS DEL SOLICITANTE'},
+                {nombre: 'ACTA CONSTITUTIVA', desc:'PODERES VIGENTES Y ACTAS DE ASAMBLEAS CON DATOS DE REGISTRO DEL SOLICITANTE Y AVAL (EN CASO DE SER PM)'},
+                {nombre: 'BALANCE GENERAL  ANUAL', desc:'Y ESTADO DE RESULTADOS DEL EJERCICIO INMEDIATO ANTERIOR EN ORIGINAL'},
+                {nombre: 'BALANCE GENERAL  PARCIAL', desc:'Y ESTADO DE RESULTADOS CON ANTIGÜEDAD NO MAYOR A 3 MESES EN ORIGINAL'},
+                {nombre: 'RELACIONES ANALÍTICAS', desc: 'DE LAS PRINCIPALES CUENTAS COLECTIVAS DEL EJERCICIO COMPLETO (ANUAL) Y PARCIAL'},
+                {nombre: 'DECLARACIÓN FISCAL ', desc: 'ANUAL DEL ÚLTIMO EJERCICIO COMPLETO (ANUAL)'},
+                {nombre: 'CONTRATO', desc: 'DE COMPRA VENTA Y/O CARTA DEL CLIENTE CON LA DESCRIPCIÓN DEL INMUEBLE A ADQUIRIR'}
             ]            
         },
       p2: {
@@ -556,15 +555,15 @@ export const documentacion: any = {
             {nombre: 'SOLICITUD DE CRÉDITO', desc: ''},
             {nombre: 'FORMATO AUTORIZACIÓN DE CONSULTA A BURÓ', desc: 'FIRMADO DEL SOLICITANTE Y AVAL'},
             {nombre: 'ACTA DE MATRIMONIO, DIVORCIO O MODIFICACIÓN', desc: 'DEL RÉGIMEN CONYUGAL DEL SOLICITANTE Y AVAL'},
-            {nombre: 'IDENTIFICACIÓN OFICIAL', desc: 'VIGENTE CON FOTOGRAFÍA Y FIRMA LEGIBLE DEL SOLICITANTE Y AVAL'},
+            {nombre: 'IDENTIFICACIÓN', desc: 'VIGENTE CON FOTOGRAFÍA Y FIRMA LEGIBLE DEL SOLICITANTE Y AVAL'},
             {nombre: 'COMPROBANTE DE DOMICILIO', desc: 'DEL SOLICITANTE Y AVAL CON ANTIGÜEDAD NO MAYOR A 3 MESES COMPLETO CON TODAS SUS HOJAS'},
             {nombre: 'ALTA EN SHCP Y CÉDULA DE SITUACIÓN FISCAL (CSF)', desc:'ACTUALIZADA DEL SOLICITANTE Y AVAL'},
-            {nombre: 'ÚLTIMOS 6 ESTADOS DE CUENTA MENSUALES', desc: 'COMPLETOS CON TODAS SUS HOJAS DEL SOLICITANTE'},
-            {nombre: 'ACTA CONSTITUTIVA, PODERES VIGENTES Y ACTAS DE ASAMBLEAS', desc: 'CON DATOS DE REGISTRO DEL SOLICITANTE Y AVAL (EN CASO DE SER PM)'},
-            {nombre: 'BALANCE GENERAL Y ESTADO DE RESULTADOS ANUAL', desc: 'DEL EJERCICIO INMEDIATO ANTERIOR EN ORIGINAL'},
-            {nombre: 'BALANCE GENERAL Y ESTADO DE RESULTADOS PARCIAL', desc: 'CON ANTIGÜEDAD NO MAYOR A 3 MESES EN ORIGINAL'},
-            {nombre: 'RELACIONES ANALÍTICAS DE LAS PRINCIPALES CUENTAS COLECTIVAS', desc: 'DEL EJERCICIO COMPLETO (ANUAL) Y PARCIAL'},
-            {nombre: 'DECLARACIÓN FISCAL ANUAL', desc: 'DEL ÚLTIMO EJERCICIO COMPLETO (ANUAL)'}
+            {nombre: 'ESTADOS DE CUENTA', desc: 'ÚLTIMOS 6 ,  MENSUALES , COMPLETOS CON TODAS SUS HOJAS DEL SOLICITANTE'},
+            {nombre: 'ACTA CONSTITUTIVA', desc: 'PODERES VIGENTES Y ACTAS DE ASAMBLEAS , CON DATOS DE REGISTRO DEL SOLICITANTE Y AVAL (EN CASO DE SER PM)'},
+            {nombre: 'BALANCE GENERAL ANUAL', desc: 'Y ESTADO DE RESULTADOS  DEL EJERCICIO INMEDIATO ANTERIOR EN ORIGINAL'},
+            {nombre: 'BALANCE GENERAL PARCIAL', desc:'Y ESTADO DE RESULTADOS  , CON ANTIGÜEDAD NO MAYOR A 3 MESES EN ORIGINAL'},
+            {nombre: 'RELACIONES ANALÍTICAS', desc:'DE LAS PRINCIPALES CUENTAS COLECTIVAS ,DEL EJERCICIO COMPLETO (ANUAL) Y PARCIAL'},
+            {nombre: 'DECLARACIÓN FISCAL', desc: 'ANUAL , DEL ÚLTIMO EJERCICIO COMPLETO (ANUAL)'}
         ]
       }
     }
