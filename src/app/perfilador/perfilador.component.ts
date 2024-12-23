@@ -16,8 +16,8 @@ export class PerfiladorComponent implements AfterViewInit {
 
   nameFin = '';
   nameProd = '';
-  formulario: any = {
-    tipo_persona: '', 
+  cotizacion: any = {
+    tipo_persona: 'f', 
     nombre: '',
     edad: null,
     monto: null,
@@ -41,7 +41,6 @@ export class PerfiladorComponent implements AfterViewInit {
     private apiservice: ApiService
   ) {
     this.generarPlazos();
-
   }
 
   ngOnInit(): void {
@@ -63,7 +62,7 @@ export class PerfiladorComponent implements AfterViewInit {
     this.finacieraId = Number(idFin);
     const currentProduct = JSON.parse(sessionStorage.getItem("producto") + "");
     this.productIndex = Number(currentProduct);
-    console.log(idFin);
+
     const institucion = financieras.find(el => el.id == idFin);
     this.docProcess = institucion?.proceso == "mail";
     this.viabilidad = !!institucion?.viabilidad;
@@ -76,6 +75,7 @@ export class PerfiladorComponent implements AfterViewInit {
     
   }
   enviarFormulario(formularioForm: any): void {
+
     if (!this.validarFormulario()) {
       this.mostrarError = true; 
       return;
@@ -84,16 +84,17 @@ export class PerfiladorComponent implements AfterViewInit {
     this.mostrarError = false; 
     const userEmail = localStorage.getItem('userEmail');
     if (userEmail) {
-      this.formulario.id_usuario = userEmail;
+      this.cotizacion.id_usuario = userEmail;
     } else {
       console.error('No se encontró el email del usuario autenticado.');
       return;
     }
-    this.formulario.id_financiera = this.finacieraId;
+    this.cotizacion.id_financiera = this.finacieraId;
+    this.cotizacion.producto = this.productIndex;
 
-    this.apiservice.sendCotizacion(this.formulario).subscribe({
+    this.apiservice.sendCotizacion(this.cotizacion).subscribe({
       next: (response) => {
-        console.log('Formulario enviado con éxito:', response);
+        console.log('cotizacion enviado con éxito:', response);
       },
       error: (err) => {
         console.error('Error al enviar:', err);
@@ -105,10 +106,6 @@ export class PerfiladorComponent implements AfterViewInit {
     formularioForm.resetForm();
   }
 
-  seleccionarTipoPersona(valor: string): void {
-    this.formulario.tipo_persona = valor === 'fisica' ? 'f' : 'm';
-  }
-
   cerrarModal(formularioForm: any): void {
     this.formularioEnviado = false;
     this.modal.hide();
@@ -116,7 +113,7 @@ export class PerfiladorComponent implements AfterViewInit {
   }
 
   validarFormulario(): boolean {
-    const { tipo_persona, nombre, edad, monto, plazo, antiguedadEmpresa, ingresos } = this.formulario;
+    const { tipo_persona, nombre, edad, monto, plazo, antiguedadEmpresa, ingresos } = this.cotizacion;
     return tipo_persona && nombre && edad && monto && plazo && antiguedadEmpresa && ingresos;
   }
 
@@ -125,6 +122,11 @@ export class PerfiladorComponent implements AfterViewInit {
     const [anio, mes, dia] = fechaParte.split('-');
     const fechaFormateada = `${dia}-${mes}-${anio} ${horaParte}`;
     return fechaFormateada;
+  }
+
+  // Método para manejar el evento del hijo
+  mostrarErrorFunc(message: boolean) {
+    this.mostrarError = message;
   }
 
   onlyText(event: KeyboardEvent) {

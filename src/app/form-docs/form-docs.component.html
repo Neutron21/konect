@@ -1,11 +1,17 @@
 <div *ngIf="!!viabilidad && viabilidad.length > 0" class="viabilidad">
-  <h3 class="viabilidad-text">Viabilidad</h3>
+  <div class="d-flex justify-content-between">
+    <h3 class="viabilidad-text">Viabilidad</h3> 
+    <button class="btn btn-primary" (click)="preparandoCotizacion()">
+      Enviar
+    </button> 
+  </div>
+   
   <div class="col" *ngFor="let v of viabilidad">
     <div class="mb-3">
       <label for="filePx" class="form-label custom-margin">
         {{ v.nombre }}
         <span *ngIf="v.desc && v.desc.trim() !== ''" class="desc-wrapper" [class.active]="v.showDesc">
-          <span class="desc-summary" (click)="toggleDesc(v)">más</span>
+          <span class="desc-summary" (click)="toggleDescription(v)">más</span>
           <span class="desc-text">{{ v.desc }}</span>
         </span>
       </label>
@@ -15,21 +21,28 @@
 </div>
 
 <div *ngIf="currentFiles.length > 0" class="docs">
-  <h3 class="docs-text">Documentos</h3>
+  <div class="d-flex justify-content-between">
+    <h3 class="viabilidad-text">Documentos</h3> 
+    <button *ngIf="!viabilidad" class="btn btn-primary" (click)="preparandoCotizacion()">
+      Enviar
+    </button> 
+  </div>
   <div class="col" *ngFor="let cf of currentFiles">
     <div class="mb-3">
       <label for="filePx" class="form-label custom-margin">
         {{ cf.nombre }}
         <span *ngIf="cf.desc && cf.desc.trim() !== ''" class="desc-wrapper" [class.active]="cf.showDesc">
-          <span class="desc-summary" (click)="toggleDesc(cf)">más</span>
+          <span class="desc-summary" (click)="toggleDescription(cf)">más</span>
           <span class="desc-text">{{ cf.desc }}</span>
         </span>
       </label>
-      <input type="file" id="fichero-tarifas" class="form-control" (change)="onFileSelect($event, cf.nombre)">
+      <input type="file" id="fichero-tarifas" class="form-control" [multiple]="false" (change)="onFileSelect($event, cf.nombre)">
     </div>
   </div>
 </div>
 
-<div class="boton-enviar">
-  <button class="btn btn-primary" (click)="sendDocs()">Cargar Documentos</button>
+<div class="text-center mb-4 d-grid gap-2 col-11 mx-auto">
+   <button class="btn btn-primary" (click)="preparandoCotizacion()">
+            Enviar
+   </button>
 </div>

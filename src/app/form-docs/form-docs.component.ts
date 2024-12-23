@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { documentacion } from '../utils/documentos';
 import { ApiService } from '../services/api.service';
 
@@ -8,6 +8,12 @@ import { ApiService } from '../services/api.service';
   styleUrls: ['./form-docs.component.scss']
 })
 export class FormDocsComponent implements OnInit {
+
+  @Input() request!: any;
+  @Input() isNew!: boolean;
+
+  @Output() messageEmitter = new EventEmitter<boolean>();
+
   fileUpload: any;
   currentFiles: any[] = [];
   viabilidad: any[] = [];
@@ -65,6 +71,8 @@ export class FormDocsComponent implements OnInit {
 
   onFileSelect(event: any, nameFile: string) {
     const file = event.target.files[0];
+    console.log(event.target.files);
+    
     const allowedExtensions = ['pdf', 'PDF', 'jpg', 'JPG', 'zip', 'ZIP', 'rar', 'RAR'];
 
     if (file) {
@@ -93,8 +101,11 @@ export class FormDocsComponent implements OnInit {
     console.log('Archivos en lista:', this.fileList);
   }
 
-  sendDocs() {
-    const cotizacion = btoa(4 + "");
+
+  sendDocs() { // Primero se debe de enviar la cotizacion
+
+    const cotizacion = btoa(4+"");
+    console.log(this.fileList);
     const formData = new FormData();
     const user = sessionStorage.getItem('user') || "";
 
@@ -120,8 +131,22 @@ export class FormDocsComponent implements OnInit {
       }
     });
   }
-
-  toggleDesc(v: any): void {
+  preparandoCotizacion() {
+    if (!this.validarFormulario()) {
+      this.sendMessage();
+      return;
+    }
+    
+  }
+  validarFormulario(): boolean {
+    const { tipo_persona, nombre, edad, monto, plazo, antiguedadEmpresa, ingresos } = this.request;
+    return tipo_persona && nombre && edad && monto && plazo && antiguedadEmpresa && ingresos;
+  }
+  sendMessage() {
+    const message = true;
+    this.messageEmitter.emit(message);
+  }
+  toggleDescription(v: any): void {
     v.showDesc = !v.showDesc;
   }
 }
