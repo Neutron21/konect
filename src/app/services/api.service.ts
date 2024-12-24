@@ -83,6 +83,27 @@ export class ApiService {
 
   return this.http.post(environment.api + environment.sessionExpired,  JSON.stringify(request), { headers: headersJson });
 }
+updateEstatus(request: any): Observable<any> {
+  const headersJson = new HttpHeaders({
+    'Content-Type': 'application/json',
+    'X-Auth-Token': this.authService.getToken() + "" // Asegura que el token se envíe
+  });
+
+
+  return this.http.post(environment.api + environment.cotizacion , JSON.stringify(request) , { headers: headersJson })
+  
+}
+sendComentarios(request: any): Observable<any> {
+  const headersJson = new HttpHeaders({
+    'Content-Type': 'application/json',
+    'X-Auth-Token': this.authService.getToken() + ""
+  });
+ 
+  console.log('Cotizacion enviada:', request);
+
+  return this.http.post(environment.api + environment.comentarios, JSON.stringify(request), { headers: headersJson });
+}
+
 
 
 }
