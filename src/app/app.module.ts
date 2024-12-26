@@ -16,6 +16,8 @@ import { InstitucionesComponent } from './instituciones/instituciones.component'
 import { ModalComponent } from './modal/modal.component';
 import { CommonModule } from '@angular/common';  
 import { VistaComponent } from './vista/vista.component';  
+import { NgxMaskModule } from 'ngx-mask';
+
 
 @NgModule({
   declarations: [
@@ -38,7 +40,8 @@ import { VistaComponent } from './vista/vista.component';
     FormsModule,
     ReactiveFormsModule,
     HttpClientModule,
-    CommonModule 
+    CommonModule,
+    NgxMaskModule.forRoot(), 
   ],
   
   providers: [],

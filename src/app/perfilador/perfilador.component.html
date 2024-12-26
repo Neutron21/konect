@@ -79,7 +79,8 @@
           <label for="monto">Monto:</label>
           <div class="input-group">
             <span class="input-group-text">$</span>
-            <input class="form-control" id="monto" name="monto" [(ngModel)]="cotizacion.monto" (keypress)="onlyNumbers($event)" required>
+            <input class="form-control" id="monto" name="monto" mask="separator.2" thousandSeparator=","
+              [(ngModel)]="cotizacion.monto" (keypress)="onlyNumbers($event)" required>
           </div>
         </div>
 
@@ -106,7 +107,8 @@
           <label for="ingresos">Ingresos Mensuales:</label>
           <div class="input-group">
             <span class="input-group-text">$</span>
-            <input class="form-control" id="ingresos" name="ingresos" [(ngModel)]="cotizacion.ingresos" (keypress)="onlyNumbers($event)" required>
+            <input class="form-control" id="ingresos" name="ingresos" mask="separator.2" thousandSeparator=","
+             [(ngModel)]="cotizacion.ingresos" (keypress)="onlyNumbers($event)" required>
           </div>
         </div>
       </div>
