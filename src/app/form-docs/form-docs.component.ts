@@ -26,18 +26,45 @@ export class FormDocsComponent implements OnInit {
 
   ngOnInit(): void {
     this.getFinAndProduct();
+    console.log('FormDocsComponent inicializado');
   }
 
   getFinAndProduct() {
-    this.idFin = "F" + sessionStorage.getItem("financiera");
-    this.product = Number(sessionStorage.getItem("producto")) + 1;
-    const productoFormat = "p" + this.product;
-    this.currentFiles = documentacion[this.idFin][productoFormat].documentos;
-    this.viabilidad = documentacion[this.idFin].viabilidad;
+    // Obtén los valores de sessionStorage
+    const financiera = sessionStorage.getItem("financiera");
+    const producto = sessionStorage.getItem("producto");
 
-    if (!!this.viabilidad) { 
+    // Verifica si los valores están definidos
+    if (!financiera || !producto) {
+      console.error("Error: 'financiera' o 'producto' no están definidos en sessionStorage.");
+      return;
+    }
+
+    this.idFin = "F" + financiera;
+    this.product = Number(producto) + 1;
+    const productoFormat = "p" + this.product;
+
+    console.log("idFin:", this.idFin);
+    console.log("productoFormat:", productoFormat);
+
+    // Valida que las propiedades existan en `documentacion`
+    if (!documentacion[this.idFin]) {
+      console.error(`Error: No existe '${this.idFin}' en 'documentacion'.`);
+      return;
+    }
+
+    if (!documentacion[this.idFin][productoFormat]) {
+      console.error(`Error: No existe '${productoFormat}' en 'documentacion[${this.idFin}]'.`);
+      return;
+    }
+
+    // Asignación segura de valores
+    this.currentFiles = documentacion[this.idFin][productoFormat].documentos || [];
+    this.viabilidad = documentacion[this.idFin].viabilidad || [];
+
+    if (this.viabilidad.length > 0) {
       this.viabilidad.forEach(v => {
-        v.showDesc = false; // Inicializamos `showDesc` como `false`
+        v.showDesc = false;
       });
     }
   }
@@ -47,37 +74,31 @@ export class FormDocsComponent implements OnInit {
     console.log(event.target.files);
     
     const allowedExtensions = ['pdf', 'PDF', 'jpg', 'JPG', 'zip', 'ZIP', 'rar', 'RAR'];
-  
+
     if (file) {
       const fileExtension = file.name.split('.').pop().toLowerCase();
-      console.log(file);
-      
-      if (allowedExtensions.includes(fileExtension)) { // Archivo permitido
-        this.fileUpload = file;
-        console.log('Archivo permitido:', file.name);
-        const customFileName = `${nameFile}.${fileExtension}`; // Nuevo nombre
+
+      if (allowedExtensions.includes(fileExtension)) {
+        const customFileName = `${nameFile}.${fileExtension}`;
         this.fileUpload = { file, customName: customFileName };
-        console.log(this.fileUpload);
-        
+        console.log('Archivo permitido:', this.fileUpload);
         this.validarExistencias(nameFile);
-      } else { // Archivo no permitido
-        console.error('Archivo no permitido. Extensión:', fileExtension);
-        alert('Solo se permiten archivos de tipo PDF');
+      } else {
+        alert('Solo se permiten archivos de tipo PDF, JPG, ZIP, o RAR.');
         this.fileUpload = null;
         event.target.value = '';
       }
     }
   }
 
-  validarExistencias(name: string) { 
+  validarExistencias(name: string) {
     const indice = this.fileList.findIndex(el => el.customName.includes(name));
-    console.log(indice);
     if (indice >= 0) {
       this.fileList[indice] = this.fileUpload;
     } else {
       this.fileList.push({ ...this.fileUpload });
     }
-    console.log(this.fileList);
+    console.log('Archivos en lista:', this.fileList);
   }
 
 
@@ -86,18 +107,21 @@ export class FormDocsComponent implements OnInit {
     const cotizacion = btoa(4+"");
     console.log(this.fileList);
     const formData = new FormData();
-    const user = sessionStorage.getItem('user') + "";
+    const user = sessionStorage.getItem('user') || "";
+
     formData.append('user', user);
     formData.append('idCotizacion', cotizacion);
+
     this.fileList.forEach((document, index) => {
       formData.append(`file${index}`, document.file);
-      formData.append(`customName${index}`,document.customName);
+      formData.append(`customName${index}`, document.customName);
     });
+
     console.log('Contenido de FormData:');
     formData.forEach((value, key) => {
       console.log(`${key}:`, value);
     });
-  
+
     this.apiServices.upLoadFiles(formData).subscribe({
       next: (response) => {
         console.log('Datos enviados con éxito:', response);
@@ -106,7 +130,6 @@ export class FormDocsComponent implements OnInit {
         console.error('Error al enviar los datos:', error);
       }
     });
-    this.apiServices.upLoadFiles(formData);
   }
   preparandoCotizacion() {
     if (!this.validarFormulario()) {

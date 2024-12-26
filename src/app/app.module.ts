@@ -19,6 +19,7 @@ import { VistaComponent } from './vista/vista.component';
 import { NgxMaskModule } from 'ngx-mask';
 
 
+
 @NgModule({
   declarations: [
     AppComponent,
