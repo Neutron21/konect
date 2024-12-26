@@ -12,8 +12,9 @@
         id="estatus"
         class="form-select form-select-sm"
         aria-label=".form-select-sm example"
-        (change)="actualizarEstatus($event,cotizacion.id_cotizacion)">
-        <option value="" selected>Todos</option>
+        [(ngModel)]="cotizacion.estatus"
+        (change)="actualizarEstatus($event, cotizacion.id_cotizacion)">
+        <option value="" selected></option>
         <option value="Pendiente">Pendiente</option>
         <option value="Aprobado">Aprobado</option>
         <option value="Denegado">Denegado</option>
@@ -21,8 +22,6 @@
     </div>
   </div>
   
-  
-
   <div *ngIf="loading" class="d-flex justify-content-center">
     <div class="spinner-border text-primary" role="status">
       <span class="visually-hidden">Cargando...</span>
