@@ -22,6 +22,8 @@
     </div>
   </div>
   
+  
+
   <div *ngIf="loading" class="d-flex justify-content-center">
     <div class="spinner-border text-primary" role="status">
       <span class="visually-hidden">Cargando...</span>
@@ -81,7 +83,6 @@
       id="comentarios" 
       class="form-control" 
       rows="4" 
-      [(ngModel)]="comentario" 
       name="comentario"
     ></textarea>
   </div>
@@ -90,8 +91,22 @@
     <button class="btn btn-primary" (click)="agregarComentario()">Agregar Comentario
     </button>
   </div>
+
+
   
+  
+
+<div *ngIf="comentarios.length > 0" class="mt-4">
+  <h4>Comentarios:</h4>
+  <ul>
+    <li *ngFor="let comentario of comentarios">
+      <strong>{{ comentario.id_cotizacion }}:</strong> {{ comentario.comentarios }} <br>
+      <small>{{ comentario.timestamp | date: 'dd/MM/yyyy HH:mm' }}</small>
+    </li>
+  </ul>
+</div>
+<p *ngIf="comentarios.length === 0">No hay comentarios para esta cotización.</p>
   <div *ngIf="idFinanciera" class="container mt-4">
-    <app-form-docs></app-form-docs>
+    <app-form-docs [request]="" [isNew]=false></app-form-docs>
   </div>
 </div>

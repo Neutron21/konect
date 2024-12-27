@@ -92,7 +92,7 @@ export const financieras = [
       "FIRMA EKATENA (CLAVE CIEC)",
       "FICHA TÉCNICA DEL ACTIVO"
     ],
-    productos: ["ARRENDAMIENTO S&LB"],
+    productos: ["ARRENDAMIENTO PURO"],
     descripcion: "Compra de activos productivos (bodegas industriales, oficinas, edificios, locales comerciales).",
     img: "assets/activeleasing.jpeg"
   },
