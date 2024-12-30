@@ -1,6 +1,7 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { documentacion } from '../utils/documentos';
 import { ApiService } from '../services/api.service';
+import { AuthService } from '../services/auth.service';
 
 @Component({
   selector: 'app-form-docs',
@@ -22,7 +23,10 @@ export class FormDocsComponent implements OnInit {
   idFin!: string;
   product!: number;
 
-  constructor(private apiServices: ApiService) { }
+  constructor(
+    private apiService: ApiService,
+    private authService: AuthService
+  ) { }
 
   ngOnInit(): void {
     this.getFinAndProduct();
@@ -122,28 +126,52 @@ export class FormDocsComponent implements OnInit {
       console.log(`${key}:`, value);
     });
 
-    this.apiServices.upLoadFiles(formData).subscribe({
+    this.apiService.upLoadFiles(formData).subscribe({
       next: (response) => {
         console.log('Datos enviados con éxito:', response);
       },
       error: (error) => {
         console.error('Error al enviar los datos:', error);
+        if (error.status == 401 || error.error.error.includes('Expired')) {
+          console.log("Sesion expirada!");
+          this.authService.logOut();
+        }
       }
     });
   }
   preparandoCotizacion() {
     if (!this.validarFormulario()) {
-      this.sendMessage();
+      this.sendMessage(true);
       return;
-    }
+    } 
+      console.log(this.request);
+      this.sendMessage(false);
+      const userEmail = localStorage.getItem('userEmail');
+      if (userEmail) {
+        this.request.id_usuario = userEmail;
+      } else {
+        console.error('No se encontró el email del usuario autenticado.');
+        return;
+      }
+      this.request.id_financiera = localStorage.getItem('financiera');
+      this.request.producto = localStorage.getItem('producto');
+
+      this.apiService.sendCotizacion(this.request).subscribe({
+        next: (response) => {
+          console.log('cotizacion enviado con éxito:', response);
+        },
+        error: (err) => {
+          console.error('Error al enviar:', err);
+        }
+      });
+
     
   }
   validarFormulario(): boolean {
     const { tipo_persona, nombre, edad, monto, plazo, antiguedadEmpresa, ingresos } = this.request;
     return tipo_persona && nombre && edad && monto && plazo && antiguedadEmpresa && ingresos;
   }
-  sendMessage() {
-    const message = true;
+  sendMessage(message: boolean) {
     this.messageEmitter.emit(message);
   }
   toggleDescription(v: any): void {

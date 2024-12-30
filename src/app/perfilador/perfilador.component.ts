@@ -38,7 +38,7 @@ export class PerfiladorComponent implements AfterViewInit {
 
   constructor(
     private router: Router,
-    private apiservice: ApiService
+    private apiService: ApiService
   ) {
     this.generarPlazos();
   }
@@ -92,7 +92,7 @@ export class PerfiladorComponent implements AfterViewInit {
     this.cotizacion.id_financiera = this.finacieraId;
     this.cotizacion.producto = this.productIndex;
 
-    this.apiservice.sendCotizacion(this.cotizacion).subscribe({
+    this.apiService.sendCotizacion(this.cotizacion).subscribe({
       next: (response) => {
         console.log('cotizacion enviado con éxito:', response);
       },
