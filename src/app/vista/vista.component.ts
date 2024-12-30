@@ -76,12 +76,11 @@ export class VistaComponent implements OnInit {
     }
   }
   
-  // Función para obtener comentarios
   getComentarios(idCotizacion: number): void {
     this.apiService.queryCustom('comentarios', 'id_cotizacion', idCotizacion.toString()).subscribe(
       (data) => {
         if (data && data.length > 0) {
-          this.comentarios = data; // Asignamos los comentarios obtenidos
+          this.comentarios = data; 
           console.log('Comentarios cargados:', this.comentarios);
         } else {
           this.comentarios = [];

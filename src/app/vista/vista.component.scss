@@ -75,4 +75,43 @@
   .selec{
     margin-bottom: 3em;
   }
+  .comentarios-lista {
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+  }
+  
+  .comentario-rectangulo {
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    padding: 16px;
+    margin-bottom: 16px;
+    background-color: #f9f9f9;
+    position: relative;
+  }
+  
+  .comentario-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 8px;
+  }
+  
+  .comentario-header small {
+    font-size: 12px;
+    color: #333;
+  }
+  
+  .comentario-fecha {
+    font-size: 12px;
+    color: #888;
+  }
+  
+  .comentario-texto {
+    font-size: 14px;
+    color: #555;
+    margin: 0;
+  }
+ 
+  
   

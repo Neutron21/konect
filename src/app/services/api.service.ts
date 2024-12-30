@@ -89,9 +89,7 @@ updateEstatus(request: any): Observable<any> {
     'X-Auth-Token': this.authService.getToken() + ""
   });
 
-  return this.http.post(
-    environment.api + environment.cotizacion, JSON.stringify(request), { headers: headersJson }
-  );
+  return this.http.post( environment.api + environment.estatus, JSON.stringify(request), { headers: headersJson });
 }
 
 sendComentarios(request: any): Observable<any> {
@@ -100,8 +98,6 @@ sendComentarios(request: any): Observable<any> {
     'X-Auth-Token': this.authService.getToken() + ""
   });
  
-  console.log('Enviado:', request);
-
   return this.http.post(environment.api + environment.comentarios, JSON.stringify(request), { headers: headersJson });
 }
 
