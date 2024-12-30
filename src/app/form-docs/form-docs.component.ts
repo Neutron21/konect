@@ -146,22 +146,27 @@ export class FormDocsComponent implements OnInit {
     } 
       console.log(this.request);
       this.sendMessage(false);
-      const userEmail = localStorage.getItem('userEmail');
+      const userEmail = sessionStorage.getItem('user');
       if (userEmail) {
         this.request.id_usuario = userEmail;
       } else {
         console.error('No se encontró el email del usuario autenticado.');
         return;
       }
-      this.request.id_financiera = localStorage.getItem('financiera');
-      this.request.producto = localStorage.getItem('producto');
+      this.request.estatus = 'Integración';
+      this.request.id_financiera = sessionStorage.getItem('financiera');
+      this.request.producto = sessionStorage.getItem('producto');
 
       this.apiService.sendCotizacion(this.request).subscribe({
         next: (response) => {
           console.log('cotizacion enviado con éxito:', response);
         },
-        error: (err) => {
-          console.error('Error al enviar:', err);
+        error: (error) => {
+          console.error('Error al enviar:', error);
+          if (error.status == 401 || error.error.error.includes('Expired')) {
+            console.log("Sesion expirada!");
+            this.authService.logOut();
+          }
         }
       });
 
