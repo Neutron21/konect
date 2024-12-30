@@ -86,23 +86,25 @@ export class ApiService {
 updateEstatus(request: any): Observable<any> {
   const headersJson = new HttpHeaders({
     'Content-Type': 'application/json',
-    'X-Auth-Token': this.authService.getToken() + "" // Asegura que el token se envíe
+    'X-Auth-Token': this.authService.getToken() + ""
   });
 
-
-  return this.http.post(environment.api + environment.cotizacion , JSON.stringify(request) , { headers: headersJson })
-  
+  return this.http.post(
+    environment.api + environment.cotizacion, JSON.stringify(request), { headers: headersJson }
+  );
 }
+
 sendComentarios(request: any): Observable<any> {
   const headersJson = new HttpHeaders({
     'Content-Type': 'application/json',
     'X-Auth-Token': this.authService.getToken() + ""
   });
  
-  console.log('Cotizacion enviada:', request);
+  console.log('Enviado:', request);
 
   return this.http.post(environment.api + environment.comentarios, JSON.stringify(request), { headers: headersJson });
 }
+
 
 
 

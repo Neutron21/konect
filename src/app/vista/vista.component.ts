@@ -13,9 +13,9 @@ export class VistaComponent implements OnInit {
   errorMessage: string = '';
   documentos: any[] = [];
   idFinanciera: string | null = null;
-  comentario: string = '';  
+  comentarios: any [] = [];  
   user: string | null = sessionStorage.getItem('user') || 'anónimo';
-  id_cotizacion: string = '';
+  id_cotizacion: number = 0;
 
   constructor(
     private route: ActivatedRoute,
@@ -28,12 +28,14 @@ export class VistaComponent implements OnInit {
     const idCotizacion = this.route.snapshot.queryParams['id_cotizacion'];
   
     if (idCotizacion) {
-      this.id_cotizacion = idCotizacion; // Asignar ID de cotización al componente
+      this.id_cotizacion = Number(idCotizacion); // Convertir id_cotizacion a número
       this.loading = true;
+  
+      // Obtener cotización
       this.apiService.queryCustom('cotizacion', 'id_cotizacion', idCotizacion).subscribe(
         (data) => {
           this.loading = false;
-          console.log('Respuesta de la API:', data);
+          console.log('Respuesta de la API (cotización):', data);
   
           if (data && data.length > 0) {
             this.cotizacion = data[0];
@@ -59,6 +61,9 @@ export class VistaComponent implements OnInit {
             this.cotizacion = null;
             this.errorMessage = 'No se encontraron datos para la cotización.';
           }
+  
+          // Obtener comentarios
+          this.getComentarios(idCotizacion);
         },
         (error) => {
           this.loading = false;
@@ -71,6 +76,27 @@ export class VistaComponent implements OnInit {
     }
   }
   
+  // Función para obtener comentarios
+  getComentarios(idCotizacion: number): void {
+    this.apiService.queryCustom('comentarios', 'id_cotizacion', idCotizacion.toString()).subscribe(
+      (data) => {
+        if (data && data.length > 0) {
+          this.comentarios = data; // Asignamos los comentarios obtenidos
+          console.log('Comentarios cargados:', this.comentarios);
+        } else {
+          this.comentarios = [];
+          console.warn('No se encontraron comentarios para esta cotización.');
+        }
+      },
+      (error) => {
+        console.error('Error al obtener los comentarios:', error);
+      }
+    );
+  }
+  
+  
+  
+  
   extractDocumentos(currentFiles: any[]): string[] {
     return currentFiles.map((file) => file.nombre);
   }
@@ -80,64 +106,57 @@ export class VistaComponent implements OnInit {
   }
 
   agregarComentario(): void {
-    if (this.comentario.trim() !== '') {
-      const timestamp = new Date().toISOString();
-      const request = {
-        id_cotizacion: this.id_cotizacion,
-      Id_usuario: this.user,
-        comentario: this.comentario.trim(),
-        archivo: '', // Aquí se puede manejar un archivo si es necesario
-        timestamp: timestamp
-      };
+    if (this.comentarios) {
+        const request = {
+            id_cotizacion: this.id_cotizacion,
+            id_usuario: this.user, // Asegúrate de que este valor está definido
+            comentarios: this.comentarios,
+        };
 
-      this.apiService.sendComentarios(request).subscribe(
-        (response) => {
-          console.log('Comentario guardado exitosamente:', response);
-          this.comentario = ''; // Limpiar el campo de comentario
-          
-          // Actualizar comentarios en sessionStorage
-          const comentarios = JSON.parse(sessionStorage.getItem('comentarios') || '[]');
-          comentarios.push({
-            ...request,
-            id_comentarios: response.data?.id_comentarios || null
-          });
-          sessionStorage.setItem('comentarios', JSON.stringify(comentarios));
-        },
-        (error) => {
-          console.error('Error al guardar el comentario:', error);
-        }
-      );
-    } else {
-      console.warn('El campo de comentario está vacío.');
+        this.apiService.sendComentarios(request).subscribe(
+            (response) => {
+                console.log('Comentario guardado exitosamente:', response);
+                const comentarios = JSON.parse(sessionStorage.getItem('comentarios') || '[]');
+                comentarios.push({
+                    ...request,
+                    id_comentarios: response.id_comentarios || null
+                });
+                sessionStorage.setItem('comentarios', JSON.stringify(comentarios));
+            },
+            (error) => {
+                console.error('Error al guardar el comentario:', error);
+            }
+        );
     }
-  }
+}
 
-  actualizarEstatus(event: Event, idCotizacion: any): void {
-    const selectElement = event.target as HTMLSelectElement;
-    const estatus = selectElement.value;
+actualizarEstatus(event: Event, idCotizacion: any): void {
+  const selectElement = event.target as HTMLSelectElement;
+  const estatus = selectElement.value;
 
-    console.log('Estatus seleccionado:', estatus);
-    console.log('ID de cotización:', idCotizacion);
+  console.log('Estatus seleccionado:', estatus);
+  console.log('ID de cotización:', idCotizacion);
 
-    if (estatus && idCotizacion) {
-      const request = {
-        estatus: estatus,
-        id_cotizacion: idCotizacion
-      };
+  if (estatus && idCotizacion) {
+    const request = {
+      estatus: estatus,
+      id_cotizacion: idCotizacion
+    };
 
-      this.apiService.updateEstatus(request).subscribe({
-        next: (response) => {
-          console.log('Estatus actualizado correctamente:', response);
-        },
-        error: (error) => {
-          console.error('Error al actualizar el estatus:', error);
-          if (error.status === 400) {
-            console.error('El servidor respondió con un Bad Request. Verifica los datos enviados.');
-          }
+    this.apiService.updateEstatus(request).subscribe({
+      next: (response) => {
+        console.log('Estatus actualizado correctamente:', response);
+      },
+      error: (error) => {
+        console.error('Error al actualizar el estatus:', error);
+        if (error.status === 400) {
+          console.error('El servidor respondió con un Bad Request. Verifica los datos enviados.');
         }
-      });
-    } else {
-      console.error('Datos incompletos: Estatus o ID de cotización faltantes');
-    }
+      }
+    });
+  } else {
+    console.error('Datos incompletos: Estatus o ID de cotización faltantes');
   }
+}
+
 }
