@@ -76,12 +76,11 @@ export class VistaComponent implements OnInit {
     }
   }
   
-  // Función para obtener comentarios
   getComentarios(idCotizacion: number): void {
     this.apiService.queryCustom('comentarios', 'id_cotizacion', idCotizacion.toString()).subscribe(
       (data) => {
         if (data && data.length > 0) {
-          this.comentarios = data; // Asignamos los comentarios obtenidos
+          this.comentarios = data; 
           console.log('Comentarios cargados:', this.comentarios);
         } else {
           this.comentarios = [];
@@ -93,9 +92,6 @@ export class VistaComponent implements OnInit {
       }
     );
   }
-  
-  
-  
   
   extractDocumentos(currentFiles: any[]): string[] {
     return currentFiles.map((file) => file.nombre);
@@ -109,7 +105,7 @@ export class VistaComponent implements OnInit {
     if (this.comentarios) {
         const request = {
             id_cotizacion: this.id_cotizacion,
-            id_usuario: this.user, // Asegúrate de que este valor está definido
+            id_usuario: this.user, 
             comentarios: this.comentarios,
         };
 
