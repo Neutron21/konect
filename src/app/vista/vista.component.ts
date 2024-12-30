@@ -93,6 +93,9 @@ export class VistaComponent implements OnInit {
     );
   }
   
+  
+  
+  
   extractDocumentos(currentFiles: any[]): string[] {
     return currentFiles.map((file) => file.nombre);
   }
@@ -105,7 +108,7 @@ export class VistaComponent implements OnInit {
     if (this.comentarios) {
         const request = {
             id_cotizacion: this.id_cotizacion,
-            id_usuario: this.user, 
+            id_usuario: this.user, // Asegúrate de que este valor está definido
             comentarios: this.comentarios,
         };
 
