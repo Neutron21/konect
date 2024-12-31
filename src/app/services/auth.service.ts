@@ -39,45 +39,45 @@ export class AuthService {
       }
   }
   
-  setLogin() {
-    sessionStorage.setItem('uid', this.uid);
-    sessionStorage.setItem('user', this.user); 
-    sessionStorage.setItem('token', this.token);
-    this.isLoggedIn = true;
-  }
-  
-  logOut() {
-    signOut(this.auth)
-      .then(() => {
-        this.clearSessionData();
-        this.router.navigateByUrl('/');
-      })
-      .catch((error) => {
-        console.error('Error al cerrar sesión:', error);
-      });
-  }
-  
-  private clearSessionData() {
-    sessionStorage.removeItem('uid');
-    sessionStorage.removeItem('user');
-    sessionStorage.removeItem('token');
-    sessionStorage.removeItem('financiera'); 
-  
-    sessionStorage.clear(); 
-    this.isLoggedIn = false;
-  }
-  
-      getIsLoged (){
-        const sessionTrue = sessionStorage.getItem('uid');
-        this.isLoggedIn = sessionTrue !== null ? true : false;
-        return this.isLoggedIn;
+    setLogin() {
+      sessionStorage.setItem('uid', this.uid);
+      sessionStorage.setItem('user', this.user); 
+      sessionStorage.setItem('token', this.token);
+      this.isLoggedIn = true;
+    }
+    
+    logOut() {
+      signOut(this.auth)
+        .then(() => {
+          this.clearSessionData();
+          this.router.navigateByUrl('/');
+        })
+        .catch((error) => {
+          console.error('Error al cerrar sesión:', error);
+        });
+    }
+    
+    private clearSessionData() {
+      sessionStorage.clear(); 
+      this.isLoggedIn = false;
+    }
+    validarErrorApi(error: any) {
+      if (error.status == 401 || error.error.error.includes('Expired')) {
+        console.log("Sesion expirada!");
+        this.logOut();
       }
-      getToken(): string | null {
-        return sessionStorage.getItem('token'); // Devuelve el JWT
-      }
+    }
+    getIsLoged (){
+      const sessionTrue = sessionStorage.getItem('uid');
+      this.isLoggedIn = sessionTrue !== null ? true : false;
+      return this.isLoggedIn;
+    }
+    getToken(): string | null {
+      return sessionStorage.getItem('token'); // Devuelve el JWT
+    }
 
-      getUser(): string | null {
-        return sessionStorage.getItem('user'); // Devuelve el correo del usuario logueado
-      }
+    getUser(): string | null {
+      return sessionStorage.getItem('user'); // Devuelve el correo del usuario logueado
+    }
 }
 

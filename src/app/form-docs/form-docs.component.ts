@@ -1,8 +1,11 @@
-import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
+import { Component, ElementRef, EventEmitter, Input, OnInit, Output, ViewChild } from '@angular/core';
 import { documentacion } from '../utils/documentos';
 import { ApiService } from '../services/api.service';
 import { AuthService } from '../services/auth.service';
+import { Modal } from 'bootstrap';
 
+
+// declare var bootstrap: any;
 @Component({
   selector: 'app-form-docs',
   templateUrl: './form-docs.component.html',
@@ -14,14 +17,17 @@ export class FormDocsComponent implements OnInit {
   @Input() isNew!: boolean;
 
   @Output() messageEmitter = new EventEmitter<boolean>();
+  // @ViewChild('emptyFilesModal') successModalRef: ElementRef | undefined;
 
   fileUpload: any;
   currentFiles: any[] = [];
   viabilidad: any[] = [];
-  fileList: any[] = [];
-  
+  fileList: any[] = []; // Lista comodin para la carga de archivos al servidor
+  idCotizacion: number = 0;
   idFin!: string;
   product!: number;
+  emptyFilesError: boolean = false;
+  modal: any;
 
   constructor(
     private apiService: ApiService,
@@ -32,9 +38,13 @@ export class FormDocsComponent implements OnInit {
     this.getFinAndProduct();
     console.log('FormDocsComponent inicializado');
   }
-
+  // ngAfterViewInit(): void {
+  //   if (this.successModalRef) {
+  //     this.modal = new bootstrap.Modal(this.successModalRef.nativeElement);
+  //   }
+  // }
   getFinAndProduct() {
-    // Obtén los valores de sessionStorage
+
     const financiera = sessionStorage.getItem("financiera");
     const producto = sessionStorage.getItem("producto");
 
@@ -106,9 +116,9 @@ export class FormDocsComponent implements OnInit {
   }
 
 
-  sendDocs() { // Primero se debe de enviar la cotizacion
+  sendDocs() { 
 
-    const cotizacion = btoa(4+"");
+    const cotizacion = this.idCotizacion!=0 ? btoa(this.idCotizacion+"") : "";
     console.log(this.fileList);
     const formData = new FormData();
     const user = sessionStorage.getItem('user') || "";
@@ -129,13 +139,11 @@ export class FormDocsComponent implements OnInit {
     this.apiService.upLoadFiles(formData).subscribe({
       next: (response) => {
         console.log('Datos enviados con éxito:', response);
+        // Disparar correos
       },
       error: (error) => {
         console.error('Error al enviar los datos:', error);
-        if (error.status == 401 || error.error.error.includes('Expired')) {
-          console.log("Sesion expirada!");
-          this.authService.logOut();
-        }
+        this.authService.validarErrorApi(error);
       }
     });
   }
@@ -144,33 +152,48 @@ export class FormDocsComponent implements OnInit {
       this.sendMessage(true);
       return;
     } 
-      console.log(this.request);
-      this.sendMessage(false);
-      const userEmail = sessionStorage.getItem('user');
-      if (userEmail) {
-        this.request.id_usuario = userEmail;
-      } else {
-        console.error('No se encontró el email del usuario autenticado.');
-        return;
+    console.log(this.request);
+    if (this.fileList.length == 0) {
+      this.emptyFilesError = true;
+      const modalElement = document.getElementById('staticBackdrop');
+      if (modalElement) {
+        const modal = new Modal(modalElement);
+        modal.show();
       }
-      this.request.estatus = 'Integración';
-      this.request.id_financiera = sessionStorage.getItem('financiera');
-      this.request.producto = sessionStorage.getItem('producto');
+      return;
+    }
 
-      this.apiService.sendCotizacion(this.request).subscribe({
-        next: (response) => {
-          console.log('cotizacion enviado con éxito:', response);
-        },
-        error: (error) => {
-          console.error('Error al enviar:', error);
-          if (error.status == 401 || error.error.error.includes('Expired')) {
-            console.log("Sesion expirada!");
-            this.authService.logOut();
-          }
-        }
-      });
+    const userEmail = sessionStorage.getItem('user');
+    if (userEmail) {
+      this.request.id_usuario = userEmail;
+    } else {
+      console.error('No se encontró el email del usuario autenticado.');
+      return;
+    }
+    this.request.estatus = 'Integración'; // Estado inicial del credito
+    this.request.id_financiera = sessionStorage.getItem('financiera');
+    this.request.producto = sessionStorage.getItem('producto');
 
-    
+    this.apiService.sendCotizacion(this.request).subscribe({
+      next: (response) => {
+        console.log('cotizacion enviada con éxito:', response);
+        // mandar llamar la carga de doccuemntos
+        this.preSendDocs(response);
+      },
+      error: (error) => {
+        console.error('Error al enviar:', error);
+        this.authService.validarErrorApi(error);
+      }
+    });
+  }
+  preSendDocs(response: any) {
+    sessionStorage.setItem(response.data.id_cotizacion, 'idCotizacion');
+    this.idCotizacion = response.data.id_cotizacion;
+    if (this.fileList) { 
+      this.sendDocs();
+    } else {
+      console.error("Sin archivos para enviar");
+    }
   }
   validarFormulario(): boolean {
     const { tipo_persona, nombre, edad, monto, plazo, antiguedadEmpresa, ingresos } = this.request;

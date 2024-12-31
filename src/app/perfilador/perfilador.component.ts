@@ -1,5 +1,5 @@
 import { Component, AfterViewInit, ViewChild, ElementRef } from '@angular/core';
-import { Router } from '@angular/router';
+
 import { ApiService } from '../services/api.service';
 import { financieras } from '../utils/financieras';
 
@@ -37,7 +37,6 @@ export class PerfiladorComponent implements AfterViewInit {
   productIndex: number = 0;
 
   constructor(
-    private router: Router,
     private apiService: ApiService
   ) {
     this.generarPlazos();
