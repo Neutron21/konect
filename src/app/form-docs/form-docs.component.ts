@@ -189,11 +189,8 @@ export class FormDocsComponent implements OnInit {
   preSendDocs(response: any) {
     sessionStorage.setItem(response.data.id_cotizacion, 'idCotizacion');
     this.idCotizacion = response.data.id_cotizacion;
-    if (this.fileList) { 
-      this.sendDocs();
-    } else {
-      console.error("Sin archivos para enviar");
-    }
+    this.sendDocs();
+   
   }
   validarFormulario(): boolean {
     const { tipo_persona, nombre, edad, monto, plazo, antiguedadEmpresa, ingresos } = this.request;
