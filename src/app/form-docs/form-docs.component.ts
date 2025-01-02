@@ -25,7 +25,6 @@ export class FormDocsComponent implements OnInit {
   idFin!: string;
   product!: number;
   emptyFilesError: boolean = false;
-  modal: any;
 
   constructor(
     private apiService: ApiService,

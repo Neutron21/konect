@@ -16,7 +16,6 @@
       aria-label=".form-select-sm example"
       [(ngModel)]="cotizacion.estatus"
       (change)="actualizarEstatus($event, cotizacion.id_cotizacion)">
-      <option value="" selected>ESTATUS DE CRÉDITO</option>
       <option value="Integración">Integración</option>
       <option value="Crédito">Crédito</option>
       <option value="Formalización">Formalización</option>
@@ -26,6 +25,25 @@
     </select>
   </div>
 </div>
+<!-- Modal -->
+<div class="modal fade" id="estatusModal" tabindex="-1" aria-labelledby="estatusModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="estatusModalLabel">Confirmar Cambio de Estatus</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        ¿Estás seguro de que deseas cambiar el estatus de la cotización?
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
+        <button type="button" class="btn btn-primary" >Confirmar</button>
+      </div>
+    </div>
+  </div>
+</div>
+
 
   
   
@@ -85,33 +103,43 @@
 
   <div class="form-group mt-4">
     <label for="comentarios">Comentarios:</label>
-    <textarea 
-      id="comentarios" 
-      class="form-control" 
-      rows="4" 
+    <textarea
+      id="comentarios"
+      class="form-control"
+      rows="4"
       name="comentario"
-    ></textarea>
+      [(ngModel)]="nuevoComentario">
+    </textarea>
   </div>
   
   <div class="text-end mt-3">
-    <button class="btn btn-primary" (click)="agregarComentario()">Agregar Comentario
-    </button>
+    <button class="btn btn-primary" (click)="agregarComentario()" [disabled]="loadingComentario">Agregar Comentario</button>
   </div>
-
+  
+  <!-- Loader solo para el comentario -->
+  <div *ngIf="loadingComentario" class="d-flex justify-content-center align-items-center mt-3">
+    <div class="spinner-border text-primary" role="status">
+      <span class="visually-hidden">Cargando...</span>
+    </div>
+  </div>
+  
   <div *ngIf="comentarios.length > 0" class="mt-4">
     <h4>Comentarios:</h4>
     <ul class="comentarios-lista">
-      <li *ngFor="let comentario of comentarios" class="comentario-rectangulo">
+      <li *ngFor="let comentario of comentarios.reverse()" class="comentario-rectangulo">
         <div class="comentario-header">
-          <small><strong>{{ user }}</strong></small>
-          <small class="comentario-fecha">{{ comentario.timestamp | date: 'dd/MM/yyyy' }}</small>
+          <small><strong>{{ comentario.id_usuario }}</strong></small>
+          <small class="comentario-fecha">{{ comentario.timestamp }}</small>
         </div>
         <p class="comentario-texto">{{ comentario.comentarios }}</p>
       </li>
     </ul>
   </div>
   <p *ngIf="comentarios.length === 0">No hay comentarios para esta cotización.</p>
-
+  
+  
+  
+  
   
   <div *ngIf="idFinanciera" class="container mt-4">
     <app-form-docs [request]="" [isNew]="false"></app-form-docs>
