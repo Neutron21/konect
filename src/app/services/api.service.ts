@@ -9,11 +9,6 @@ import { AuthService } from './auth.service';
 })
 export class ApiService {
 
-  // private headersJson = new HttpHeaders({
-  //   'Content-Type': 'application/json',
-  //   'X-Auth-Token': this.authService.getToken() + ""
-  // });
-
   constructor(
     private http: HttpClient,
     private authService: AuthService) {}
@@ -100,8 +95,5 @@ sendComentarios(request: any): Observable<any> {
  
   return this.http.post(environment.api + environment.comentarios, JSON.stringify(request), { headers: headersJson });
 }
-
-
-
 
 }

@@ -72,7 +72,7 @@
       <div class="col-md-6">
         <div class="form-group">
           <label for="nombre">Nombre:</label>
-          <input class="form-control" id="nombre" name="nombre" [(ngModel)]="cotizacion.nombre" (keypress)="onlyText($event)" required>
+          <input class="form-control" id="nombre" name="nombre" [(ngModel)]="cotizacion.nombre" (keypress)="onlyText($event)" (ngModelChange)="validarFormulario()">
         </div>
 
         <div class="form-group">
@@ -80,24 +80,24 @@
           <div class="input-group">
             <span class="input-group-text">$</span>
             <input class="form-control" id="monto" name="monto" mask="separator.2" thousandSeparator=","
-              [(ngModel)]="cotizacion.monto" (keypress)="onlyNumbers($event)" required>
+              [(ngModel)]="cotizacion.monto" (keypress)="onlyNumbers($event)" (ngModelChange)="validarFormulario()">
           </div>
         </div>
 
         <div class="form-group">
           <label for="antiguedad-empresa">Antigüedad de la Empresa (en años):</label>
-          <input class="form-control" id="antiguedad-empresa" name="antiguedadEmpresa" [(ngModel)]="cotizacion.antiguedadEmpresa" (keypress)="onlyNumbers($event)" required>
+          <input class="form-control" id="antiguedad-empresa" name="antiguedadEmpresa" [(ngModel)]="cotizacion.antiguedadEmpresa" (keypress)="onlyNumbers($event)" (ngModelChange)="validarFormulario()">
         </div>
       </div>
 
       <div class="col-md-6">
         <div class="form-group">
           <label for="edad">Edad:</label>
-          <input class="form-control" id="edad" name="edad" [(ngModel)]="cotizacion.edad" (keypress)="onlyNumbers($event)" required>
+          <input class="form-control" id="edad" name="edad" [(ngModel)]="cotizacion.edad" (keypress)="onlyNumbers($event)" (ngModelChange)="validarFormulario()">
         </div>
         <div class="form-group">
           <label for="plazo">Plazo (en meses):</label>
-          <select class="form-control" id="plazo" name="plazo" [(ngModel)]="cotizacion.plazo" required>
+          <select class="form-control" id="plazo" name="plazo" [(ngModel)]="cotizacion.plazo" (ngModelChange)="validarFormulario()">
             <option *ngFor="let plazo of plazos" [value]="plazo">{{ plazo }}</option>
           </select>
         </div>
@@ -108,13 +108,19 @@
           <div class="input-group">
             <span class="input-group-text">$</span>
             <input class="form-control" id="ingresos" name="ingresos" mask="separator.2" thousandSeparator=","
-             [(ngModel)]="cotizacion.ingresos" (keypress)="onlyNumbers($event)" required>
+             [(ngModel)]="cotizacion.ingresos" (keypress)="onlyNumbers($event)" (ngModelChange)="validarFormulario()">
+          </div>
+        </div>
+        <div class="form-group">
+          <label for="rfc">RFC:</label>
+          <div class="input-group">
+            <input class="form-control" id="rfc" name="rfc"[(ngModel)]="cotizacion.rfc" (ngModelChange)="validarFormulario()">
           </div>
         </div>
       </div>
     </div>
         
-            <div *ngIf="mostrarError && formularioForm.invalid" class="error">
+            <div *ngIf="mostrarError" class="error">
               Todos los campos son obligatorios para continuar.
             </div>
           </form>

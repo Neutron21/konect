@@ -65,15 +65,12 @@ export class LoginComponent implements OnInit {
       (data: any[]) => {
        console.log(data);
        sessionStorage.setItem('rol', data[0].rol);
+       sessionStorage.setItem('broker', data[0].broker);
       },
       (error: any) => {
         console.error('Error al consultar usuario:', error);
         console.log(error);
-        
-        if (error.status == 401 || error.error.error.includes('Expired')) {
-          console.log("Sesion expirada!");
-          this.authService.logOut();
-        }
+        this.authService.validarErrorApi(error);
       }
     );
   }

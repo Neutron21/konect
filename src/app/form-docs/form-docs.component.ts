@@ -3,9 +3,8 @@ import { documentacion } from '../utils/documentos';
 import { ApiService } from '../services/api.service';
 import { AuthService } from '../services/auth.service';
 import { Modal } from 'bootstrap';
+import { MailService } from '../services/mail.service';
 
-
-// declare var bootstrap: any;
 @Component({
   selector: 'app-form-docs',
   templateUrl: './form-docs.component.html',
@@ -17,7 +16,6 @@ export class FormDocsComponent implements OnInit {
   @Input() isNew!: boolean;
 
   @Output() messageEmitter = new EventEmitter<boolean>();
-  // @ViewChild('emptyFilesModal') successModalRef: ElementRef | undefined;
 
   fileUpload: any;
   currentFiles: any[] = [];
@@ -31,18 +29,15 @@ export class FormDocsComponent implements OnInit {
 
   constructor(
     private apiService: ApiService,
-    private authService: AuthService
+    private authService: AuthService,
+    private mailService: MailService
   ) { }
 
   ngOnInit(): void {
     this.getFinAndProduct();
     console.log('FormDocsComponent inicializado');
   }
-  // ngAfterViewInit(): void {
-  //   if (this.successModalRef) {
-  //     this.modal = new bootstrap.Modal(this.successModalRef.nativeElement);
-  //   }
-  // }
+
   getFinAndProduct() {
 
     const financiera = sessionStorage.getItem("financiera");
@@ -140,6 +135,7 @@ export class FormDocsComponent implements OnInit {
       next: (response) => {
         console.log('Datos enviados con éxito:', response);
         // Disparar correos
+        this.mailService.sendMails();
       },
       error: (error) => {
         console.error('Error al enviar los datos:', error);
@@ -148,10 +144,12 @@ export class FormDocsComponent implements OnInit {
     });
   }
   preparandoCotizacion() {
+    this.mailService.sendMails();
     if (!this.validarFormulario()) {
       this.sendMessage(true);
       return;
     } 
+    this.sendMessage(false);
     console.log(this.request);
     if (this.fileList.length == 0) {
       this.emptyFilesError = true;
@@ -192,9 +190,12 @@ export class FormDocsComponent implements OnInit {
     this.sendDocs();
    
   }
+  requestMail() {
+
+  }
   validarFormulario(): boolean {
-    const { tipo_persona, nombre, edad, monto, plazo, antiguedadEmpresa, ingresos } = this.request;
-    return tipo_persona && nombre && edad && monto && plazo && antiguedadEmpresa && ingresos;
+    const { tipo_persona, nombre, edad, monto, plazo, antiguedadEmpresa, ingresos, rfc } = this.request;
+    return tipo_persona && nombre && edad && monto && plazo && antiguedadEmpresa && ingresos && rfc;
   }
   sendMessage(message: boolean) {
     this.messageEmitter.emit(message);

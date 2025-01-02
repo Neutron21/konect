@@ -24,6 +24,7 @@ export class PerfiladorComponent implements AfterViewInit {
     plazo: null,
     antiguedadEmpresa: null,
     ingresos: null,
+    rfc: null,
   };
   plazos: number[] = [];
   docProcess: boolean = false;
@@ -112,8 +113,9 @@ export class PerfiladorComponent implements AfterViewInit {
   }
 
   validarFormulario(): boolean {
-    const { tipo_persona, nombre, edad, monto, plazo, antiguedadEmpresa, ingresos } = this.cotizacion;
-    return tipo_persona && nombre && edad && monto && plazo && antiguedadEmpresa && ingresos;
+  
+    const { tipo_persona, nombre, edad, monto, plazo, antiguedadEmpresa, ingresos, rfc } = this.cotizacion;
+    return !!tipo_persona && !!nombre && !!edad && !!monto && !!plazo && !!antiguedadEmpresa && !!ingresos && !!rfc;
   }
 
   formatDate(fechaEnvio: string): string {
