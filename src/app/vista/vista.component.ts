@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { ApiService } from '../services/api.service';
 import Modal from 'bootstrap/js/dist/modal';
+import { AuthService } from '../services/auth.service';
 
 
 @Component({
@@ -17,14 +18,17 @@ export class VistaComponent implements OnInit {
   documentos: any[] = [];
   idFinanciera: string | null = null;
   comentarios: any [] = [];  
-  user: string | null = sessionStorage.getItem('user') || 'anónimo';
+  user: string | null = sessionStorage.getItem('user');
   id_cotizacion: number = 0;
   nuevoComentario: string = '';
+  estatusSeleccionado: string = '';
+  estatusOriginal: string = '';
 
   constructor(
     private route: ActivatedRoute,
     private router: Router,
-    private apiService: ApiService
+    private apiService: ApiService,
+    private authService: AuthService,
   ) {}
 
   ngOnInit(): void {
@@ -43,13 +47,13 @@ export class VistaComponent implements OnInit {
   
             const idFinanciera = data[0]?.idFinanciera || data[0]?.id_financiera;
             const producto = data[0]?.producto;
-  
-              sessionStorage.setItem('financiera', idFinanciera);
-              console.log('ID Financiera guardado en sessionStorage:', idFinanciera);
-              this.idFinanciera = idFinanciera;
+            this.estatusOriginal = data[0]?.estatus;
+            sessionStorage.setItem('financiera', idFinanciera);
+            console.log('ID Financiera guardado en sessionStorage:', idFinanciera);
+            this.idFinanciera = idFinanciera;
 
-              sessionStorage.setItem('producto', producto.toString());
-              console.log('Producto guardado en sessionStorage:', producto);
+            sessionStorage.setItem('producto', producto.toString());
+            console.log('Producto guardado en sessionStorage:', producto);
   
           }
           this.getComentarios(idCotizacion);
@@ -57,6 +61,7 @@ export class VistaComponent implements OnInit {
         (error) => {
           this.loading = false;
           this.errorMessage = 'Error al obtener la cotización: ' + error.message;
+          this.authService.validarErrorApi(error);
         }
       );
     } else {
@@ -76,6 +81,7 @@ export class VistaComponent implements OnInit {
       },
       (error) => {
         console.error('Error al obtener los comentarios:', error);
+        this.authService.validarErrorApi(error);
       }
     );  
   }
@@ -96,56 +102,64 @@ export class VistaComponent implements OnInit {
     };
     console.log('Enviando comentario:', request);
   
-    this.loadingComentario = true;  // Activar el loader solo para el comentario
+    this.loadingComentario = true;  
   
     this.apiService.sendComentarios(request).subscribe(
       (response) => {
         console.log('Comentario guardado exitosamente:', response);
         this.nuevoComentario = '';
         this.getComentarios(this.id_cotizacion);
-        this.loadingComentario = false;  // Desactivar el loader
+        this.loadingComentario = false; 
       },
       (error) => {
         console.error('Error al guardar el comentario:', error);
-        this.loadingComentario = false;  // Desactivar el loader
+        this.loadingComentario = false;  
+        this.authService.validarErrorApi(error);
       }
     );
   }
   
+  actualizarEstatus(event: Event, idCotizacion: any): void {
+    const selectElement = event.target as HTMLSelectElement;
+  
+    this.estatusSeleccionado = selectElement.value; 
+    console.log('Estatus seleccionado temporalmente:', this.estatusSeleccionado);
+  
+    const modalElement = document.getElementById('estatusModal');
+    if (modalElement) {
+      const modal = new Modal(modalElement);
+      modal.show();
+    }
+  }
+  confirmarCambioEstatus(idCotizacion: any): void {
+    if (this.estatusSeleccionado && idCotizacion) {
+      const request = {
+        estatus: this.estatusSeleccionado,
+        id_cotizacion: idCotizacion,
+      };
 
+      this.apiService.updateEstatus(request).subscribe({
+        next: (response) => {
+          console.log('Estatus actualizado correctamente:', response);
 
-actualizarEstatus(event: Event, idCotizacion: any): void {
-  const selectElement = event.target as HTMLSelectElement;
-  const estatus = selectElement.value;
+          this.nuevoComentario = `El estatus se cambió a: ${this.estatusSeleccionado}`;
+          this.agregarComentario();
+        },
+        error: (error) => {
+          console.error('Error al actualizar el estatus:', error);
+          this.authService.validarErrorApi(error);
+        },
+      });
+    } else {
+      console.error('Datos incompletos: Estatus o ID de cotización faltantes');
+    }
+  }
 
-  console.log('Estatus seleccionado:', estatus);
-  console.log('ID de cotización:', idCotizacion);
-
-  if (estatus && idCotizacion) {
-    const request = {
-      estatus: estatus,
-      id_cotizacion: idCotizacion
-    };
-      const modalElement = document.getElementById('estatusModal');
-          if (modalElement) {
-            const modal = new Modal(modalElement);
-            modal.show();
-          }
-
-    this.apiService.updateEstatus(request).subscribe({
-      next: (response) => {
-        console.log('Estatus actualizado correctamente:', response);
-      },
-      error: (error) => {
-        console.error('Error al actualizar el estatus:', error);
-        if (error.status === 400) {
-          console.error('El servidor respondió con un Bad Request. Verifica los datos enviados.');
-        }
-      }
-    });
-  } else {
-    console.error('Datos incompletos: Estatus o ID de cotización faltantes');
+  cancelarCambioEstatus(): void {
+    this.cotizacion.estatus = this.estatusOriginal;
+    console.log('Cambio de estatus cancelado. Restaurado a:', this.estatusOriginal);
   }
 }
+  
 
-}
+

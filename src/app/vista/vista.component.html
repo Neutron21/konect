@@ -25,28 +25,32 @@
     </select>
   </div>
 </div>
-<!-- Modal -->
+
 <div class="modal fade" id="estatusModal" tabindex="-1" aria-labelledby="estatusModalLabel" aria-hidden="true">
   <div class="modal-dialog">
     <div class="modal-content">
-      <div class="modal-header">
-        <h5 class="modal-title" id="estatusModalLabel">Confirmar Cambio de Estatus</h5>
+      <div class="modal-header bg-red">
+        <h5 class="modal-title mx-auto text-black" id="estatusModalLabel">Confirmar Cambio de Estatus</h5>
         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
       </div>
       <div class="modal-body">
-        ¿Estás seguro de que deseas cambiar el estatus de la cotización?
-      </div>
+        ¡El cambio de estatus se guardará como comentario!  
+        <br>
+        ¿Estás seguro de que deseas cambiarlo?
+      </div>      
       <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
-        <button type="button" class="btn btn-primary" >Confirmar</button>
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal" 
+         (click)="cancelarCambioEstatus()">
+         Cancelar
+        </button>
+        <button type="button" class="btn btn-success" data-bs-dismiss="modal"
+          (click)="confirmarCambioEstatus(cotizacion.id_cotizacion)">
+          Confirmar
+        </button>
       </div>
     </div>
   </div>
 </div>
-
-
-  
-  
 
   <div *ngIf="loading" class="d-flex justify-content-center">
     <div class="spinner-border text-primary" role="status">
@@ -116,7 +120,6 @@
     <button class="btn btn-primary" (click)="agregarComentario()" [disabled]="loadingComentario">Agregar Comentario</button>
   </div>
   
-  <!-- Loader solo para el comentario -->
   <div *ngIf="loadingComentario" class="d-flex justify-content-center align-items-center mt-3">
     <div class="spinner-border text-primary" role="status">
       <span class="visually-hidden">Cargando...</span>
@@ -138,13 +141,10 @@
   <p *ngIf="comentarios.length === 0">No hay comentarios para esta cotización.</p>
   
   
-  
-  
-  
-  <div *ngIf="idFinanciera" class="container mt-4">
+  <!-- <div *ngIf="idFinanciera" class="container mt-4">
     <app-form-docs [request]="" [isNew]="false"></app-form-docs>
-  </div>
-
+  </div> -->
+  <app-file-upload></app-file-upload>
 
 
 

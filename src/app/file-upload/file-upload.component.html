@@ -1,0 +1,14 @@
+<div>
+    <input type="file" id="fileInput" (change)="onFileChange($event)" #fileInput hidden />
+    <span 
+      [ngStyle]="{'color': fileColor}" 
+      (click)="openFileDialog(fileInput)"
+      style="cursor: pointer;">
+      {{ fileName || 'Archivo name' }}
+    </span>
+    <button (click)="resetFile(fileInput)" *ngIf="fileName" class="btn btn-danger" style="margin-left: 10px;">
+    Borrar
+  </button>
+  </div>
+  
+  

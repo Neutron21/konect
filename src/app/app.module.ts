@@ -17,6 +17,7 @@ import { ModalComponent } from './modal/modal.component';
 import { CommonModule } from '@angular/common';  
 import { VistaComponent } from './vista/vista.component';  
 import { NgxMaskModule } from 'ngx-mask';
+import { FileUploadComponent } from './file-upload/file-upload.component';
 
 
 
@@ -33,7 +34,8 @@ import { NgxMaskModule } from 'ngx-mask';
     BackArrowComponent,
     InstitucionesComponent,
     ModalComponent,
-    VistaComponent
+    VistaComponent,
+    FileUploadComponent
   ],
   imports: [
     BrowserModule,
