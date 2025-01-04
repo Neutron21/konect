@@ -135,7 +135,14 @@ export class FormDocsComponent implements OnInit {
       next: (response) => {
         console.log('Datos enviados con éxito:', response);
         // Disparar correos
-        this.mailService.sendMails();
+        this.mailService.sendMails().subscribe({
+          next: (response) => {
+            console.log('Envio de correo:', response);
+          }, error: (err) => {
+            console.error('Error al enviar los datos:', err);
+          this.authService.validarErrorApi(err);
+          }
+        });
       },
       error: (error) => {
         console.error('Error al enviar los datos:', error);
@@ -144,7 +151,6 @@ export class FormDocsComponent implements OnInit {
     });
   }
   preparandoCotizacion() {
-    this.mailService.sendMails();
     if (!this.validarFormulario()) {
       this.sendMessage(true);
       return;
@@ -153,11 +159,11 @@ export class FormDocsComponent implements OnInit {
     console.log(this.request);
     if (this.fileList.length == 0) {
       this.emptyFilesError = true;
-      const modalElement = document.getElementById('staticBackdrop');
+      const modalElement = document.getElementById('noFilesModal');
       if (modalElement) {
         const modal = new Modal(modalElement);
         modal.show();
-      }
+      } 
       return;
     }
 
@@ -185,14 +191,14 @@ export class FormDocsComponent implements OnInit {
     });
   }
   preSendDocs(response: any) {
-    sessionStorage.setItem(response.data.id_cotizacion, 'idCotizacion');
+    
+    sessionStorage.setItem('cotizacion', JSON.stringify(response.data) );
+    sessionStorage.setItem('idCotizacion',response.data.id_cotizacion);
     this.idCotizacion = response.data.id_cotizacion;
     this.sendDocs();
    
   }
-  requestMail() {
-
-  }
+  
   validarFormulario(): boolean {
     const { tipo_persona, nombre, edad, monto, plazo, antiguedadEmpresa, ingresos, rfc } = this.request;
     return tipo_persona && nombre && edad && monto && plazo && antiguedadEmpresa && ingresos && rfc;
