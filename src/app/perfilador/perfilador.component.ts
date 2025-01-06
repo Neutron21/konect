@@ -14,6 +14,7 @@ export class PerfiladorComponent implements AfterViewInit {
 
   @ViewChild('successModal') successModalRef: ElementRef | undefined;
 
+  isExpanded = false;
   nameFin = '';
   nameProd = '';
   cotizacion: any = {
@@ -163,5 +164,8 @@ export class PerfiladorComponent implements AfterViewInit {
     link.href = url;
     link.download = nombreArchivo;
     link.click();
+  }
+  toggleAccordion() {
+    this.isExpanded = !this.isExpanded;
   }
 }

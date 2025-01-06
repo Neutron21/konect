@@ -24,7 +24,6 @@ export class MailService {
     const producto = Number(sessionStorage.getItem("producto"));
     const institucion = financieras.find(el => el.id == idFinanciera);
 
-
     const payload = {
       emailUser: sessionStorage.getItem('user'),
       cliente: cotizacion.nombre,
@@ -33,7 +32,8 @@ export class MailService {
       monto: cotizacion.monto,
       producto: institucion?.productos[producto],
       broker: sessionStorage.getItem("broker") ,
-      numCotizacion: sessionStorage.getItem("idCotizacion")
+      numCotizacion: sessionStorage.getItem("idCotizacion"),
+      institucion: institucion?.nombre
       // franquicia: "",
       // director:"",
       // region:"",

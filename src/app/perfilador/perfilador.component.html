@@ -119,19 +119,22 @@
         </div>
       </div>
     </div>
-        
-            <div *ngIf="mostrarError && formularioForm.invalid" class="error">
-              Todos los campos son obligatorios para continuar.
-            </div>
-          </form>
-        <div *ngIf="docProcess" class="accordion" id="accordionExample">
+  
+      <div *ngIf="mostrarError && formularioForm.invalid" class="error">
+        Todos los campos son obligatorios para continuar.
+      </div>
+    </form>
+        <div *ngIf="docProcess" class="accordion" id="accordionDocs">
           <div class="accordion-item">
-            <h2 class="accordion-header" id="headingOne">
-              <button class="accordion-button custom-collapse collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseDocs" aria-expanded="false" aria-controls="collapseOne">
+            <h2 class="accordion-header" id="headingDocs">
+              <button class="accordion-button custom-collapse" [ngClass]="{ 'collapsed': !isExpanded }"
+               type="button" data-bs-target="#collapseDocs" [attr.aria-expanded]="false" aria-controls="collapseDocs"
+               (click)="toggleAccordion()">
                 Carga de documentos
               </button>
             </h2>
-            <div id="collapseDocs" class="accordion-collapse collapse" aria-labelledby="headingOne" data-bs-parent="#accordionExample">
+            <div id="collapseDocs" class="accordion-collapse collapse" [ngClass]="{ 'show': isExpanded }"
+              aria-labelledby="headingDocs" data-bs-parent="#accordionDocs">
               <div class="accordion-body-custom">
                 <app-form-docs [request]="cotizacion" [isNew]=true (messageEmitter)="mostrarErrorFunc($event)"></app-form-docs>
               </div>
