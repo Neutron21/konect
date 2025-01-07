@@ -34,7 +34,6 @@ export class FormDocsComponent implements OnInit {
 
   ngOnInit(): void {
     this.getFinAndProduct();
-    console.log('FormDocsComponent inicializado');
   }
 
   getFinAndProduct() {

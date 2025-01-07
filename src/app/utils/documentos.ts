@@ -284,7 +284,7 @@ export const documentacion: any = {
     name: 'activeLeasing',
     viabilidad: [
         {nombre: 'ESTADOS FINANCIEROS', desc: 'AL CIERRE , 2021, 2022 Y PARCIAL 2023 NO MAYOR A 2 MESES CON ANALÍTICAS Y FIRMADOS POR EL REPRESENTANTE LEGAL Y CP'},
-        {nombre: 'CONSULTA ESPECIAL DE BURÓ DE CRÉDITO RECIENTE', desc: ''},
+        {nombre: 'BURÓ DE CRÉDITO', desc: 'CONSULTA ESPECIAL RECIENTE'},
         {nombre: 'FIRMA EKATENA', desc: 'CLAVE CIEC'},
         {nombre: 'FICHA TÉCNICA DEL ACTIVO', desc: ''}
     ],

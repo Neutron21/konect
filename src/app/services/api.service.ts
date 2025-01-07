@@ -95,5 +95,16 @@ sendComentarios(request: any): Observable<any> {
  
   return this.http.post(environment.api + environment.comentarios, JSON.stringify(request), { headers: headersJson });
 }
+getDocs(numCotizacion: string): Observable<any[]> {
+  const headersJson = new HttpHeaders({
+    'Content-Type': 'application/json',
+    'X-Auth-Token': this.authService.getToken() + ""
+  });
 
+  // Crear los parámetros de la solicitud
+  let params = new HttpParams()
+    .set('numCotizacion', numCotizacion)
+
+  return this.http.get<any[]>(environment.api + environment.getDocs, { headers: headersJson, params });
+} 
 }

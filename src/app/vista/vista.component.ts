@@ -32,41 +32,15 @@ export class VistaComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
-    this.idFinanciera = sessionStorage.getItem('financiera');
-    const idCotizacion = this.route.snapshot.queryParams['id_cotizacion'];
-    if (idCotizacion) {
-      this.id_cotizacion = Number(idCotizacion); 
-      this.loading = true;
-        this.apiService.queryCustom('cotizacion', 'id_cotizacion', idCotizacion).subscribe(
-        (data) => {
-          this.loading = false;
-          console.log('Respuesta de la API (cotización):', data);
-  
-          if (data && data.length > 0) {
-            this.cotizacion = data[0];
-  
-            const idFinanciera = data[0]?.idFinanciera || data[0]?.id_financiera;
-            const producto = data[0]?.producto;
-            this.estatusOriginal = data[0]?.estatus;
-            sessionStorage.setItem('financiera', idFinanciera);
-            console.log('ID Financiera guardado en sessionStorage:', idFinanciera);
-            this.idFinanciera = idFinanciera;
 
-            sessionStorage.setItem('producto', producto.toString());
-            console.log('Producto guardado en sessionStorage:', producto);
-  
-          }
-          this.getComentarios(idCotizacion);
-        },
-        (error) => {
-          this.loading = false;
-          this.errorMessage = 'Error al obtener la cotización: ' + error.message;
-          this.authService.validarErrorApi(error);
-        }
-      );
-    } else {
-      this.errorMessage = 'No se proporcionó un ID de cotización válido.';
-    }
+    const idCotizacion = this.route.snapshot.queryParams['id_cotizacion'];
+
+    this.id_cotizacion = Number(idCotizacion); 
+    this.loading = true;
+    this.getCurrentCotizacion(idCotizacion);
+    this.getComentarios(idCotizacion);
+    this.getFiles();
+ 
   }
   
   getComentarios(idCotizacion: number): void {
@@ -154,7 +128,49 @@ export class VistaComponent implements OnInit {
       console.error('Datos incompletos: Estatus o ID de cotización faltantes');
     }
   }
+  getCurrentCotizacion(idCotizacion: number) {
+    this.apiService.queryCustom('cotizacion', 'id_cotizacion', idCotizacion.toString()).subscribe(
+      (data) => {
+        this.loading = false;
+        console.log('Respuesta de la API (cotización):', data);
 
+        if (data && data.length > 0) {
+          this.cotizacion = data[0];
+
+          const idFinanciera = data[0]?.idFinanciera || data[0]?.id_financiera;
+          const producto = data[0]?.producto;
+          this.estatusOriginal = data[0]?.estatus;
+          sessionStorage.setItem('financiera', idFinanciera);
+          console.log('ID Financiera guardado en sessionStorage:', idFinanciera);
+          this.idFinanciera = idFinanciera; // este dispara el form-docs
+
+          sessionStorage.setItem('producto', producto.toString());
+          console.log('Producto guardado en sessionStorage:', producto);
+
+        }
+      },
+      (error) => {
+        this.loading = false;
+        this.errorMessage = 'Error al obtener la cotización: ' + error.message;
+        this.authService.validarErrorApi(error);
+      }
+    );
+  }
+  getFiles() {
+    this.apiService.getDocs(this.id_cotizacion.toString()).subscribe(
+      (data: any[]) => { 
+        console.log("Files",data);
+      },
+      (error: any) => {
+        console.error('Error al obtener cotizaciones:', error);
+        
+        if (error.status == 401 || error.error.error.includes('Expired')) {
+          console.log("Sesion expirada!");
+          this.authService.logOut();
+        }
+      }
+    );
+  }
   cancelarCambioEstatus(): void {
     this.cotizacion.estatus = this.estatusOriginal;
     console.log('Cambio de estatus cancelado. Restaurado a:', this.estatusOriginal);

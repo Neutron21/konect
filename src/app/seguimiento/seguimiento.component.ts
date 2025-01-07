@@ -101,10 +101,6 @@ export class SeguimientoComponent implements OnInit {
     this.isSearchActive = this.filteredData.length !== this.data.length;
   }
 
-  verArchivo(archivoUrl: string): void {
-    this.router.navigate(['/ver-archivo'], { queryParams: { archivo: archivoUrl } });
-  }
-
   navigateBack(): void {
     this.router.navigate(['/seccion']);
   }
