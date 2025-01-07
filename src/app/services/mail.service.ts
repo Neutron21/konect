@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { environment } from 'src/environments/environment';
 import { Observable } from 'rxjs';
 import { AuthService } from './auth.service';
@@ -19,26 +19,28 @@ export class MailService {
       'Content-Type': 'application/json',
       'X-Auth-Token': this.authService.getToken() + ""
     });
-
+    const cotizacion = JSON.parse(sessionStorage.getItem("cotizacion")+"");
     const idFinanciera = Number(sessionStorage.getItem("financiera"));
     const producto = Number(sessionStorage.getItem("producto"));
     const institucion = financieras.find(el => el.id == idFinanciera);
 
     const payload = {
       emailUser: sessionStorage.getItem('user'),
-      cliente: "",
-      rfc: "",
-      monto: "",
+      cliente: cotizacion.nombre,
+      financiera: sessionStorage.getItem('financiera'),
+      rfc: cotizacion.rfc,
+      monto: cotizacion.monto,
       producto: (institucion?.productos![producto] as { name: string }),
       broker: sessionStorage.getItem("broker") ,
-      numCotizacion: sessionStorage.getItem("idCotizacion")
+      numCotizacion: sessionStorage.getItem("idCotizacion"),
+      institucion: institucion?.nombre
       // franquicia: "",
       // director:"",
       // region:"",
     };
     console.log(payload);
     
-    return this.http.post(environment.api + environment.deleteToken, JSON.stringify(payload), { headers: headersJson });
+    return this.http.post(environment.api + environment.sendMail, JSON.stringify(payload), { headers: headersJson });
   }
   
 }

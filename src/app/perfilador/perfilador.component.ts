@@ -13,6 +13,8 @@ declare var bootstrap: any;
 export class PerfiladorComponent implements AfterViewInit {
 
   @ViewChild('successModal') successModalRef: ElementRef | undefined;
+
+  isExpanded = false;
   nameFin = '';
   nameProd: any = null;
   cotizacion: any = {
@@ -163,6 +165,7 @@ export class PerfiladorComponent implements AfterViewInit {
     link.download = nombreArchivo;
     link.click();
   }
-
-  
+  toggleAccordion() {
+    this.isExpanded = !this.isExpanded;
+  }
 }

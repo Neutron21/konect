@@ -1,4 +1,4 @@
-import { Component, ElementRef, EventEmitter, Input, OnInit, Output, ViewChild } from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { documentacion } from '../utils/documentos';
 import { ApiService } from '../services/api.service';
 import { AuthService } from '../services/auth.service';
@@ -134,7 +134,7 @@ export class FormDocsComponent implements OnInit {
       next: (response) => {
         console.log('Datos enviados con éxito:', response);
         // Disparar correos
-        this.mailService.sendMails();
+       this.sendMails()
       },
       error: (error) => {
         console.error('Error al enviar los datos:', error);
@@ -143,7 +143,6 @@ export class FormDocsComponent implements OnInit {
     });
   }
   preparandoCotizacion() {
-    this.mailService.sendMails();
     if (!this.validarFormulario()) {
       this.sendMessage(true);
       return;
@@ -152,11 +151,11 @@ export class FormDocsComponent implements OnInit {
     console.log(this.request);
     if (this.fileList.length == 0) {
       this.emptyFilesError = true;
-      const modalElement = document.getElementById('staticBackdrop');
+      const modalElement = document.getElementById('noFilesModal');
       if (modalElement) {
         const modal = new Modal(modalElement);
         modal.show();
-      }
+      } 
       return;
     }
 
@@ -167,7 +166,7 @@ export class FormDocsComponent implements OnInit {
       console.error('No se encontró el email del usuario autenticado.');
       return;
     }
-    this.request.estatus = 'Integración'; // Estado inicial del credito
+    this.request.estatus = this.viabilidad.length > 0 ? 'Viabilidad' : 'Integración'; // Estado inicial del credito
     this.request.id_financiera = sessionStorage.getItem('financiera');
     this.request.producto = sessionStorage.getItem('producto');
 
@@ -184,13 +183,22 @@ export class FormDocsComponent implements OnInit {
     });
   }
   preSendDocs(response: any) {
-    sessionStorage.setItem(response.data.id_cotizacion, 'idCotizacion');
+
+    sessionStorage.setItem('cotizacion', JSON.stringify(response.data) );
+    sessionStorage.setItem('idCotizacion',response.data.id_cotizacion);
     this.idCotizacion = response.data.id_cotizacion;
     this.sendDocs();
-   
-  }
-  requestMail() {
 
+  }
+  sendMails() {
+    this.mailService.sendMails().subscribe({
+      next: (response) => {
+        console.log('Envio de correo:', response);
+      }, error: (err) => {
+        console.error('Error al enviar los datos:', err);
+        this.authService.validarErrorApi(err);
+      }
+    });
   }
   validarFormulario(): boolean {
     const { tipo_persona, nombre, edad, monto, plazo, antiguedadEmpresa, ingresos, rfc } = this.request;
