@@ -29,7 +29,7 @@ export class MailService {
       cliente: "",
       rfc: "",
       monto: "",
-      producto: institucion?.productos[producto],
+      producto: (institucion?.productos![producto] as { name: string }),
       broker: sessionStorage.getItem("broker") ,
       numCotizacion: sessionStorage.getItem("idCotizacion")
       // franquicia: "",

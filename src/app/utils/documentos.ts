@@ -2,54 +2,49 @@ export const documentacion: any = {
     F1: {
         name: 'konfio',
         p1: {
-            name: 'creditoS pm',
+            name: 'creditoSimple',
             documentos: [
-                {nombre: 'IDENTIFICACIÓN', desc: 'DE UN ACCIONISTA CON UN MÍNIMO DE 25% DE ACCIONES'},
-                {nombre: 'RFC', desc: 'CON EL QUE FACTURAS Y CONTRASEÑA DEL SAT'},
-                {nombre: 'ACTA CONSTITUTIVA', desc: 'CON FOLIO DEL RPP'},
-                {nombre: 'ASAMBLEAS' , desc: 'CON FOLIO DEL RPP (EN CASO DE APLICAR)'},
-                {nombre: 'COMPROBANTE DE DOMICILIO', desc: 'DEL NEGOCIO'},
-                {nombre: 'CONSTANCIA DE SITUACIÓN FISCAL', desc: ' DE LA EMPRESA'},
-                {nombre: 'IDENTIFICACION REP LEGAL', desc: 'INE, PASAPORTE O RESIDENCIA PERMANENTE EN CASO DE EXTRAJERO (VIGENTES Y ESCANEADOS EN PDF)'},
-                {nombre: 'COMPROBANTE DE DOMICILIO', desc: 'REP LEGAL'},
-                // {nombre: 'OBL SOL INE, PASAPORTE O RESIDENCIA PERMANENTE EN CASO DE EXTRAJERO', desc: '(VIGENTES Y ESCANEADOS EN PDF)'},
-                // {nombre: 'OBL SOL COMPROBANTE DE DOMICILIO', desc:'(VIGENTES Y ESCANEADOS EN PDF)'}
+                { nombre:'CHECKLIST ', desc:''},
+                { nombre: 'IDENTIFICACIÓN', desc: 'DE UN ACCIONISTA CON UN MÍNIMO DE 25% DE ACCIONES PDF DE AMBOS LADOS NO VENCIDO' },
+                { nombre: 'RFC', desc: 'CON EL QUE FACTURAS Y CONTRASEÑA DEL SAT' },
+                { nombre: 'ACTA CONSTITUTIVA', desc: 'CON FOLIO DEL RPP' },
+                { nombre: 'ASAMBLEAS', desc: 'CON FOLIO DEL RPP (EN CASO DE APLICAR)' },
+                { nombre: 'COMPROBANTE DE DOMICILIO', desc: 'DEL NEGOCIO' },
+                { nombre: 'CONSTANCIA DE SITUACIÓN FISCAL', desc: 'DE LA EMPRESA' },
+                // Representante Legal
+                { nombre: 'INE, PASAPORTE O RESIDENCIA PERMANENTE', desc: 'EN CASO DE EXTRAJERO (VIGENTES Y ESCANEADOS EN PDF)' },
+                { nombre: 'COMPROBANTE DE DOMICILIO', desc: '' },
+                // Obligado Solidario
+                { nombre: 'INE, PASAPORTE O RESIDENCIA PERMANENTE', desc: 'EN CASO DE EXTRAJERO (VIGENTES Y ESCANEADOS EN PDF)' },
+                { nombre: 'COMPROBANTE DE DOMICILIO', desc: '' },
+                // Documentos Persona Física
+                { nombre: 'INE, PASAPORTE O RESIDENCIA PERMANENTE', desc: 'EN CASO DE EXTRAJERO (VIGENTES Y ESCANEADOS EN PDF)' },
+                { nombre: 'RFC', desc: 'CON EL QUE FACTURAS Y CONTRASEÑA DEL SAT' },
+                { nombre: 'COMPROBANTE DE DOMICILIO DEL NEGOCIO', desc: 'O CONSTANCIA DE SITUACIÓN FISCAL' },
             ]
         },
         p2: {
-            name: 'tdcEmpresario pm',
+            name: 'tarjedaDeCredito',
             documentos: [
-                {nombre: 'Identificación', desc: 'de un accionista Con un mínimo de 25% de acciones'},
-                {nombre: 'RFC', desc: 'Con el que facturas y contraseña del SAT'},
-                {nombre: 'Acta constitutiva', desc: 'Con folio del RPP'},
-                {nombre: 'Asambleas con folio del RPP', desc: 'en caso de aplicar'},
-                {nombre: 'Comprobante de domicilio', desc: 'del negocio'},
-                {nombre: 'Constancia de situación fiscal', desc: 'De la empresa'},
-                {nombre: 'Identificación' , desc: 'Rep legal , INE, pasaporte o residencia permanente en caso de extranjero (vigentes y escaneados en PDF)'},
-                {nombre: 'comprobante de domicilio', desc: 'Rep legal '},
-                // {nombre: 'Obl sol INE, pasaporte o residencia permanente en caso de extranjero', desc: '(vigentes y escaneados en PDF)'},
-                // {nombre: 'Obl sol comprobante de domicilio', desc: '(vigentes y escaneados en PDF)'}
-            ]
-            
+                { nombre:'CHECKLIST ', desc:''},
+                { nombre: 'IDENTIFICACIÓN', desc: 'DE UN ACCIONISTA CON UN MÍNIMO DE 25% DE ACCIONES PDF DE AMBOS LADOS NO VENCIDO' },
+                { nombre: 'RFC', desc: 'CON EL QUE FACTURAS Y CONTRASEÑA DEL SAT' },
+                { nombre: 'ACTA CONSTITUTIVA', desc: 'CON FOLIO DEL RPP' },
+                { nombre: 'ASAMBLEAS', desc: 'CON FOLIO DEL RPP (EN CASO DE APLICAR)' },
+                { nombre: 'COMPROBANTE DE DOMICILIO', desc: 'DEL NEGOCIO' },
+                { nombre: 'CONSTANCIA DE SITUACIÓN FISCAL', desc: 'DE LA EMPRESA' },
+                // Representante Legal
+                { nombre: 'INE, PASAPORTE O RESIDENCIA PERMANENTE', desc: 'EN CASO DE EXTRAJERO (VIGENTES Y ESCANEADOS EN PDF)' },
+                { nombre: 'COMPROBANTE DE DOMICILIO', desc: '' },
+                // Obligado Solidario
+                { nombre: 'INE, PASAPORTE O RESIDENCIA PERMANENTE', desc: 'EN CASO DE EXTRAJERO (VIGENTES Y ESCANEADOS EN PDF)' },
+                { nombre: 'COMPROBANTE DE DOMICILIO', desc: '' },
+                // Documentos Persona Física
+                { nombre: 'INE, PASAPORTE O RESIDENCIA PERMANENTE', desc: 'EN CASO DE EXTRAJERO (VIGENTES Y ESCANEADOS EN PDF)' },
+                { nombre: 'RFC', desc: 'CON EL QUE FACTURAS Y CONTRASEÑA DEL SAT' },
+                { nombre: 'COMPROBANTE DE DOMICILIO DEL NEGOCIO', desc: 'O CONSTANCIA DE SITUACIÓN FISCAL' },
+            ] 
         },
-        p3: {
-            name: 'tdcEmpresario pfae',
-            documentos: [
-                {nombre: 'IDENTIFICACION', desc: 'INE, PASAPORTE O RESIDENCIA PERMANENTE EN CASO DE EXTRAJERO (VIGENTES Y ESCANEADOS EN PDF)'},
-                {nombre: 'RFC', desc: 'CON EL QUE FACTURAS Y CONTRASEÑA DEL SAT'},
-                {nombre: 'COMPROBANTE DE DOMICILIO', desc: 'DEL NEGOCIO O CONSTANCIA DE SITUACIÓN FISCAL'}
-            ]
-            
-        },
-        p4: {
-            name: 'tdcEmpresario pfae',
-            documentos: [
-                {nombre: 'IDENTIFICACION', desc: 'INE, PASAPORTE O RESIDENCIA PERMANENTE EN CASO DE EXTRAJERO (VIGENTES Y ESCANEADOS EN PDF)'},
-                {nombre: 'RFC', desc: 'CON EL QUE FACTURAS Y CONTRASEÑA DEL SAT'},
-                {nombre: 'COMPROBANTE DE DOMICILIO ', desc:'DEL NEGOCIO O CONSTANCIA DE SITUACIÓN FISCAL'}
-            ]
-            
-        }
     },
     F2: {
         name:'',
@@ -410,31 +405,31 @@ export const documentacion: any = {
             {nombre: 'Estado de Cuenta Bancario', desc: 'Empresa'}
         ]        
     },
-    p2: {
-        name:'factoraje Pm Corp',
-        documentos: [
-            // Representante legal: 
-            {nombre: 'Identificación oficial', desc: ''},
-            {nombre: 'Constancia de situación fiscal', desc: 'actualizada'},
-            {nombre: 'Comprobante de domicilio', desc: ''},
-            // Empresa
-            {nombre: 'Acta Constitutiva', desc: ', Empresa , (primera)'},
-            {nombre: 'Acta de Asamblea', desc: 'Con Poder del Rep Legal, Empresa'},
-            {nombre: 'Constancia de situación Fiscal', desc: 'activa, Empresa'},
-            {nombre: 'Comprobante de Domicilio', desc: 'a nombre de la empresa'},
-            {nombre: 'Estado de Cuenta', desc: 'Bancario, Empresa'}
-        ]
-    },
-    p3: {
-        name:'factoraje Pfae',
-        documentos: [
-            {nombre: 'Identificación', desc: 'oficial'},
-            {nombre: 'Constancia de situación fiscal', desc:'Actualizada Con QR'},
-            {nombre: 'Comprobante de domicilio', desc: 'No mayor a 3 meses'},
-            {nombre: 'Edo de cuenta', desc: ' bancario , No mayor a 3 meses'}
-        ]
+    // p2: {
+    //     name:'factoraje Pm Corp',
+    //     documentos: [
+    //         // Representante legal: 
+    //         {nombre: 'Identificación oficial', desc: ''},
+    //         {nombre: 'Constancia de situación fiscal', desc: 'actualizada'},
+    //         {nombre: 'Comprobante de domicilio', desc: ''},
+    //         // Empresa
+    //         {nombre: 'Acta Constitutiva', desc: ', Empresa , (primera)'},
+    //         {nombre: 'Acta de Asamblea', desc: 'Con Poder del Rep Legal, Empresa'},
+    //         {nombre: 'Constancia de situación Fiscal', desc: 'activa, Empresa'},
+    //         {nombre: 'Comprobante de Domicilio', desc: 'a nombre de la empresa'},
+    //         {nombre: 'Estado de Cuenta', desc: 'Bancario, Empresa'}
+    //     ]
+    // },
+    // p3: {
+    //     name:'factoraje Pfae',
+    //     documentos: [
+    //         {nombre: 'Identificación', desc: 'oficial'},
+    //         {nombre: 'Constancia de situación fiscal', desc:'Actualizada Con QR'},
+    //         {nombre: 'Comprobante de domicilio', desc: 'No mayor a 3 meses'},
+    //         {nombre: 'Edo de cuenta', desc: ' bancario , No mayor a 3 meses'}
+    //     ]
         
-    },
+    // },
    },
    F13: {
         name:'arrenda+',

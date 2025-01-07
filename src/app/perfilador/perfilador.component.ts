@@ -13,9 +13,8 @@ declare var bootstrap: any;
 export class PerfiladorComponent implements AfterViewInit {
 
   @ViewChild('successModal') successModalRef: ElementRef | undefined;
-
   nameFin = '';
-  nameProd = '';
+  nameProd: any = null;
   cotizacion: any = {
     tipo_persona: 'f', 
     nombre: '',
@@ -68,11 +67,11 @@ export class PerfiladorComponent implements AfterViewInit {
     this.viabilidad = !!institucion?.viabilidad;
     this.urlFin = !this.docProcess ? institucion?.url : '';
     this.nameFin = institucion?.nombre + "";
-    this.nameProd = institucion?.productos[currentProduct] + "";
-    console.log(institucion);
+    this.nameProd = (institucion?.productos![currentProduct] as { name: string }).name;
+    console.log(this.nameProd);
     console.log("docProcess", this.docProcess);
     console.log("viabilidad", this.viabilidad);
-    
+
   }
   enviarFormulario(formularioForm: any): void {
 
@@ -164,4 +163,6 @@ export class PerfiladorComponent implements AfterViewInit {
     link.download = nombreArchivo;
     link.click();
   }
+
+  
 }
