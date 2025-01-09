@@ -6,7 +6,7 @@
   <ul>
     <li *ngFor="let producto of financiera.productos; let i = index">
       <button (click)="goToPerfilador(i)" class="btn btn-outline-secondary custom-btn">
-        {{ producto }}
+        {{ producto.name }}
       </button>
     </li>
   </ul>  

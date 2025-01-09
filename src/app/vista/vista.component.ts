@@ -3,6 +3,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { ApiService } from '../services/api.service';
 import Modal from 'bootstrap/js/dist/modal';
 import { AuthService } from '../services/auth.service';
+import { financieras } from '../utils/financieras';
 
 
 @Component({
@@ -23,6 +24,8 @@ export class VistaComponent implements OnInit {
   nuevoComentario: string = '';
   estatusSeleccionado: string = '';
   estatusOriginal: string = '';
+  nombreProducto: string = ''; // Para almacenar el nombre desde utils
+producto: string = '';  
 
   constructor(
     private route: ActivatedRoute,
@@ -37,7 +40,7 @@ export class VistaComponent implements OnInit {
     if (idCotizacion) {
       this.id_cotizacion = Number(idCotizacion); 
       this.loading = true;
-        this.apiService.queryCustom('cotizacion', 'id_cotizacion', idCotizacion).subscribe(
+      this.apiService.queryCustom('cotizacion', 'id_cotizacion', idCotizacion).subscribe(
         (data) => {
           this.loading = false;
           console.log('Respuesta de la API (cotización):', data);
@@ -46,16 +49,22 @@ export class VistaComponent implements OnInit {
             this.cotizacion = data[0];
   
             const idFinanciera = data[0]?.idFinanciera || data[0]?.id_financiera;
+  
+            // Asegúrate de acceder al objeto id y luego a la propiedad nombre.
+            const nombreProducto = data[0]?.id?.nombre || 'Nombre no definido';
             const producto = data[0]?.producto;
+            
             this.estatusOriginal = data[0]?.estatus;
             sessionStorage.setItem('financiera', idFinanciera);
             console.log('ID Financiera guardado en sessionStorage:', idFinanciera);
             this.idFinanciera = idFinanciera;
-
-            sessionStorage.setItem('producto', producto.toString());
+  
+            sessionStorage.setItem('producto', producto?.toString());
             console.log('Producto guardado en sessionStorage:', producto);
   
+            console.log('Nombre del Producto:', nombreProducto);  // Aquí se accede al nombre
           }
+  
           this.getComentarios(idCotizacion);
         },
         (error) => {
@@ -68,6 +77,7 @@ export class VistaComponent implements OnInit {
       this.errorMessage = 'No se proporcionó un ID de cotización válido.';
     }
   }
+  
   
   getComentarios(idCotizacion: number): void {
     this.apiService.queryCustom('comentarios', 'id_cotizacion', idCotizacion.toString()).subscribe(

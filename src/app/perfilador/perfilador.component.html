@@ -1,25 +1,34 @@
 <div class="container">
   <div class="d-flex align-items-center custom-header">
     <app-back-arrow rutaBack="instituciones"></app-back-arrow>
-    <h3 class="titulo">{{nameFin.toUpperCase()}} - <span class="product-title">{{nameProd}}</span></h3>
+    <h3 class="titulo">{{nameFin.toUpperCase()}}  <span class="product-title">{{nameProd}}</span></h3>
   </div>
   
   <div class="accordion" id="accordionExample">
     <div class="accordion-item">
       <h2 class="accordion-header" id="headingOne">
         <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
-          Pefil del Cliente
+          Perfil del Cliente
         </button>
       </h2>
       <div id="collapseOne" class="accordion-collapse collapse show" aria-labelledby="headingOne" data-bs-parent="#accordionExample">
         <div class="accordion-body">
-          Lorem ipsum dolor sit amet consectetur adipisicing elit. Suscipit sunt, illo eius consectetur quaerat velit iste quasi ratione nemo exercitationem praesentium fuga eum beatae non molestiae, cum inventore eaque quibusdam.
+          <div *ngIf="productoDetalles">
+            <p><strong>PRESENCIA:</strong> {{ productoDetalles.presencia }}</p>
+            <p><strong>PRINCIPALES DESTINOS:</strong> {{ productoDetalles.destino }}</p>
+            <p><strong>EDAD MINIMA/MAXIMA:</strong> {{ productoDetalles.edad }}</p>
+            <p><strong>ANTIGÜEDAD EMPRESA:</strong> {{ productoDetalles.antiguedad }}</p>
+            <p><strong>INGRESOS:</strong> {{ productoDetalles.ingresos }}</p>
+            <p><strong>AVAL:</strong> {{ productoDetalles.aval }}</p>
+            <p><strong>BURO:</strong> {{ productoDetalles.buro }}</p>
+            <p><strong>PROPIEDAD:</strong> {{ productoDetalles.propiedad }}</p>
+            <p><strong>GRAVAR:</strong> {{ productoDetalles.grabar }}</p>
+            <p><strong>OBSERVACIONES:</strong> {{ productoDetalles.observaciones }}</p>
+          </div>
         </div>
       </div>
-      </div>
-      
-      
     </div>
+      
     <div class="accordion-item">
       <h2 class="accordion-header" id="headingTwo">
         <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
@@ -35,6 +44,7 @@
         </div>
       </div>
     </div>
+
     <div class="accordion-item">
       <h2 class="accordion-header" id="headingThree">
         <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
@@ -52,11 +62,10 @@
     </div>
   </div>
   
-<div class="mt-4">
+  <div class="mt-4">
     <h2 class="text-center">Formulario de Financiamiento</h2>
     <form (ngSubmit)="enviarFormulario(formularioForm)" #formularioForm="ngForm">
-    <div class="tipo-persona d-flex justify-content-evenly mb-4">
-
+      <div class="tipo-persona d-flex justify-content-evenly mb-4">
         <div class="form-check">
           <input class="form-check-input" [(ngModel)]="cotizacion.tipo_persona" value="f" type="radio" name="tipoPersona" id="personaFisica" checked>
           <label class="form-check-label" for="personaFisica">
@@ -69,102 +78,112 @@
             Persona Moral
           </label>
         </div>
-    </div>
-        
-    <div class="row mb-4">
-      <div class="col-md-6">
-        <div class="form-group">
-          <label for="nombre">Nombre:</label>
-          <input class="form-control" id="nombre" name="nombre" [(ngModel)]="cotizacion.nombre" (keypress)="onlyText($event)" required>
-        </div>
+      </div>
+          
+      <div class="row mb-4">
+        <div class="col-md-6">
+          <div class="form-group">
+            <label for="nombre">Financiera:</label>
+            <input  class="form-control" id="nombre" [value]="nameFin.toUpperCase()" required readonly>
+          </div>
+          
+          <div class="form-group">
+            <label for="nombre">Nombre:</label>
+            <input class="form-control" id="nombre" name="nombre" [(ngModel)]="cotizacion.nombre" (keypress)="onlyText($event)" required>
+          </div>
 
-        <div class="form-group">
-          <label for="monto">Monto:</label>
-          <div class="input-group">
-            <span class="input-group-text">$</span>
-            <input class="form-control" id="monto" name="monto" mask="separator.2" thousandSeparator=","
-              [(ngModel)]="cotizacion.monto" (keypress)="onlyNumbers($event)" required>
+          <div class="form-group">
+            <label for="monto">Monto:</label>
+            <div class="input-group">
+              <span class="input-group-text">$</span>
+              <input class="form-control" id="monto" name="monto" mask="separator.2" thousandSeparator=","
+                [(ngModel)]="cotizacion.monto" (keypress)="onlyNumbers($event)" required>
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label for="antiguedad-empresa">Antigüedad de la Empresa (en años):</label>
+            <input class="form-control" id="antiguedad-empresa" name="antiguedadEmpresa" [(ngModel)]="cotizacion.antiguedadEmpresa" (keypress)="onlyNumbers($event)" required>
           </div>
         </div>
 
-        <div class="form-group">
-          <label for="antiguedad-empresa">Antigüedad de la Empresa (en años):</label>
-          <input class="form-control" id="antiguedad-empresa" name="antiguedadEmpresa" [(ngModel)]="cotizacion.antiguedadEmpresa" (keypress)="onlyNumbers($event)" required>
+        <div class="col-md-6">
+          <div class="form-group">
+            <label for="nombre">Producto:</label>
+            <input class="form-control" name="producto" id="nombreProducto" [value]="nameProd" required readonly>
+          </div>
+          
+          <div class="form-group">
+            <label for="edad">Edad:</label>
+            <input class="form-control" id="edad" name="edad" [(ngModel)]="cotizacion.edad" (keypress)="onlyNumbers($event)" required>
+          </div>
+          
+          <div class="form-group">
+            <label for="plazo">Plazo (en meses):</label>
+            <select class="form-control" id="plazo" name="plazo" [(ngModel)]="cotizacion.plazo" required>
+              <option *ngFor="let plazo of plazos" [value]="plazo">{{ plazo }}</option>
+            </select>
+          </div>
+
+          <div class="form-group">
+            <label for="ingresos">Ingresos Mensuales:</label>
+            <div class="input-group">
+              <span class="input-group-text">$</span>
+              <input class="form-control" id="ingresos" name="ingresos" mask="separator.2" thousandSeparator=","
+                [(ngModel)]="cotizacion.ingresos" (keypress)="onlyNumbers($event)" required>
+            </div>
+          </div>
+          <div class="form-group">
+            <label for="rfc">RFC:</label>
+            <div class="input-group">
+              <input class="form-control" id="rfc" name="rfc" [(ngModel)]="cotizacion.rfc" required>
+            </div>
+          </div>
         </div>
       </div>
-
-      <div class="col-md-6">
-        <div class="form-group">
-          <label for="edad">Edad:</label>
-          <input class="form-control" id="edad" name="edad" [(ngModel)]="cotizacion.edad" (keypress)="onlyNumbers($event)" required>
-        </div>
-        <div class="form-group">
-          <label for="plazo">Plazo (en meses):</label>
-          <select class="form-control" id="plazo" name="plazo" [(ngModel)]="cotizacion.plazo" required>
-            <option *ngFor="let plazo of plazos" [value]="plazo">{{ plazo }}</option>
-          </select>
-        </div>
-        
-
-        <div class="form-group">
-          <label for="ingresos">Ingresos Mensuales:</label>
-          <div class="input-group">
-            <span class="input-group-text">$</span>
-            <input class="form-control" id="ingresos" name="ingresos" mask="separator.2" thousandSeparator=","
-             [(ngModel)]="cotizacion.ingresos" (keypress)="onlyNumbers($event)" required>
-          </div>
-        </div>
-        <div class="form-group">
-          <label for="rfc">RFC:</label>
-          <div class="input-group">
-            <input class="form-control" id="rfc" name="rfc"[(ngModel)]="cotizacion.rfc" required>
-          </div>
-        </div>
-      </div>
-    </div>
   
       <div *ngIf="mostrarError && formularioForm.invalid" class="error">
         Todos los campos son obligatorios para continuar.
       </div>
     </form>
-        <div *ngIf="docProcess" class="accordion" id="accordionDocs">
-          <div class="accordion-item">
-            <h2 class="accordion-header" id="headingDocs">
-              <button class="accordion-button custom-collapse" [ngClass]="{ 'collapsed': !isExpanded }"
-               type="button" data-bs-target="#collapseDocs" [attr.aria-expanded]="false" aria-controls="collapseDocs"
-               (click)="toggleAccordion()">
-                Carga de documentos
-              </button>
-            </h2>
-            <div id="collapseDocs" class="accordion-collapse collapse" [ngClass]="{ 'show': isExpanded }"
-              aria-labelledby="headingDocs" data-bs-parent="#accordionDocs">
-              <div class="accordion-body-custom">
-                <app-form-docs [request]="cotizacion" [isNew]=true (messageEmitter)="mostrarErrorFunc($event)"></app-form-docs>
-              </div>
-            </div>
-          </div> 
+
+    <div *ngIf="docProcess" class="accordion" id="accordionDocs">
+      <div class="accordion-item">
+        <h2 class="accordion-header" id="headingDocs">
+          <button class="accordion-button custom-collapse" [ngClass]="{ 'collapsed': !isExpanded }"
+           type="button" data-bs-target="#collapseDocs" [attr.aria-expanded]="false" aria-controls="collapseDocs"
+           (click)="toggleAccordion()">
+            Carga de documentos
+          </button>
+        </h2>
+        <div id="collapseDocs" class="accordion-collapse collapse" [ngClass]="{ 'show': isExpanded }"
+          aria-labelledby="headingDocs" data-bs-parent="#accordionDocs">
+          <div class="accordion-body-custom">
+            <app-form-docs [request]="cotizacion" [isNew]=true (messageEmitter)="mostrarErrorFunc($event)"></app-form-docs>
+          </div>
         </div>
-        <div class="form-group text-center mb-4">
-          <a *ngIf="!docProcess" type="button" class="btn btn-primary btn-sm btn-block mt-3" target="_blank" [href]="urlFin">Enviar y Continuar con link</a>
-          <!-- <button type="submit" class="btn btn-primary btn-lg btn-sm d-block d-sm-inline-block" (click)="enviarFormulario(formularioForm)">
-            Enviar
-          </button> -->
+      </div> 
+    </div>
+
+    <div class="form-group text-center mb-4">
+      <a *ngIf="!docProcess" type="button" class="btn btn-primary btn-sm btn-block mt-3" target="_blank" [href]="urlFin">Enviar y Continuar con link</a>
+    </div>
+  </div>
+
+  <!-- Modal -->
+  <div class="modal" tabindex="-1" role="dialog" [ngClass]="{'show': formularioEnviado}" [attr.aria-hidden]="formularioEnviado ? 'true' : null" #emptyFilesModal>
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title">¡Gracias!</h5>
         </div>
-</div>
-   
-<!-- Modal -->
-<div class="modal" tabindex="-1" role="dialog" [ngClass]="{'show': formularioEnviado}" [attr.aria-hidden]="formularioEnviado ? 'true' : null" #emptyFilesModal>
-  <div class="modal-dialog" role="document">
-    <div class="modal-content">
-      <div class="modal-header">
-         <h5 class="modal-title">¡Gracias!</h5>
+        <div class="modal-body text-center">
+          <p>Cotización enviada con éxito.</p>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" (click)="cerrarModal(formularioForm)">Cerrar</button>
+        </div>
       </div>
-      <div class="modal-body text-center">
-         <p>Cotización enviada con éxito.</p>
-      </div>
-      <div class="modal-footer">
-         <button type="button" class="btn btn-secondary" (click)="cerrarModal(formularioForm)">Cerrar</button>
-       </div>
     </div>
   </div>
 </div>

@@ -1,5 +1,4 @@
 import { Component, AfterViewInit, ViewChild, ElementRef } from '@angular/core';
-
 import { ApiService } from '../services/api.service';
 import { financieras } from '../utils/financieras';
 
@@ -11,6 +10,7 @@ declare var bootstrap: any;
   styleUrls: ['./perfilador.component.scss']
 })
 export class PerfiladorComponent implements AfterViewInit {
+[x: string]: any;
 
   @ViewChild('successModal') successModalRef: ElementRef | undefined;
 
@@ -37,6 +37,10 @@ export class PerfiladorComponent implements AfterViewInit {
   modal: any;
   finacieraId: number = 0;
   productIndex: number = 0;
+  productoDetalles: any = {};
+
+
+
 
   constructor(
     private apiService: ApiService
@@ -65,6 +69,8 @@ export class PerfiladorComponent implements AfterViewInit {
     this.productIndex = Number(currentProduct);
 
     const institucion = financieras.find(el => el.id == idFin);
+    console.log(institucion?.productos![currentProduct]);
+    this.productoDetalles = institucion?.productos![currentProduct]
     this.docProcess = institucion?.proceso == "mail";
     this.viabilidad = !!institucion?.viabilidad;
     this.urlFin = !this.docProcess ? institucion?.url : '';
@@ -168,4 +174,15 @@ export class PerfiladorComponent implements AfterViewInit {
   toggleAccordion() {
     this.isExpanded = !this.isExpanded;
   }
+  mostrarDetalles(producto: any) {
+    if (producto && producto.productos && producto.productos.length > 0) {
+      // Suponiendo que la lista de productos siempre contiene al menos un elemento
+      this.productoDetalles = producto.productos[0]; // Cambiado a 0 por defecto, puedes manejar la lógica para seleccionar otro si es necesario
+    } else {
+      console.error('Detalles del producto no encontrados.');
+    }
+  }
+  
+  
+  
 }

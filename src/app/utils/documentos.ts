@@ -405,31 +405,31 @@ export const documentacion: any = {
             {nombre: 'Estado de Cuenta Bancario', desc: 'Empresa'}
         ]        
     },
-    // p2: {
-    //     name:'factoraje Pm Corp',
-    //     documentos: [
-    //         // Representante legal: 
-    //         {nombre: 'Identificación oficial', desc: ''},
-    //         {nombre: 'Constancia de situación fiscal', desc: 'actualizada'},
-    //         {nombre: 'Comprobante de domicilio', desc: ''},
-    //         // Empresa
-    //         {nombre: 'Acta Constitutiva', desc: ', Empresa , (primera)'},
-    //         {nombre: 'Acta de Asamblea', desc: 'Con Poder del Rep Legal, Empresa'},
-    //         {nombre: 'Constancia de situación Fiscal', desc: 'activa, Empresa'},
-    //         {nombre: 'Comprobante de Domicilio', desc: 'a nombre de la empresa'},
-    //         {nombre: 'Estado de Cuenta', desc: 'Bancario, Empresa'}
-    //     ]
-    // },
-    // p3: {
-    //     name:'factoraje Pfae',
-    //     documentos: [
-    //         {nombre: 'Identificación', desc: 'oficial'},
-    //         {nombre: 'Constancia de situación fiscal', desc:'Actualizada Con QR'},
-    //         {nombre: 'Comprobante de domicilio', desc: 'No mayor a 3 meses'},
-    //         {nombre: 'Edo de cuenta', desc: ' bancario , No mayor a 3 meses'}
-    //     ]
+    p2: {
+        name:'factoraje Pm Corp',
+        documentos: [
+            // Representante legal: 
+            {nombre: 'Identificación oficial', desc: ''},
+            {nombre: 'Constancia de situación fiscal', desc: 'actualizada'},
+            {nombre: 'Comprobante de domicilio', desc: ''},
+            // Empresa
+            {nombre: 'Acta Constitutiva', desc: ', Empresa , (primera)'},
+            {nombre: 'Acta de Asamblea', desc: 'Con Poder del Rep Legal, Empresa'},
+            {nombre: 'Constancia de situación Fiscal', desc: 'activa, Empresa'},
+            {nombre: 'Comprobante de Domicilio', desc: 'a nombre de la empresa'},
+            {nombre: 'Estado de Cuenta', desc: 'Bancario, Empresa'}
+        ]
+    },
+    p3: {
+        name:'factoraje Pfae',
+        documentos: [
+            {nombre: 'Identificación', desc: 'oficial'},
+            {nombre: 'Constancia de situación fiscal', desc:'Actualizada Con QR'},
+            {nombre: 'Comprobante de domicilio', desc: 'No mayor a 3 meses'},
+            {nombre: 'Edo de cuenta', desc: ' bancario , No mayor a 3 meses'}
+        ]
         
-    // },
+    },
    },
    F13: {
         name:'arrenda+',
@@ -474,7 +474,7 @@ export const documentacion: any = {
             ]            
         },
         p4: {
-            name: 'CreditoSimple Pf',
+            name: 'Arrendamiento S&LB Pf',
             documentos: [
                 {nombre: 'Identificación', desc:'Copia , oficial de titular persona física'},
                 {nombre: 'Estados de cuenta', desc: 'Últimos 3 ,  cheques/ ahorro con CLABE de titular'},
@@ -485,7 +485,7 @@ export const documentacion: any = {
             
         },
         p5: {
-            name: 'CreditoSimple Pfae',
+            name: 'Arrendamiento S&LB pfae',
             documentos: [
                 {nombre: 'Clave', desc: 'de Identificación electrónica Confidencial Proporcionada por el SAT'},
                 {nombre: 'Identificación oficial', desc: 'Copia de titular persona física'},
@@ -497,6 +497,45 @@ export const documentacion: any = {
             ]
         },
         p6: {
+            name: 'Arrendamiento S&LB Pm',
+            documentos: [
+                {nombre: 'Identificación', desc: ' Copia ,  Oficial del titular y/o aval persona física, Cuando no cuente con firma *CIEC.'},
+                {nombre: 'Clave', desc: 'de Identificación electrónica Confidencial Proporcionada por el SAT'},
+                {nombre: 'Identificación', desc: 'Copia ,oficial de titular de representante legal'},
+                {nombre: 'Estados financieros', desc: 'firmados por representante legal'},
+                {nombre: 'Estados de cuenta', desc: 'Últimos 3 , cheques/ ahorro con CLABE de titular y aval'},
+                {nombre: 'Copia simple', desc: 'de la escritura del acta constitutiva Sus modificaciones y poderes (incluyendo registro público)'},
+                {nombre: 'Comprobante de domicilio', desc: 'Copia,  fiscal del solicitante  Con antigüedad no mayor a 3 meses'},
+                {nombre: 'Evidencia', desc: 'de consulta de vigencia de fiel (captura)'},
+                {nombre: 'Documentación', desc: 'de garantías propuestas'},
+                {nombre: 'RFC', desc: 'Copia , del proveedor de la garantía'},
+                {nombre: 'Registro', desc: 'de prestadores de servicios financieros a cargo de CONDUSEF Copia  , En caso de ser entidad financiera'}
+            ]            
+        },
+        p7: {
+            name: 'CreditoSimple Pf',
+            documentos: [
+                {nombre: 'Identificación', desc:'Copia , oficial de titular persona física'},
+                {nombre: 'Estados de cuenta', desc: 'Últimos 3 ,  cheques/ ahorro con CLABE de titular'},
+                {nombre: 'Comprobante de domicilio', desc: 'Copia , del solicitante con antigüedad no mayor a 3 meses'},
+                {nombre: 'Documentación de garantías propuestas', desc: ''},
+                {nombre: 'Copia RFC', desc: 'del proveedor de la garantía'}
+            ]
+            
+        },
+        p8: {
+            name: 'CreditoSimple Pfae',
+            documentos: [
+                {nombre: 'Clave', desc: 'de Identificación electrónica Confidencial Proporcionada por el SAT'},
+                {nombre: 'Identificación oficial', desc: 'Copia de titular persona física'},
+                {nombre: 'Estados Financieros', desc:'firmados por titular'},
+                {nombre: 'Estados de cuenta', desc: 'Últimos 3 , cheques/ ahorro con CLABE de titular'},
+                {nombre: 'Comprobante de domicilio', desc: 'Copia , del solicitante con antigüedad no mayor a 3 meses'},
+                {nombre: 'Documentación de garantías propuestas', desc: ''},
+                {nombre: 'RFC', desc: 'Copia , del proveedor de la garantía'}
+            ]
+        },
+        p9: {
             name: 'CreditoSimple Pm',
             documentos: [
                 {nombre: 'Identificación', desc: ' Copia ,  Oficial del titular y/o aval persona física, Cuando no cuente con firma *CIEC.'},
