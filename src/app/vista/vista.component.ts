@@ -15,7 +15,7 @@ export class VistaComponent implements OnInit {
   loading: boolean = false;
   loadingComentario: boolean = false;
   errorMessage: string = '';
-  documentos: any[] = [];
+  documentos: string[] = [];
   idFinanciera: string | null = null;
   comentarios: any [] = [];  
   user: string | null = sessionStorage.getItem('user');
@@ -39,7 +39,6 @@ export class VistaComponent implements OnInit {
     this.loading = true;
     this.getCurrentCotizacion(idCotizacion);
     this.getComentarios(idCotizacion);
-    this.getFiles();
  
   }
   
@@ -58,10 +57,6 @@ export class VistaComponent implements OnInit {
         this.authService.validarErrorApi(error);
       }
     );  
-  }
-
-  extractDocumentos(currentFiles: any[]): string[] {
-    return currentFiles.map((file) => file.nombre);
   }
   
   navigateBack(): void {
@@ -136,8 +131,8 @@ export class VistaComponent implements OnInit {
 
         if (data && data.length > 0) {
           this.cotizacion = data[0];
-
-          const idFinanciera = data[0]?.idFinanciera || data[0]?.id_financiera;
+          sessionStorage.setItem('cotizacionActual', JSON.stringify(this.cotizacion))
+          const idFinanciera = data[0]?.id_financiera;
           const producto = data[0]?.producto;
           this.estatusOriginal = data[0]?.estatus;
           sessionStorage.setItem('financiera', idFinanciera);
@@ -153,21 +148,6 @@ export class VistaComponent implements OnInit {
         this.loading = false;
         this.errorMessage = 'Error al obtener la cotización: ' + error.message;
         this.authService.validarErrorApi(error);
-      }
-    );
-  }
-  getFiles() {
-    this.apiService.getDocs(this.id_cotizacion.toString()).subscribe(
-      (data: any[]) => { 
-        console.log("Files",data);
-      },
-      (error: any) => {
-        console.error('Error al obtener cotizaciones:', error);
-        
-        if (error.status == 401 || error.error.error.includes('Expired')) {
-          console.log("Sesion expirada!");
-          this.authService.logOut();
-        }
       }
     );
   }

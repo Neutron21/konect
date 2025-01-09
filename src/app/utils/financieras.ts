@@ -75,7 +75,7 @@ export const financieras = [
   {
     id: 7,
     nombre: "HeyBanco",
-    proceso: "mail",
+    proceso: "link",
     fase: "1",
     productos: ["CREDITO SIMPLE", "CREDITO REVOLVENTE"],
     descripcion: "Capital de Trabajo, Adquisición de activos fijos, proyectos de inversión, pago de pasivos.",

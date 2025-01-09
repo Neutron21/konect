@@ -1,14 +1,19 @@
 <div *ngIf="!!viabilidad && viabilidad.length > 0" class="viabilidad">
   <div class="d-flex justify-content-between">
     <h3 class="viabilidad-text">Viabilidad</h3> 
-    <button class="btn btn-primary" (click)="preparandoCotizacion()">
+    <button *ngIf="isNew; else updateFiles" class="btn btn-primary" (click)="preparandoCotizacion()">
       Enviar
-    </button> 
+    </button>
+    <ng-template #updateFiles>
+      <button class="btn btn-primary" (click)="preparandoCotizacion()">
+        Actualizar Expediente
+      </button> 
+    </ng-template> 
   </div>
    
   <div class="col" *ngFor="let v of viabilidad">
     <div class="mb-3">
-      <label for="filePx" class="form-label custom-margin">
+      <label for="filePx" class="form-label custom-margin" [ngClass]="{ 'file-exist': v.ready }">
         {{ v.nombre }}
         <span *ngIf="v.desc && v.desc.trim() !== ''" class="desc-wrapper" [class.active]="v.showDesc">
           <span class="desc-summary" (click)="toggleDescription(v)">más</span>
@@ -42,9 +47,14 @@
 </div>
 
 <div class="text-center mb-4 d-grid gap-2 col-11 mx-auto">
-   <button class="btn btn-primary" (click)="preparandoCotizacion()">
+   <button *ngIf="isNew; else updateFiles2" class="btn btn-primary" (click)="preparandoCotizacion()">
             Enviar
    </button>
+   <ng-template #updateFiles2>
+    <button class="btn btn-primary" (click)="preparandoCotizacion()">
+      Actualizar Expediente
+    </button> 
+  </ng-template> 
 </div>
 <!-- Modal -->
 <div class="modal fade" id="noFilesModal" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">

@@ -25,6 +25,7 @@ export class FormDocsComponent implements OnInit {
   idFin!: string;
   product!: number;
   emptyFilesError: boolean = false;
+  filesServer: string[] = [];
 
   constructor(
     private apiService: ApiService,
@@ -34,6 +35,9 @@ export class FormDocsComponent implements OnInit {
 
   ngOnInit(): void {
     this.getFinAndProduct();
+    if (!this.isNew) {
+      this.getFiles();
+    }
   }
 
   getFinAndProduct() {
@@ -198,6 +202,37 @@ export class FormDocsComponent implements OnInit {
         this.authService.validarErrorApi(err);
       }
     });
+  }
+  getFiles() {
+    const cotizacion = JSON.parse(sessionStorage.getItem('cotizacionActual')+"") 
+    this.apiService.getDocs(cotizacion.id_cotizacion).subscribe(
+      (data: any[]) => { 
+        console.log("Files",data);
+         const tempArrayDocs = data.map(el => (
+          el.split('.')[0]
+        ));
+        console.log('tempArrayDocs',tempArrayDocs);
+        
+        this.validateServerDocs(tempArrayDocs);
+      },
+      (error: any) => {
+        console.error('Error al obtener cotizaciones:', error);
+        
+        if (error.status == 401 || error.error.error.includes('Expired')) {
+          console.log("Sesion expirada!");
+          this.authService.logOut();
+        }
+      }
+    );
+  }
+  validateServerDocs(arrayFiles: any[]) {
+    const archivosMap = this.viabilidad.map(file => ({
+      nombre: file.nombre,
+      desc: file.desc,
+      ready: arrayFiles.includes(file.nombre)
+  }));
+    console.log(archivosMap);
+    this.viabilidad = archivosMap
   }
   validarFormulario(): boolean {
     const { tipo_persona, nombre, edad, monto, plazo, antiguedadEmpresa, ingresos, rfc } = this.request;
