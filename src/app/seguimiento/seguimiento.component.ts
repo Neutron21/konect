@@ -2,6 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { ApiService } from '../services/api.service';
 import { AuthService } from '../services/auth.service';
+import { estatusTramites } from '../utils/estatus';
+
 
 @Component({
   selector: 'app-seguimiento',
@@ -12,6 +14,8 @@ export class SeguimientoComponent implements OnInit {
   data: any[] = []; // Datos originales
   filteredData: any[] = []; // Datos filtrados
   isSearchActive = false; // Estado de búsqueda
+  estatusTramites = estatusTramites;
+
 
   filters = {
     estatus: '',

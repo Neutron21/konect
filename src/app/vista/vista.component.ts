@@ -4,6 +4,8 @@ import { ApiService } from '../services/api.service';
 import Modal from 'bootstrap/js/dist/modal';
 import { AuthService } from '../services/auth.service';
 import { financieras } from '../utils/financieras';
+import { estatusTramites } from '../utils/estatus';
+
 
 
 @Component({
@@ -25,7 +27,9 @@ export class VistaComponent implements OnInit {
   estatusSeleccionado: string = '';
   estatusOriginal: string = '';
   nombreProducto: string = ''; // Para almacenar el nombre desde utils
-producto: string = '';  
+  producto: string = '';  
+  estatusTramites = estatusTramites;
+
 
   constructor(
     private route: ActivatedRoute,
