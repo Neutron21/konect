@@ -85,7 +85,7 @@ export const financieras = [
       observaciones:'Sin penalización por pago anticipado, sin costo en avaluó.'
     } ,
     { 
-      namne:"CREDITO PARAMETRICO",
+      name:"CREDITO PARAMETRICO",
       presencia:'Nivel Nacional',
       destino:'Capital de trabajo',
       edad:'21 a 68 años.',
@@ -380,7 +380,7 @@ export const financieras = [
   },
   {
     id: 13,
-    nombre: "Arrenda+",
+    nombre: "Arrenda +",
     proceso: "mail",
     fase: "1",
     productos:[
