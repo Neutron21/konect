@@ -1,16 +1,67 @@
 /* Estilo básico para personalizar el texto */
-span {
-    font-size: 16px;
-    font-weight: bold;
-    display: inline-block;
-    padding: 5px 10px;
-    border: 1px solid #ccc;
-    border-radius: 5px;
-    background-color: #f4f4f4;
-    cursor: pointer;
-  }
+.input-span {
+  font-size: 16px;
+  font-weight: bold;
+  display: inline-block;
+  padding: 5px 10px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  background-color: #f4f4f4;
+  cursor: pointer;
+  margin-top: 0.3rem;
+}
   
-  span:hover {
-    background-color: #e0e0e0;
-  }
-  
+.input-span:hover {
+  background-color: #e0e0e0;
+}
+
+.viabilidad {
+  padding: 1rem;
+  border-radius: 15px;
+  border: #6495ED solid 3px;
+  background-color: #eaf1fd;
+  width: 96%;
+  margin: auto;
+}
+.docs {
+  padding: 1rem;
+  // border-radius: 15px;
+  // border: #6495ED solid 3px;
+  // background-color: #eaf1fd;
+  width: 96%;
+  margin: auto;
+}
+.desc-wrapper {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px; 
+}
+
+.desc-summary {
+  cursor: pointer;
+  color: #007bff; 
+  font-weight: 300; 
+  text-decoration: none;
+  margin-left: 0.5rem;
+}
+
+.desc-summary:hover {
+  color: #0056b3; 
+}
+
+.desc-text {
+  display: none; 
+  font-size: 0.9rem;
+  color: #6c757d; 
+  font-weight: 300; 
+}
+
+.desc-wrapper.active .desc-text {
+  display: inline;
+}
+.file-text-color {
+  color: green;
+}
+.final-btn {
+  margin-top: 0.5rem;
+}

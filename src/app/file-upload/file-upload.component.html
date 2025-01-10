@@ -1,14 +1,88 @@
-<div>
-    <input type="file" id="fileInput" (change)="onFileChange($event)" #fileInput hidden />
-    <span 
-      [ngStyle]="{'color': fileColor}" 
-      (click)="openFileDialog(fileInput)"
-      style="cursor: pointer;">
-      {{ fileName || 'Archivo name' }}
-    </span>
-    <button (click)="resetFile(fileInput)" *ngIf="fileName" class="btn btn-danger" style="margin-left: 10px;">
-    Borrar
-  </button>
+<div *ngIf="!!viabilidad && viabilidad.length > 0" class="viabilidad">
+  <div class="d-flex justify-content-between">
+    <h3 class="viabilidad-text">Viabilidad</h3> 
+    <button *ngIf="isNew; else updateFiles" class="btn btn-primary" (click)="preparandoCotizacion()">
+      Enviar
+    </button>
+    <ng-template #updateFiles>
+      <button class="btn btn-primary" (click)="preparandoCotizacion()">
+        Actualizar Expediente
+      </button> 
+    </ng-template> 
   </div>
-  
-  
+  <div *ngFor="let v of viabilidad; let i = index">
+    <input type="file" id="fileInput{{i}}" (change)="onFileChange($event, i, 'v', v.nombre)" #fileInput hidden />
+      <span class="input-span"
+        [ngClass]="{'file-text-color': v.tempName || v.ready}" 
+        (click)="openFileDialog(fileInput, v)"
+        style="cursor: pointer;">
+        {{ v.nombre }}
+      </span>
+      {{v.tempName}}
+      <span *ngIf="v.desc && v.desc.trim() !== ''" class="desc-wrapper" [class.active]="v.showDesc">
+        <span class="desc-summary" (click)="toggleDescription(v)">más</span>
+        <span class="desc-text">{{ v.desc }}</span>
+      </span>
+      <button *ngIf="v.tempName" (click)="resetFile(fileInput, i, 'v')" class="btn btn-danger" style="margin-left: 10px;">
+      Borrar
+    </button>
+  </div>
+</div>
+
+<div *ngIf="currentFiles.length > 0" class="docs">
+  <div class="d-flex justify-content-between">
+    <h3 class="viabilidad-text">Documentos</h3> 
+    <button *ngIf="viabilidad.length == 0" class="btn btn-primary" (click)="preparandoCotizacion()">
+      Enviar
+    </button>
+    <button *ngIf="viabilidad.length == 0 && !isNew" class="btn btn-primary" (click)="preparandoCotizacion()">
+      Actualizar Expediente
+    </button> 
+
+  </div>
+  <div *ngFor="let cf of currentFiles; let i = index">
+    <input type="file" id="fileInput{{i}}" (change)="onFileChange($event, i, 'd', cf.nombre)" #fileInput hidden />
+      <span class="input-span"
+        [ngClass]="{'file-text-color': cf.tempName || cf.ready}" 
+        (click)="openFileDialog(fileInput, cf)"
+        style="cursor: pointer;">
+        {{ cf.nombre }}
+      </span>
+      {{cf.tempName}}
+      <span *ngIf="cf.desc && cf.desc.trim() !== ''" class="desc-wrapper" [class.active]="cf.showDesc">
+        <span class="desc-summary" (click)="toggleDescription(cf)">más</span>
+        <span class="desc-text">{{ cf.desc }}</span>
+      </span>
+      <button *ngIf="cf.tempName" (click)="resetFile(fileInput, i, 'd')" class="btn btn-danger" style="margin-left: 10px;">
+      Borrar
+    </button>
+  </div>
+</div>  
+
+<div class="text-center mb-4 d-grid gap-2 col-11 mx-auto final-btn">
+  <button *ngIf="isNew; else updateFiles2" class="btn btn-primary" (click)="preparandoCotizacion()">
+           Enviar
+  </button>
+  <ng-template #updateFiles2>
+   <button class="btn btn-primary" (click)="preparandoCotizacion()">
+     Actualizar Expediente
+   </button> 
+ </ng-template> 
+</div>
+<!-- Modal -->
+<div class="modal fade" id="noFilesModal" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="staticBackdropLabel">Atención</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        Debes de cargar al menos un archvivo
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Entendido</button>
+      </div>
+    </div>
+  </div>
+</div>

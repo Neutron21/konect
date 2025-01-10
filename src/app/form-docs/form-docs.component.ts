@@ -226,13 +226,21 @@ export class FormDocsComponent implements OnInit {
     );
   }
   validateServerDocs(arrayFiles: any[]) {
-    const archivosMap = this.viabilidad.map(file => ({
+    const viabilidadMap = this.viabilidad.map(file => ({
+      nombre: file.nombre,
+      desc: file.desc,
+      ready: arrayFiles.includes(file.nombre)
+  }));
+    console.log(viabilidadMap);
+    this.viabilidad = viabilidadMap
+
+    const archivosMap = this.currentFiles.map(file => ({
       nombre: file.nombre,
       desc: file.desc,
       ready: arrayFiles.includes(file.nombre)
   }));
     console.log(archivosMap);
-    this.viabilidad = archivosMap
+    this.currentFiles = archivosMap
   }
   validarFormulario(): boolean {
     const { tipo_persona, nombre, edad, monto, plazo, antiguedadEmpresa, ingresos, rfc } = this.request;

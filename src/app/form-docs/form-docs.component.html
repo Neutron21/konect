@@ -34,7 +34,7 @@
   </div>
   <div class="col" *ngFor="let cf of currentFiles">
     <div class="mb-3">
-      <label for="filePx" class="form-label custom-margin">
+      <label for="filePx" class="form-label custom-margin" [ngClass]="{ 'file-exist': cf.ready }">
         {{ cf.nombre }}
         <span *ngIf="cf.desc && cf.desc.trim() !== ''" class="desc-wrapper" [class.active]="cf.showDesc">
           <span class="desc-summary" (click)="toggleDescription(cf)">más</span>

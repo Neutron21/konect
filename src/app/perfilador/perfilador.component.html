@@ -124,6 +124,8 @@
         Todos los campos son obligatorios para continuar.
       </div>
     </form>
+    
+
         <div *ngIf="docProcess" class="accordion" id="accordionDocs">
           <div class="accordion-item">
             <h2 class="accordion-header" id="headingDocs">
@@ -133,10 +135,12 @@
                 Carga de documentos
               </button>
             </h2>
+
             <div id="collapseDocs" class="accordion-collapse collapse" [ngClass]="{ 'show': isExpanded }"
               aria-labelledby="headingDocs" data-bs-parent="#accordionDocs">
               <div class="accordion-body-custom">
-                <app-form-docs [request]="cotizacion" [isNew]=true (messageEmitter)="mostrarErrorFunc($event)"></app-form-docs>
+                <app-file-upload [request]="cotizacion" [isNew]=true (messageEmitter)="mostrarErrorFunc($event)"></app-file-upload>
+                <!-- <app-form-docs [request]="cotizacion" [isNew]=true (messageEmitter)="mostrarErrorFunc($event)"></app-form-docs> -->
               </div>
             </div>
           </div> 

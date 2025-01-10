@@ -144,7 +144,7 @@ export const documentacion: any = {
                 {nombre: 'AUTORIZACIÓN DE CONSULTA DE BURÓ', desc: 'ACREDITADO, PF, PM, RL, OS, ACCIONISTAS, GARANTES'},
                 {nombre: 'ESTADOS DE CUENTA', desc: ' ÚLTIMOS 3 , En caso de ser clientes de hasta 2 años'},
                 {nombre: 'ESTADO FINANCIERO', desc: 'COMPLETO DE LOS ÚLTIMOS DOS AÑOS Y PARCIAL DEL AÑO EN CURSO , FIRMADOS POR RL CON ANALITICAS (ACREDITADO Y COACREDITADO SI APLICA) (REVISAR TABLA DE PERIODOS EXIGIBLES)'},
-                'VALIDACIÓN SAT', 'https://clientes.credijusto.com/',
+                {nombre: 'VALIDACIÓN SAT', desc: 'https://clientes.credijusto.com/',},
                 {nombre: 'AVISO DE PRIVACIDAD', desc: 'FIRMADO POR ACREDITADO, PF, PM, RL, OS, ACCIONISTAS, GARANTES'},
                 {nombre: 'COTIZACIÓN A NOMBRE DEL ACREDITADO', desc: 'CON DATOS DE CONTACTO DE PROVEEDOR, MARCA Y MODELO'},
                 {nombre: 'VALIDACIÓN DEL ACTIVO / VOBO DE ACTIVOS', desc: ''},
@@ -169,7 +169,7 @@ export const documentacion: any = {
                 {nombre: 'AUTORIZACIÓN DE CONSULTA DE BURÓ', desc: 'ACREDITADO, PF, PM, RL, OS, ACCIONISTAS, GARANTES'},
                 {nombre: 'ÚLTIMOS 3 ESTADOS DE CUENTA', desc: 'EN CASO DE SER CLIENTES DE HASTA 2 AÑOS'},
                 {nombre: 'ESTADO FINANCIERO', desc: 'COMPLETO DE LOS ÚLTIMOS DOS AÑOS Y PARCIAL DEL AÑO EN CURSO,  FIRMADOS POR RL CON ANALITICAS (ACREDITADO Y COACREDITADO SI APLICA) (REVISAR TABLA DE PERIODOS EXIGIBLES)'},
-                'VALIDACIÓN SAT', 'https://clientes.credijusto.com/',
+                {nombre: 'VALIDACIÓN SAT', desc: 'https://clientes.credijusto.com/'},
                 {nombre: 'AVISO DE PRIVACIDAD FIRMADO', desc: 'ACREDITADO, PF, PM, RL, OS, ACCIONISTAS, GARANTES'},
                 {nombre: 'ESCRITURA O TÍTULO DE PROPIEDAD', desc: 'PRIMER TESTIMONIO CON RPP Y DATOS DE SUPERFICIE, MEDIDAS Y COLINDANCIAS'},
                 {nombre: 'SOLICITUD DE AVALÚO', desc: ''},
@@ -198,7 +198,7 @@ export const documentacion: any = {
                 {nombre: 'AUTORIZACIÓN DE CONSULTA DE BURÓ', desc: 'ACREDITADO, PF, PM, RL, OS, ACCIONISTAS, GARANTES'},
                 {nombre: 'ÚLTIMOS 3 ESTADOS DE CUENTA', desc: 'EN CASO DE SER CLIENTES DE HASTA 2 AÑOS'},
                 {nombre: 'ESTADO FINANCIERO', desc: 'COMPLETO DE LOS ÚLTIMOS DOS AÑOS Y PARCIAL DEL AÑO EN CURSO FIRMADOS POR RL CON ANALITICAS (ACREDITADO Y COACREDITADO SI APLICA) (REVISAR TABLA DE PERIODOS EXIGIBLES)'},
-                'VALIDACIÓN SAT', 'https://clientes.credijusto.com/',
+                {nombre: 'VALIDACIÓN SAT', desc: 'https://clientes.credijusto.com/'},
                 {nombre: 'AVISO DE PRIVACIDAD', desc: 'FIRMADO Y ACREDITADO, PF, PM, RL, OS, ACCIONISTAS, GARANTES'},
                 {nombre: 'COTIZACIÓN A NOMBRE DEL ACREDITADO', desc: 'CON DATOS DE CONTACTO DE PROVEEDOR, MARCA Y MODELO'},
                 {nombre: 'VALIDACIÓN DEL ACTIVO / VOBO DE ACTIVOS', desc: ''},
@@ -446,7 +446,7 @@ export const documentacion: any = {
                 {nombre: 'Estados de cuenta ', desc: 'Últimos 3 , cheques/ ahorro con CLABE de titular'},
                 {nombre: 'Comprobante de domicilio', desc: 'Copia del solicitante con antigüedad no mayor a 3 meses'},
                 {nombre: 'Documentación de garantías propuestas', desc: ''},
-                {nombre: 'RFC ', desc: 'Copia del proveedor de la garantía'}
+                {nombre: 'RFC', desc: 'Copia del proveedor de la garantía'}
             ]            
         },
         p2: {
@@ -474,7 +474,7 @@ export const documentacion: any = {
                 {nombre: 'Comprobante de domicilio', desc: 'Copia , fiscal del solicitante con antigüedad no mayor a 3 meses '},
                 {nombre: 'Evidencia', desc: 'de consulta de vigencia de fiel (captura)'},
                 {nombre: 'Documentación de garantías propuestas', desc: ''},
-                {nombre: 'RFC ', desc: 'Copia , del proveedor de la garantía'},
+                {nombre: 'RFC', desc: 'Copia , del proveedor de la garantía'},
                 {nombre: 'Registro de prestadores', desc: 'de servicios financieros a cargo de CONDUSEF,  Copia , (en caso de ser entidad financiera)'}
             ]            
         },
@@ -485,7 +485,7 @@ export const documentacion: any = {
                 {nombre: 'Estados de cuenta', desc: 'Últimos 3 ,  cheques/ ahorro con CLABE de titular'},
                 {nombre: 'Comprobante de domicilio', desc: 'Copia , del solicitante con antigüedad no mayor a 3 meses'},
                 {nombre: 'Documentación de garantías propuestas', desc: ''},
-                {nombre: 'Copia RFC', desc: 'del proveedor de la garantía'}
+                {nombre: 'RFC', desc: 'Copia, del proveedor de la garantía'}
             ]
             
         },
@@ -546,7 +546,7 @@ export const documentacion: any = {
                 {nombre: 'BALANCE GENERAL  PARCIAL', desc:'Y ESTADO DE RESULTADOS CON ANTIGÜEDAD NO MAYOR A 3 MESES EN ORIGINAL'},
                 {nombre: 'RELACIONES ANALÍTICAS', desc: 'DE LAS PRINCIPALES CUENTAS COLECTIVAS DEL EJERCICIO COMPLETO (ANUAL) Y PARCIAL'},
                 {nombre: 'DECLARACIÓN FISCAL ', desc: 'ANUAL DEL ÚLTIMO EJERCICIO COMPLETO (ANUAL)'},
-                {nombre: 'CONTRATO', desc: 'DE COMPRA VENTA Y/O CARTA DEL CLIENTE CON LA DESCRIPCIÓN DEL INMUEBLE A ADQUIRIR'}
+                {nombre: 'CONTRATO', desc: 'COMPRA VENTA Y/O CARTA DEL CLIENTE CON LA DESCRIPCIÓN DEL INMUEBLE A ADQUIRIR'}
             ]            
         },
       p2: {
