@@ -10,6 +10,8 @@ import { financieras } from '../utils/financieras'; // Asegúrate de importar la
 export class InstitucionesComponent implements OnInit {
 
   financiera: any;
+    productoDetalles: any = null;
+
 
   constructor(
     private router: Router
@@ -34,8 +36,14 @@ export class InstitucionesComponent implements OnInit {
   }
 
   goToPerfilador(id: number) {
-    console.log(id);
-    sessionStorage.setItem('producto', id.toString());
-    this.router.navigate([`/perfilador`]);  
+    if (id !== null && id !== undefined) { // Comprobar explícitamente que no sea null o undefined
+      console.log('Navegando al perfilador con producto ID:', id);
+      sessionStorage.setItem('producto', id.toString());
+      this.router.navigate([`/perfilador`]);
+    } else {
+      console.error('El ID del producto es inválido:', id);
+    }
   }
+  
+  
 }

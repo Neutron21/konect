@@ -3,6 +3,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { ApiService } from '../services/api.service';
 import Modal from 'bootstrap/js/dist/modal';
 import { AuthService } from '../services/auth.service';
+import { financieras } from '../utils/financieras';
 
 
 @Component({
@@ -23,6 +24,8 @@ export class VistaComponent implements OnInit {
   nuevoComentario: string = '';
   estatusSeleccionado: string = '';
   estatusOriginal: string = '';
+  nombreProducto: string = ''; // Para almacenar el nombre desde utils
+producto: string = '';  
 
   constructor(
     private route: ActivatedRoute,
@@ -41,6 +44,7 @@ export class VistaComponent implements OnInit {
     this.getComentarios(idCotizacion);
  
   }
+  
   
   getComentarios(idCotizacion: number): void {
     this.apiService.queryCustom('comentarios', 'id_cotizacion', idCotizacion.toString()).subscribe(
