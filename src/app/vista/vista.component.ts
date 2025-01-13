@@ -25,7 +25,7 @@ export class VistaComponent implements OnInit {
   estatusSeleccionado: string = '';
   estatusOriginal: string = '';
   nombreProducto: string = ''; // Para almacenar el nombre desde utils
-producto: string = '';  
+  producto: string = '';  
 
   constructor(
     private route: ActivatedRoute,
