@@ -136,28 +136,25 @@ export class VistaComponent implements OnInit {
       (data) => {
         this.loading = false;
         console.log('Respuesta de la API (cotización):', data);
-  
+
         if (data && data.length > 0) {
           this.cotizacion = data[0];
-          sessionStorage.setItem('cotizacionActual', JSON.stringify(this.cotizacion));
-  
-          const idFinanciera = data[0]?.id_financiera || 'No disponible';
-          const producto = data[0]?.producto || {name: 'Producto desconocido'};
-  
+          sessionStorage.setItem('cotizacionActual', JSON.stringify(this.cotizacion))
+          const idFinanciera = data[0]?.id_financiera;
+          const producto = data[0]?.producto;
           this.estatusOriginal = data[0]?.estatus;
-          sessionStorage.setItem('financiera', idFinanciera.toString());
+          sessionStorage.setItem('financiera', idFinanciera);
           console.log('ID Financiera guardado en sessionStorage:', idFinanciera);
-  
-          sessionStorage.setItem('producto', producto.name.toString());
-          console.log('Producto guardado en sessionStorage:', producto.name);
-        } else {
-          console.warn('No se encontraron datos de la cotización.');
+          this.idFinanciera = idFinanciera; // este dispara el form-docs
+
+          sessionStorage.setItem('producto', producto.toString());
+          console.log('Producto guardado en sessionStorage:', producto);
+
         }
       },
       (error) => {
         this.loading = false;
         this.errorMessage = 'Error al obtener la cotización: ' + error.message;
-        console.error(this.errorMessage);
         this.authService.validarErrorApi(error);
       }
     );

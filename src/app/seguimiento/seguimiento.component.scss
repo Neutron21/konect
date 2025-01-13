@@ -15,7 +15,9 @@
 }
 
 .table-container {
-  margin: 20px;
+  margin: 20px auto; 
+  max-width: 100%; 
+  overflow-x: auto; 
 }
 
 .search-bar {
