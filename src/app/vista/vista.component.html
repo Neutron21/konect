@@ -5,31 +5,26 @@
     <i class="fas fa-times text-danger" style="cursor: pointer; font-size: 1.5rem;" (click)="navigateBack()"></i>
   </div>
   
-  <div 
-  class="col-lg-2 col-md-4 col-sm-6 d-flex flex-wrap gap-4 mt-3" 
-  *ngIf="cotizacion">
-  <div class="form-group w-100 selec">
-    <label for="estatus" class="form-label">Estatus</label>
-    <select
-      id="estatus"
-      class="form-select form-select-sm"
-      aria-label=".form-select-sm example"
-      [(ngModel)]="cotizacion.estatus"
-      (change)="actualizarEstatus($event, cotizacion.id_cotizacion)">
-      <option value="Integración">Integración</option>
-      <option value="Crédito">Crédito</option>
-      <option value="Formalización">Formalización</option>
-      <option value="Reconsideración">Reconsideración</option>
-      <option value="Autorizado">Autorizado</option>
-      <option value="Dispersión">Dispersión</option>
-    </select>
+  <div class="col-lg-2 col-md-4 col-sm-6 d-flex flex-wrap gap-4 mt-3" *ngIf="cotizacion">
+    <div class="form-group w-100 selec">
+      <label for="estatus" class="form-label">Estatus</label>
+      <select
+        id="estatus"
+        class="form-select form-select-sm"
+        aria-label=".form-select-sm example"
+        [(ngModel)]="cotizacion.estatus"
+        (change)="actualizarEstatus($event, cotizacion.estatus)">
+        <option *ngFor="let estatus of estatusTramites" [value]="estatus">
+          {{ estatus }}
+        </option>
+      </select>
+    </div>
   </div>
+
   <div class="producto-info">
-    <h3>Financiera: {{ idFinanciera }}</h3>
+    <p>Financiera: {{ nombre }}</p> 
     <p>Producto: {{ producto }}</p>
   </div>
-  
-</div>
 
 <div class="modal fade" id="estatusModal" tabindex="-1" aria-labelledby="estatusModalLabel" aria-hidden="true">
   <div class="modal-dialog">
@@ -44,117 +39,98 @@
         ¿Estás seguro de que deseas cambiarlo?
       </div>      
       <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal" 
-         (click)="cancelarCambioEstatus()">
-         Cancelar
-        </button>
-        <button type="button" class="btn btn-success" data-bs-dismiss="modal"
-          (click)="confirmarCambioEstatus(cotizacion.id_cotizacion)">
-          Confirmar
-        </button>
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal" (click)="cancelarCambioEstatus()">Cancelar</button>
+        <button type="button" class="btn btn-success" data-bs-dismiss="modal" (click)="confirmarCambioEstatus(cotizacion.id_cotizacion)">Confirmar</button>
       </div>
     </div>
   </div>
 </div>
 
-  <div *ngIf="loading" class="d-flex justify-content-center">
-    <div class="spinner-border text-primary" role="status">
-      <span class="visually-hidden">Cargando...</span>
-    </div>
+<div *ngIf="loading" class="d-flex justify-content-center">
+  <div class="spinner-border text-primary" role="status">
+    <span class="visually-hidden">Cargando...</span>
   </div>
-
-  <div *ngIf="cotizacion && cotizacion.id_cotizacion">
-    <div class="row">
-      <div class="col-md-6">
-        <div class="form-group">
-          <label for="idCotizacion">Folio Konnect:</label>
-          <input id="idCotizacion" type="text" class="form-control" [value]="cotizacion.id_cotizacion" readonly>
-        </div>
-      </div>
-      <div class="col-md-6">
-        <div class="form-group">
-          <label for="estatus">Estatus:</label>
-          <input id="estatus" type="text" class="form-control" [(ngModel)]="cotizacion.estatus" readonly>
-        </div>
-      </div>
-      <div class="col-md-6">
-        <div class="form-group">
-          <label for="nombre">Nombre:</label>
-          <input id="nombre" type="text" class="form-control" [(ngModel)]="cotizacion.nombre" readonly>
-        </div>
-      </div>
-      <div class="col-md-6">
-        <div class="form-group">
-          <label for="edad">Edad:</label>
-          <input id="edad" type="number" class="form-control" [(ngModel)]="cotizacion.edad" readonly>
-        </div>
-      </div>
-      <div class="col-md-6">
-        <div class="form-group">
-          <label for="monto">Monto:</label>
-          <input id="monto" type="text" class="form-control" [(ngModel)]="cotizacion.monto" readonly>
-        </div>
-      </div>
-      <div class="col-md-6">
-        <div class="form-group">
-          <label for="tipoPersona">Tipo de Persona:</label>
-          <input 
-            id="tipoPersona" 
-            type="text" 
-            class="form-control" 
-            [value]="cotizacion.tipo_persona === 'f' ? 'Física' : cotizacion.tipo_persona === 'm' ? 'Moral' : ''"
-            readonly
-          >
-        </div>
-      </div>
-    </div>
-  </div>
-
-  <div class="form-group mt-4">
-    <label for="comentarios">Comentarios:</label>
-    <textarea
-      id="comentarios"
-      class="form-control"
-      rows="4"
-      name="comentario"
-      [(ngModel)]="nuevoComentario">
-    </textarea>
-  </div>
-  
-  <div class="text-end mt-3">
-    <button class="btn btn-primary" (click)="agregarComentario()" [disabled]="loadingComentario">Agregar Comentario</button>
-  </div>
-  
-  <div *ngIf="loadingComentario" class="d-flex justify-content-center align-items-center mt-3">
-    <div class="spinner-border text-primary" role="status">
-      <span class="visually-hidden">Cargando...</span>
-    </div>
-  </div>
-  
-  <div *ngIf="comentarios.length > 0" class="mt-4">
-    <h4>Comentarios:</h4>
-    <ul class="comentarios-lista">
-      <li *ngFor="let comentario of comentarios.reverse()" class="comentario-rectangulo">
-        <div class="comentario-header">
-          <small><strong>{{ comentario.id_usuario }}</strong></small>
-          <small class="comentario-fecha">{{ comentario.timestamp }}</small>
-        </div>
-        <p class="comentario-texto">{{ comentario.comentarios }}</p>
-      </li>
-    </ul>
-  </div>
-  <p *ngIf="comentarios.length === 0">No hay comentarios para esta cotización.</p>
-  
-  
-  <div *ngIf="idFinanciera" class="container mt-4">
-    <!-- <app-form-docs [request]="" [isNew]="false"></app-form-docs> -->
-    <app-file-upload [request]="" [isNew]="false"></app-file-upload>
-  </div>
-
-
 </div>
 
+<div *ngIf="cotizacion && cotizacion.id_cotizacion">
+  <div class="row">
+    <div class="col-md-6">
+      <div class="form-group">
+        <label for="idCotizacion">Folio Konnect:</label>
+        <input id="idCotizacion" type="text" class="form-control" [value]="cotizacion.id_cotizacion" readonly>
+      </div>
+    </div>
+    <div class="col-md-6">
+      <div class="form-group">
+        <label for="estatus">Estatus:</label>
+        <input id="estatus" type="text" class="form-control" [(ngModel)]="cotizacion.estatus" readonly>
+      </div>
+    </div>
+    <div class="col-md-6">
+      <div class="form-group">
+        <label for="nombre">Nombre:</label>
+        <input id="nombre" type="text" class="form-control" [(ngModel)]="cotizacion.nombre" readonly>
+      </div>
+    </div>
+    <div class="col-md-6">
+      <div class="form-group">
+        <label for="edad">Edad:</label>
+        <input id="edad" type="number" class="form-control" [(ngModel)]="cotizacion.edad" readonly>
+      </div>
+    </div>
+    <div class="col-md-6">
+      <div class="form-group">
+        <label for="monto">Monto:</label>
+        <input id="monto" type="text" class="form-control" [(ngModel)]="cotizacion.monto" readonly>
+      </div>
+    </div>
+    <div class="col-md-6">
+      <div class="form-group">
+        <label for="tipoPersona">Tipo de Persona:</label>
+        <input 
+          id="tipoPersona" 
+          type="text" 
+          class="form-control" 
+          [value]="cotizacion.tipo_persona === 'f' ? 'Física' : cotizacion.tipo_persona === 'm' ? 'Moral' : ''"
+          readonly
+        >
+      </div>
+    </div>
+  </div>
+</div>
 
+<div class="form-group mt-4">
+  <label for="comentarios">Comentarios:</label>
+  <textarea id="comentarios" class="form-control" rows="4" name="comentario" [(ngModel)]="nuevoComentario"></textarea>
+</div>
 
-  
-  
+<div class="text-end mt-3">
+  <button class="btn btn-primary" (click)="agregarComentario()" [disabled]="loadingComentario">Agregar Comentario</button>
+</div>
+
+<div *ngIf="loadingComentario" class="d-flex justify-content-center align-items-center mt-3">
+  <div class="spinner-border text-primary" role="status">
+    <span class="visually-hidden">Cargando...</span>
+  </div>
+</div>
+
+<div *ngIf="comentarios.length > 0" class="mt-4">
+  <h4>Comentarios:</h4>
+  <ul class="comentarios-lista">
+    <li *ngFor="let comentario of comentarios.reverse()" class="comentario-rectangulo">
+      <div class="comentario-header">
+        <small><strong>{{ comentario.id_usuario }}</strong></small>
+        <small class="comentario-fecha">{{ comentario.timestamp }}</small>
+      </div>
+      <p class="comentario-texto">{{ comentario.comentarios }}</p>
+    </li>
+  </ul>
+</div>
+<p *ngIf="comentarios.length === 0">No hay comentarios para esta cotización.</p>
+
+<div *ngIf="idFinanciera" class="container mt-4">
+  <!-- <app-form-docs [request]="" [isNew]="false"></app-form-docs> -->
+  <app-file-upload [request]="" [isNew]="false"></app-file-upload>
+</div>
+</div>
+

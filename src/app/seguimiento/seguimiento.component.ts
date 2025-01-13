@@ -2,6 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { ApiService } from '../services/api.service';
 import { AuthService } from '../services/auth.service';
+import { estatusTramites } from '../utils/estatus';
+
 
 @Component({
   selector: 'app-seguimiento',
@@ -12,6 +14,8 @@ export class SeguimientoComponent implements OnInit {
   data: any[] = []; // Datos originales
   filteredData: any[] = []; // Datos filtrados
   isSearchActive = false; // Estado de búsqueda
+  estatusTramites = estatusTramites;
+
 
   filters = {
     estatus: '',
@@ -78,28 +82,27 @@ export class SeguimientoComponent implements OnInit {
       const matchesEstatus = this.filters.estatus
         ? item.estatus?.toLowerCase().includes(this.filters.estatus.toLowerCase())
         : true;
+  
       const matchesCotizacionNombreProspecto = this.filters.cotizacionNombreProspecto
         ? (item.id_cotizacion?.toString().toLowerCase().includes(this.filters.cotizacionNombreProspecto.toLowerCase()) || 
            item.nombre?.toLowerCase().includes(this.filters.cotizacionNombreProspecto.toLowerCase()))
         : true;
-
+  
+      const itemFecha = new Date(item.fecha);
       const matchesFechaDesde = this.filters.fechaDesde
-        ? new Date(item.fecha) >= new Date(this.filters.fechaDesde)
+        ? itemFecha >= new Date(this.filters.fechaDesde)
         : true;
+  
       const matchesFechaHasta = this.filters.fechaHasta
-        ? new Date(item.fecha) <= new Date(this.filters.fechaHasta)
+        ? itemFecha <= new Date(this.filters.fechaHasta)
         : true;
-
+  
       return matchesEstatus && matchesCotizacionNombreProspecto && matchesFechaDesde && matchesFechaHasta;
     });
-
-    this.filters.estatus = '';
-    this.filters.cotizacionNombreProspecto = '';
-    this.filters.fechaDesde = '';
-    this.filters.fechaHasta = '';
-
+  
     this.isSearchActive = this.filteredData.length !== this.data.length;
   }
+  
 
   navigateBack(): void {
     this.router.navigate(['/seccion']);

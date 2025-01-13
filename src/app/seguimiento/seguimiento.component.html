@@ -2,21 +2,20 @@
   <app-back-arrow rutaBack="seccion"></app-back-arrow>
 
   <div class="row mb-3">
-    <div class="col-lg-2 col-md-4 col-sm-6 d-flex flex-wrap gap-2">
-      <div class="form-group w-100">
-        <label for="estatus" class="form-label">Estatus</label>
-        <select id="estatus" class="form-select form-select-sm" aria-label=".form-select-sm example" [(ngModel)]="filters.estatus" 
-        (change)="applyFilters()">
-          <option value="" selected>Todos</option>
-          <option value="Integración">Integración</option>
-          <option value="Crédito">Crédito</option>
-          <option value="Formalización">Formalización</option>
-          <option value="Reconsideración">Reconsideración</option>
-          <option value="Autorizado">Autorizado</option>
-          <option value="Dispersión">Dispersión</option>
-        </select>
-      </div>
-    </div>
+
+<div class="col-lg-2 col-md-4 col-sm-6 d-flex flex-wrap gap-2">
+  <div class="form-group w-100">
+    <label for="estatus" class="form-label">Estatus</label>
+    <select id="estatus" class="form-select form-select-sm" aria-label=".form-select-sm example" [(ngModel)]="filters.estatus" 
+    (change)="applyFilters()">
+      <option value="" selected>Todos</option>
+      <option *ngFor="let estatus of estatusTramites" [value]="estatus">
+        {{ estatus }}
+      </option>
+    </select>
+  </div>
+</div>
+
     
 
     <div class="col-lg-4 col-md-6 col-sm-12 d-flex flex-wrap gap-2">
@@ -51,7 +50,7 @@
     </div>
   </div>
 
-  <div class="table-container">
+  <div class="table-container scrollable-table">
     <table class="table table-striped table-hover">
       <thead class="table-primary text-center">
         <tr>
@@ -59,7 +58,7 @@
           <th>Folio</th>
           <th>Usuario</th>
           <th>Fecha</th>
-          <th>Archivo</th>
+          <th>Ver</th>
         </tr>
       </thead>
       <tbody>
@@ -79,4 +78,5 @@
       </tbody>
     </table>
   </div>
+  
 </div>
