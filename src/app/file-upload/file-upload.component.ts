@@ -26,6 +26,8 @@ export class FileUploadComponent {
   product!: number;
   emptyFilesError: boolean = false;
   filesServer: string[] = [];
+  textModal: string = ''
+
 
   constructor(
       private apiService: ApiService,
@@ -209,7 +211,13 @@ export class FileUploadComponent {
       });
     }
     preparandoCotizacion() {
+      const modalElement = document.getElementById('noFilesModal');
       if (!this.validarFormulario()) {
+        if (modalElement) {
+          this.textModal = 'Todos los campos son obligatorios para continuar.'
+          const modal = new Modal(modalElement);
+          modal.show();
+        } 
         this.sendMessage(true);
         return;
       } 
@@ -217,8 +225,8 @@ export class FileUploadComponent {
       console.log(this.request);
       if (this.fileList.length == 0) {
         this.emptyFilesError = true;
-        const modalElement = document.getElementById('noFilesModal');
         if (modalElement) {
+          this.textModal = 'Debes de cargar al menos un archvivo'
           const modal = new Modal(modalElement);
           modal.show();
         } 
