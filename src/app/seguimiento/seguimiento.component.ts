@@ -82,28 +82,27 @@ export class SeguimientoComponent implements OnInit {
       const matchesEstatus = this.filters.estatus
         ? item.estatus?.toLowerCase().includes(this.filters.estatus.toLowerCase())
         : true;
+  
       const matchesCotizacionNombreProspecto = this.filters.cotizacionNombreProspecto
         ? (item.id_cotizacion?.toString().toLowerCase().includes(this.filters.cotizacionNombreProspecto.toLowerCase()) || 
            item.nombre?.toLowerCase().includes(this.filters.cotizacionNombreProspecto.toLowerCase()))
         : true;
-
+  
+      const itemFecha = new Date(item.fecha);
       const matchesFechaDesde = this.filters.fechaDesde
-        ? new Date(item.fecha) >= new Date(this.filters.fechaDesde)
+        ? itemFecha >= new Date(this.filters.fechaDesde)
         : true;
+  
       const matchesFechaHasta = this.filters.fechaHasta
-        ? new Date(item.fecha) <= new Date(this.filters.fechaHasta)
+        ? itemFecha <= new Date(this.filters.fechaHasta)
         : true;
-
+  
       return matchesEstatus && matchesCotizacionNombreProspecto && matchesFechaDesde && matchesFechaHasta;
     });
-
-    this.filters.estatus = '';
-    this.filters.cotizacionNombreProspecto = '';
-    this.filters.fechaDesde = '';
-    this.filters.fechaHasta = '';
-
+  
     this.isSearchActive = this.filteredData.length !== this.data.length;
   }
+  
 
   navigateBack(): void {
     this.router.navigate(['/seccion']);

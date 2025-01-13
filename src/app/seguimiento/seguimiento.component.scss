@@ -1,51 +1,69 @@
 .flecha-regresar {
-    margin-top: 2em;
-    font-size: 30px; 
-    color: #dc3545; 
-    text-decoration: none;  
-    cursor: pointer; 
-    &:hover {
-      color: #c82333; 
-    }
-  
-    i {
-      transition: color 0.3s ease;
-    }
-  }
-  .table-container {
-    margin: 20px;
-  }
-  
-  .search-bar {
-    position: relative;
-    width: 100%;
-    max-width: 400px;
-  }
-  
-  .search-bar input {
-    padding-right: 40px;
-  }
-  
-  .search-icon {
-    position: absolute;
-    top: 50%;
-    right: 10px;
-    transform: translateY(-50%);
-    font-size: 1.2rem;
-    color: #6c757d;
-  }
-  a {
-    color: #007bff;
-    text-decoration: underline;
-  
-    &:hover {
-      color: #0056b3;
-    }
-  }
-  
-  .row.gap-2 {
-    gap: 10px; /* Espacio entre inputs */
-  }
+  margin-top: 2em;
+  font-size: 30px;
+  color: #dc3545;
+  text-decoration: none;
+  cursor: pointer;
+}
 
-  
-  
+.flecha-regresar:hover {
+  color: #c82333;
+}
+
+.flecha-regresar i {
+  transition: color 0.3s ease;
+}
+
+.table-container {
+  margin: 20px;
+}
+
+.search-bar {
+  position: relative;
+  width: 100%;
+  max-width: 400px;
+}
+
+.search-bar input {
+  padding-right: 40px;
+}
+
+.search-icon {
+  position: absolute;
+  top: 50%;
+  right: 10px;
+  transform: translateY(-50%);
+  font-size: 1.2rem;
+  color: #6c757d;
+}
+
+a {
+  color: #007bff;
+  text-decoration: underline;
+}
+
+a:hover {
+  color: #0056b3;
+}
+
+.row.gap-2 {
+  gap: 10px;
+}
+
+.scrollable-table {
+  max-height: 570px; /* Altura fija para el contenedor de la tabla */
+  overflow-y: auto; /* Permite el desplazamiento vertical */
+}
+
+.scrollable-table thead th {
+  position: sticky; /* Hace que los encabezados sean fijos */
+  top: 0; /* Los fija en la parte superior del contenedor */
+  background-color: #007bff; /* Color azul para los encabezados */
+  color: #ffffff; /* Texto blanco para contraste */
+  box-shadow: 0 2px 2px -1px rgba(0, 0, 0, 0.1); /* Sombra para dar un efecto de separación */
+  text-align: center; /* Centra el texto de los encabezados */
+}
+
+.scrollable-table tbody tr:hover {
+  background-color: #e9ecef; /* Color de fondo al pasar el mouse por una fila */
+}

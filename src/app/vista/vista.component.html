@@ -13,7 +13,7 @@
         class="form-select form-select-sm"
         aria-label=".form-select-sm example"
         [(ngModel)]="cotizacion.estatus"
-        (change)="actualizarEstatus($event, cotizacion.id_cotizacion)">
+        (change)="actualizarEstatus($event, cotizacion.estatus)">
         <option *ngFor="let estatus of estatusTramites" [value]="estatus">
           {{ estatus }}
         </option>
@@ -22,7 +22,7 @@
   </div>
 
   <div class="producto-info">
-    <h3>Financiera: {{ idFinanciera }}</h3>
+    <p>Financiera: {{ nombre }}</p> 
     <p>Producto: {{ producto }}</p>
   </div>
 

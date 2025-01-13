@@ -26,8 +26,8 @@ export class VistaComponent implements OnInit {
   nuevoComentario: string = '';
   estatusSeleccionado: string = '';
   estatusOriginal: string = '';
-  nombreProducto: string = ''; // Para almacenar el nombre desde utils
-  producto: string = '';  
+  nombre = financieras; 
+  producto = financieras;  
   estatusTramites = estatusTramites;
 
 
@@ -136,29 +136,33 @@ export class VistaComponent implements OnInit {
       (data) => {
         this.loading = false;
         console.log('Respuesta de la API (cotización):', data);
-
+  
         if (data && data.length > 0) {
           this.cotizacion = data[0];
-          sessionStorage.setItem('cotizacionActual', JSON.stringify(this.cotizacion))
-          const idFinanciera = data[0]?.id_financiera;
-          const producto = data[0]?.producto;
+          sessionStorage.setItem('cotizacionActual', JSON.stringify(this.cotizacion));
+  
+          const idFinanciera = data[0]?.id_financiera || 'No disponible';
+          const producto = data[0]?.producto || {name: 'Producto desconocido'};
+  
           this.estatusOriginal = data[0]?.estatus;
-          sessionStorage.setItem('financiera', idFinanciera);
+          sessionStorage.setItem('financiera', idFinanciera.toString());
           console.log('ID Financiera guardado en sessionStorage:', idFinanciera);
-          this.idFinanciera = idFinanciera; // este dispara el form-docs
-
-          sessionStorage.setItem('producto', producto.toString());
-          console.log('Producto guardado en sessionStorage:', producto);
-
+  
+          sessionStorage.setItem('producto', producto.name.toString());
+          console.log('Producto guardado en sessionStorage:', producto.name);
+        } else {
+          console.warn('No se encontraron datos de la cotización.');
         }
       },
       (error) => {
         this.loading = false;
         this.errorMessage = 'Error al obtener la cotización: ' + error.message;
+        console.error(this.errorMessage);
         this.authService.validarErrorApi(error);
       }
     );
   }
+  
   cancelarCambioEstatus(): void {
     this.cotizacion.estatus = this.estatusOriginal;
     console.log('Cambio de estatus cancelado. Restaurado a:', this.estatusOriginal);
