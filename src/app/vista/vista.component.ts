@@ -26,15 +26,10 @@ export class VistaComponent implements OnInit {
   nuevoComentario: string = '';
   estatusSeleccionado: string = '';
   estatusOriginal: string = '';
-<<<<<<< HEAD
-  nombreProducto: string = ''; // Para almacenar el nombre desde utils
-  producto: string = '';  
-=======
   nombre = financieras; 
   producto = financieras;  
   estatusTramites = estatusTramites;
 
->>>>>>> e76c2600a250cde3175ef3e10a22e54bf368a410
 
   constructor(
     private route: ActivatedRoute,
