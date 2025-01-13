@@ -26,8 +26,8 @@ export class VistaComponent implements OnInit {
   nuevoComentario: string = '';
   estatusSeleccionado: string = '';
   estatusOriginal: string = '';
-  nombre = financieras; 
-  producto = financieras;  
+  nombreFinanciera: string | undefined = ''; 
+  producto: string | undefined = '';
   estatusTramites = estatusTramites;
 
 
@@ -141,14 +141,15 @@ export class VistaComponent implements OnInit {
           this.cotizacion = data[0];
           sessionStorage.setItem('cotizacionActual', JSON.stringify(this.cotizacion))
           const idFinanciera = data[0]?.id_financiera;
-          const producto = data[0]?.producto;
+          const idProducto = data[0]?.producto;
+          const instutucion = financieras.find(el => el.id == idFinanciera);
+          this.nombreFinanciera = instutucion?.nombre;
+          this.producto = (instutucion?.productos![idProducto] as {name: string}).name;
           this.estatusOriginal = data[0]?.estatus;
+          
           sessionStorage.setItem('financiera', idFinanciera);
-          console.log('ID Financiera guardado en sessionStorage:', idFinanciera);
+          sessionStorage.setItem('producto', idProducto.toString());
           this.idFinanciera = idFinanciera; // este dispara el form-docs
-
-          sessionStorage.setItem('producto', producto.toString());
-          console.log('Producto guardado en sessionStorage:', producto);
 
         }
       },

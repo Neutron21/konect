@@ -146,7 +146,6 @@ export class FileUploadComponent {
   
     onFileSelect(event: any, nameFile: string) {
       const file = event.target.files[0];
-      // console.log(event.target.files);
       
       const allowedExtensions = ['pdf', 'PDF', 'jpg', 'JPG', 'zip', 'ZIP', 'rar', 'RAR'];
   
@@ -239,7 +238,6 @@ export class FileUploadComponent {
   
       this.apiService.sendCotizacion(this.request).subscribe({
         next: (response) => {
-          console.log('cotizacion enviada con éxito:', response);
           // mandar llamar la carga de doccuemntos
           this.preSendDocs(response);
         },
@@ -295,7 +293,6 @@ export class FileUploadComponent {
         desc: file.desc,
         ready: arrayFiles.includes(file.nombre)
     }));
-      console.log(viabilidadMap);
       this.viabilidad = viabilidadMap
   
       const archivosMap = this.currentFiles.map(file => ({
@@ -303,12 +300,9 @@ export class FileUploadComponent {
         desc: file.desc,
         ready: arrayFiles.includes(file.nombre)
     }));
-      console.log(archivosMap);
       this.currentFiles = archivosMap
     }
-    docs() {
-      console.log('TEST');
-    }
+   
     validarFormulario(): boolean {
       const { tipo_persona, nombre, edad, monto, plazo, antiguedadEmpresa, ingresos, rfc } = this.request;
       return tipo_persona && nombre && edad && monto && plazo && antiguedadEmpresa && ingresos && rfc;
