@@ -1,0 +1,13 @@
+<div class="container mt-5">
+  <app-back-arrow rutaBack="financieras"></app-back-arrow>
+  <h2 class="contendio">{{ financiera.nombre }}</h2>
+  <p>{{ financiera.descripcion }}</p>
+
+  <ul>
+    <li *ngFor="let producto of financiera.productos; let i = index">
+      <button (click)="goToPerfilador(i)" class="btn btn-outline-secondary custom-btn">
+        {{ producto.name }}
+      </button>
+    </li>
+  </ul>  
+</div>

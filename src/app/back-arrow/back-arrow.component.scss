@@ -1,0 +1,15 @@
+.flecha-regresar {
+    margin-top: 2em;
+    font-size: 30px; 
+    color: #dc3545; 
+    text-decoration: none;  
+    cursor: pointer; 
+  
+    &:hover {
+      color: #c82333; 
+    }
+  
+    i {
+      transition: color 0.3s ease;
+    }
+  }

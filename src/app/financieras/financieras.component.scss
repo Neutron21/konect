@@ -1,0 +1,96 @@
+
+  /* From Uiverse.io by suleymanlaarabidev */ 
+  .cards-container {
+    display: flex;
+    gap: 50px;
+    align-items: flex-start;
+    flex-wrap: wrap;
+    justify-content: center; /* Centra las tarjetas */
+    margin: 20px ; /* Centra el contenedor */
+  }
+  
+  
+  .card {
+    width: 254px;
+    height: 190px;
+    background: white;
+    transition: all 0.4s;
+    border-radius: 10px;
+    box-shadow: 0px 0px 10px 5px rgba(0, 0, 0, 0.705);
+    font-size: 30px;
+    font-weight: 900;
+    margin-top: 2rem;
+    position: relative;
+    overflow: hidden; /* Asegura que el contenido no se salga de la tarjeta */
+  }
+  
+  .card:hover {
+    border-radius: 15px;
+    cursor: pointer;
+    transform: scale(1.2);
+    box-shadow: 0px 0px 10px 5px rgba(0, 0, 0, 0.705);
+    background: rgb(103, 151, 255);
+  }
+  
+  .first-content {
+    height: 100%;
+    width: 100%;
+    transition: all 0.4s;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    opacity: 1;
+    border-radius: 15px;
+  }
+  
+  .card:hover .first-content {
+    height: 0;
+    opacity: 0;
+  }
+  
+  .second-content {
+    height: 0; /* Inicialmente sin altura */
+    width: 100%;
+    opacity: 0; /* Inicialmente invisible */
+    display: flex; /* Para que los contenidos se alineen correctamente */
+    justify-content: center;
+    align-items: center;
+    border-radius: 15px;
+    transition: all 0.4s ease; /* Suaviza la transición */
+    font-size: 0; /* Inicialmente el texto es pequeño */
+    padding: 10px;
+    box-sizing: border-box;
+  }
+  
+  .card:hover .second-content {
+    opacity: 1; /* Se hace visible */
+    height: 100%; /* Se expande a toda la tarjeta */
+    font-size: 1.8rem; /* Aumenta el tamaño del texto */
+    transform: rotate(0deg); /* Rota a su posición original */
+  }
+  
+  .card-text {
+    text-align: center;
+    margin: 0;
+    padding: 10px;
+    font-size: 1rem;
+    color: #ffffff;
+    line-height: 1.5;
+    word-wrap: break-word;
+  }
+  
+  .card-image {
+    width: 100%;
+    height: auto;
+    object-fit: cover;  // Ajusta la imagen para que se adapte a la caja sin distorsionarse
+  }
+  
+  
+  .card:hover .card-image {
+    border-radius: 15px;
+  }
+  
+
+  
+
+  

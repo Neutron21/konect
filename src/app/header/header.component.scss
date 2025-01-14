@@ -1,0 +1,48 @@
+.titulo {
+    background-color: white;
+    height: 4.5em;
+    color: black;
+    position: fixed;
+    top: 0;
+    left: 0; 
+    width: 100%; 
+    border-bottom: grey 2px solid;
+    box-shadow: 0px 4px 5px gray;
+    z-index: 5;
+    
+}
+.titulo-texto {
+    margin-left: 1em;
+    font-size: 3rem;
+    font-weight: bold;
+    color: black;
+  }
+.Bienvenido {
+    margin-right: 1em;
+}
+.tooltip {
+    position: absolute;
+    background-color: rgba(0, 0, 0, 0.75);
+    color: white;
+    padding: 5px 10px;
+    border-radius: 5px;
+    font-size: 0.9rem;
+    z-index: 10;
+    opacity: 0.8;
+    pointer-events: none;  // Para evitar que interfiera con el mouse
+  }
+  
+
+  
+  
+  .d-flex.justify-content-between.align-items-center.hover-enabled {
+    cursor: pointer;
+    transition: background-color 0.3s, filter 0.3s;
+  }
+  
+  .d-flex.justify-content-between.align-items-center.hover-enabled:hover {
+    filter: brightness(0.95);
+  }
+  
+  
+  

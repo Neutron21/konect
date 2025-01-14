@@ -1,0 +1,106 @@
+.flecha-regresar {
+    margin-top: 2em;
+    font-size: 30px; 
+    margin-right: 10px;
+    color: #dc3545; 
+    text-decoration: none;  
+    cursor: pointer; 
+    &:hover {
+      color: #c82333; 
+    }
+  
+    i {
+      transition: color 0.3s ease;
+    }
+  }
+  #accordionExample {
+    margin-top: .5rem;
+  }
+  .custom-header {
+    margin-top: -1%; /* Ajusta para mover ambos elementos hacia arriba */
+  }
+  
+  .custom-header .titulo {
+    margin-left: 1rem; 
+    margin-top: 4rem;
+  }
+  .container{
+    margin-top: 3em;
+  }
+  .form-container {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 20px;
+  }
+  
+  .form-group {
+    display: flex;
+    flex-direction: column;
+  }
+  
+  .input-wrapper {
+    position: relative;
+    display: flex;
+  }
+  
+  .persona-check {
+    grid-column: span 2;
+  }
+  
+  .persona-check label {
+    font-size: 1rem;
+    margin-right: 20px;
+  }
+  
+  .persona-check input {
+    margin-right: 5px;
+  }
+ 
+  .input-group-text {
+    font-size: 1.2rem;
+  }
+  
+  .input-group input {
+    padding-left: 1.5rem;
+  }
+.input-group input {
+  padding-left: 8px; 
+}
+
+.error {
+    color: red;
+    font-size: 14px;
+    margin-top: 10px;
+}
+.product-title {
+    font-size: calc(1.3rem + .3vw);
+    color: blue;
+}  
+.accordion-header {
+  margin-bottom: .5rem;
+}
+.accordion {
+  border: none !important;
+}
+.accordion-item {
+  border-radius: 15px !important;
+}
+.accordion-body-custom {
+ padding: 0px;
+}
+.custom-collapse, .accordion-button {
+  color: whitesmoke;
+  background-color: cornflowerblue;
+  padding: .5rem 1rem;
+  border-radius: 15px !important;
+  cursor: pointer;
+  height: 3.5rem;
+  font-size: calc(1.1rem + .3vw);
+}
+
+.tipo-persona {
+  margin-top: 2rem;
+  border: cornflowerblue 2px solid;
+  border-radius: 15px;
+  padding: 0.5rem;
+}

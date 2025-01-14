@@ -1,0 +1,22 @@
+.contendio{
+    margin-top: 1em;
+
+}
+/* Personalización de los botones */
+.custom-btn {
+    background-color: transparent;  /* Hacer el fondo del botón transparente */
+    border: 1px solid #ccc;         /* Bordes gris claros */
+    color: #333;                    /* Color de texto oscuro */
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);  /* Sombra ligera */
+    padding: 10px 20px;             /* Padding para dar un buen tamaño al botón */
+    margin: 5px;                    /* Margen pequeño entre botones */
+    transition: all 0.3s ease;      /* Efecto suave al hacer hover */
+  
+    /* Efecto al pasar el cursor sobre el botón */
+    &:hover {
+      background-color: rgba(0, 0, 0, 0.05);  /* Fondo sutil al hacer hover */
+      box-shadow: 0 6px 8px rgba(0, 0, 0, 0.2);  /* Aumentar la sombra en hover */
+    }
+  }
+  
+  

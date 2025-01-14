@@ -1,0 +1,15 @@
+<div class="container mt-5">
+  <app-back-arrow rutaBack="seccion"></app-back-arrow>
+  <div class="cards-container col">
+    <div *ngFor="let fin of financierasArray" class="card" (click)="goToProducts(fin.id)">
+      <div class="first-content">
+        <img [src]="fin.img" alt="{{fin.nombre}} Logo" class="card-image" />
+      </div>
+      <div class="second-content">
+        <p class="card-text">
+          {{fin.descripcion}}
+        </p>
+      </div>
+    </div>
+  </div>
+</div>
