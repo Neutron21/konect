@@ -510,21 +510,74 @@ export const financieras = [
     nombre: "Afirme",
     proceso: "mail",
     fase: "1",
-    // productos: ["PYME INMUEBLES 15MDP", "PYME SIMPLE REVOLVENTE 40MDP"],
-    descripcion: "Capital de trabajo, adquisición de activo fijo y pagos pasivos.",
-    valores: [
-      'PRESENCIA: Aguascalientes (Aguascalientes) | Guanajuato (León, Salamanca) | Querétaro (Querétaro) | San Luis Potosí (San Luis Potosí) | Ciudad de México (Azcapotzalco, Benito Juárez, Cuajimalpa, Cuauhtémoc, Gustavo A. Madero, Iztapalapa, Miguel Hidalgo, Tlalpan) | Edo. México (Nezahualcóyotl, Atizapán, Cuautitlán, Metepec, Naucalpan, Tlalnepantla, Toluca) | Puebla (Puebla) | Guerrero (Acapulco, Chilpancingo) | Morelos (Cuernavaca) | Nuevo León (Allende, Apodaca, Cadereyta, Guadalupe, Juárez, Montemorelos, Monterrey, San Nicolás, San Pedro, Santa Catarina, Villa de Santiago) | Coahuila (Monclova, Piedras Negras, Saltillo, Torreón) | Durango (Durango) | Tamaulipas (Matamoros, Reynosa, Tampico) | Baja California (Ensenada, Tijuana) | Chihuahua (Cd. Juárez, Chihuahua) | Sinaloa (Culiacán) | Sonora (Hermosillo) | Colima (Colima, Manzanillo, Tecomán) | Jalisco (Guadalajara, Tlajomulco) | Michoacán (Lázaro Cárdenas, Morelia) | Quintana Roo (Cancún) | Yucatán (Mérida)',
-      'PRINCIPALES DESTINOS:',
-      'EDAD MINIMA/MAXIMA: Edad mínima del solicitante 25 años y máxima 65 años ',
-      'ANTIGÜEDAD EMPRESA: ',
-      'INGRESOS',
-      'AVAL: Principal accionista o familiar consanguíneo de 1° o 2° grado ',
-      'BURO: Antecedentes crediticios 12 meses con Crédito Comercial (validar buró) además Calificación de Buró Excelente, Bueno o Regular (validar buró)',
-      'PROPIEDAD:',
-      'GRAVAR: ',
-      'OBSERVACIONES: Que el prospecto no sea cliente de Afirme, solo clientes nuevos. Validar que los prospectos no presenten perdidas de capital significativas, quiebra técnica (capital contable negativo)(validar Información financiera). Sin penalización por pagos anticipados.'
+    productos: [
+      {
+      name:"CRÉDITO FACIL TPV (SIMPLE Y REVOLVENTE)", 
+      presencia:'Aguascalientes (Aguascalientes) | Guanajuato (León, Salamanca) | Querétaro (Querétaro) | San Luis Potosí (San Luis Potosí) | Ciudad de México (Azcapotzalco, Benito Juárez, Cuajimalpa, Cuauhtémoc, Gustavo A. Madero, Iztapalapa, Miguel Hidalgo, Tlalpan) | Edo. México (Nezahualcóyotl, Atizapán, Cuautitlán, Metepec, Naucalpan, Tlalnepantla, Toluca) | Puebla (Puebla) | Guerrero (Acapulco, Chilpancingo) | Morelos (Cuernavaca) | Nuevo León (Allende, Apodaca, Cadereyta, Guadalupe, Juárez, Montemorelos, Monterrey, San Nicolás, San Pedro, Santa Catarina, Villa de Santiago) | Coahuila (Monclova, Piedras Negras, Saltillo, Torreón) | Durango (Durango) | Tamaulipas (Matamoros, Reynosa, Tampico) | Baja California (Ensenada, Tijuana) | Chihuahua (Cd. Juárez, Chihuahua) | Sinaloa (Culiacán) | Sonora (Hermosillo) | Colima (Colima, Manzanillo, Tecomán) | Jalisco (Guadalajara, Tlajomulco) | Michoacán (Lázaro Cárdenas, Morelia) | Quintana Roo (Cancún) | Yucatán (Mérida)',
+      destinos:'Capital de trabajo, adquisición de activo fijo.',
+      edad:'Edad mínima del solicitante 25 años y máxima 65 años',
+      antiguedad:'Persona Moral con 2 años mínimo dada de alta en SHCP y operando con su misma actividad',
+      ingresos:'Facturación semestral promedio minimo de $125 MIL',
+      aval:'Principal accionista o familiar consanguíneo de 1° o 2° grado',
+      buro:'Antecedentes crediticios 12 meses con Crédito Comercial (validar buró) además Calificación de Buró Excelente, Bueno o Regular (validar buró)',
+      propiedad:'Sin garantías ',
+      grabar:'NO',
+      observaciones:'Que el prospecto no sea cliente de Afirme, solo clientes nuevos. Validar que los prospectos no presenten perdidas de capital significativas, quiebra técnica (capital contable negativo)(validar Información financiera). Sin penalización por pagos anticipados.'
+      },
+      { 
+      name:"CRÉDITO FACIL FLUJOS (SIMPLE)",
+      presencia:'Aguascalientes (Aguascalientes) | Guanajuato (León, Salamanca) | Querétaro (Querétaro) | San Luis Potosí (San Luis Potosí) | Ciudad de México (Azcapotzalco, Benito Juárez, Cuajimalpa, Cuauhtémoc, Gustavo A. Madero, Iztapalapa, Miguel Hidalgo, Tlalpan) | Edo. México (Nezahualcóyotl, Atizapán, Cuautitlán, Metepec, Naucalpan, Tlalnepantla, Toluca) | Puebla (Puebla) | Guerrero (Acapulco, Chilpancingo) | Morelos (Cuernavaca) | Nuevo León (Allende, Apodaca, Cadereyta, Guadalupe, Juárez, Montemorelos, Monterrey, San Nicolás, San Pedro, Santa Catarina, Villa de Santiago) | Coahuila (Monclova, Piedras Negras, Saltillo, Torreón) | Durango (Durango) | Tamaulipas (Matamoros, Reynosa, Tampico) | Baja California (Ensenada, Tijuana) | Chihuahua (Cd. Juárez, Chihuahua) | Sinaloa (Culiacán) | Sonora (Hermosillo) | Colima (Colima, Manzanillo, Tecomán) | Jalisco (Guadalajara, Tlajomulco) | Michoacán (Lázaro Cárdenas, Morelia) | Quintana Roo (Cancún) | Yucatán (Mérida)',
+      destinos:'Capital de trabajo, adquisición de activo fijo.',
+      edad:'Edad mínima del solicitante 25 años y máxima 65 años',
+      antiguedad:'Persona Moral con 3 años mínimo dada de alta en SHCP y operando con su misma actividad',
+      ingresos:'PM con depósitos operativos mayores a $ 50mdp en 6 meses',
+      aval:'Principal accionista o familiar consanguíneo de 1° o 2° grado',
+      buro:'Antecedentes crediticios 12 meses con Crédito Comercial (validar buró) además Calificación de Buró Excelente, Bueno o Regular (validar buró)',
+      propiedad:'Sin garantías ',
+      grabar:'NO',
+      observaciones:'Que el prospecto no sea cliente de Afirme, solo clientes nuevos. Validar que los prospectos no presenten perdidas de capital significativas, quiebra técnica (capital contable negativo)(validar Información financiera). Sin penalización por pagos anticipados.'
+      },
+      {
+      name:"PROGRAMA IMPULSO + ESTADOS (SIMPLE)",
+      presencia:'Aguascalientes (Aguascalientes) | Guanajuato (León, Salamanca) | Querétaro (Querétaro) | San Luis Potosí (San Luis Potosí) | Ciudad de México (Azcapotzalco, Benito Juárez, Cuajimalpa, Cuauhtémoc, Gustavo A. Madero, Iztapalapa, Miguel Hidalgo, Tlalpan) | Edo. México (Nezahualcóyotl, Atizapán, Cuautitlán, Metepec, Naucalpan, Tlalnepantla, Toluca) | Puebla (Puebla) | Guerrero (Acapulco, Chilpancingo) | Morelos (Cuernavaca) | Nuevo León (Allende, Apodaca, Cadereyta, Guadalupe, Juárez, Montemorelos, Monterrey, San Nicolás, San Pedro, Santa Catarina, Villa de Santiago) | Coahuila (Monclova, Piedras Negras, Saltillo, Torreón) | Durango (Durango) | Tamaulipas (Matamoros, Reynosa, Tampico) | Baja California (Ensenada, Tijuana) | Chihuahua (Cd. Juárez, Chihuahua) | Sinaloa (Culiacán) | Sonora (Hermosillo) | Colima (Colima, Manzanillo, Tecomán) | Jalisco (Guadalajara, Tlajomulco) | Michoacán (Lázaro Cárdenas, Morelia) | Quintana Roo (Cancún) | Yucatán (Mérida)',
+      destinos:'Capital de trabajo, adquisición de activo fijo.',
+      edad:'Edad mínima del solicitante 25 años y máxima 65 años',
+      antiguedad:'PM 2 AÑOS/ PFAE 3 AÑOS',
+      ingresos:'Minimo de ventas anuales $4 mdp y máximo $250 mdp ',
+      aval:'Principal accionista o familiar consanguíneo de 1° o 2° grado',
+      buro:'Antecedentes crediticios 12 meses con Crédito Comercial (validar buró) además Calificación de Buró Excelente, Bueno o Regular (validar buró)',
+      propiedad:'Ahasta 2.5 MDP  no se solicita propiedad rriba de 2.5 MDP solicitan propiedad libre de gravamen aforo 2 :1',
+      grabar:'Si, arriba de 2.5 MDP ',
+      observaciones:'Que el prospecto no sea cliente de Afirme, solo clientes nuevos. Validar que los prospectos no presenten perdidas de capital significativas, quiebra técnica (capital contable negativo)(validar Información financiera). Sin penalización por pagos anticipados.'
+      },
+      {
+        name:"CRÉDITO TOTAL (SIMPLE Y REVOLVENTE)",
+        presencia:'Aguascalientes (Aguascalientes) | Guanajuato (León, Salamanca) | Querétaro (Querétaro) | San Luis Potosí (San Luis Potosí) | Ciudad de México (Azcapotzalco, Benito Juárez, Cuajimalpa, Cuauhtémoc, Gustavo A. Madero, Iztapalapa, Miguel Hidalgo, Tlalpan) | Edo. México (Nezahualcóyotl, Atizapán, Cuautitlán, Metepec, Naucalpan, Tlalnepantla, Toluca) | Puebla (Puebla) | Guerrero (Acapulco, Chilpancingo) | Morelos (Cuernavaca) | Nuevo León (Allende, Apodaca, Cadereyta, Guadalupe, Juárez, Montemorelos, Monterrey, San Nicolás, San Pedro, Santa Catarina, Villa de Santiago) | Coahuila (Monclova, Piedras Negras, Saltillo, Torreón) | Durango (Durango) | Tamaulipas (Matamoros, Reynosa, Tampico) | Baja California (Ensenada, Tijuana) | Chihuahua (Cd. Juárez, Chihuahua) | Sinaloa (Culiacán) | Sonora (Hermosillo) | Colima (Colima, Manzanillo, Tecomán) | Jalisco (Guadalajara, Tlajomulco) | Michoacán (Lázaro Cárdenas, Morelia) | Quintana Roo (Cancún) | Yucatán (Mérida)',
+        destinos:'Capital de trabajo, adquisición de activo fijo y pagos pasivos.',
+        edad:'Edad mínima del solicitante 25 años y máxima 65 años',
+        antiguedad:'PM 2 AÑOS/ PFAE 3 AÑOS',
+        ingresos:'Minimo de ventas anuales $4 mdp y máximo $250 mdp ',
+        aval:'Principal accionista o familiar consanguíneo de 1° o 2° grado',
+        buro:'Antecedentes crediticios 12 meses con Crédito Comercial (validar buró) además Calificación de Buró Excelente, Bueno o Regular (validar buró)',
+        propiedad:'Propiedades libres de gravamen 2 a 1, de acuerdo al análisis se valida si se requiere dejar garantía hipotecaria.',
+        grabar:'Si, arriba de 2.5 MDP ',
+        observaciones:'Que el prospecto no sea cliente de Afirme, solo clientes nuevos. Validar que los prospectos no presenten perdidas de capital significativas, quiebra técnica (capital contable negativo)(validar Información financiera). Sin penalización por pagos anticipados.'
+      },
+      {
+        name:"CRÉDITO INMUEBLES (SIMPLE)",
+        presencia:'Aguascalientes (Aguascalientes) | Guanajuato (León, Salamanca) | Querétaro (Querétaro) | San Luis Potosí (San Luis Potosí) | Ciudad de México (Azcapotzalco, Benito Juárez, Cuajimalpa, Cuauhtémoc, Gustavo A. Madero, Iztapalapa, Miguel Hidalgo, Tlalpan) | Edo. México (Nezahualcóyotl, Atizapán, Cuautitlán, Metepec, Naucalpan, Tlalnepantla, Toluca) | Puebla (Puebla) | Guerrero (Acapulco, Chilpancingo) | Morelos (Cuernavaca) | Nuevo León (Allende, Apodaca, Cadereyta, Guadalupe, Juárez, Montemorelos, Monterrey, San Nicolás, San Pedro, Santa Catarina, Villa de Santiago) | Coahuila (Monclova, Piedras Negras, Saltillo, Torreón) | Durango (Durango) | Tamaulipas (Matamoros, Reynosa, Tampico) | Baja California (Ensenada, Tijuana) | Chihuahua (Cd. Juárez, Chihuahua) | Sinaloa (Culiacán) | Sonora (Hermosillo) | Colima (Colima, Manzanillo, Tecomán) | Jalisco (Guadalajara, Tlajomulco) | Michoacán (Lázaro Cárdenas, Morelia) | Quintana Roo (Cancún) | Yucatán (Mérida)',
+        destinos:'Adquisición de locales, oficinas, bodegas, terrenos industriales y comerciales, construcción en terrenos propios de la Pyme.',
+        edad:'Edad mínima del solicitante 25 años y máxima 65 años',
+        antiguedad:'PM 2 AÑOS/ PFAE 3 AÑOS',
+        ingresos:'Minimo de ventas anuales $4 mdp y máximo $250 mdp ',
+        aval:'Principal accionista o familiar consanguíneo de 1° o 2° grado',
+        buro:'Antecedentes crediticios 12 meses con Crédito Comercial (validar buró) además Calificación de Buró Excelente, Bueno o Regular (validar buró)',
+        propiedad:'La garantía es el propio inmueble a adquirir.',
+        grabar:'SI',
+        observaciones:'Que el prospecto no sea cliente de Afirme, solo clientes nuevos. Validar que los prospectos no presenten perdidas de capital significativas, quiebra técnica (capital contable negativo)(validar Información financiera). Sin penalización por pagos anticipados.'
+      }
     ],
-    
+    descripcion: "Capital de trabajo, adquisición de activo fijo y pagos pasivos.",
     img: "assets/afirme.png"
   }
 ];

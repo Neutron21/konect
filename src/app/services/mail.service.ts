@@ -31,7 +31,7 @@ export class MailService {
       financiera: sessionStorage.getItem('financiera'),
       rfc: cotizacion.rfc,
       monto: cotizacion.monto,
-      producto: (institucion?.productos![producto] as { name: string }),
+      producto: (institucion?.productos![producto] as { name: string }).name,
       broker: sessionStorage.getItem("broker") ,
       numCotizacion: sessionStorage.getItem("idCotizacion"),
       institucion: institucion?.nombre
