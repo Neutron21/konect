@@ -4,6 +4,7 @@ import { AuthService } from '../services/auth.service';
 import { MailService } from '../services/mail.service';
 import { documentacion } from '../utils/documentos';
 import { Modal } from 'bootstrap';
+import * as bootstrap from 'bootstrap';
 
 @Component({
   selector: 'app-file-upload',
@@ -28,6 +29,9 @@ export class FileUploadComponent {
   filesServer: string[] = [];
   textModal: string = ''
   modalElement: any;
+  fileToReplace: HTMLInputElement | null = null;
+
+
 
   constructor(
       private apiService: ApiService,
@@ -145,13 +149,20 @@ export class FileUploadComponent {
   
   openFileDialog(inputFile: HTMLInputElement, file: any): void {
     if (!this.isNew && file.ready) {
-      if (confirm('Este archivo ya se cargo, si lo cargas de nuevo se sustiutira ¿Deseas continuar?')) {
-        inputFile.click(); // Simula el clic en el input de tipo file  
+      // Abre el modal
+      const modalElement = document.getElementById('replaceFileModal');
+      if (modalElement) {
+        const modalInstance = new bootstrap.Modal(modalElement);
+        modalInstance.show();
       }
-    } else { 
+    } else {
       inputFile.click(); // Simula el clic en el input de tipo file
     }
   }
+  
+
+  
+
   // Método para restablecer el nombre, color del archivo y eliminar el archivo del input
   resetFile(inputFile: HTMLInputElement, index: number, type: string): void {
     

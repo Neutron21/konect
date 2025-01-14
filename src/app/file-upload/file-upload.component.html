@@ -24,8 +24,8 @@
         <span class="desc-text">{{ v.desc }}</span>
       </span>
       <button *ngIf="v.tempName" (click)="resetFile(fileInput, i, 'v')" class="btn btn-danger" style="margin-left: 10px;">
-      Borrar
-    </button>
+        Borrar
+      </button>
   </div>
 </div>
 
@@ -38,7 +38,6 @@
     <button *ngIf="viabilidad.length == 0 && !isNew" class="btn btn-primary" (click)="preparandoCotizacion()">
       Actualizar Expediente
     </button> 
-
   </div>
   <div *ngFor="let cf of currentFiles; let i = index">
     <input type="file" id="fileInput{{i}}" (change)="onFileChange($event, i, 'd', cf.nombre)" #fileInput hidden />
@@ -54,22 +53,23 @@
         <span class="desc-text">{{ cf.desc }}</span>
       </span>
       <button *ngIf="cf.tempName" (click)="resetFile(fileInput, i, 'd')" class="btn btn-danger" style="margin-left: 10px;">
-      Borrar
-    </button>
+        Borrar
+      </button>
   </div>
 </div>  
 
 <div class="text-center mb-4 d-grid gap-2 col-11 mx-auto final-btn">
   <button *ngIf="isNew; else updateFiles2" class="btn btn-primary" (click)="preparandoCotizacion()">
-           Enviar
+    Enviar
   </button>
   <ng-template #updateFiles2>
-   <button class="btn btn-primary" (click)="updateDocs()">
-     Actualizar Expediente
-   </button> 
- </ng-template> 
+    <button class="btn btn-primary" (click)="updateDocs()">
+      Actualizar Expediente
+    </button> 
+  </ng-template> 
 </div>
-<!-- Modal -->
+
+<!-- Modal: No Files -->
 <div class="modal fade" id="noFilesModal" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
   <div class="modal-dialog">
     <div class="modal-content">
@@ -82,6 +82,25 @@
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Entendido</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Modal: Replace File -->
+<div class="modal fade" id="replaceFileModal" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="replaceFileModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="replaceFileModalLabel">Confirmar</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        Este archivo ya se cargó. Si lo cargas de nuevo, se sustituirá. ¿Deseas continuar?
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
+        <button type="button" class="btn btn-primary" >Confirmar</button>
       </div>
     </div>
   </div>
