@@ -29,6 +29,8 @@ export class VistaComponent implements OnInit {
   nombreFinanciera: string | undefined = ''; 
   producto: string | undefined = '';
   estatusTramites = estatusTramites;
+  errorComentario: string = ''; // Nueva variable para el mensaje de error
+
 
 
   constructor(
@@ -72,29 +74,36 @@ export class VistaComponent implements OnInit {
   }
 
   agregarComentario(): void {
+    if (!this.nuevoComentario.trim()) {
+      this.errorComentario = 'No se puede agregar un comentario vacío.';
+      return; // Detenemos la ejecución si el comentario está vacío
+    }
+
+    this.errorComentario = ''; // Reseteamos el mensaje de error si pasa la validación
     const request = {
       id_cotizacion: this.id_cotizacion,
       id_usuario: this.user,
       comentarios: this.nuevoComentario,
     };
     console.log('Enviando comentario:', request);
-  
-    this.loadingComentario = true;  
-  
+
+    this.loadingComentario = true;
+
     this.apiService.sendComentarios(request).subscribe(
       (response) => {
         console.log('Comentario guardado exitosamente:', response);
         this.nuevoComentario = '';
         this.getComentarios(this.id_cotizacion);
-        this.loadingComentario = false; 
+        this.loadingComentario = false;
       },
       (error) => {
         console.error('Error al guardar el comentario:', error);
-        this.loadingComentario = false;  
+        this.loadingComentario = false;
         this.authService.validarErrorApi(error);
       }
     );
   }
+
   
   actualizarEstatus(event: Event, idCotizacion: any): void {
     const selectElement = event.target as HTMLSelectElement;

@@ -104,6 +104,8 @@
 <div class="form-group mt-4">
   <label for="comentarios">Comentarios:</label>
   <textarea id="comentarios" class="form-control" rows="4" name="comentario" [(ngModel)]="nuevoComentario"></textarea>
+  <small *ngIf="errorComentario" class="text-danger">{{ errorComentario }}</small>
+
 </div>
 
 <div class="text-end mt-3">
