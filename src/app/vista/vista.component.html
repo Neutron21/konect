@@ -20,7 +20,9 @@
       </select>
     </div>
   </div>
-
+  <!-- <img src="../../assets/gifts/doubleRing.gif" />
+  <img src="../../assets/gifts/plane.gif" /> -->
+  
   <div class="producto-info">
     <p>Financiera: {{ nombreFinanciera }}</p> 
     <p>Producto: {{ producto }}</p>
@@ -129,7 +131,6 @@
 <p *ngIf="comentarios.length === 0">No hay comentarios para esta cotización.</p>
 
 <div *ngIf="idFinanciera" class="container mt-4">
-  <!-- <app-form-docs [request]="" [isNew]="false"></app-form-docs> -->
   <app-file-upload [request]="" [isNew]="false"></app-file-upload>
 </div>
 </div>

@@ -27,7 +27,7 @@ export class FileUploadComponent {
   emptyFilesError: boolean = false;
   filesServer: string[] = [];
   textModal: string = ''
-
+  modalElement: any;
 
   constructor(
       private apiService: ApiService,
@@ -36,18 +36,85 @@ export class FileUploadComponent {
     ) { }
   
     ngOnInit(): void {
+      this.modalElement = document.getElementById('noFilesModal');
       this.getFinAndProduct();
       if (!this.isNew) {
         this.getFiles();
       }
     }
+    getFinAndProduct() {
+      // obtiene la financiera y el producto, para obtener la checklist correspondiente
+      const financiera = sessionStorage.getItem("financiera");
+      const producto = sessionStorage.getItem("producto");
 
-  // Método para manejar el cambio de archivo
+      // Verifica si los valores están definidos
+      if (!financiera || !producto) {
+        console.error("Error: 'financiera' o 'producto' no están definidos en sessionStorage.");
+        return;
+      }
+
+      this.idFin = "F" + financiera;
+      this.product = Number(producto) + 1;
+      const productoFormat = "p" + this.product;
+
+      console.log("idFin:", this.idFin);
+      console.log("productoFormat:", productoFormat);
+
+      // Valida que las propiedades existan en `documentacion`
+      if (!documentacion[this.idFin]) {
+        console.error(`Error: No existe '${this.idFin}' en 'documentacion'.`);
+        return;
+      }
+
+      if (!documentacion[this.idFin][productoFormat]) {
+        console.error(`Error: No existe '${productoFormat}' en 'documentacion[${this.idFin}]'.`);
+        return;
+      }
+
+      // Asignación segura de valores
+      this.currentFiles = documentacion[this.idFin][productoFormat].documentos || [];
+      this.viabilidad = documentacion[this.idFin].viabilidad || [];
+      console.log('viabilidad',this.viabilidad);
+      
+      this.currentFiles.forEach(cf => {
+        cf.showDesc = false;
+        cf.tempName = ''
+      });
+      if (this.viabilidad.length > 0) {
+        this.viabilidad.forEach(v => {
+          v.showDesc = false;
+          v.tempName = ''
+        });
+      }
+    }
+    getFiles() {
+      // Obtenemos los archivos cargados previamente
+      const cotizacion = JSON.parse(sessionStorage.getItem('cotizacionActual')+"") 
+      this.apiService.getDocs(cotizacion.id_cotizacion).subscribe(
+        (data: any[]) => { 
+          console.log("Files",data);
+            const tempArrayDocs = data.map(el => (
+            el.split('.')[0]
+          ));
+          console.log('tempArrayDocs',tempArrayDocs);
+          
+          this.validateServerDocs(tempArrayDocs);
+        },
+        (error: any) => {
+          console.error('Error al obtener cotizaciones:', error);
+          
+          if (error.status == 401 || error.error.error.includes('Expired')) {
+            console.log("Sesion expirada!");
+            this.authService.logOut();
+          }
+        }
+      );
+    }
+  
   onFileChange(event: any, index: number, type: string, nombre: string): void {
-
-    const file = event.target.files[0]; // Obtiene el primer archivo
+    // Método para manejar el cambio de archivo
+    const file = event.target.files[0]; 
     if (file) {
-      // this.onFileSelect(event, nombre);
       const allowedExtensions = ['pdf', 'PDF', 'jpg', 'JPG', 'zip', 'ZIP', 'rar', 'RAR'];
       const fileExtension = file.name.split('.').pop().toLowerCase();
 
@@ -100,51 +167,7 @@ export class FileUploadComponent {
     this.fileList = newArray;
     
   }
-  getFinAndProduct() {
   
-      const financiera = sessionStorage.getItem("financiera");
-      const producto = sessionStorage.getItem("producto");
-  
-      // Verifica si los valores están definidos
-      if (!financiera || !producto) {
-        console.error("Error: 'financiera' o 'producto' no están definidos en sessionStorage.");
-        return;
-      }
-  
-      this.idFin = "F" + financiera;
-      this.product = Number(producto) + 1;
-      const productoFormat = "p" + this.product;
-  
-      console.log("idFin:", this.idFin);
-      console.log("productoFormat:", productoFormat);
-  
-      // Valida que las propiedades existan en `documentacion`
-      if (!documentacion[this.idFin]) {
-        console.error(`Error: No existe '${this.idFin}' en 'documentacion'.`);
-        return;
-      }
-  
-      if (!documentacion[this.idFin][productoFormat]) {
-        console.error(`Error: No existe '${productoFormat}' en 'documentacion[${this.idFin}]'.`);
-        return;
-      }
-  
-      // Asignación segura de valores
-      this.currentFiles = documentacion[this.idFin][productoFormat].documentos || [];
-      this.viabilidad = documentacion[this.idFin].viabilidad || [];
-      console.log('viabilidad',this.viabilidad);
-      
-      this.currentFiles.forEach(cf => {
-        cf.showDesc = false;
-        cf.tempName = ''
-      });
-      if (this.viabilidad.length > 0) {
-        this.viabilidad.forEach(v => {
-          v.showDesc = false;
-          v.tempName = ''
-        });
-      }
-    }
   
     onFileSelect(event: any, nameFile: string) {
       const file = event.target.files[0];
@@ -177,11 +200,62 @@ export class FileUploadComponent {
       console.log('Archivos en lista:', this.fileList);
     }
   
+    preparandoCotizacion() {
+      
+      if (!this.validarFormulario()) {
+          this.textModal = 'Todos los campos son obligatorios para continuar.'
+          const modal = new Modal(this.modalElement); // se inicializa en el OnInit
+          modal.show();
+          this.sendMessage(true);
+          return;
+      } 
+      this.sendMessage(false);
+      console.log(this.request);
+      if (this.fileList.length == 0) {
+        this.emptyFilesError = true;
+        this.textModal = this.viabilidad.length > 0 
+          ? 'Debes de cargar todos los archivos de viabilidad' 
+          : 'Debes cargar al menos un archivo';
+        const modal = new Modal(this.modalElement);
+        modal.show();
+        return;
+      }
   
+      const userEmail = sessionStorage.getItem('user');
+      if (userEmail) {
+        this.request.id_usuario = userEmail;
+      } else {
+        console.error('No se encontró el email del usuario autenticado.');
+        return;
+      }
+      this.request.estatus = this.viabilidad.length > 0 ? 'Viabilidad' : 'Integración'; // Estado inicial del credito
+      this.request.id_financiera = sessionStorage.getItem('financiera');
+      this.request.producto = sessionStorage.getItem('producto');
+  
+      this.apiService.sendCotizacion(this.request).subscribe({
+        next: (response) => {
+          // mandar llamar la carga de doccuemntos con el idCotizacion
+          this.preSendDocs(response);
+        },
+        error: (error) => {
+          console.error('Error al enviar:', error);
+          this.authService.validarErrorApi(error);
+        }
+      });
+    }
+    
+    preSendDocs(response: any) {
+  
+      sessionStorage.setItem('cotizacion', JSON.stringify(response.data) );
+      sessionStorage.setItem('idCotizacion',response.data.id_cotizacion);
+      this.idCotizacion = response.data.id_cotizacion;
+      this.sendDocs();
+  
+    }
     sendDocs() { 
-  
+      
       const cotizacion = this.idCotizacion!=0 ? btoa(this.idCotizacion+"") : "";
-      console.log(this.fileList);
+
       const formData = new FormData();
       const user = sessionStorage.getItem('user') || "";
   
@@ -210,61 +284,20 @@ export class FileUploadComponent {
         }
       });
     }
-    preparandoCotizacion() {
-      const modalElement = document.getElementById('noFilesModal');
-      if (!this.validarFormulario()) {
-        if (modalElement) {
-          this.textModal = 'Todos los campos son obligatorios para continuar.'
-          const modal = new Modal(modalElement);
-          modal.show();
-        } 
-        this.sendMessage(true);
-        return;
-      } 
-      this.sendMessage(false);
-      console.log(this.request);
+    updateDocs() {
       if (this.fileList.length == 0) {
-        this.emptyFilesError = true;
-        if (modalElement) {
-          this.textModal = 'Debes de cargar al menos un archvivo'
-          const modal = new Modal(modalElement);
-          modal.show();
-        } 
-        return;
+        this.textModal = 'Debes cargar al menos un archivo';
+        const modal = new Modal(this.modalElement);
+        modal.show();
+        return
       }
-  
-      const userEmail = sessionStorage.getItem('user');
-      if (userEmail) {
-        this.request.id_usuario = userEmail;
-      } else {
-        console.error('No se encontró el email del usuario autenticado.');
-        return;
+      if (!this.isNew) {
+        this.idCotizacion = JSON.parse(sessionStorage.getItem('cotizacionActual')+"").id_cotizacion
+        this.sendDocs()
       }
-      this.request.estatus = this.viabilidad.length > 0 ? 'Viabilidad' : 'Integración'; // Estado inicial del credito
-      this.request.id_financiera = sessionStorage.getItem('financiera');
-      this.request.producto = sessionStorage.getItem('producto');
-  
-      this.apiService.sendCotizacion(this.request).subscribe({
-        next: (response) => {
-          // mandar llamar la carga de doccuemntos
-          this.preSendDocs(response);
-        },
-        error: (error) => {
-          console.error('Error al enviar:', error);
-          this.authService.validarErrorApi(error);
-        }
-      });
-    }
-    preSendDocs(response: any) {
-  
-      sessionStorage.setItem('cotizacion', JSON.stringify(response.data) );
-      sessionStorage.setItem('idCotizacion',response.data.id_cotizacion);
-      this.idCotizacion = response.data.id_cotizacion;
-      this.sendDocs();
-  
     }
     sendMails() {
-      this.mailService.sendMails().subscribe({
+      this.mailService.sendMails(this.isNew).subscribe({
         next: (response) => {
           console.log('Envio de correo:', response);
         }, error: (err) => {
@@ -273,28 +306,7 @@ export class FileUploadComponent {
         }
       });
     }
-    getFiles() {
-      const cotizacion = JSON.parse(sessionStorage.getItem('cotizacionActual')+"") 
-      this.apiService.getDocs(cotizacion.id_cotizacion).subscribe(
-        (data: any[]) => { 
-          console.log("Files",data);
-           const tempArrayDocs = data.map(el => (
-            el.split('.')[0]
-          ));
-          console.log('tempArrayDocs',tempArrayDocs);
-          
-          this.validateServerDocs(tempArrayDocs);
-        },
-        (error: any) => {
-          console.error('Error al obtener cotizaciones:', error);
-          
-          if (error.status == 401 || error.error.error.includes('Expired')) {
-            console.log("Sesion expirada!");
-            this.authService.logOut();
-          }
-        }
-      );
-    }
+    
     validateServerDocs(arrayFiles: any[]) {
       const viabilidadMap = this.viabilidad.map(file => ({
         nombre: file.nombre,

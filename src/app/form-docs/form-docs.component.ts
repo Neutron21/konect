@@ -194,7 +194,7 @@ export class FormDocsComponent implements OnInit {
 
   }
   sendMails() {
-    this.mailService.sendMails().subscribe({
+    this.mailService.sendMails(this.isNew).subscribe({
       next: (response) => {
         console.log('Envio de correo:', response);
       }, error: (err) => {

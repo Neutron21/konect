@@ -14,7 +14,7 @@ export class MailService {
     private http: HttpClient,
     private authService: AuthService) {}
 
-  sendMails(): Observable<any> {
+  sendMails(isNew: boolean): Observable<any> {
     const headersJson = new HttpHeaders({
       'Content-Type': 'application/json',
       'X-Auth-Token': this.authService.getToken() + ""
@@ -25,6 +25,7 @@ export class MailService {
     const institucion = financieras.find(el => el.id == idFinanciera);
 
     const payload = {
+      isNew: isNew,
       emailUser: sessionStorage.getItem('user'),
       cliente: cotizacion.nombre,
       financiera: sessionStorage.getItem('financiera'),

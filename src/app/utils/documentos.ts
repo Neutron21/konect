@@ -72,7 +72,7 @@ export const documentacion: any = {
             documentos: [
                 {nombre: 'SOLICITUD DE CRÉDITO', desc: 'COMPLETA Y FIRMADA'},
                 {nombre: 'ACTA CONSTITUTIVA CON RPP', desc: ''},
-                {nombre: 'ASAMBLEAS Y/O PODERES COMPLETAS', desc: ''},
+                {nombre: 'ASAMBLEAS Y - O PODERES COMPLETAS', desc: ''},
                 {nombre: 'AUTORIZACIÓN DE CONSULTA DE BURÓ', desc: 'ACREDITADO, PF, PM, RL, OS, ACCIONISTAS, GARANTES'},
                 {nombre: 'BURÓ FIRA', desc: 'En caso de que aplique'},
                 {nombre: 'KYC', desc: 'ACREDITADO, PF, PM, RL, OS, ACCIONISTAS, GARANTES'},
@@ -129,7 +129,7 @@ export const documentacion: any = {
             documentos: [
                 {nombre: 'SOLICITUD DE CRÉDITO', desc: 'COMPLETA Y FIRMADA'},
                 {nombre: 'ACTA CONSTITUTIVA CON RPP', desc: ''},
-                {nombre: 'ASAMBLEAS Y/O PODERES COMPLETAS', desc: ''},
+                {nombre: 'ASAMBLEAS Y - O PODERES COMPLETAS', desc: ''},
                 {nombre: 'AUTORIZACIÓN DE CONSULTA DE BURÓ', desc: ''},
                 {nombre: 'KYC', desc:'ACREDITADO, PF, PM, RL, OS, ACCIONISTAS, GARANTES'},
                 {nombre: 'CONSTANCIA DE SITUACIÓN FISCAL', desc: 'NO MAYOR A 3 MESES (ACREDITADO, ACCIONISTA, REP LEGAL O GARANTE)'},
@@ -142,7 +142,7 @@ export const documentacion: any = {
                 {nombre: 'VALIDACIÓN SAT', desc: 'https://clientes.credijusto.com/',},
                 {nombre: 'AVISO DE PRIVACIDAD', desc: 'FIRMADO POR ACREDITADO, PF, PM, RL, OS, ACCIONISTAS, GARANTES'},
                 {nombre: 'COTIZACIÓN A NOMBRE DEL ACREDITADO', desc: 'CON DATOS DE CONTACTO DE PROVEEDOR, MARCA Y MODELO'},
-                {nombre: 'VALIDACIÓN DEL ACTIVO / VOBO DE ACTIVOS', desc: ''},
+                {nombre: 'VALIDACIÓN DEL ACTIVO O VOBO DE ACTIVOS', desc: ''},
                 {nombre: 'PEDIMENTO EN CASO DE APLICAR', desc: ''},
                 {nombre: 'PROPUESTA INDICATIVA', desc: ''}
             ]
@@ -155,7 +155,7 @@ export const documentacion: any = {
                 {nombre: 'IDENTIFICACION', desc: 'INE / PASAPORTE / EXTRANJERO FM2 ACREDITADO, ACCIONISTA, REP LEGAL O GARANTE'},
                 {nombre: '2DA. IDENTIFICACIÓN', desc: ''},
                 {nombre: 'CURP', desc: 'ACREDITADO, ACCIONISTA, REP LEGAL O GARANTE'},
-                {nombre: 'ACTA DE MATRIMONIO / CONFIRMAR SOLTERÍA', desc: ''},
+                {nombre: 'ACTA DE MATRIMONIO - CONFIRMAR SOLTERÍA', desc: ''},
                 {nombre: 'IDENTIFICACIÓN DEL CÓNYUGE', desc: 'CUANDO APLIQUE'},
                 {nombre: 'KYC', desc: 'ACREDITADO, PF, PM, RL, OS, ACCIONISTAS, GARANTES'},
                 {nombre: 'KYC AMPLIADO', desc: 'EN CASO DE SER UN CLIENTE QUE REPRESENTE ALGÚN RIESGO'},
@@ -186,7 +186,7 @@ export const documentacion: any = {
                 {nombre: 'IDENTIFICACION', desc: 'INE / PASAPORTE / EXTRANJERO FM2 ACREDITADO, ACCIONISTA, REP LEGAL O GARANTE'},
                 {nombre: '2DA. IDENTIFICACIÓN', desc: ''},
                 {nombre: 'CURP', desc: 'ACREDITADO, ACCIONISTA, REP LEGAL O GARANTE'},
-                {nombre: 'ACTA DE MATRIMONIO / CONFIRMAR SOLTERÍA', desc: ''},
+                {nombre: 'ACTA DE MATRIMONIO - CONFIRMAR SOLTERÍA', desc: ''},
                 {nombre: 'KYC', desc: 'ACREDITADO, PF, PM, RL, OS, ACCIONISTAS, GARANTES'},
                 {nombre: 'CONSTANCIA DE SITUACIÓN FISCAL', desc: 'NO MAYOR A 3 MESES (ACREDITADO, ACCIONISTA, REP LEGAL O GARANTE)'},
                 {nombre: 'COMPROBANTE DE DOMICILIO', desc: 'NO MAYOR A 3 MESES (DEBE DE COINCIDIR CONTRA SOLICITUD Y KYC)'},
@@ -196,7 +196,7 @@ export const documentacion: any = {
                 {nombre: 'VALIDACIÓN SAT', desc: 'https://clientes.credijusto.com/'},
                 {nombre: 'AVISO DE PRIVACIDAD', desc: 'FIRMADO Y ACREDITADO, PF, PM, RL, OS, ACCIONISTAS, GARANTES'},
                 {nombre: 'COTIZACIÓN A NOMBRE DEL ACREDITADO', desc: 'CON DATOS DE CONTACTO DE PROVEEDOR, MARCA Y MODELO'},
-                {nombre: 'VALIDACIÓN DEL ACTIVO / VOBO DE ACTIVOS', desc: ''},
+                {nombre: 'VALIDACIÓN DEL ACTIVO - VOBO DE ACTIVOS', desc: ''},
                 {nombre: 'PEDIMENTO EN CASO DE APLICAR', desc: ''},
                 {nombre: 'PROPUESTA INDICATIVA', desc: ''}
             ]
