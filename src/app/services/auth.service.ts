@@ -3,6 +3,7 @@ import { Router } from "@angular/router";
 import { initializeApp } from 'firebase/app';
 import { environment } from "src/environments/environment";
 import { getAuth, signOut, signInWithEmailAndPassword } from "firebase/auth";
+import { Modal } from 'bootstrap';
 
 @Injectable({
     providedIn:'root'
@@ -12,7 +13,7 @@ export class AuthService {
     
     constructor(
       private router: Router
-    ){}
+    ) { }
 
     private app = initializeApp(environment.firebaseConfig);
     private auth = getAuth();
@@ -62,10 +63,16 @@ export class AuthService {
       this.isLoggedIn = false;
     }
     validarErrorApi(error: any) {
-      if (error.status == 401 || error.error.error.includes('Expired')) {
-        console.log("Sesion expirada!");
-        this.logOut();
+      const modalElement = document.getElementById('sessionModal');
+      if (modalElement) {
+        const modal = new Modal(modalElement);
+        modal.show();
+        if (error.status == 401 || error.error.error.includes('Expired')) {
+          console.log("Sesion expirada!");
+          this.logOut();
+        }
       }
+      
     }
     getIsLoged (){
       const sessionTrue = sessionStorage.getItem('uid');
