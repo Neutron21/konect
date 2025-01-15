@@ -48,7 +48,7 @@ export class LoginComponent implements OnInit {
       this.showSpinner = true;
       try {
         const user = await this.authService.singIn(email, password);
-        localStorage.setItem('userEmail', email);
+        sessionStorage.setItem('userEmail', email);
         this.getUserInfo(email);
         this.router.navigate(['/seccion']);
       } catch {

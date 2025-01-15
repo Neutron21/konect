@@ -1,6 +1,8 @@
-import { Component, AfterViewInit, ViewChild, ElementRef } from '@angular/core';
+import { Component, AfterViewInit, ViewChild, ElementRef, EventEmitter, Output, Input } from '@angular/core';
 import { ApiService } from '../services/api.service';
 import { financieras } from '../utils/financieras';
+import { MailService } from '../services/mail.service';
+import { AuthService } from '../services/auth.service';
 
 declare var bootstrap: any;
 
@@ -13,6 +15,11 @@ export class PerfiladorComponent implements AfterViewInit {
 [x: string]: any;
 
   @ViewChild('successModal') successModalRef: ElementRef | undefined;
+
+    @Input() request!: any;
+    @Input() isNew!: boolean;
+  
+    @Output() messageEmitter = new EventEmitter<boolean>();
 
   isExpanded = false;
   nameFin = '';
@@ -43,7 +50,8 @@ export class PerfiladorComponent implements AfterViewInit {
 
 
   constructor(
-    private apiService: ApiService
+    private apiService: ApiService,
+    private mailService: MailService,
   ) {
     this.generarPlazos();
   }
@@ -53,9 +61,9 @@ export class PerfiladorComponent implements AfterViewInit {
   }
 
   ngAfterViewInit(): void {
-    if (this.successModalRef) {
-      this.modal = new bootstrap.Modal(this.successModalRef.nativeElement);
-    }
+    // if (this.successModalRef) {
+    //   this.modal = new bootstrap.Modal(this.successModalRef.nativeElement);
+    // }
   }
   generarPlazos(): void {
     for (let i = 12; i <= 120; i += 12) {
@@ -81,37 +89,61 @@ export class PerfiladorComponent implements AfterViewInit {
     console.log("viabilidad", this.viabilidad);
 
   }
+ 
   enviarFormulario(formularioForm: any): void {
-
     if (!this.validarFormulario()) {
-      this.mostrarError = true; 
+      this.mostrarError = true;
       return;
     }
-
-    this.mostrarError = false; 
-    const userEmail = localStorage.getItem('userEmail');
-    if (userEmail) {
-      this.cotizacion.id_usuario = userEmail;
-    } else {
-      console.error('No se encontró el email del usuario autenticado.');
-      return;
-    }
+  
+    this.mostrarError = false;
+    this.cotizacion.id_usuario = sessionStorage.getItem('userEmail');
+    this.cotizacion.estatus = 'Integración';
+  
     this.cotizacion.id_financiera = this.finacieraId;
     this.cotizacion.producto = this.productIndex;
-
+  
     this.apiService.sendCotizacion(this.cotizacion).subscribe({
       next: (response) => {
-        console.log('cotizacion enviado con éxito:', response);
+        this.preSendDocs(response);
+  
+        console.log('Cotización enviada con éxito:', response);
+  
+        // Proceder con el envío de correos
+        this.sendMails();
       },
       error: (err) => {
-        console.error('Error al enviar:', err);
+        try {
+          const errorResponse = JSON.parse(err.error);
+          console.error('Error al enviar los datos:', errorResponse);
+        } catch (e) {
+          console.error('Error al enviar los datos:', err.message || err);
+        }
       }
     });
-
+  
     this.formularioEnviado = true;
-    this.modal.show();
     formularioForm.resetForm();
   }
+  
+
+  preSendDocs(response: any) {
+  
+    sessionStorage.setItem('cotizacion', JSON.stringify(response.data) );
+    sessionStorage.setItem('idCotizacion',response.data.id_cotizacion);
+    this.cotizacion = response.data.id_cotizacion;
+
+  }
+  sendMails() {
+    this.mailService.sendMails(true).subscribe({
+      next: (response) => {
+        console.log('Envio de correo:', response);
+      }, error: (err) => {
+        console.error('Error al enviar los datos:', err);
+      }
+    });
+  }
+    
 
   cerrarModal(formularioForm: any): void {
     this.formularioEnviado = false;

@@ -168,11 +168,34 @@
           </div> 
         </div>
       </div> 
-    </div>
 
-    <div class="form-group text-center mb-4">
-      <a *ngIf="!docProcess" type="button" class="btn btn-primary btn-sm btn-block mt-3" target="_blank" [href]="urlFin">Enviar y Continuar con link</a>
-    </div>
+      <div class="form-group text-center mb-4">
+        <a *ngIf="!docProcess" type="button" class="btn btn-primary btn-sm btn-block mt-3" (click)="enviarFormulario(formularioForm)">Enviar y Continuar con link</a>
+      </div>
+      
+      <!-- Modal -->
+      <!-- <div class="modal fade" id="warningModal" tabindex="-1" aria-labelledby="warningModalLabel" aria-hidden="true" #successModal>
+        <div class="modal-dialog">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title" id="warningModalLabel">Error</h5>
+              <button type="button" class="btn-close" (click)="cerrarModal(formularioForm)" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+              Por favor, complete todos los campos para enviar el formulario.
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-secondary" (click)="cerrarModal(formularioForm)">Cerrar</button>
+            </div>
+          </div>
+        </div>
+      </div> -->
+      
+  
+  
+  </div>
+
+
 
   <!-- Modal -->
   <div class="modal" tabindex="-1" role="dialog" [ngClass]="{'show': formularioEnviado}" [attr.aria-hidden]="formularioEnviado ? 'true' : null" #emptyFilesModal>
