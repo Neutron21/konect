@@ -29,9 +29,8 @@ export class FileUploadComponent {
   filesServer: string[] = [];
   textModal: string = ''
   modalElement: any;
-  fileToReplace: HTMLInputElement | null = null;
-
-
+  modal: any;
+  loader: boolean = false;
 
   constructor(
       private apiService: ApiService,
@@ -41,6 +40,7 @@ export class FileUploadComponent {
   
     ngOnInit(): void {
       this.modalElement = document.getElementById('noFilesModal');
+      this.modal = new Modal(this.modalElement); // se inicializa en el OnInit
       this.getFinAndProduct();
       if (!this.isNew) {
         this.getFiles();
@@ -215,8 +215,8 @@ export class FileUploadComponent {
       
       if (!this.validarFormulario()) {
           this.textModal = 'Todos los campos son obligatorios para continuar.'
-          const modal = new Modal(this.modalElement); // se inicializa en el OnInit
-          modal.show();
+          // this.modal = new Modal(this.modalElement); // se inicializa en el OnInit
+          this.modal.show();
           this.sendMessage(true);
           return;
       } 
@@ -227,11 +227,12 @@ export class FileUploadComponent {
         this.textModal = this.viabilidad.length > 0 
           ? 'Debes de cargar todos los archivos de viabilidad' 
           : 'Debes cargar al menos un archivo';
-        const modal = new Modal(this.modalElement);
-        modal.show();
+        this.modal.show();
         return;
       }
-  
+      this.textModal = ''
+      this.loader = true;
+      this.modal.show();
       const userEmail = sessionStorage.getItem('user');
       if (userEmail) {
         this.request.id_usuario = userEmail;
@@ -302,6 +303,9 @@ export class FileUploadComponent {
         modal.show();
         return
       }
+      this.textModal = ''
+      this.loader = true;
+      this.modal.show();
       if (!this.isNew) {
         this.idCotizacion = JSON.parse(sessionStorage.getItem('cotizacionActual')+"").id_cotizacion
         this.sendDocs()
@@ -311,6 +315,8 @@ export class FileUploadComponent {
       this.mailService.sendMails(this.isNew).subscribe({
         next: (response) => {
           console.log('Envio de correo:', response);
+          this.textModal = 'Proceso Exitoso!'
+          this.loader = false;
         }, error: (err) => {
           console.error('Error al enviar los datos:', err);
           this.authService.validarErrorApi(err);

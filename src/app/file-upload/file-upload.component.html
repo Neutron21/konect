@@ -74,13 +74,15 @@
   <div class="modal-dialog">
     <div class="modal-content">
       <div class="modal-header">
-        <h5 class="modal-title" id="staticBackdropLabel">Atención</h5>
-        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        <h5 *ngIf="!loader" class="modal-title" id="staticBackdropLabel">Atención</h5>
+        <h5 *ngIf="loader" class="modal-title" id="staticBackdropLabel">Favor de esperar</h5>
+        <button *ngIf="!loader" type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
       </div>
-      <div class="modal-body">
+      <div class="modal-body text-center">
         {{textModal}}
+        <img *ngIf="loader" class="loader" src="../../assets/gifts/plane-green.gif" />
       </div>
-      <div class="modal-footer">
+      <div *ngIf="!loader" class="modal-footer">
         <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Entendido</button>
       </div>
     </div>
