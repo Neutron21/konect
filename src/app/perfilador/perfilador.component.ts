@@ -144,7 +144,6 @@ export class PerfiladorComponent implements AfterViewInit {
     });
   }
     
-
   cerrarModal(formularioForm: any): void {
     this.formularioEnviado = false;
     this.modal.hide();
