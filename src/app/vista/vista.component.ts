@@ -21,7 +21,7 @@ export class VistaComponent implements OnInit {
   documentos: string[] = [];
   idFinanciera: string | null = null;
   comentarios: any [] = [];  
-  user: string | null = sessionStorage.getItem('user');
+  user: string | null = this.authService.getUser();
   id_cotizacion: number = 0;
   nuevoComentario: string = '';
   estatusSeleccionado: string = '';
@@ -38,12 +38,11 @@ export class VistaComponent implements OnInit {
     private router: Router,
     private apiService: ApiService,
     private authService: AuthService,
-  ) {}
+  ) { }
 
   ngOnInit(): void {
 
     const idCotizacion = this.route.snapshot.queryParams['id_cotizacion'];
-
     this.id_cotizacion = Number(idCotizacion); 
     this.loading = true;
     this.getCurrentCotizacion(idCotizacion);

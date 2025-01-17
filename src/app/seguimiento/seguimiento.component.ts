@@ -31,7 +31,7 @@ export class SeguimientoComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
-    const user = sessionStorage.getItem('user'); 
+    const user = this.authService.getUser(); 
     const rol = sessionStorage.getItem('rol'); 
 
     if (user) {

@@ -1,8 +1,7 @@
 <div *ngIf="!!viabilidad && viabilidad.length > 0" class="viabilidad">
   <div class="d-flex justify-content-between">
     <h3 class="viabilidad-text">Viabilidad</h3> 
-    <button *ngIf="isNew; else updateFiles" class="btn btn-primary" (click)="cleanView()">
-    <!-- <button *ngIf="isNew; else updateFiles" class="btn btn-primary" (click)="preparandoCotizacion()"> -->
+    <button *ngIf="isNew; else updateFiles" class="btn btn-primary" (click)="preparandoCotizacion()">
       Enviar
     </button>
     <ng-template #updateFiles>

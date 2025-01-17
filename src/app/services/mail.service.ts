@@ -26,7 +26,7 @@ export class MailService {
 
     const payload = {
       isNew: isNew,
-      emailUser: sessionStorage.getItem('user'),
+      emailUser: this.authService.getUser(),
       cliente: cotizacion.nombre,
       financiera: sessionStorage.getItem('financiera'),
       rfc: cotizacion.rfc,

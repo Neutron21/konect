@@ -115,7 +115,7 @@ export class FormDocsComponent implements OnInit {
     const cotizacion = this.idCotizacion!=0 ? btoa(this.idCotizacion+"") : "";
     console.log(this.fileList);
     const formData = new FormData();
-    const user = sessionStorage.getItem('user') || "";
+    const user = this.authService.getUser() || "";
 
     formData.append('user', user);
     formData.append('idCotizacion', cotizacion);
@@ -159,7 +159,7 @@ export class FormDocsComponent implements OnInit {
       return;
     }
 
-    const userEmail = sessionStorage.getItem('user');
+    const userEmail = this.authService.getUser();
     if (userEmail) {
       this.request.id_usuario = userEmail;
     } else {

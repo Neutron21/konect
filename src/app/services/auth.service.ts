@@ -69,8 +69,7 @@ export class AuthService {
           modal.show();
           console.log("Sesion expirada!");
           this.logOut()
-          // setTimeout(() => modal.hide() , 2500)
-          
+          setTimeout(() => modal.hide() , 2500)
       }
       
     }

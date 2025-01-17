@@ -13,11 +13,11 @@ import * as bootstrap from 'bootstrap';
 })
 export class FileUploadComponent {
 
-  @Input() request!: any;
-  @Input() isNew!: boolean;
+  @Input() request!: any; // Formulario de cotizacion
+  @Input() isNew!: boolean; // identifica si es cotizacion nueva o no
 
-  @Output() messageEmitter = new EventEmitter<boolean>();
-  @Output() reset = new EventEmitter<boolean>();
+  @Output() messageEmitter = new EventEmitter<boolean>(); // Lanza mensaje de error, si faltan campos
+  @Output() reset = new EventEmitter<boolean>(); // Limpia formulario
   
   fileUpload: any;
   currentFiles: any[] = [];
@@ -220,7 +220,6 @@ export class FileUploadComponent {
       
       if (!this.validarFormulario()) {
           this.textModal = 'Todos los campos son obligatorios para continuar.'
-          // this.modal = new Modal(this.modalElement); // se inicializa en el OnInit
           this.modal.show();
           this.sendMessage(true);
           return;
@@ -238,7 +237,7 @@ export class FileUploadComponent {
       this.textModal = ''
       this.loader = true;
       this.modal.show();
-      const userEmail = sessionStorage.getItem('user');
+      const userEmail = this.authService.getUser();
       if (userEmail) {
         this.request.id_usuario = userEmail;
       } else {
@@ -255,6 +254,8 @@ export class FileUploadComponent {
           this.preSendDocs(response);
         },
         error: (error) => {
+          this.textModal = 'Error al crear Folio'
+          this.loader = false;
           console.error('Error al enviar:', error);
           this.authService.validarErrorApi(error);
         }
@@ -263,7 +264,7 @@ export class FileUploadComponent {
     
     preSendDocs(response: any) {
   
-      sessionStorage.setItem('cotizacion', JSON.stringify(response.data) );
+      sessionStorage.setItem('cotizacion', JSON.stringify(response.data));
       sessionStorage.setItem('idCotizacion',response.data.id_cotizacion);
       this.idCotizacion = response.data.id_cotizacion;
       this.sendDocs();
@@ -274,7 +275,7 @@ export class FileUploadComponent {
       const cotizacion = this.idCotizacion!=0 ? btoa(this.idCotizacion+"") : "";
 
       const formData = new FormData();
-      const user = sessionStorage.getItem('user') || "";
+      const user = this.authService.getUser() || "";
   
       formData.append('user', user);
       formData.append('idCotizacion', cotizacion);
@@ -296,6 +297,8 @@ export class FileUploadComponent {
          this.sendMails()
         },
         error: (error) => {
+          this.textModal = 'Error al cargar Documentos'
+          this.loader = false;
           console.error('Error al enviar los datos:', error);
           this.authService.validarErrorApi(error);
         }

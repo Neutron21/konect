@@ -16,7 +16,7 @@ export class HeaderComponent implements OnInit {
   
 
   constructor(
-    private authServie: AuthService,
+    private authService: AuthService,
     private apiservice: ApiService,
     private router: Router // Importa el servicio Router para navegación
   ) {}
@@ -34,12 +34,12 @@ export class HeaderComponent implements OnInit {
         console.error('Error al borrar el token:', err);
       },
     });
-    this.authServie.logOut();
+    this.authService.logOut();
   }
 
   validarSesion(): boolean {
     if (typeof window !== 'undefined' && typeof window.sessionStorage !== 'undefined') {
-      const correo = sessionStorage.getItem('user') || '';
+      const correo = this.authService.getUser() || '';
       this.user.correo = correo;
       return !!sessionStorage.getItem('uid'); // Devuelve `true` si hay un usuario logueado
     } else {
