@@ -75,11 +75,12 @@ export const financieras = [
      {
       name:"CREDITO SIMPLE REVOLVENTE CON GARANTIA PM",  
       presencia:'Nivel Nacional',
-      destino:'Para capital de trabajo, remodelación del negocio, crecimiento del negocio ,compra de bienes de capital, inventarios, sustitución de pasivos (no aplica para el revolvente), etc.',
+      destinos:'Para capital de trabajo, remodelación del negocio, crecimiento del negocio ,compra de bienes de capital, inventarios, sustitución de pasivos (no aplica para el revolvente), etc.',
       edad:'21 a 68 años.',
       antiguedad:'2 años',
       ingresos:'Mínimo 6  MDP anuales' ,
       aval:'Acreditado accionista, familiar del acreditado o del accionista, empresas relacionadas (abuelos, padres, hijos, primos)',
+      buro:'Bueno',
       propiedad:'Casa habitación, departamento, local comercial, oficina, nave industrial, (aforo mínimo 2 a 1)',
       gravar:'SI (fideicomiso)',
       observaciones:'Sin penalización por pago anticipado, sin costo en avaluó.'
@@ -87,11 +88,14 @@ export const financieras = [
     { 
       name:"CREDITO PARAMETRICO",
       presencia:'Nivel Nacional',
-      destino:'Capital de trabajo',
+      destinos:'Capital de trabajo',
       edad:'21 a 68 años.',
       antiguedad:'2 años',
       ingresos:'Mínimo 20 MDP anuales',
       aval:'Accionista mayoritario como Obligado Solidario',
+      buro:'No Aplica',
+      propiedad:'No Aplica',
+      gravar:'No Aplica',
       observaciones:'Sólo Personas Morales'
     },
      {
@@ -102,18 +106,20 @@ export const financieras = [
       antiguedad:'2 años',
       ingresos:'Mínimo 20 MDP anuales',
       aval:'Accionista mayoritario como Obligado Solidario',
-      buro:'bueno',
+      buro:'Bueno',
+      propiedad:'Maquinaria/ Bien Arrendado',
+      gravar:'Maquinaria/ Bien Arrendado',
       observaciones:'Hasta el 80% del avaluo Se tiene que presentar factura o cotización del equipo a arrendar        ',
      } ,
     { 
       name: "CREDITO SIMPLE REVOLVENTE CON GARANTIA PFAE" ,
       presencia:'Nivel Nacional',
-      destino:'Activo productivo (equipo medico, maquinaria amarilla, etc.) No se arrendan bienes inmuebles.  No se trabaja tecnología y paneles solares',
+      destinos:'Activo productivo (equipo medico, maquinaria amarilla, etc.) No se arrendan bienes inmuebles. No se trabaja tecnología y paneles solares',
       edad:'21 a 68 años.',
       antiguedad:'2 años',
       ingresos:'Mínimo 80  MDP anuales',
       aval:'Acreditado accionista, familiar del acreditado o del accionista, empresas relacionadas (abuelos, padres, hijos, primos)',
-      buro:'bueno',
+      buro:'Bueno',
       propiedad:'Maquinaria/ Bien Arrendado',
       gravar:'Maquinaria/ Bien Arrendado',
       observaciones:'80% de valor de Factura                                                                ',
@@ -122,12 +128,12 @@ export const financieras = [
     {
       name:"ARRENDAMIENTO PURO SYLB PFAE",
       presencia:'Nivel Nacional',
-      destino:'Activo productivo (equipo medico, maquinaria amarilla, etc.) No se arrendan bienes inmuebles.  No se trabaja tecnología y paneles solares',
+      destinos:'Activo productivo (equipo medico, maquinaria amarilla, etc.) No se arrendan bienes inmuebles. No se trabaja tecnología y paneles solares',
       edad:'21 a 68 años.',
       antiguedad:'2 años',
       ingresos:'Mínimo 80  MDP anuales',
       aval:'Acreditado accionista, familiar del acreditado o del accionista, empresas relacionadas (abuelos, padres, hijos, primos)',
-      buro:'bueno',
+      buro:'Bueno',
       propiedad:'Maquinaria/ Bien Arrendado',
       gravar:'Maquinaria/ Bien Arrendado',
       observaciones:'Hasta el 80% del avaluo Se tiene que presentar factura o cotización del equipo a arrendar        '
@@ -150,9 +156,9 @@ export const financieras = [
         antiguedad:'3 años constituido en la actividad economica y operando en el mismo local',
         ingresos:'Ventas mínimas con tarjetas $150,000 pesos mensuales',
         aval:'Sin necesidad de aval',
-        buro:'',
-        propiedad:'',
-        grabar:'',
+        buro:'No requerido',
+        propiedad:'Sin garantía',
+        grabar:'No requerida',
         observaciones:' 1. Dirigido a negocios que tienen ventas con tarjetas bancarias al consumidor final. | 2. Tener por lo menos 1 año operando con TPV (no importa con que banco o agregador siempre y cuando las ventas caigan a una cuenta bancaria). |3.-Ventas mensuales con tarjeta bancaria de $150,000.00 mensuales  y que representen por lo menos el 50% del total de las ventas. |4. Estas ventas se cobrarán a través de un adquiriente autorizado por Anticipa, mismo que tiene que ser contratado antes de la firma del contrato Cash Advance. |5. El negocio debe llevar 3  años constituido en la actividad economica y operando en el mismo local. |6. Dirigido a Persona Moral incluyendo AC y Persona Física con Actividad Empresarial.',
       },
       {
@@ -163,9 +169,9 @@ export const financieras = [
       antiguedad:'3 años constituido en la actividad economica y operando en el mismo local',
       ingresos:'Ventas mínimas con tarjetas $150,000 pesos mensuales',
       aval:'Sin necesidad de aval',
-      buro:'',
-      propiedad:'',
-      grabar:'',
+      buro:'No requerido',
+      propiedad:'Sin garantía',
+      grabar:'No requerida',
       observaciones:' 1. Dirigido a negocios que tienen ventas con tarjetas bancarias al consumidor final. | 2. Tener por lo menos 1 año operando con TPV (no importa con que banco o agregador siempre y cuando las ventas caigan a una cuenta bancaria). |3.-Ventas mensuales con tarjeta bancaria de $150,000.00 mensuales  y que representen por lo menos el 50% del total de las ventas. |4. Estas ventas se cobrarán a través de un adquiriente autorizado por Anticipa, mismo que tiene que ser contratado antes de la firma del contrato Cash Advance. |5. El negocio debe llevar 3  años constituido en la actividad economica y operando en el mismo local. |6. Dirigido a Persona Moral incluyendo AC y Persona Física con Actividad Empresarial.',
       },
       ],
@@ -225,7 +231,7 @@ export const financieras = [
       {
        name:"CREDITO REVOLVENTE ", 
        presencia: 'Aguascalientes, Baja California, Baja California Sur, Chihuahua, Ciudad de México, Coahuila, Durango, Estado de México, Guanajuato, Hidalgo, Jalisco, Michoacán, Morelos, Nayarit, Nuevo León, Oaxaca, Puebla, Querétaro, Quintana Roo, San Luis Potosí, Sinaloa, Sonora, Tamaulipas, Veracruz, Yucatán. Nota: Consulta los municipios y/o alcaldías participantes de cada estado en la biblioteca virtual de SISEC.',
-       destinios: 'Capital de Trabajo',     
+       destinos: 'Capital de Trabajo',     
        edad:'Edad entre 18 y 69 años 11 meses (al momento del otorgamiento)', 
        antiguedad:'2 años mínimo',
        ingresos:'hasta 250 MDP anuales',
@@ -237,9 +243,9 @@ export const financieras = [
       },
       {name:"CREDITO SIMPLE",
         presencia: 'Aguascalientes, Baja California, Baja California Sur, Chihuahua, Ciudad de México, Coahuila, Durango, Estado de México, Guanajuato, Hidalgo, Jalisco, Michoacán, Morelos, Nayarit, Nuevo León, Oaxaca, Puebla, Querétaro, Quintana Roo, San Luis Potosí, Sinaloa, Sonora, Tamaulipas, Veracruz, Yucatán. Nota: Consulta los municipios y/o alcaldías participantes de cada estado en la biblioteca virtual de SISEC.',
-        destinios:'Capital de Trabajo, Adquisición de activos fijos, proyectos de inversión, pago de pasivos.',
+        destinos:'Capital de Trabajo, Adquisición de activos fijos, proyectos de inversión, pago de pasivos.',
         edad:'Edad entre 18 y 69 años 11 meses (al momento del otorgamiento)',
-        antigüedad:'2 años mínimo',
+        antiguedad:'2 años mínimo',
         ingresos:'hasta 250 MDP anuales',
         aval:'Sí (principal accionista)',
         buro:'Excelente Buró de Crédito. No Negociable.',
@@ -338,40 +344,40 @@ export const financieras = [
      {
       name:"FACTORAJE",
       presencia:'TODA LA REPUBLICA',
-      destinos:'',
+      destinos:'N/A',
       edad:'25 AÑOS Y 69 AÑOS',
       antiguedad:'PFAE 24 MESES FACTURANDO CONTINUOS Y PM 12 MESES FACTURANDO CONTINUAMENTE',
       ingresos:' $400,000',
       aval:'LA FACTURA ES LA GARANTIA',
       buro:'NO BURO MAYOR A 4 (QUEBRANTOS), SI LA EMPRESA NO TIENE HISTORIAL NECESITAREMOS QUE SUBA AL RL O ACCIONISTA CON MAYOR PORCENTAJE TENGA HISTORIAL CREDITICIO',
       propiedad:'N/A',
-      grabar:'N/A',
+      gravar:'N/A',
       observaciones: 'LOS TIEMPOS DE RESPUESTA UNA VEZ QUE TERMINA DE REGISTRARSE CORRECTAMENTE ES DE 24 A 48 HRS'
      },
      {
        name:"FACTORAJE PM CORP", 
        presencia:'TODA LA REPUBLICA',
-       destinos:'',
+       destinos:'N/A',
        edad:'25 AÑOS Y 69 AÑOS',
        antiguedad:'PFAE 24 MESES FACTURANDO CONTINUOS Y PM 12 MESES FACTURANDO CONTINUAMENTE',
        ingresos:' $400,000',
        aval:'LA FACTURA ES LA GARANTIA',
        buro:'NO BURO MAYOR A 4 (QUEBRANTOS), SI LA EMPRESA NO TIENE HISTORIAL NECESITAREMOS QUE SUBA AL RL O ACCIONISTA CON MAYOR PORCENTAJE TENGA HISTORIAL CREDITICIO',
        propiedad:'N/A',
-       grabar:'N/A',
+       gravar:'N/A',
        observaciones: 'LOS TIEMPOS DE RESPUESTA UNA VEZ QUE TERMINA DE REGISTRARSE CORRECTAMENTE ES DE 24 A 48 HRS'
      },
      {
       name:"FACTORAJE PFAE" ,
       presencia:'TODA LA REPUBLICA',
-      destinos:'',
+      destinos:'N/A',
       edad:'25 AÑOS Y 69 AÑOS',
       antiguedad:'PFAE 24 MESES FACTURANDO CONTINUOS Y PM 12 MESES FACTURANDO CONTINUAMENTE',
       ingresos:' $400,000',
       aval:'LA FACTURA ES LA GARANTIA',
       buro:'NO BURO MAYOR A 4 (QUEBRANTOS), SI LA EMPRESA NO TIENE HISTORIAL NECESITAREMOS QUE SUBA AL RL O ACCIONISTA CON MAYOR PORCENTAJE TENGA HISTORIAL CREDITICIO',
       propiedad:'N/A',
-      grabar:'N/A',
+      gravar:'N/A',
       observaciones: 'LOS TIEMPOS DE RESPUESTA UNA VEZ QUE TERMINA DE REGISTRARSE CORRECTAMENTE ES DE 24 A 48 HRS'
      }
     ],
@@ -394,7 +400,7 @@ export const financieras = [
         aval:'SI ES PERSONA MORAL SIEMPRE SE NECESITARÁ UN AVAL PERSONA FÍSICA. EN EL CASO DE PFAE O PF SOLO SE NECESITARÁ AVAL SI EL PROSPECTO NO CUENTA CON EXPOSICIÓN DE BURÓ DE CRÉDITO.',
         buro:'Experiencia Crediticia similar o mayor al credito que solicita  y capacidad de pago MOP1  y MOP 2',
         propiedad:'EN ARRENDAMIENTO Y S&LB LOS PROPIOS ACTIVOS SON LA GARANTÍA',
-        grabar:'EN NINGÚN CASO DE GRAVAN LAS GARANTÍAS. LAS PRENDARIAS SE  REGISTRAN EN EL REGISTRO ÚNICO DE GARANTÍAS (RUG) Y LAS PROPIEDADES SE REGISTRAN MEDIANTE FIDEICOMISO.',
+        gravar:'EN NINGÚN CASO DE GRAVAN LAS GARANTÍAS. LAS PRENDARIAS SE  REGISTRAN EN EL REGISTRO ÚNICO DE GARANTÍAS (RUG) Y LAS PROPIEDADES SE REGISTRAN MEDIANTE FIDEICOMISO.',
         observaciones:'INDISPENSABLE TENER COMPLETO EL EXPEDIENTE DESDE UN INICIO.'
       },
       {
@@ -407,7 +413,7 @@ export const financieras = [
         aval:'SI ES PERSONA MORAL SIEMPRE SE NECESITARÁ UN AVAL PERSONA FÍSICA. EN EL CASO DE PFAE O PF SOLO SE NECESITARÁ AVAL SI EL PROSPECTO NO CUENTA CON EXPOSICIÓN DE BURÓ DE CRÉDITO.',
         buro:'Experiencia Crediticia similar o mayor al credito que solicita  y capacidad de pago MOP1  y MOP 2',
         propiedad:'EN ARRENDAMIENTO Y S&LB LOS PROPIOS ACTIVOS SON LA GARANTÍA',
-        grabar:'EN NINGÚN CASO DE GRAVAN LAS GARANTÍAS. LAS PRENDARIAS SE  REGISTRAN EN EL REGISTRO ÚNICO DE GARANTÍAS (RUG) Y LAS PROPIEDADES SE REGISTRAN MEDIANTE FIDEICOMISO.',
+        gravar:'EN NINGÚN CASO DE GRAVAN LAS GARANTÍAS. LAS PRENDARIAS SE  REGISTRAN EN EL REGISTRO ÚNICO DE GARANTÍAS (RUG) Y LAS PROPIEDADES SE REGISTRAN MEDIANTE FIDEICOMISO.',
         observaciones:'INDISPENSABLE TENER COMPLETO EL EXPEDIENTE DESDE UN INICIO.'
       },
       {
@@ -420,7 +426,7 @@ export const financieras = [
         aval:'SI ES PERSONA MORAL SIEMPRE SE NECESITARÁ UN AVAL PERSONA FÍSICA. EN EL CASO DE PFAE O PF SOLO SE NECESITARÁ AVAL SI EL PROSPECTO NO CUENTA CON EXPOSICIÓN DE BURÓ DE CRÉDITO.',
         buro:'Experiencia Crediticia similar o mayor al credito que solicita  y capacidad de pago MOP1  y MOP 2',
         propiedad:'EN ARRENDAMIENTO Y S&LB LOS PROPIOS ACTIVOS SON LA GARANTÍA',
-        grabar:'EN NINGÚN CASO DE GRAVAN LAS GARANTÍAS. LAS PRENDARIAS SE  REGISTRAN EN EL REGISTRO ÚNICO DE GARANTÍAS (RUG) Y LAS PROPIEDADES SE REGISTRAN MEDIANTE FIDEICOMISO.',
+        gravar:'EN NINGÚN CASO DE GRAVAN LAS GARANTÍAS. LAS PRENDARIAS SE  REGISTRAN EN EL REGISTRO ÚNICO DE GARANTÍAS (RUG) Y LAS PROPIEDADES SE REGISTRAN MEDIANTE FIDEICOMISO.',
         observaciones:'INDISPENSABLE TENER COMPLETO EL EXPEDIENTE DESDE UN INICIO.'
       },
       {
@@ -433,7 +439,7 @@ export const financieras = [
         aval:'SI ES PERSONA MORAL SIEMPRE SE NECESITARÁ UN AVAL PERSONA FÍSICA. EN EL CASO DE PFAE O PF SOLO SE NECESITARÁ AVAL SI EL PROSPECTO NO CUENTA CON EXPOSICIÓN DE BURÓ DE CRÉDITO.',
         buro:'Experiencia Crediticia similar o mayor al credito que solicita  y capacidad de pago MOP1  y MOP 2',
         propiedad:'EN ARRENDAMIENTO Y S&LB LOS PROPIOS ACTIVOS SON LA GARANTÍA',
-        grabar:'EN NINGÚN CASO DE GRAVAN LAS GARANTÍAS. LAS PRENDARIAS SE  REGISTRAN EN EL REGISTRO ÚNICO DE GARANTÍAS (RUG) Y LAS PROPIEDADES SE REGISTRAN MEDIANTE FIDEICOMISO.',
+        gravar:'EN NINGÚN CASO DE GRAVAN LAS GARANTÍAS. LAS PRENDARIAS SE  REGISTRAN EN EL REGISTRO ÚNICO DE GARANTÍAS (RUG) Y LAS PROPIEDADES SE REGISTRAN MEDIANTE FIDEICOMISO.',
         observaciones:'INDISPENSABLE TENER COMPLETO EL EXPEDIENTE DESDE UN INICIO.'
       },
       {
@@ -446,7 +452,7 @@ export const financieras = [
         aval:'SI ES PERSONA MORAL SIEMPRE SE NECESITARÁ UN AVAL PERSONA FÍSICA. EN EL CASO DE PFAE O PF SOLO SE NECESITARÁ AVAL SI EL PROSPECTO NO CUENTA CON EXPOSICIÓN DE BURÓ DE CRÉDITO.',
         buro:'Experiencia Crediticia similar o mayor al credito que solicita  y capacidad de pago MOP1  y MOP 2',
         propiedad:'EN ARRENDAMIENTO Y S&LB LOS PROPIOS ACTIVOS SON LA GARANTÍA',
-        grabar:'EN NINGÚN CASO DE GRAVAN LAS GARANTÍAS. LAS PRENDARIAS SE  REGISTRAN EN EL REGISTRO ÚNICO DE GARANTÍAS (RUG) Y LAS PROPIEDADES SE REGISTRAN MEDIANTE FIDEICOMISO.',
+        gravar:'EN NINGÚN CASO DE GRAVAN LAS GARANTÍAS. LAS PRENDARIAS SE  REGISTRAN EN EL REGISTRO ÚNICO DE GARANTÍAS (RUG) Y LAS PROPIEDADES SE REGISTRAN MEDIANTE FIDEICOMISO.',
         observaciones:'INDISPENSABLE TENER COMPLETO EL EXPEDIENTE DESDE UN INICIO.'
       },
       {
@@ -459,7 +465,7 @@ export const financieras = [
         aval:'SI ES PERSONA MORAL SIEMPRE SE NECESITARÁ UN AVAL PERSONA FÍSICA. EN EL CASO DE PFAE O PF SOLO SE NECESITARÁ AVAL SI EL PROSPECTO NO CUENTA CON EXPOSICIÓN DE BURÓ DE CRÉDITO.',
         buro:'Experiencia Crediticia similar o mayor al credito que solicita  y capacidad de pago MOP1  y MOP 2',
         propiedad:'EN ARRENDAMIENTO Y S&LB LOS PROPIOS ACTIVOS SON LA GARANTÍA',
-        grabar:'EN NINGÚN CASO DE GRAVAN LAS GARANTÍAS. LAS PRENDARIAS SE  REGISTRAN EN EL REGISTRO ÚNICO DE GARANTÍAS (RUG) Y LAS PROPIEDADES SE REGISTRAN MEDIANTE FIDEICOMISO.',
+        gravar:'EN NINGÚN CASO DE GRAVAN LAS GARANTÍAS. LAS PRENDARIAS SE  REGISTRAN EN EL REGISTRO ÚNICO DE GARANTÍAS (RUG) Y LAS PROPIEDADES SE REGISTRAN MEDIANTE FIDEICOMISO.',
         observaciones:'INDISPENSABLE TENER COMPLETO EL EXPEDIENTE DESDE UN INICIO.'
       },
       {
@@ -472,7 +478,7 @@ export const financieras = [
         aval:'SI ES PERSONA MORAL SIEMPRE SE NECESITARÁ UN AVAL PERSONA FÍSICA. EN EL CASO DE PFAE O PF SOLO SE NECESITARÁ AVAL SI EL PROSPECTO NO CUENTA CON EXPOSICIÓN DE BURÓ DE CRÉDITO.',
         buro:'Experiencia Crediticia similar o mayor al credito que solicita  y capacidad de pago MOP1  y MOP 2',
         propiedad:'GARANTÍA HIPOTECARIA APLICA PARA CRÉDITO SIMPLE PERO SIEMPRE ACOMPAÑADA DE UNA GARANTÍA PRENDARIA',
-        grabar:'EN NINGÚN CASO DE GRAVAN LAS GARANTÍAS. LAS PRENDARIAS SE  REGISTRAN EN EL REGISTRO ÚNICO DE GARANTÍAS (RUG) Y LAS PROPIEDADES SE REGISTRAN MEDIANTE FIDEICOMISO.',
+        gravar:'EN NINGÚN CASO DE GRAVAN LAS GARANTÍAS. LAS PRENDARIAS SE  REGISTRAN EN EL REGISTRO ÚNICO DE GARANTÍAS (RUG) Y LAS PROPIEDADES SE REGISTRAN MEDIANTE FIDEICOMISO.',
         observaciones:'INDISPENSABLE TENER COMPLETO EL EXPEDIENTE DESDE UN INICIO.'
       },
       {
@@ -485,7 +491,7 @@ export const financieras = [
         aval:'SI ES PERSONA MORAL SIEMPRE SE NECESITARÁ UN AVAL PERSONA FÍSICA. EN EL CASO DE PFAE O PF SOLO SE NECESITARÁ AVAL SI EL PROSPECTO NO CUENTA CON EXPOSICIÓN DE BURÓ DE CRÉDITO.',
         buro:'Experiencia Crediticia similar o mayor al credito que solicita  y capacidad de pago MOP1  y MOP 2',
         propiedad:'GARANTÍA HIPOTECARIA APLICA PARA CRÉDITO SIMPLE PERO SIEMPRE ACOMPAÑADA DE UNA GARANTÍA PRENDARIA',
-        grabar:'EN NINGÚN CASO DE GRAVAN LAS GARANTÍAS. LAS PRENDARIAS SE  REGISTRAN EN EL REGISTRO ÚNICO DE GARANTÍAS (RUG) Y LAS PROPIEDADES SE REGISTRAN MEDIANTE FIDEICOMISO.',
+        gravar:'EN NINGÚN CASO DE GRAVAN LAS GARANTÍAS. LAS PRENDARIAS SE  REGISTRAN EN EL REGISTRO ÚNICO DE GARANTÍAS (RUG) Y LAS PROPIEDADES SE REGISTRAN MEDIANTE FIDEICOMISO.',
         observaciones:'INDISPENSABLE TENER COMPLETO EL EXPEDIENTE DESDE UN INICIO.'
       },
       {
@@ -498,7 +504,7 @@ export const financieras = [
         aval:'SI ES PERSONA MORAL SIEMPRE SE NECESITARÁ UN AVAL PERSONA FÍSICA. EN EL CASO DE PFAE O PF SOLO SE NECESITARÁ AVAL SI EL PROSPECTO NO CUENTA CON EXPOSICIÓN DE BURÓ DE CRÉDITO.',
         buro:'Experiencia Crediticia similar o mayor al credito que solicita  y capacidad de pago MOP1  y MOP 2',
         propiedad:'GARANTÍA HIPOTECARIA APLICA PARA CRÉDITO SIMPLE PERO SIEMPRE ACOMPAÑADA DE UNA GARANTÍA PRENDARIA',
-        grabar:'EN NINGÚN CASO DE GRAVAN LAS GARANTÍAS. LAS PRENDARIAS SE  REGISTRAN EN EL REGISTRO ÚNICO DE GARANTÍAS (RUG) Y LAS PROPIEDADES SE REGISTRAN MEDIANTE FIDEICOMISO.',
+        gravar:'EN NINGÚN CASO DE GRAVAN LAS GARANTÍAS. LAS PRENDARIAS SE  REGISTRAN EN EL REGISTRO ÚNICO DE GARANTÍAS (RUG) Y LAS PROPIEDADES SE REGISTRAN MEDIANTE FIDEICOMISO.',
         observaciones:'INDISPENSABLE TENER COMPLETO EL EXPEDIENTE DESDE UN INICIO.'
       },
     ],
@@ -521,7 +527,7 @@ export const financieras = [
       aval:'Principal accionista o familiar consanguíneo de 1° o 2° grado',
       buro:'Antecedentes crediticios 12 meses con Crédito Comercial (validar buró) además Calificación de Buró Excelente, Bueno o Regular (validar buró)',
       propiedad:'Sin garantías ',
-      grabar:'NO',
+      gravar:'NO',
       observaciones:'Que el prospecto no sea cliente de Afirme, solo clientes nuevos. Validar que los prospectos no presenten perdidas de capital significativas, quiebra técnica (capital contable negativo)(validar Información financiera). Sin penalización por pagos anticipados.'
       },
       { 
@@ -534,7 +540,7 @@ export const financieras = [
       aval:'Principal accionista o familiar consanguíneo de 1° o 2° grado',
       buro:'Antecedentes crediticios 12 meses con Crédito Comercial (validar buró) además Calificación de Buró Excelente, Bueno o Regular (validar buró)',
       propiedad:'Sin garantías ',
-      grabar:'NO',
+      gravar:'NO',
       observaciones:'Que el prospecto no sea cliente de Afirme, solo clientes nuevos. Validar que los prospectos no presenten perdidas de capital significativas, quiebra técnica (capital contable negativo)(validar Información financiera). Sin penalización por pagos anticipados.'
       },
       {
@@ -547,7 +553,7 @@ export const financieras = [
       aval:'Principal accionista o familiar consanguíneo de 1° o 2° grado',
       buro:'Antecedentes crediticios 12 meses con Crédito Comercial (validar buró) además Calificación de Buró Excelente, Bueno o Regular (validar buró)',
       propiedad:'Ahasta 2.5 MDP  no se solicita propiedad rriba de 2.5 MDP solicitan propiedad libre de gravamen aforo 2 :1',
-      grabar:'Si, arriba de 2.5 MDP ',
+      gravar:'Si, arriba de 2.5 MDP ',
       observaciones:'Que el prospecto no sea cliente de Afirme, solo clientes nuevos. Validar que los prospectos no presenten perdidas de capital significativas, quiebra técnica (capital contable negativo)(validar Información financiera). Sin penalización por pagos anticipados.'
       },
       {
@@ -560,7 +566,7 @@ export const financieras = [
         aval:'Principal accionista o familiar consanguíneo de 1° o 2° grado',
         buro:'Antecedentes crediticios 12 meses con Crédito Comercial (validar buró) además Calificación de Buró Excelente, Bueno o Regular (validar buró)',
         propiedad:'Propiedades libres de gravamen 2 a 1, de acuerdo al análisis se valida si se requiere dejar garantía hipotecaria.',
-        grabar:'Si, arriba de 2.5 MDP ',
+        gravar:'Si, arriba de 2.5 MDP ',
         observaciones:'Que el prospecto no sea cliente de Afirme, solo clientes nuevos. Validar que los prospectos no presenten perdidas de capital significativas, quiebra técnica (capital contable negativo)(validar Información financiera). Sin penalización por pagos anticipados.'
       },
       {
@@ -573,7 +579,7 @@ export const financieras = [
         aval:'Principal accionista o familiar consanguíneo de 1° o 2° grado',
         buro:'Antecedentes crediticios 12 meses con Crédito Comercial (validar buró) además Calificación de Buró Excelente, Bueno o Regular (validar buró)',
         propiedad:'La garantía es el propio inmueble a adquirir.',
-        grabar:'SI',
+        gravar:'SI',
         observaciones:'Que el prospecto no sea cliente de Afirme, solo clientes nuevos. Validar que los prospectos no presenten perdidas de capital significativas, quiebra técnica (capital contable negativo)(validar Información financiera). Sin penalización por pagos anticipados.'
       }
     ],
