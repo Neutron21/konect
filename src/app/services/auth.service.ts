@@ -64,13 +64,13 @@ export class AuthService {
     }
     validarErrorApi(error: any) {
       const modalElement = document.getElementById('sessionModal');
-      if (modalElement) {
-        const modal = new Modal(modalElement);
-        modal.show();
-        if (error.status == 401 || error.error.error.includes('Expired')) {
+      if ((error.status == 401 || error.error.error.includes('Expired')) && modalElement ) {
+          const modal = new Modal(modalElement);
+          modal.show();
           console.log("Sesion expirada!");
-          this.logOut();
-        }
+          this.logOut()
+          // setTimeout(() => modal.hide() , 2500)
+          
       }
       
     }

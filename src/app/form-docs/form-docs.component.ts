@@ -55,9 +55,6 @@ export class FormDocsComponent implements OnInit {
     this.product = Number(producto) + 1;
     const productoFormat = "p" + this.product;
 
-    console.log("idFin:", this.idFin);
-    console.log("productoFormat:", productoFormat);
-
     // Valida que las propiedades existan en `documentacion`
     if (!documentacion[this.idFin]) {
       console.error(`Error: No existe '${this.idFin}' en 'documentacion'.`);

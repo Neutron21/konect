@@ -14,7 +14,6 @@ export class BackArrowComponent implements OnInit {
   ngOnInit(): void {
   }
   navigateBack(): void {
-    console.log('ruta', this.rutaBack);
     this.router.navigate([this.rutaBack]);
   }
 }

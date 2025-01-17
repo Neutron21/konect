@@ -52,12 +52,7 @@ export class SeguimientoComponent implements OnInit {
       },
       (error: any) => {
         console.error('Error al obtener cotizaciones:', error);
-        console.log(error);
-        
-        if (error.status == 401 || error.error.error.includes('Expired')) {
-          console.log("Sesion expirada!");
-          this.authService.logOut();
-        }
+        this.authService.validarErrorApi(error);
       }
     );
   }

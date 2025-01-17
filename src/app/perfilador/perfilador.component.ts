@@ -2,7 +2,7 @@ import { Component, AfterViewInit, ViewChild, ElementRef, EventEmitter, Output, 
 import { ApiService } from '../services/api.service';
 import { financieras } from '../utils/financieras';
 import { MailService } from '../services/mail.service';
-import { AuthService } from '../services/auth.service';
+
 
 declare var bootstrap: any;
 
@@ -12,14 +12,14 @@ declare var bootstrap: any;
   styleUrls: ['./perfilador.component.scss']
 })
 export class PerfiladorComponent implements AfterViewInit {
-[x: string]: any;
 
   @ViewChild('successModal') successModalRef: ElementRef | undefined;
 
-    @Input() request!: any;
-    @Input() isNew!: boolean;
-  
-    @Output() messageEmitter = new EventEmitter<boolean>();
+  @Input() request!: any;
+  @Input() isNew!: boolean;
+
+  @Output() messageEmitter = new EventEmitter<boolean>();
+  @Output() reset = new EventEmitter();
 
   isExpanded = false;
   nameFin = '';
@@ -168,7 +168,18 @@ export class PerfiladorComponent implements AfterViewInit {
   mostrarErrorFunc(message: boolean) {
     this.mostrarError = message;
   }
-
+  resetForm() {
+    this.cotizacion = {
+      tipo_persona: 'f', 
+      nombre: '',
+      edad: null,
+      monto: null,
+      plazo: null,
+      antiguedadEmpresa: null,
+      ingresos: null,
+      rfc: null,
+    };
+  }
   onlyText(event: KeyboardEvent) {
     const charCode = event.which ? event.which : event.keyCode;
     // Permitir letras mayúsculas (65-90), letras minúsculas (97-122), espacios (32), y acentos (á: 225, é: 233, í: 237, ó: 243, ú: 250, ü: 252, ñ: 241)
@@ -206,15 +217,5 @@ export class PerfiladorComponent implements AfterViewInit {
   toggleAccordion() {
     this.isExpanded = !this.isExpanded;
   }
-  mostrarDetalles(producto: any) {
-    if (producto && producto.productos && producto.productos.length > 0) {
-      // Suponiendo que la lista de productos siempre contiene al menos un elemento
-      this.productoDetalles = producto.productos[0]; // Cambiado a 0 por defecto, puedes manejar la lógica para seleccionar otro si es necesario
-    } else {
-      console.error('Detalles del producto no encontrados.');
-    }
-  }
-  
-  
   
 }

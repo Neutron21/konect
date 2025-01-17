@@ -17,6 +17,7 @@ export class FileUploadComponent {
   @Input() isNew!: boolean;
 
   @Output() messageEmitter = new EventEmitter<boolean>();
+  @Output() reset = new EventEmitter<boolean>();
   
   fileUpload: any;
   currentFiles: any[] = [];
@@ -31,6 +32,9 @@ export class FileUploadComponent {
   modalElement: any;
   modal: any;
   loader: boolean = false;
+  inputFile: any;
+  currentFilesInit: any[] = [];
+  viabilidadInit: any[] = [];
 
   constructor(
       private apiService: ApiService,
@@ -61,9 +65,6 @@ export class FileUploadComponent {
       this.product = Number(producto) + 1;
       const productoFormat = "p" + this.product;
 
-      console.log("idFin:", this.idFin);
-      console.log("productoFormat:", productoFormat);
-
       // Valida que las propiedades existan en `documentacion`
       if (!documentacion[this.idFin]) {
         console.error(`Error: No existe '${this.idFin}' en 'documentacion'.`);
@@ -78,8 +79,10 @@ export class FileUploadComponent {
       // Asignación segura de valores
       this.currentFiles = documentacion[this.idFin][productoFormat].documentos || [];
       this.viabilidad = documentacion[this.idFin].viabilidad || [];
-      console.log('viabilidad',this.viabilidad);
       
+      // Se crea un estado inicial, para poder hacer un reset
+      this.currentFilesInit = JSON.parse(JSON.stringify(this.currentFiles));
+      this.viabilidadInit = JSON.parse(JSON.stringify(this.viabilidad)); 
       this.currentFiles.forEach(cf => {
         cf.showDesc = false;
         cf.tempName = ''
@@ -126,7 +129,6 @@ export class FileUploadComponent {
           
         const customFileName = `${nombre}.${fileExtension}`;
         this.fileUpload = { file, customName: customFileName };
-        console.log('Archivo permitido:', this.fileUpload);
         this.validarExistencias(nombre);
 
         switch(type) {
@@ -148,21 +150,24 @@ export class FileUploadComponent {
   }
   
   openFileDialog(inputFile: HTMLInputElement, file: any): void {
-    if (!this.isNew && file.ready) {
-      // Abre el modal
+    if (!this.isNew && file.ready) { // Si es cotizacion existente y el archivo ya se cargo antes 
+      
       const modalElement = document.getElementById('replaceFileModal');
       if (modalElement) {
         const modalInstance = new bootstrap.Modal(modalElement);
         modalInstance.show();
+        this.inputFile = inputFile;
       }
+      
     } else {
       inputFile.click(); // Simula el clic en el input de tipo file
     }
   }
   
-
+  confirmOverWrite() {
+    this.inputFile.click()
+  }
   
-
   // Método para restablecer el nombre, color del archivo y eliminar el archivo del input
   resetFile(inputFile: HTMLInputElement, index: number, type: string): void {
     
@@ -317,7 +322,10 @@ export class FileUploadComponent {
           console.log('Envio de correo:', response);
           this.textModal = 'Proceso Exitoso!'
           this.loader = false;
+          this.cleanView();
         }, error: (err) => {
+          this.textModal = 'Ocurrio un error en el envio del e-mail'
+          this.loader = false;
           console.error('Error al enviar los datos:', err);
           this.authService.validarErrorApi(err);
         }
@@ -339,7 +347,12 @@ export class FileUploadComponent {
     }));
       this.currentFiles = archivosMap
     }
-   
+   cleanView() {
+    this.viabilidad = JSON.parse(JSON.stringify(this.viabilidadInit));
+    this.currentFiles = JSON.parse(JSON.stringify(this.currentFilesInit));
+    this.fileList = [];
+    this.reset.emit();
+   }
     validarFormulario(): boolean {
       const { tipo_persona, nombre, edad, monto, plazo, antiguedadEmpresa, ingresos, rfc } = this.request;
       return tipo_persona && nombre && edad && monto && plazo && antiguedadEmpresa && ingresos && rfc;
