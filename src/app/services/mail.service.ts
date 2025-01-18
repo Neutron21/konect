@@ -35,7 +35,7 @@ export class MailService {
       broker: sessionStorage.getItem("broker") ,
       numCotizacion: sessionStorage.getItem("idCotizacion"),
       institucion: institucion?.nombre,
-      update: isNew
+      update: isNew ? 1 : 0 // 1 Para cotizaciones nuevas 0 para actualización
       // franquicia: "",
       // director:"",
       // region:"",

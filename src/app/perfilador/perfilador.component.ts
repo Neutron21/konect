@@ -2,18 +2,17 @@ import { Component, AfterViewInit, ViewChild, ElementRef, EventEmitter, Output, 
 import { ApiService } from '../services/api.service';
 import { financieras } from '../utils/financieras';
 import { MailService } from '../services/mail.service';
+import { Modal } from 'bootstrap';
+import * as bootstrap from 'bootstrap';
+import { AuthService } from '../services/auth.service';
 
-
-declare var bootstrap: any;
 
 @Component({
   selector: 'app-perfilador',
   templateUrl: './perfilador.component.html',
   styleUrls: ['./perfilador.component.scss']
 })
-export class PerfiladorComponent implements AfterViewInit {
-
-  @ViewChild('successModal') successModalRef: ElementRef | undefined;
+export class PerfiladorComponent  {
 
   @Input() request!: any;
   @Input() isNew!: boolean;
@@ -41,30 +40,28 @@ export class PerfiladorComponent implements AfterViewInit {
 
   formularioEnviado: boolean = false;
   mostrarError: boolean = false; 
-  modal: any;
   finacieraId: number = 0;
   productIndex: number = 0;
   productoDetalles: any = {};
-
-
+  textModal: string = '';
+  modalElement: any;
+  modal: any;
 
 
   constructor(
     private apiService: ApiService,
     private mailService: MailService,
+    private authService: AuthService
   ) {
     this.generarPlazos();
   }
 
   ngOnInit(): void {
+    this.modalElement = document.getElementById('successModal');
+    this.modal = new Modal(this.modalElement);
     this.getFinanciera();
   }
 
-  ngAfterViewInit(): void {
-    // if (this.successModalRef) {
-    //   this.modal = new bootstrap.Modal(this.successModalRef.nativeElement);
-    // }
-  }
   generarPlazos(): void {
     for (let i = 12; i <= 120; i += 12) {
       this.plazos.push(i);
@@ -105,20 +102,16 @@ export class PerfiladorComponent implements AfterViewInit {
   
     this.apiService.sendCotizacion(this.cotizacion).subscribe({
       next: (response) => {
-        this.preSendDocs(response);
-  
         console.log('Cotización enviada con éxito:', response);
-  
         // Proceder con el envío de correos
-        this.sendMails();
+        this.textModal = 'Proceso registrado con éxito!'
+        this.modal.show()
       },
       error: (err) => {
-        try {
-          const errorResponse = JSON.parse(err.error);
-          console.error('Error al enviar los datos:', errorResponse);
-        } catch (e) {
-          console.error('Error al enviar los datos:', err.message || err);
-        }
+        this.modal.hide()
+        this.textModal = 'Error al crear Folio'
+        console.error('Error al enviar:', err);
+        this.authService.validarErrorApi(err);
       }
     });
   
@@ -142,12 +135,6 @@ export class PerfiladorComponent implements AfterViewInit {
         console.error('Error al enviar los datos:', err);
       }
     });
-  }
-    
-  cerrarModal(formularioForm: any): void {
-    this.formularioEnviado = false;
-    this.modal.hide();
-    formularioForm.resetForm();
   }
 
   validarFormulario(): boolean {
