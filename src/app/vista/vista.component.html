@@ -128,10 +128,10 @@
     </li>
   </ul>
 </div>
-<p *ngIf="comentarios.length === 0">No hay comentarios para esta cotización.</p>
+<p *ngIf="comentarios.length === 0">No hay comentarios para esta folio.</p>
 
-<div *ngIf="idFinanciera" class="container mt-4">
-  <app-file-upload [request]="" [isNew]="false"></app-file-upload>
-</div>
+  <div *ngIf="idFinanciera" class="container mt-4">
+    <app-file-upload [request]="" [isNew]="false"></app-file-upload>
+  </div>
 </div>
 

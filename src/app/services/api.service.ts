@@ -55,8 +55,7 @@ export class ApiService {
       'X-Auth-Token': this.authService.getToken() + ""
     });
 
-    // Crear los parámetros de la solicitud
-    let params = new HttpParams()
+    let params = new HttpParams() // Crear los parámetros de la solicitud
       .set('tabla', tabla)
       .set('campo', campo)
       .set('valor', valor);

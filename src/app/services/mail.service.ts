@@ -34,7 +34,8 @@ export class MailService {
       producto: (institucion?.productos![producto] as { name: string }).name,
       broker: sessionStorage.getItem("broker") ,
       numCotizacion: sessionStorage.getItem("idCotizacion"),
-      institucion: institucion?.nombre
+      institucion: institucion?.nombre,
+      update: isNew
       // franquicia: "",
       // director:"",
       // region:"",
